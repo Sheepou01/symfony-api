@@ -10,6 +10,7 @@ import 'semantic-ui-css/semantic.min.css';
 
 import Header from 'src/components/Header';
 import Footer from 'src/components/Footer';
+import Login from 'src/components/Login';
 import './app.scss';
 
 
@@ -19,6 +20,7 @@ import './app.scss';
 const App = () => (
 <div id='app'>
   <Header />
+  <Login />
   <Footer />
 </div>
 );

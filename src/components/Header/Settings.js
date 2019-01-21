@@ -18,7 +18,9 @@ const Settings = () => (
         <Button>Mon profil</Button>
     </div>
     <div className="settings-sign-out">
-        <Icon name='sign-out' size='large' />
+        <Button icon>
+            <Icon name='sign-out' size='large' />
+        </Button>
     </div>
   </div>
 );

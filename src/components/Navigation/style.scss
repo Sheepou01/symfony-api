@@ -1,0 +1,20 @@
+#navigation {
+  display : flex;
+  justify-content: center;
+  margin: 15em auto;
+  width : 70%;
+  
+}
+
+.bigButton {
+  border : solid white 5px;
+  padding: 3em 5em;
+  margin-left: 1em;
+  border-radius: 15px;
+  color : white;
+  background-color: #fdc841;
+  text-transform: uppercase;
+  font-weight: bold;
+  width : 15%;
+  text-align: center;
+}

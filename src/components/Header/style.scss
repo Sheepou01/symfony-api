@@ -10,3 +10,21 @@
     align-items: center;   
     width : 15%; 
 }
+
+#logo {
+  border : solid white 5px;
+  padding: 2em 0;
+  margin-left: 1em;
+  border-radius: 15px;
+  color : white;
+  background-color: #fdc841;
+  text-transform: uppercase;
+  font-weight: bold;
+  width : 10%;
+  height : 5em;
+  text-align: center;
+}
+
+body {
+  background-color: #01499e;
+}

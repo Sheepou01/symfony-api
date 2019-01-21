@@ -80,7 +80,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|L'identifiant|
-|score|INT|NOT NULL|Score de la partie|
+|score|INT|NULL|Score de la partie|
 |user|Entity|-|Utilisateur qui a réalisé le score|
 |game|Entity|-|Jeu sur lequel le score a été réalisé|
 |created_at|TIMESTAMP|NOT NULL, DEFAULT CURRENT_TIMESTAMP|Date de création|
@@ -91,7 +91,7 @@
 |Champ|Type|Spécificités|Description|
 |-|-|-|-|
 |id|INT|PRIMARY KEY, NOT NULL, UNSIGNED, AUTO_INCREMENT|L'identifiant|
-|score|INT|NOT NULL|Score de la partie|
+|score|INT|NULL|Score de la partie|
 |user|Entity|-|Utilisateur qui a réalisé le score|
 |quizz|Entity|-|Quizz sur lequel le score a été réalisé|
 |created_at|TIMESTAMP|NOT NULL, DEFAULT CURRENT_TIMESTAMP|Date de création|

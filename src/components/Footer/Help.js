@@ -2,7 +2,7 @@
  * Npm import
  */
 import React from 'react';
-
+import { Button, Icon } from 'semantic-ui-react';
 /**
  * Local import
  */
@@ -12,7 +12,10 @@ import './style.scss';
  */
 const Help = () => (
   <div id="help">
-   TEst
+        <Button icon>
+            <Icon name='help' size='large' />
+        </Button>
+        <a href="" > Mentions légales </a>
   </div>
 );
 

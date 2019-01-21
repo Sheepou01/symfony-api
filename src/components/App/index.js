@@ -11,7 +11,7 @@ import 'semantic-ui-css/semantic.min.css';
 import Header from 'src/components/Header';
 import Navigation from 'src/components/Navigation';
 import Footer from 'src/components/Footer';
-import Login from 'src/components/Login';
+import Login from 'src/containers/Login';
 import './app.scss';
 
 

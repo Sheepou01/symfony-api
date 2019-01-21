@@ -2,14 +2,16 @@
  * Initial State
  */
 const initialState = {
-  message: 'Hello',
-  clic: 0,
+  inputEmail: '',
+  inputPassword: '',
+  inputUserEmail: '',
+  inputUserPassword: '',
 };
 
 /**
  * Types
  */
-const DO_SOMETHING = 'DO_SOMETHING';
+const CHANGE_INPUT = 'CHANGE_INPUT';
 
 /**
  * Traitements
@@ -20,10 +22,10 @@ const DO_SOMETHING = 'DO_SOMETHING';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DO_SOMETHING:
+    case CHANGE_INPUT:
       return {
         ...state,
-        clic: state.clic + 1,
+        [action.name]: action.value,
       };
 
     default:
@@ -34,8 +36,10 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-export const doSomething = () => ({
-  type: DO_SOMETHING,
+export const changeInput = (name, value) => ({
+  type: CHANGE_INPUT,
+  name,
+  value,
 });
 
 /**

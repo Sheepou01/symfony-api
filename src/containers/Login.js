@@ -19,6 +19,7 @@ import { changeInput, submitNewUser, connectUser } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
+  inputPseudo: state.inputPseudo,
   inputEmail: state.inputEmail,
   inputPassword: state.inputPassword,
   inputUserEmail: state.inputUserEmail,
@@ -36,8 +37,8 @@ const mapDispatchToProps = dispatch => ({
   handleInput: (name, value) => {
     dispatch(changeInput(name, value));
   },
-  addUser: (name, password) => {
-    dispatch(submitNewUser(name, password));
+  addUser: (pseudo, email, password) => {
+    dispatch(submitNewUser(pseudo, email, password));
   },
   connectUser: (name, password) => {
     dispatch(connectUser(name, password));

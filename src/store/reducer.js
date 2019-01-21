@@ -2,6 +2,7 @@
  * Initial State
  */
 const initialState = {
+  inputPseudo: '',
   inputEmail: '',
   inputPassword: '',
   inputUserEmail: '',
@@ -34,10 +35,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         newUser: [
           {
-            name: action.name,
+            pseudo: action.pseudo,
+            email: action.email,
             password: action.password,
           },
         ],
+        inputPseudo: '',
         inputEmail: '',
         inputPassword: '',
       };
@@ -68,9 +71,10 @@ export const changeInput = (name, value) => ({
   value,
 });
 
-export const submitNewUser = (name, password) => ({
+export const submitNewUser = (pseudo, email, password) => ({
   type: NEW_USER_SUBMIT,
-  name,
+  pseudo,
+  email,
   password,
 });
 

@@ -17,6 +17,7 @@ import './style.scss';
  */
 const Login = ({
   handleInput,
+  inputPseudo,
   inputEmail,
   inputPassword,
   inputUserEmail,
@@ -31,7 +32,7 @@ const Login = ({
 
   const handleSubmitInscription = (event) => {
     event.preventDefault();
-    addUser(inputEmail, inputPassword);
+    addUser(inputPseudo, inputEmail, inputPassword);
   };
 
   const handleSubmitRegistration = (event) => {
@@ -44,6 +45,13 @@ const Login = ({
       <div>
         <h2>Inscription</h2>
         <form method="POST" action="" onSubmit={handleSubmitInscription}>
+          <Field
+            handleInputChange={handleInputChange}
+            value={inputPseudo}
+            name="inputPseudo"
+            type="text"
+            placeholder="Votre Pseudo"
+          />
           <Field
             handleInputChange={handleInputChange}
             value={inputEmail}
@@ -86,6 +94,7 @@ const Login = ({
 };
 
 Login.propTypes = {
+  inputPseudo: PropTypes.string.isRequired,
   inputEmail: PropTypes.string.isRequired,
   inputPassword: PropTypes.string.isRequired,
   inputUserEmail: PropTypes.string.isRequired,

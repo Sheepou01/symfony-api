@@ -2,7 +2,7 @@
  * Npm import
  */
 import React from 'react';
-
+import { Icon } from 'semantic-ui-react';
 /**
  * Local import
  */
@@ -12,7 +12,7 @@ import React from 'react';
  */
 const Anecdotes = () => (
   <button className="bigButton">
-  Anecdotes
+  Fun Fact <Icon name='idea'/>
   </button>
 );
 

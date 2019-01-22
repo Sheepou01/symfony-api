@@ -13,9 +13,7 @@ import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
 import Game from 'src/components/Game';
 import Footer from 'src/components/Footer';
-import Login from 'src/components/Login';
-import Anecdote from 'src/components/Anecdotes';
-
+import Login from 'src/containers/Login';
 import './app.scss';
 
 
@@ -23,12 +21,12 @@ import './app.scss';
  * Code
  */
 const App = () => (
-<div id='app'>
-  <Header />
-  <Anecdote />
-  <Footer />
-  <Login />
-</div>
+  <div id="app">
+    <Header />
+    <Navigation />
+    <Footer />
+    <Login />
+  </div>
 );
 
 /**

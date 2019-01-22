@@ -17,12 +17,21 @@ import { NavLink } from 'react-router-dom';
 const Settings = () => (
   <div id="settings">
     <div className="settings-profile">
-        <NavLink className="ui button" to="/mon-profil">Mon profil</NavLink>
+      <NavLink
+        className="ui button"
+        to="/mon-profil"
+        exact
+      >
+          Mon profil
+      </NavLink>
     </div>
     <div className="settings-sign-out">
-        <NavLink className="ui button" to="/">
-            <Icon name='sign-out' size='large' />
-        </NavLink>
+      <NavLink
+        className="ui button"
+        to="/"
+      >
+        <Icon name="sign-out" size="large" />
+      </NavLink>
     </div>
   </div>
 );

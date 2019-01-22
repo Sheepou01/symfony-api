@@ -42,8 +42,15 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirect('');
+            return $this->render('user/signup.html.twig', [
+                'controller_name' => 'UserController',
+            ]);
+
+
         }
+        return $this->render('user/signup.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
     }
 
     /**
@@ -57,9 +64,8 @@ class UserController extends AbstractController
         
          $lastUsername = $authUtils->getLastUsername();
         
-         return $this->redirect('', [
-            'last_username' => $lastUsername,
-            'error' => $error
+         return $this->render('user/signin.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
 

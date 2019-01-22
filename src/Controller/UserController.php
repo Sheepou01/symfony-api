@@ -11,7 +11,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class UserController extends AbstractController
 {
     /**
-     * @Route("/user", name="user")
+     * @Route("/", name="index")
      */
     public function index()
     {
@@ -39,7 +39,7 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirectToRoute('user');
+            return $this->redirect('');
         }
     }
 
@@ -53,7 +53,8 @@ class UserController extends AbstractController
 
         
          $lastUsername = $authUtils->getLastUsername();
-        return $this->render('user/index.html.twig', [
+        
+         return $this->redirect('', [
             'last_username' => $lastUsername,
             'error' => $error
         ]);

@@ -23,9 +23,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/signup", name="signup")
-     */
+    
     public function signup(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
@@ -53,9 +51,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/signin", name="signin")
-     */
+    
     public function signin(Request $request, AuthenticationUtils $authUtils)
     {
 

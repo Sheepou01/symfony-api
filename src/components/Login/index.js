@@ -54,7 +54,7 @@ const Login = ({
         <h2>Inscription</h2>
         {/* Premier Formulaire: Inscription */}
         {/* Je transmets les props nécessaires à mon composant Field (input) */}
-        <form method="POST" action="" onSubmit={handleSubmitInscription}>
+        <form onSubmit={handleSubmitInscription}>
           <Field
             handleInputChange={handleInputChange}
             value={inputPseudo}

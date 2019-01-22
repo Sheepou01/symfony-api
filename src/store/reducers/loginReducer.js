@@ -13,8 +13,8 @@ const initialState = {
  * Types
  */
 const CHANGE_INPUT = 'CHANGE_INPUT';
-const NEW_USER_SUBMIT = 'NEW_USER_SUBMIT';
-const CONNECT_USER_SUBMIT = 'CONNECT_USER_SUBMIT';
+export const NEW_USER_SUBMIT = 'NEW_USER_SUBMIT';
+export const CONNECT_USER_SUBMIT = 'CONNECT_USER_SUBMIT';
 
 /**
  * Traitements

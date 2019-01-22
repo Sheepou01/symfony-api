@@ -1,7 +1,8 @@
 /*
  * Npm import
  */
-import { createStore } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import loginMiddleware from './middlewares/loginMiddleware';
 
 /*
  * Local import
@@ -12,13 +13,20 @@ import reducer from './reducers/index';
 /*
  * Code
  */
+
+// ajout du/des middlewares
+const appliedMiddlewares = applyMiddleware(loginMiddleware);
+
+// onglet redux dans le navigateur
 const devTools = [
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 ];
 
+// compose des middlewares et devtools
+const enhancers = compose(appliedMiddlewares, ...devTools);
 
 // createStore
-const store = createStore(reducer, ...devTools);
+const store = createStore(reducer, enhancers);
 
 /*
  * Export

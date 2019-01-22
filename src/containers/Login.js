@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { changeInput, submitNewUser, connectUser } from 'src/store/reducer';
+import { changeInput, submitNewUser, connectUser } from 'src/store/reducers/loginReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,11 +19,12 @@ import { changeInput, submitNewUser, connectUser } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  inputPseudo: state.inputPseudo,
-  inputEmail: state.inputEmail,
-  inputPassword: state.inputPassword,
-  inputUserEmail: state.inputUserEmail,
-  inputUserPassword: state.inputUserPassword,
+  // J'utilise le state de mon loginReducer
+  inputPseudo: state.loginReducer.inputPseudo,
+  inputEmail: state.loginReducer.inputEmail,
+  inputPassword: state.loginReducer.inputPassword,
+  inputUserEmail: state.loginReducer.inputUserEmail,
+  inputUserPassword: state.loginReducer.inputUserPassword,
 });
 
 /* === Actions ===
@@ -35,24 +36,23 @@ const mapStateToProps = state => ({
  */
 const mapDispatchToProps = dispatch => ({
   handleInput: (name, value) => {
+    // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(changeInput(name, value));
   },
   addUser: (pseudo, email, password) => {
+    // dispatch de mon action creator qui gère la soumission du form d'inscription
     dispatch(submitNewUser(pseudo, email, password));
   },
   connectUser: (name, password) => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
     dispatch(connectUser(name, password));
   },
 });
 
 // Container
-// connect(Ce dont j'ai besoin)(Qui en a besoin)
+// connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
 const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
 
-/* 2 temps
-const createContainer = connect(mapStateToProps, mapDispatchToProps);
-const ExampleContainer = createContainer(Example);
-*/
 
 /**
  * Export

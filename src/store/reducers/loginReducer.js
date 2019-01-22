@@ -25,14 +25,18 @@ const CONNECT_USER_SUBMIT = 'CONNECT_USER_SUBMIT';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
+    // Action qui permet de mettre dans le state les données qui arrivent de chaque input
     case CHANGE_INPUT:
       return {
         ...state,
         [action.name]: action.value,
       };
+    // Action qui permet de mettre dans le state les données qui arrivent du formulaire d'inscription
     case NEW_USER_SUBMIT:
       return {
         ...state,
+        // Je créé un nouveau state newUser qui est un tableau avec un objet
+        // avec le pseudo, nom et mot de passe
         newUser: [
           {
             pseudo: action.pseudo,
@@ -40,19 +44,24 @@ const reducer = (state = initialState, action = {}) => {
             password: action.password,
           },
         ],
+        // Je remets les inputs à zéro
         inputPseudo: '',
         inputEmail: '',
         inputPassword: '',
       };
+    // Action qui permet de mettre dans le state les données qui arrivent du formulaire de connexion
     case CONNECT_USER_SUBMIT:
       return {
         ...state,
+        // Je créé un nouveau state connectUser qui est un tableau avec un objet
+        // avec le nom et mot de passe
         connectUser: [
           {
             name: action.name,
             password: action.password,
           },
         ],
+        // Je remets les inputs à zéro
         inputUserEmail: '',
         inputUserPassword: '',
       };
@@ -71,6 +80,7 @@ export const changeInput = (name, value) => ({
   value,
 });
 
+// Je récupère le pseudo, email et mdp depuis le formulaire d'inscription
 export const submitNewUser = (pseudo, email, password) => ({
   type: NEW_USER_SUBMIT,
   pseudo,
@@ -78,6 +88,7 @@ export const submitNewUser = (pseudo, email, password) => ({
   password,
 });
 
+// Je récupère le pseudo, email et mdp depuis le formulaire de connexion
 export const connectUser = (name, password) => ({
   type: CONNECT_USER_SUBMIT,
   name,

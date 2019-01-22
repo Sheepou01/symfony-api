@@ -15,8 +15,8 @@ import './style.scss';
  * Code
  */
 
+// Liste des props qui proviennent de Login
 const Field = ({ name, type, placeholder, value, handleInputChange }) => (
-
   <div className="field">
     <Input
       className="field-input"
@@ -29,7 +29,7 @@ const Field = ({ name, type, placeholder, value, handleInputChange }) => (
   </div>
 );
 
-
+// PropTypes des props de Field
 Field.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

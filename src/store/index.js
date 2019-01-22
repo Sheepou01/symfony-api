@@ -7,7 +7,7 @@ import { createStore } from 'redux';
  * Local import
  */
 // Reducer
-import reducer from 'src/store/reducer';
+import reducer from './reducers/index';
 
 /*
  * Code

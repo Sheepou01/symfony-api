@@ -15,6 +15,8 @@ import './style.scss';
 /**
  * Code
  */
+
+// Je passe mes props depuis le container Login
 const Login = ({
   handleInput,
   inputPseudo,
@@ -25,17 +27,23 @@ const Login = ({
   addUser,
   connectUser,
 }) => {
+  // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
+  // à mon conteneur le nom de l'input qui est modifié et sa valeur
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     handleInput(name, value);
   };
 
+  // Fonction qui me permet de récupérer le pseudo, l'email et le MDP
+  // lors de la soumission du formulaire inscription
   const handleSubmitInscription = (event) => {
     event.preventDefault();
     addUser(inputPseudo, inputEmail, inputPassword);
   };
 
-  const handleSubmitRegistration = (event) => {
+  // Fonction qui me permet de récupérer l'email et le MDP
+  // lors de la soumission du formulaire de connexion
+  const handleSubmitConnexion = (event) => {
     event.preventDefault();
     connectUser(inputUserEmail, inputUserPassword);
   };
@@ -44,6 +52,8 @@ const Login = ({
     <div id="login-view">
       <div>
         <h2>Inscription</h2>
+        {/* Premier Formulaire: Inscription */}
+        {/* Je transmets les props nécessaires à mon composant Field (input) */}
         <form method="POST" action="" onSubmit={handleSubmitInscription}>
           <Field
             handleInputChange={handleInputChange}
@@ -71,7 +81,9 @@ const Login = ({
       </div>
       <div>
         <h2>Déjà Inscrit?</h2>
-        <form method="POST" action="" onSubmit={handleSubmitRegistration}>
+        {/* Premier Formulaire: Connexion */}
+        {/* Je transmets les props nécessaires à mon composant Field (input) */}
+        <form method="POST" action="" onSubmit={handleSubmitConnexion}>
           <Field
             handleInputChange={handleInputChange}
             value={inputUserEmail}
@@ -93,6 +105,7 @@ const Login = ({
   );
 };
 
+// PropTypes des props de Login
 Login.propTypes = {
   inputPseudo: PropTypes.string.isRequired,
   inputEmail: PropTypes.string.isRequired,

@@ -19,12 +19,12 @@ import './app.scss';
  * Code
  */
 const App = () => (
-<div id='app'>
-  <Header />
-  <Navigation />
-  <Footer />
-  <Login />
-</div>
+  <div id="app">
+    <Header />
+    <Navigation />
+    <Footer />
+    <Login />
+  </div>
 );
 
 /**

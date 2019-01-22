@@ -2,32 +2,20 @@
  * Npm import
  */
 import React from 'react';
-import 'semantic-ui-css/semantic.min.css';
+import DisplayApp from 'src/components/DisplayApp';
 
 /**
  * Local import
  */
 
-import Header from 'src/components/Header';
-import WelcomeMessage from 'src/components/WelcomeMessage';
-import Navigation from 'src/components/Navigation';
-import Game from 'src/components/Game';
-import Footer from 'src/components/Footer';
-import Login from 'src/containers/Login';
 import './app.scss';
+
 
 
 /**
  * Code
  */
-const App = () => (
-  <div id="app">
-    <Header />
-    <Navigation />
-    <Footer />
-    <Login />
-  </div>
-);
+const App = () => (<DisplayApp/>);
 
 /**
  * Export

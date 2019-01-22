@@ -1,14 +1,14 @@
 #navigation {
   display : flex;
   justify-content: center;
-  margin: 15em auto;
+  margin: 10em auto;
   width : 70%;
   
 }
 
 .bigButton {
   border : solid white 5px;
-  padding: 3em 5em;
+  padding: 2em 5em;
   margin-left: 1em;
   border-radius: 15px;
   color : white;
@@ -17,4 +17,5 @@
   font-weight: bold;
   width : 15%;
   text-align: center;
+  text-shadow: black 0.1em 0.1em 0.2em;
 }

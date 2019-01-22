@@ -11,9 +11,9 @@ import React from 'react';
  * Code
  */
 const Logo = () => (
-  <div id="logo">
+  <button id="logo">
   Logo 5MAP
-  </div>
+  </button>
 );
 
 /**

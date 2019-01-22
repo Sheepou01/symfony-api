@@ -2,6 +2,8 @@
  * Npm import
  */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+
 
 /**
  * Local import
@@ -11,9 +13,9 @@ import React from 'react';
  * Code
  */
 const Logo = () => (
-  <button id="logo">
+  <NavLink id="logo" to="/">
   Logo 5MAP
-  </button>
+  </NavLink>
 );
 
 /**

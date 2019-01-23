@@ -19,9 +19,9 @@ const Quizz = () => (
           <h2>On y arrive pas à cause de :</h2>
           <div className="quiz-answers">
           <ul>
-            <li>Jérémy <input type="checkbox"></input></li>
-            <li>Jérémy <input type="checkbox"></input></li>
-            <li>Jérémy <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
           </ul>
           </div>
         </div>
@@ -32,9 +32,9 @@ const Quizz = () => (
           <h2>css est dégueu à cause de : </h2>
           <div className="quiz-answers">
           <ul>
-            <li>Jérémy <input type="checkbox"></input></li>
-            <li>Jérémy <input type="checkbox"></input></li>
-            <li>Jérémy <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
+            <li>Jérémie <input type="checkbox"></input></li>
           </ul>
           </div>
         </div>
@@ -56,7 +56,6 @@ const Quizz = () => (
 
     <div id="check-icon">
       <button><Icon name='check' size='huge' /></button>
-      <Next />
     </div>
   </div>
 );

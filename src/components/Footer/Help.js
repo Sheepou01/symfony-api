@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 /**
  * Local import
  */
@@ -12,10 +13,14 @@ import './style.scss';
  */
 const Help = () => (
   <div id="help">
-    <Button icon>
+  
+    <NavLink to="/aide">
+    <Button>
       <Icon name="help" size="large" />
     </Button>
-    <a href=""> Mentions légales </a>
+    </NavLink>
+  
+    <NavLink to="/mentions-légales">Mentions</NavLink>
   </div>
 );
 

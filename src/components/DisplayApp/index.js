@@ -10,6 +10,7 @@ import { Route, Switch } from 'react-router-dom';
  */
 
 import Header from 'src/components/Header';
+
 import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
 import Game from 'src/components/Game';
@@ -17,9 +18,8 @@ import Anecdotes from 'src/components/Anecdotes';
 import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
-
+import Quiz from 'src/components/Quiz';
 import './style.scss';
-
 
 
 /**
@@ -31,7 +31,9 @@ const DisplayApp = () => (
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/mon-profil" component={Login} />
-      <Route path="/quiz" component={Anecdotes} />
+      <Route path="/anecdote" component={Anecdotes} />
+      <Route path="/quiz" component={Quiz} />
+      <Route path="/jeu" component={Game} />
     </Switch>
     <Footer />
   </div>

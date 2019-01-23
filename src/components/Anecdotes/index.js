@@ -14,14 +14,14 @@ import './style.scss';
 const Anecdotes = () => (
   <div id="wiki-view">
   <h1>Top 20 des phrases cultes de nos entraîneurs de rugby</h1>
-  <ul class='wiki-info'>
-    <li class='auteur'>Auteur : Pichamolles</li>
-    <li class='Date'>Le : 20/11/1987</li>
-    <li class='source'> source : http://www.topito.com/top-20-des-phrases-cultes-de-nos-entraineurs-de-rugby </li>
+  <ul className='wiki-info'>
+    <li className='auteur'>Auteur : Pichamolles</li>
+    <li className='Date'>Le : 20/11/1987</li>
+    <li className='source'> source : http://www.topito.com/top-20-des-phrases-cultes-de-nos-entraineurs-de-rugby </li>
   </ul>
-    <p class='description'>
+    <p className='description'>
     Dans l'intimité du vestiaire avant un match, il ne faut pas croire que les joueurs de rugby se prennent en photo dans des poses suggestives. Ils ne font ça qu'une fois par an. Le reste du temps, ils ont droit au discours de leur entraîneur, tantôt avisé, tantôt spontané. Phrases cultes, perles ou citations, voici ce qu'on en a retenu de meilleur.</p>
-      <ul class='body'>
+      <ul className='body'>
         <li>"Aujourd'hui on va jouer simple : les avants devant, les arrières derrière !"</li>
         <li>"Putains les mecs, si j'ai des demis, c'est pas pour que les trois-quarts fassent les choses à moitié!</li>
         <li>"Bon les gars, en face c'est que des cons, alors au premier regroupement, il faut qu'ils discutent avec les taupes"</li>

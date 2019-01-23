@@ -9,14 +9,12 @@ import React from 'react';
 
 import './style.scss';
 import Snake from './Snake';
-import Footer from 'src/components/Footer';
+
 /**
  * Code
  */
 const Game = () => (
-  <div id="canvas">
     <Snake />
-  </div>
 );
 
 

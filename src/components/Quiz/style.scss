@@ -1,0 +1,39 @@
+#quiz-view h1 {
+  text-align: center;
+}
+
+#quiz-boxes{
+  display: flex;
+  margin: auto 0;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%
+}
+
+
+#quiz-box{
+  margin-top: 20px;
+  width: 10%;
+}
+
+#quiz-view{
+  width: 50%;
+  margin : 3em auto;
+  height : 500px;
+}
+
+li{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#check-icon {
+  display: flex;
+  justify-content: center;
+  margin-top : 2em;
+}
+
+
+
+

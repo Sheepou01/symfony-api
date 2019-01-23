@@ -3,14 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Wiki;
-use App\Controller\FOSWikiController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Repository\WikiRepository;
+use FOS\RestBundle\Controller\FOSRestController;
 
 
-class FOSWikiController extends AbstractController{
+class FOSWikiController extends FOSRestController{
 
     /**
      * @GET(

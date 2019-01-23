@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,9 +23,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/signup", name="signup")
-     */
+    
     public function signup(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $user = new User();
@@ -40,13 +40,18 @@ class UserController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            return $this->redirect('');
+            return $this->render('user/signup.html.twig', [
+                'controller_name' => 'UserController',
+            ]);
+
+
         }
+        return $this->render('user/signup.html.twig', [
+            'controller_name' => 'UserController',
+        ]);
     }
 
-    /**
-     * @Route("/signin", name="signin")
-     */
+    
     public function signin(Request $request, AuthenticationUtils $authUtils)
     {
 
@@ -55,9 +60,8 @@ class UserController extends AbstractController
         
          $lastUsername = $authUtils->getLastUsername();
         
-         return $this->redirect('', [
-            'last_username' => $lastUsername,
-            'error' => $error
+         return $this->render('user/signin.html.twig', [
+            'controller_name' => 'UserController',
         ]);
     }
 

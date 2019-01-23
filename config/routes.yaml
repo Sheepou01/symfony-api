@@ -4,3 +4,12 @@
 
 logout:
     path: /logout
+
+
+signup:
+    path: /signup
+    controller: App\Controller\UserController::signup
+
+signin:
+    path: /signin
+    controller: App\Controller\UserController::signin

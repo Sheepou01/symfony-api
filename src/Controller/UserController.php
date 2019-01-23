@@ -27,14 +27,25 @@ class UserController extends AbstractController
     
     public function signup(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
-        $user = new User();
+        $toto =$request->getContent();
 
-        $response = new Response();
-        $response->setContent('salut');
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        
+        $serializer = new Serializer($normalizers, $encoders);
+        $data =  $serializer->serialize($toto, 'json');
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
         
-        return $response;
+        return $this->render('user/signup.html.twig', [
+            'controller_name' => 'UserController',
+            'request' => $request,
+            'response'=> $response,
+            'toto'=> $toto,
+        ]);
     }
 
     

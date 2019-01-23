@@ -33,7 +33,7 @@ class UserController extends AbstractController
         $response->setContent('salut');
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
-        
+        dump($response);
         return $response;
     }
 

@@ -10,12 +10,10 @@ import DisplayApp from 'src/components/DisplayApp';
 
 import './app.scss';
 
-
-
 /**
  * Code
  */
-const App = () => (<DisplayApp/>);
+const App = () => <DisplayApp />;
 
 /**
  * Export

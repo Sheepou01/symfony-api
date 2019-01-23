@@ -12,10 +12,10 @@ import './style.scss';
  */
 const Help = () => (
   <div id="help">
-        <Button icon>
-            <Icon name='help' size='large' />
-        </Button>
-        <a href="" > Mentions légales </a>
+    <Button icon>
+      <Icon name="help" size="large" />
+    </Button>
+    <a href=""> Mentions légales </a>
   </div>
 );
 

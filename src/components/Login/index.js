@@ -49,8 +49,8 @@ const Login = ({
   };
 
   return (
-    <div id="login-view">
-      <div>
+    <div id="login">
+      <div id="login-signup">
         <h2>Inscription</h2>
         {/* Premier Formulaire: Inscription */}
         {/* Je transmets les props nécessaires à mon composant Field (input) */}
@@ -79,7 +79,7 @@ const Login = ({
           <Button>Envoyer</Button>
         </form>
       </div>
-      <div>
+      <div id="login-signin">
         <h2>Déjà Inscrit?</h2>
         {/* Premier Formulaire: Connexion */}
         {/* Je transmets les props nécessaires à mon composant Field (input) */}

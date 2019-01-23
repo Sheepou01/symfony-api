@@ -79,7 +79,7 @@ const Login = ({
           <Button>Envoyer</Button>
         </form>
       </div>
-      <div>
+      <div Id="secondForm">
         <h2>Déjà Inscrit?</h2>
         {/* Premier Formulaire: Connexion */}
         {/* Je transmets les props nécessaires à mon composant Field (input) */}

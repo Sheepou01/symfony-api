@@ -13,9 +13,11 @@ import Header from 'src/components/Header';
 import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
 import Game from 'src/components/Game';
+import Anecdotes from 'src/components/Anecdotes';
 import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
+
 import './style.scss';
 
 
@@ -27,8 +29,9 @@ const DisplayApp = () => (
   <div id="app">
     <Header />
     <Switch>
-      <Route path="/" component={Home} />
+      <Route exact path="/" component={Home} />
       <Route path="/mon-profil" component={Login} />
+      <Route path="/quiz" component={Anecdotes} />
     </Switch>
     <Footer />
   </div>

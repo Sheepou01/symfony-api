@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 /**
  * Local import
  */
@@ -11,9 +12,9 @@ import { Icon } from 'semantic-ui-react';
  * Code
  */
 const Anecdotes = () => (
-  <button className="bigButton">
+  <NavLink className="bigButton" to="/quiz">
   Fun Fact <Icon name='idea'/>
-  </button>
+  </NavLink>
 );
 
 /**

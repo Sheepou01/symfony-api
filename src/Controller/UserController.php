@@ -10,6 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {
@@ -28,27 +29,12 @@ class UserController extends AbstractController
     {
         $user = new User();
 
-        $form = $this->createForm(UserType::class, $user);
-
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $encodedPassword = $encoder->encodePassword($user, $user->getPassword());
-            $user->setPassword($encodedPassword);
-            
-            $em->persist($user);
-            $em->flush();
-
-            return $this->render('user/signup.html.twig', [
-                'controller_name' => 'UserController',
-            ]);
-
-
-        }
-        return $this->render('user/signup.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
+        $response = new Response();
+        $response->setContent('salut');
+        $response->headers->set('Access-Control-Allow-Origin', '*');
+        $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
+        
+        return $response;
     }
 
     

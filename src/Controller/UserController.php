@@ -5,12 +5,16 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\Encoder\XmlEncoder;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends AbstractController
 {

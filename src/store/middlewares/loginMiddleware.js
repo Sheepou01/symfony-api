@@ -22,7 +22,24 @@ const loginMiddleware = store => next => (action) => {
           firstName: 'Fred',
           lastName: 'Flintstone',
         },
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log('Error on Authentication');
       });
+
+      // axios.get(urlSignUp)
+      //   .then(function (response) {
+      //     // handle success
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     // handle error
+      //     console.log(error);
+      //   })
+      //   .then(function () {
+      //     // always executed
+      //   });
       next(action);
       break;
     case CONNECT_USER_SUBMIT:

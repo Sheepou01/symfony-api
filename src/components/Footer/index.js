@@ -9,7 +9,7 @@ import React from 'react';
 import FlipClock from './Timer';
 import Help from './Help';
 import './style.scss';
-import './timer.sass';
+import './Timer.sass';
 /**
  * Code
  */

@@ -14,9 +14,7 @@ import Snake from './Snake';
  * Code
  */
 const Game = () => (
-  <div id="canvas">
     <Snake />
-  </div>
 );
 
 

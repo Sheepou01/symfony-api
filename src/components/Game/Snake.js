@@ -1,8 +1,9 @@
 import React from 'react';
 
 
-const Snake = () => ( 
+const Snake = () => { 
 
+  return (
   onload = function () {
     // propriete
     var canvasWidth = 900; // je donne une largeur à  mon canvas
@@ -288,8 +289,8 @@ const Snake = () => (
       //Erreur possible
     };
     }
-
-);
+  ); 
+  };
   
 
 

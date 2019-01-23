@@ -56,7 +56,6 @@ const Quizz = () => (
 
     <div id="check-icon">
       <button><Icon name='check' size='huge' /></button>
-      <Next />
     </div>
   </div>
 );

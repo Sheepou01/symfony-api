@@ -8,12 +8,12 @@ import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT } from 'src/store/reducers/loginRe
 * Code
 */
 const urlSignUp = 'http://92.243.9.56/signup';
+const urlWiki = 'http://92.243.9.56/wiki';
 
 const loginMiddleware = store => next => (action) => {
   // Je veux vérifier si l'action que je reçois m'intéresse
   switch (action.type) {
     case NEW_USER_SUBMIT:
-      console.log('coucou');
       // Je veux faire une requête axios
       axios({
         method: 'post',
@@ -28,7 +28,7 @@ const loginMiddleware = store => next => (action) => {
         console.log('Error on Authentication');
       });
 
-      // axios.get(urlSignUp)
+      // axios.get(urlWiki)
       //   .then(function (response) {
       //     // handle success
       //     console.log(response);

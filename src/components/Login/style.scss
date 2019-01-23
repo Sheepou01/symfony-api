@@ -4,14 +4,17 @@
   flex-direction: column;
   margin: 5em;
   align-items: center;
+
   &-signin, &-signup {
     width: 70%;
     text-align: center;
   }
+
   & button {
     margin: 1.5em 0 3em 0;
   }
 }
+
 .field-input {
   margin: 0.5em;
   width: 35%;

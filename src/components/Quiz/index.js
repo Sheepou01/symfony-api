@@ -3,6 +3,7 @@ import { Icon } from 'semantic-ui-react';
 /**
  * Local import
  */
+import Next from 'src/components/Next';
 import './style.scss';
 
 /**

@@ -7,6 +7,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use App\Entity\User;
+use Symfony\Component\HttpFoundation\Response;
 
 class FOSUserController extends FOSRestController{
 
@@ -18,6 +19,7 @@ class FOSUserController extends FOSRestController{
 
     public function signup(User $user){
 
-        dump($user); die;
+
+        return new Response('Coucou');
     }
 }

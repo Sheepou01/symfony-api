@@ -6,9 +6,6 @@ import React from 'react';
 /**
  * Local import
  */
-import Games from './Games';
-import Quizz from './Quizz';
-import Anecdotes from './Anecdotes';
 import { NavLink } from 'react-router-dom';
 import './style.scss';
 /**

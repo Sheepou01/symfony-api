@@ -7,6 +7,7 @@ use App\Controller\FOSWikiController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\WikiRepository;
 
 
 class FOSWikiController extends AbstractController{
@@ -21,5 +22,17 @@ class FOSWikiController extends AbstractController{
      */
     public function show(Wiki $wiki){
         return $wiki;
+    }
+
+    /**
+     * @GET(
+     *  path="/api/wiki",
+     * name="show_all_wiki",
+     * )
+     * @View
+     */
+    public function showAll(WikiRepository $wikiRepository){
+        $wikis = $wikiRepository->findAll();
+        return $wikis;
     }
 }

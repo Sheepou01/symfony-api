@@ -7,8 +7,8 @@ import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT } from 'src/store/reducers/loginRe
 /**
 * Code
 */
-const urlSignUp = 'http://92.243.9.56/signup';
-const urlWiki = 'http://92.243.9.56/wiki';
+const urlSignUp = 'http://92.243.9.56/api/signup';
+const urlWiki = 'http://92.243.9.56/api/wiki';
 
 const loginMiddleware = store => next => (action) => {
   // Je veux vérifier si l'action que je reçois m'intéresse
@@ -19,8 +19,9 @@ const loginMiddleware = store => next => (action) => {
         method: 'post',
         url: urlSignUp,
         data: {
-          firstName: 'Fred',
-          lastName: 'Flintstone',
+          username: 'Fred',
+          password: 'Flintstone',
+          email: 'Prout',
         },
       }).then(function(response) {
         console.log(response);
@@ -31,7 +32,7 @@ const loginMiddleware = store => next => (action) => {
       // axios.get(urlWiki)
       //   .then(function (response) {
       //     // handle success
-      //     console.log(response);
+      //     console.log(response.data);
       //   })
       //   .catch(function (error) {
       //     // handle error

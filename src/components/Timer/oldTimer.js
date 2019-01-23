@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * Local import
  */
-import './style.scss';
+import './Oldstyle.sass';
 /**
  * Code
  */
@@ -190,3 +190,5 @@ class FlipClock extends React.Component {
  * Export
  */
 export default FlipClock;
+
+

@@ -7,22 +7,39 @@ import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT } from 'src/store/reducers/loginRe
 /**
 * Code
 */
-const urlSignUp = 'http://92.243.9.56/backend/5-minutes-perdre/public';
+const urlSignUp = 'http://92.243.9.56/signup';
 
 const loginMiddleware = store => next => (action) => {
   // Je veux vérifier si l'action que je reçois m'intéresse
   switch (action.type) {
     case NEW_USER_SUBMIT:
-      // console.log('coucou');
-      // // Je veux faire une requête axios
-      // axios({
-      //   method: 'post',
-      //   url: urlSignUp,
-      //   data: {
-      //     firstName: 'Fred',
-      //     lastName: 'Flintstone',
-      //   },
-      // });
+      console.log('coucou');
+      // Je veux faire une requête axios
+      axios({
+        method: 'post',
+        url: urlSignUp,
+        data: {
+          firstName: 'Fred',
+          lastName: 'Flintstone',
+        },
+      }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        console.log('Error on Authentication');
+      });
+
+      // axios.get(urlSignUp)
+      //   .then(function (response) {
+      //     // handle success
+      //     console.log(response);
+      //   })
+      //   .catch(function (error) {
+      //     // handle error
+      //     console.log(error);
+      //   })
+      //   .then(function () {
+      //     // always executed
+      //   });
       next(action);
       break;
     case CONNECT_USER_SUBMIT:

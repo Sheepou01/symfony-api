@@ -3,6 +3,8 @@
  */
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
+
 
 
 /**
@@ -15,12 +17,21 @@ import { Button, Icon } from 'semantic-ui-react';
 const Settings = () => (
   <div id="settings">
     <div className="settings-profile">
-        <Button>Mon profil</Button>
+      <NavLink
+        className="ui button"
+        to="/mon-profil"
+        exact
+      >
+          Mon profil
+      </NavLink>
     </div>
     <div className="settings-sign-out">
-        <Button icon>
-            <Icon name='sign-out' size='large' />
-        </Button>
+      <NavLink
+        className="ui button"
+        to="/"
+      >
+        <Icon name="sign-out" size="large" />
+      </NavLink>
     </div>
   </div>
 );

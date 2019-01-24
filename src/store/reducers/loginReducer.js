@@ -57,7 +57,7 @@ const reducer = (state = initialState, action = {}) => {
         // avec le nom et mot de passe
         connectUser: [
           {
-            name: action.name,
+            email: action.email,
             password: action.password,
           },
         ],
@@ -89,9 +89,9 @@ export const submitNewUser = (pseudo, email, password) => ({
 });
 
 // Je récupère le pseudo, email et mdp depuis le formulaire de connexion
-export const connectUser = (name, password) => ({
+export const connectUser = (email, password) => ({
   type: CONNECT_USER_SUBMIT,
-  name,
+  email,
   password,
 });
 

@@ -31,27 +31,7 @@ class UserController extends AbstractController
     
     public function signup(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
-<<<<<<< HEAD
-        // $user = new User();
 
-        // $response = new Response();
-        // $response->setContent('salut');
-        // $response->headers->set('Access-Control-Allow-Origin', '*');
-        // $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
-        // dump($response);
-        // return $response;
-        dump($request->getContent());
-        $toto = $request->getContent();
-        $encoders = [new XmlEncoder(), new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-        
-        $serializer = new Serializer($normalizers, $encoders);
-        $data =  $serializer->serialize($toto, 'json');
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-        
-=======
         $toto =$request->getContent();
 
         $encoders = [new XmlEncoder(), new JsonEncoder()];
@@ -62,7 +42,6 @@ class UserController extends AbstractController
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
->>>>>>> d649f3762894451245d8c005ffc13f692ee581ee
         $response->headers->set('Access-Control-Allow-Origin', '*');
         $response->headers->set('Access-Control-Allow-Methods', 'POST, GET, PUT, DELETE, PATCH, OPTIONS');
         

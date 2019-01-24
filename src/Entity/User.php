@@ -6,11 +6,12 @@ use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
     /**
      * @ORM\Id()
@@ -236,4 +237,15 @@ class User
 
         return $this;
     }
+
+    public function getRoles()
+    {
+        //je recupere l'unique role attribué a mon utilisateur et je le set dans getRoles
+        //attention getRole recupere un objet du type role , cependant on attend un tableau de chaine de caracteres
+        return [$this->getRole()->getCode()]; // problem : le role est definit en dur dans cette fonction
+    }
+    
+    public function getSalt(){}
+    public function eraseCredentials(){}
 }
+

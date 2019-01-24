@@ -24,9 +24,17 @@ class WikiController extends AbstractController
      */
     public function index(WikiRepository $wikiRepository): Response
     {
-        return $this->render('wiki/index.html.twig', [
-            'wikis' => $wikiRepository->findAll(),
-        ]);
+        $wikis = $wikiRepository->findAll();
+        $encoders = [new XmlEncoder(), new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+        
+        $serializer = new Serializer($normalizers, $encoders);
+        $data =  $serializer->serialize($wikis, 'json');
+
+        $response = new Response($data);
+        $response->headers->set('Content-Type', 'application/json');
+        // $response->headers->set('Access-Control-Allow-Origin', '*');
+        return $response;
     }
 
     /**

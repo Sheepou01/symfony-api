@@ -6,8 +6,8 @@ import React from 'react';
 /**
  * Local import
  */
-import Help from './Help';
 import Timer from 'src/containers/Timer';
+import Help from './Help';
 
 import './style.scss';
 

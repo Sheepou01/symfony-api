@@ -14,8 +14,12 @@ import './style.scss';
  */
 const Header = () => (
   <div id="header">
-    <Logo />
-    <Settings />
+    <div id="header-logo">
+      <Logo />
+    </div>
+    <div id="header-menu">
+      <Settings />
+    </div>
   </div>
 );
 

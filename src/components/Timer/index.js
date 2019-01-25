@@ -15,16 +15,16 @@ import './style.scss';
  */
 
 
-class TimerApp extends React.Component {
+const Timer = ({ seconds }) => {
 
   // Le timer se met en route dès le render effectué
-  componentDidMount() {
-    const { decrementTimer } = this.props;
-    this.incrementer = setInterval(decrementTimer, 1000);
-  }
+  // componentDidMount() {
+  //   const { decrementTimer } = this.props;
+  //   this.incrementer = setInterval(decrementTimer, 1000);
+  // }
 
   // Test
-
+  
   // shouldComponentUpdate() {
   //   const { seconds } = this.props;
   //   if (seconds === 0) {
@@ -39,36 +39,29 @@ class TimerApp extends React.Component {
   //   this.incrementer = setInterval(decrementTimer, 1000);
   // }
 
-  // EN cliquant sur le timer, on stop le décompte
-  handleStopClick = () => {
-    clearInterval(this.incrementer);
-  }
+  // // EN cliquant sur le timer, on stop le décompte
+  // handleStopClick = () => {
+  //   clearInterval(this.incrementer);
+  // }
 
-  getSeconds = () => {
-    const { seconds } = this.props;
-    return (`0${seconds % 60}`).slice(-2);
-  }
+  // Fonction qui sert à m'afficher les secondes et de couper le chiffre 0 après la dixaine
+  const getSeconds = () => (`0${seconds % 60}`).slice(-2);
 
-  getMinutes = () => {
-    const { seconds } = this.props;
-    return Math.floor(seconds / 60);
-  }
+  // Fonction qui sert à m'afficher les minutes en fonction du nombre de secondes
+  const getMinutes = () => Math.floor(seconds / 60);
 
-  render() {
-    return (
-      <div className="timer">
-        <h1 onClick={this.handleStopClick}>{this.getMinutes()}:{this.getSeconds()}</h1>
-        <div>
-          {/* <button type="button" onClick={this.handleStartClick}>Start</button> */}
-          {/* <button type="button" onClick={this.handleStopClick}>Stop</button> */}
-        </div>
+  return (
+    <div className="timer">
+      <h1>{getMinutes()}:{getSeconds()}</h1>
+      <div>
+        {/* <button type="button" onClick={this.handleStartClick}>Start</button>
+        <button type="button" onClick={this.handleStopClick}>Stop</button> */}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-TimerApp.propTypes = {
-  decrementTimer: PropTypes.func.isRequired,
+Timer.propTypes = {
   seconds: PropTypes.number.isRequired,
 };
 
@@ -76,4 +69,4 @@ TimerApp.propTypes = {
 /**
  * Export
  */
-export default TimerApp;
+export default Timer;

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Timer from 'src/components/Timer';
+import Navigation from 'src/components/Navigation';
 
 // Action Creators
 import { decrementTimer } from 'src/store/reducers/timerReducer';
@@ -21,6 +21,8 @@ import { decrementTimer } from 'src/store/reducers/timerReducer';
 const mapStateToProps = state => ({
   // J'utilise le state de mon timerReducer
   seconds: state.timerReducer.seconds,
+  timerOff: state.timerReducer.timerOff,
+  gameOver: state.timerReducer.gameOver,
 });
 
 /* === Actions ===
@@ -39,10 +41,10 @@ const mapDispatchToProps = dispatch => ({
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const TimerContainer = connect(mapStateToProps, mapDispatchToProps)(Timer);
+const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(Navigation);
 
 
 /**
  * Export
  */
-export default TimerContainer;
+export default NavigationContainer;

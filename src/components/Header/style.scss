@@ -1,29 +1,38 @@
 #header {
-  display:flex;
-  justify-content: space-around;
-  margin-top : 2em;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 30% 30% 30%;
+  background-color: #4C8DF0;
+  height: 7em;
+  &-logo {
+    grid-column: 3;
+    grid-row-start: 3;
+    display: flex;
+    justify-content: center;
+  }
+  &-menu {
+    grid-column: 5 / 7;
+    grid-row-start: 2;
+    display: flex;
+    justify-content: center;
+  }
 }
 
 #settings {
     display: flex;
     justify-content: space-around;
     align-items: center;   
-    width : 15%; 
+    width : 15%;
+
+    &-menu {
+      color: white;
+    }
 }
 
 #logo {
-  border : solid #01499e 2px;
-  padding: 2em 0;
-  margin-left: 1em;
-  border-radius: 15px;
-  color : white;
-  background-color: #fdc841;
-  text-transform: uppercase;
-  font-weight: bold;
-  width : 10%;
-  height : 5em;
-  text-align: center;
-  text-shadow: black 0.1em 0.1em 0.2em
+  color: black;
+  font-size: 2em;
+
 }
 
 

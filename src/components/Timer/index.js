@@ -14,48 +14,37 @@ import './style.scss';
  */
 
 
-const TimerApp = ({ minutes, seconds, handleChange }) => {
+class TimerApp extends React.Component {
 
-  return (
-    <div>
-      <TimerInput minutes={minutes} handleChange={handleChange} />
-      <Timer minutes={minutes} seconds={seconds} />
-      <StartButton />
-    </div>
-  );
-};
-
-const TimerInput = ({ minutes, handleChange }) => {
-
-  const handleChangeInput = (event) => {
-    handleChange(event.target.value);
-  };
-
-  return (
-    <div style={{ marginLeft: 100 }}>
-      <h3>Input your desired time</h3>
-      <input type="number" minutes={minutes} onChange={handleChangeInput} required />
-    </div>
-  );
-};
-
-const Timer = ({ minutes, seconds }) => {
-  console.log('coucou depuis Timer');
-  return (
-    <div>
-      <h1 style={{ fontSize: '3em', marginLeft: 100 }}> {minutes}:{seconds} </h1>
-    </div>
-  );
-};
-
-const StartButton = () => {
-  console.log('coucou depuis StartButton');
-  return (
-    <div style={{ marginLeft: 130 }}>
-      <button type="button"> Start</button>
-    </div>
-  );
-};
+  // constructor (props) {
+  //   super(props)
+  //   this.state = {count: 1}
+  // }
+  componentWillUnmount() {
+    clearInterval(this.timer)
+  }
+  // tick () {
+  //   this.setState({count: (this.state.seconds + 1)})
+  // }
+  startTimer = () => {
+    clearInterval(this.timer)
+    this.timer = setInterval(this.props.decrementTimer(), 100)
+  }
+  stopTimer () {
+    clearInterval(this.timer)
+  }
+  render () {
+    return (
+      <div className='timer'>
+        <h1>{this.props.seconds}</h1>
+        <div>
+          <button onClick={this.startTimer.bind(this)}>Start</button>
+          <button onClick={this.stopTimer.bind(this)}>Stop</button>
+        </div>
+      </div>
+    )
+  }
+}
 
 
 /**

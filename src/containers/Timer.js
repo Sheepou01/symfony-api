@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Timer from 'src/components/Timer';
 
 // Action Creators
-import { changeInput } from 'src/store/reducers/timerReducer';
+import { changeInput, decrementTimer } from 'src/store/reducers/timerReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -35,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
   handleChange: (value) => {
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(changeInput(value));
+  },
+  decrementTimer: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(decrementTimer());
   },
 });
 

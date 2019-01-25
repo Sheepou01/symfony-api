@@ -14,7 +14,7 @@ import Header from 'src/components/Header';
 import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
 import Game from 'src/components/Game';
-import Anecdotes from 'src/components/Anecdotes';
+import Anecdotes from 'src/containers/Anecdotes';
 import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
@@ -41,7 +41,6 @@ const DisplayApp = () => (
       <Route path="/mentions-légales" component={Mentions} />
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />
-      
     </Switch>
     <Footer />
   </div>

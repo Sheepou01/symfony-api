@@ -6,19 +6,24 @@ import React from 'react';
 /**
  * Local import
  */
+
 import { NavLink } from 'react-router-dom';
 import './style.scss';
+
 /**
  * Code
  */
-const Navigation = () => (
+
+const Navigation = ({ receivedTopito, topito }) => { 
+  console.log(topito);
+  return(
   <div id="navigation">
     <div>
       <figure className="icon-cards mt-3">
         <div className="icon-cards__content step-animation">
           <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/jeu">Games</NavLink>
           <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz">Quiz </NavLink>
-          <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote">Anecdotes</NavLink>
+          <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote" onClick={receivedTopito}>Anecdotes</NavLink>
         </div>
       </figure>
     </div>
@@ -29,7 +34,7 @@ const Navigation = () => (
     </div> */}
   </div>
 
-);
+)};
 
 /**
  * Export

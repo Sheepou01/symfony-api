@@ -32,7 +32,7 @@ class UserController extends AbstractController
     public function signup(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         $toto =$request->getContent();
-
+        
         $encoders = [new XmlEncoder(), new JsonEncoder()];
         $normalizers = [new ObjectNormalizer()];
         

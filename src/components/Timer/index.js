@@ -16,30 +16,30 @@ import './style.scss';
 
 class TimerApp extends React.Component {
 
-  // constructor (props) {
-  //   super(props)
-  //   this.state = {count: 1}
-  // }
-  componentWillUnmount() {
-    clearInterval(this.timer)
+
+  handleStartClick = () => {
+    this.incrementer = setInterval(this.props.decrementTimer, 1000);
   }
-  // tick () {
-  //   this.setState({count: (this.state.seconds + 1)})
-  // }
-  startTimer = () => {
-    clearInterval(this.timer)
-    this.timer = setInterval(this.props.decrementTimer(), 100)
+
+  handleStopClick = () => {
+    clearInterval(this.incrementer);
   }
-  stopTimer () {
-    clearInterval(this.timer)
+  
+  getSeconds = () => {
+    return ('0' + this.props.seconds % 60).slice(-2);
   }
-  render () {
+
+  getMinutes = () => {
+    return Math.floor(this.props.seconds / 60);
+  }
+
+  render() {
     return (
-      <div className='timer'>
-        <h1>{this.props.seconds}</h1>
+      <div className="timer">
+        <h1>{this.getMinutes()}:{this.getSeconds()}</h1>
         <div>
-          <button onClick={this.startTimer.bind(this)}>Start</button>
-          <button onClick={this.stopTimer.bind(this)}>Stop</button>
+          <button onClick={this.handleStartClick}>Start</button>
+          <button onClick={this.handleStopClick}>Stop</button>
         </div>
       </div>
     )

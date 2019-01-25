@@ -2,8 +2,7 @@
  * Initial State
  */
 const initialState = {
-  seconds: '100',
-  minutes: '05',
+  seconds: 300,
 };
 
 /**
@@ -30,7 +29,8 @@ const reducer = (state = initialState, action = {}) => {
       };
     case DECREMENT_TIMER:
       return {
-        seconds: state.seconds + 1,
+        ...state,
+        seconds: state.seconds - 1,
       };
     default:
       return state;

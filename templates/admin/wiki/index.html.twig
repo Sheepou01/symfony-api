@@ -10,7 +10,6 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
-                <th>Body</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -21,7 +20,6 @@
             <tr>
                 <td>{{ wiki.id }}</td>
                 <td>{{ wiki.name }}</td>
-                <td>{{ wiki.body }}</td>
                 <td>{{ wiki.createdAt ? wiki.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ wiki.updatedAt ? wiki.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

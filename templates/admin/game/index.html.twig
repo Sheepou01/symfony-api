@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello GameController!{% endblock %}
+
+{% block body %}
+<h2>Administration des jeux</h2>
+<ul>
+    {% for game in games %}
+    <li>{{ game.name }}
+        <a href=""><i class="fas fa-edit"></i></a>
+        <a href=""><i class="fas fa-trash-alt"></i></a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

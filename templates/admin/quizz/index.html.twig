@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello QuizzController!{% endblock %}
+
+{% block body %}
+<h2>Administration des quizz</h2>
+<ul>
+    {% for quizz in quizzes %}
+    <li>{{ quizz.title }}
+        <a href=""><i class="fas fa-edit"></i></a>
+        <a href=""><i class="fas fa-trash-alt"></i></a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

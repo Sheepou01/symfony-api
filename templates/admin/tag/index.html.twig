@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TagController!{% endblock %}
+
+{% block body %}
+<h2>Administration des thèmes</h2>
+<ul>
+    {% for tag in tags %}
+    <li>{{ tag.name }}
+        <a href=""><i class="fas fa-edit"></i></a>
+        <a href=""><i class="fas fa-trash-alt"></i></a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Wiki;
 use App\Form\WikiType;
@@ -14,27 +14,19 @@ use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 
-/**
- * @Route("/wiki")
- */
+
 class WikiController extends AbstractController
 {
     /**
-     * @Route("/", name="wiki_index", methods={"GET"})
+     * @Route("/admin/wiki", name="admin_wiki_index")
      */
     public function index(WikiRepository $wikiRepository): Response
     {
         $wikis = $wikiRepository->findAll();
-        $encoders = [new XmlEncoder(), new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
         
-        $serializer = new Serializer($normalizers, $encoders);
-        $data =  $serializer->serialize($wikis, 'json');
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-        // $response->headers->set('Access-Control-Allow-Origin', '*');
-        return $response;
+        return $this->render('admin/wiki/index.html.twig', [
+            'wikis' => $wikis
+        ]);
     }
 
     /**

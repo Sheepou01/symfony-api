@@ -22,6 +22,7 @@ import Quiz from 'src/components/Quiz';
 import Mentions from 'src/components/Mentions';
 import Help from 'src/components/Help';
 import NotFound from 'src/components/NotFound';
+import Ending from 'src/components/Ending';
 import './style.scss';
 
 
@@ -40,6 +41,7 @@ const DisplayApp = () => (
       <Route path="/mentions-légales" component={Mentions} />
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />
+      
     </Switch>
     <Footer />
   </div>

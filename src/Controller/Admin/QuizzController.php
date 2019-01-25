@@ -91,4 +91,16 @@ class QuizzController extends AbstractController
         
     }
 
+      /**
+     * @Route("/admin/quizz/{id}/set_online_status", name="admin_quizz_online", methods={"GET", "POST"})
+     */
+    public function changeOnlineStatus(Quizz $quizz, EntityManagerInterface $em)
+    {
+        $quizz->setOnline(!$quizz->getOnline());
+
+        $em->flush();
+
+        return $this->redirectToRoute('admin_quizz_index');
+    }
+
 }

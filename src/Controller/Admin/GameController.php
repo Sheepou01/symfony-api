@@ -90,4 +90,16 @@ class GameController extends AbstractController
         
     }
 
+      /**
+     * @Route("/admin/game/{id}/set_online_status", name="admin_game_online", methods={"GET", "POST"})
+     */
+    public function changeOnlineStatus(Game $game, EntityManagerInterface $em)
+    {
+        $game->setOnline(!$game->getOnline());
+
+        $em->flush();
+
+        return $this->redirectToRoute('admin_game_index');
+    }
+
 }

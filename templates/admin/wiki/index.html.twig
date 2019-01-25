@@ -26,7 +26,13 @@
                 <td>
                     <a href="{{ path('admin_wiki_edit', {'id': wiki.id}) }}"><i class="fas fa-pencil-alt"></i> Editer</a>
                 </td>
-                <td>{{ wiki.online }}</td>
+                <td>
+                    {% if wiki.online == true %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-check-square"></i></a>
+                    {% else %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-square"></i></a>
+                    {% endif %}
+                </td>
             </tr>
         {% else %}
             <tr>

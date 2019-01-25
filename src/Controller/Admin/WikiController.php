@@ -13,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Doctrine\ORM\EntityManagerInterface;
 
 
 class WikiController extends AbstractController
@@ -103,6 +104,19 @@ class WikiController extends AbstractController
             $entityManager->remove($wiki);
             $entityManager->flush();
         }
+
+        return $this->redirectToRoute('admin_wiki_index');
+    }
+
+
+      /**
+     * @Route("/admin/wiki/{id}/set_online_status", name="admin_wiki_online", methods={"GET", "POST"})
+     */
+    public function changeOnlineStatus(Wiki $wiki, EntityManagerInterface $em)
+    {
+        $wiki->setOnline(!$wiki->getOnline());
+
+        $em->flush();
 
         return $this->redirectToRoute('admin_wiki_index');
     }

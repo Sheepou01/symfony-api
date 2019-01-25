@@ -25,7 +25,12 @@
                 <td>
                     <a href="{{ path('admin_game_edit', {'id': game.id}) }}"><i class="fas fa-pencil-alt"></i> Editer</a>
                 </td>
-                <td>{{ game.online }}</td>
+                <td>{% if game.online == true %}
+                        <a href="{{ path('admin_game_online', {"id": game.id}) }}"><i class="far fa-check-square"></i></a>
+                        {% else %}
+                        <a href="{{ path('admin_game_online', {"id": game.id}) }}"><i class="far fa-square"></i></a>
+                        {% endif %}
+                    </td>
             </tr>
         {% else %}
             <tr>

@@ -25,7 +25,12 @@
                 <td>
                     <a href="{{ path('admin_quizz_edit', {'id': quizz.id}) }}"><i class="fas fa-pencil-alt"></i> Editer</a>
                 </td>
-                <td>{{ quizz.online }}</td>
+                <td>{% if quizz.online == true %}
+                        <a href="{{ path('admin_quizz_online', {"id": quizz.id}) }}"><i class="far fa-check-square"></i></a>
+                        {% else %}
+                        <a href="{{ path('admin_quizz_online', {"id": quizz.id}) }}"><i class="far fa-square"></i></a>
+                        {% endif %}
+                    </td>
             </tr>
         {% else %}
             <tr>

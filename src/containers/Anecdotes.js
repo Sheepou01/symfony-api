@@ -19,9 +19,7 @@ import { receivedTopito } from '../store/reducers/anecdotesReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = state => ({
-topitos: state.anecdotesReducer.topitos,
-});
+const mapStateToProps = null;
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation

@@ -18,11 +18,11 @@ import './style.scss';
 const Anecdotes = ({ receivedTopito, topitos }) => {
   function handleClick(e) {
     e.preventDefault();
-    console.log(topitos);
+    console.log('component' + receivedTopito());
   };
 
-  console.log(topitos);
-  //console.log(receivedTopito());
+
+  
   return (
   <div>
     <div id="wiki-view">

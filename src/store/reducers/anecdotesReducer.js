@@ -2,7 +2,7 @@
  * Initial State
  */
 const initialState = {
-topito: [],
+topitosList: [],
 };
 
 /**
@@ -27,7 +27,8 @@ const reducer = (state = initialState, action = {}) => {
     case RECEIVED_TOPITO:
       return {
         ...state,
-        topitos: [...action.topito],
+        // je récupere les nouveaus topitos, et je l'ajoute à l'existant
+        topitosList: [...action.items]
       };
 
     default:
@@ -39,13 +40,13 @@ const reducer = (state = initialState, action = {}) => {
  * Action Creators
  */
 // j'envoi mes props à mon container
-export const Topito = () => ({
+export const topito = () => ({
   type: TOPITO,
 });
 
-export const receivedTopito = topito => ({
+export const receivedTopito = items => ({
   type: RECEIVED_TOPITO,
-  topito,
+  items,
 });
 /**
  * Selectors

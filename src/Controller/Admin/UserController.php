@@ -34,10 +34,11 @@ class UserController extends AbstractController
      /**
      * @Route("/admin/user/{id}/edit", name="admin_user_edit")
      */
-    public function edit(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
+    public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
         
     }
+
 
      /**
      * @Route("/admin/user/{id}/delete", name="admin_user_delete")

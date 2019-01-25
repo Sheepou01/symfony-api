@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
  * Local import
  */
 import Anecdotes from 'src/components/Anecdotes';
-import { receivedTopito } from '../store/reducers/anecdotesReducer';
+
 
 // Action Creators
-//import { receivedTopito } from 'src/store/reducers/anedoctesReducer';
+import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,7 +19,12 @@ import { receivedTopito } from '../store/reducers/anecdotesReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  // J'utilise le state de mon loginReducer
+name: state.anecdotesReducer.topitosName,
+body: state.anecdotesReducer.topitosBody,
+created_at: state.anecdotesReducer.topitosDate,
+});
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation

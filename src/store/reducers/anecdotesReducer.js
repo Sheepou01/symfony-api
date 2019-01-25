@@ -25,10 +25,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
       };
     case RECEIVED_TOPITO:
+    const topitoList = action.topito
+    console.log(topitoList[1].name);
       return {
         ...state,
         // je récupere les nouveaus topitos, et je l'ajoute à l'existant
-        topitosList: [...action.items]
+        topitosName: topitoList[1].name,
+        topitosBody: topitoList[1].body,
+        topitosDate: topitoList[1].created_at,
+       
       };
 
     default:
@@ -44,9 +49,9 @@ export const topito = () => ({
   type: TOPITO,
 });
 
-export const receivedTopito = items => ({
+export const receivedTopito = topito => ({
   type: RECEIVED_TOPITO,
-  items,
+  topito,
 });
 /**
  * Selectors

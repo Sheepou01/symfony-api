@@ -14,8 +14,6 @@ class WikiType extends AbstractType
         $builder
             ->add('name')
             ->add('body')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('tags')
         ;
     }

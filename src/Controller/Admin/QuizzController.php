@@ -24,6 +24,34 @@ class QuizzController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/admin/quizz/new", name="admin_quizz_new")
+     */
+    public function new(EntityManagerInterface $em, Request $request)
+    {
+        $quizz = new Quizz();
+        $quizz->setCreatedAt(new \DateTime);
+
+        $form = $this->createForm(QuizzType::class, $quizz);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($quizz);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_quizz_index');
+        }
+
+
+        return $this->render('admin/quizz/new.html.twig', [
+            'form' => $form->createView(),
+            'quizz' => $quizz
+        ]);
+
+    }
+
     /**
      * @Route("/admin/quizz/{id}/edit", name="admin_quizz_edit")
      */

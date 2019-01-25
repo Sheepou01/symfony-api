@@ -14,8 +14,6 @@ class GameType extends AbstractType
         $builder
             ->add('name')
             ->add('content')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('help')
         ;
     }

@@ -24,6 +24,34 @@ class TagController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/admin/tag/new", name="admin_tag_new")
+     */
+    public function new(EntityManagerInterface $em, Request $request)
+    {
+        $tag = new Tag();
+        $tag->setCreatedAt(new \DateTime);
+
+        $form = $this->createForm(tagType::class, $tag);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($tag);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_tag_index');
+        }
+
+
+        return $this->render('admin/tag/new.html.twig', [
+            'form' => $form->createView(),
+            'tag' => $tag
+        ]);
+
+    }
+
+
     /**
      * @Route("/admin/tag/{id}/edit", name="admin_tag_edit")
      */

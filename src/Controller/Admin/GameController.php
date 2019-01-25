@@ -24,6 +24,33 @@ class GameController extends AbstractController
         ]);
     }
 
+     /**
+     * @Route("/admin/game/new", name="admin_game_new")
+     */
+    public function new(EntityManagerInterface $em, Request $request)
+    {
+        $game = new Game();
+        $game->setCreatedAt(new \DateTime);
+
+        $form = $this->createForm(GameType::class, $game);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($game);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_game_index');
+        }
+
+
+        return $this->render('admin/game/new.html.twig', [
+            'form' => $form->createView(),
+            'game' => $game
+        ]);
+
+    }
+
     /**
      * @Route("/admin/game/{id}/edit", name="admin_game_edit")
      */

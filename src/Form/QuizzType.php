@@ -13,8 +13,6 @@ class QuizzType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('tags')
         ;
     }

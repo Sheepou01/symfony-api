@@ -6,8 +6,7 @@
 <h1>Editer un thème</h1>
 
 {{ include('admin/tag/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+{{ include('admin/tag/_delete_form.html.twig') }}
 
 <a href="{{ path('admin_tag_index') }}">Retour à la liste</a>
-
-{{ include('admin/tag/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Wiki{% endblock %}
+{% block title %}Nouvelle fiche{% endblock %}
 
 {% block body %}
-    <h1>Create new Wiki</h1>
+    <h1>Créer une nouvelle fiche</h1>
 
-    {{ include('wiki/_form.html.twig') }}
+    {{ include('admin/wiki/_form.html.twig') }}
 
-    <a href="{{ path('wiki_index') }}">back to list</a>
+    <a href="{{ path('admin_wiki_index') }}">Retour à la liste</a>
 {% endblock %}

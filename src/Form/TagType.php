@@ -14,8 +14,6 @@ class TagType extends AbstractType
         $builder
             ->add('name')
             ->add('favorite')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('users')
             ->add('quizz')
             ->add('wiki')

@@ -30,11 +30,13 @@ class WikiController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="wiki_new", methods={"GET","POST"})
+     * @Route("/admin/wiki/new", name="admin_wiki_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $wiki = new Wiki();
+        $wiki->setCreatedAt(new \DateTime());
+
         $form = $this->createForm(WikiType::class, $wiki);
         $form->handleRequest($request);
 
@@ -43,7 +45,7 @@ class WikiController extends AbstractController
             $entityManager->persist($wiki);
             $entityManager->flush();
 
-            return $this->redirectToRoute('wiki_index');
+            return $this->redirectToRoute('admin_wiki_index');
         }
 
         return $this->render('admin/wiki/new.html.twig', [
@@ -72,7 +74,7 @@ class WikiController extends AbstractController
     /**
      * @Route("/admin/wiki/{id}/edit", name="admin_wiki_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Wiki $wiki): Response
+    public function edit(Wiki $wiki, Request $request): Response
     {
         $wiki->setUpdatedAt(new \DateTime());
 
@@ -92,9 +94,9 @@ class WikiController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="wiki_delete", methods={"DELETE"})
+     * @Route("/admin/wiki/{id}/delete", name="admin_wiki_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Wiki $wiki): Response
+    public function delete(Wiki $wiki, Request $request): Response
     {
         if ($this->isCsrfTokenValid('delete'.$wiki->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -102,6 +104,6 @@ class WikiController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('wiki_index');
+        return $this->redirectToRoute('admin_wiki_index');
     }
 }

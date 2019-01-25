@@ -24,7 +24,7 @@
                 <td>{{ wiki.updatedAt ? wiki.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('wiki_show', {'id': wiki.id}) }}">show</a>
-                    <a href="{{ path('wiki_edit', {'id': wiki.id}) }}">edit</a>
+                    <a href="{{ path('admin_wiki_edit', {'id': wiki.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

@@ -36,7 +36,23 @@ class UserController extends AbstractController
      */
     public function edit(User $user, Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $encoder)
     {
-        
+        $user->setUpdatedAt(new \DateTime());
+
+        $form = $this->createForm(UserType::class, $user);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            $em->persist($user);
+            $em->flush();
+
+            return $this->redirectToRoute('admin_user_index');
+        }
+
+        return $this->render('admin/user/edit.html.twig', [
+            'form' => $form->createView(),
+            'user' => $user
+        ]);
     }
 
 

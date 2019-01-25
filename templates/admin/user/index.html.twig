@@ -7,7 +7,7 @@
 <ul>
     {% for user in users %}
     <li>{{ user.username }}
-        <a href=""><i class="fas fa-edit"></i></a>
+        <a href="{{ path('admin_user_edit', {"id": user.id}) }}"><i class="fas fa-edit"></i></a>
         <a href="{{ path('admin_user_delete', {"id": user.id}) }}"><i class="fas fa-trash-alt"></i></a>
     </li>
     {% endfor %}

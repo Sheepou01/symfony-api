@@ -5,9 +5,9 @@
 {% block body %}
     <h1>Edit Wiki</h1>
 
-    {{ include('wiki/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('admin/wiki/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('wiki_index') }}">back to list</a>
+    <a href="{{ path('admin_wiki_index') }}">Retour à la liste</a>
 
-    {{ include('wiki/_delete_form.html.twig') }}
+    {{ include('admin/wiki/_delete_form.html.twig') }}
 {% endblock %}

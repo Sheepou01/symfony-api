@@ -7,7 +7,7 @@
 <ul>
     {% for quizz in quizzes %}
     <li>{{ quizz.title }}
-        <a href=""><i class="fas fa-edit"></i></a>
+        <a href="{{ path('admin_quizz_edit', {"id": quizz.id}) }}"><i class="fas fa-edit"></i></a>
         <a href=""><i class="fas fa-trash-alt"></i></a>
     </li>
     {% endfor %}

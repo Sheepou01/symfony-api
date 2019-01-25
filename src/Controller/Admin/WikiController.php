@@ -46,7 +46,7 @@ class WikiController extends AbstractController
             return $this->redirectToRoute('wiki_index');
         }
 
-        return $this->render('wiki/new.html.twig', [
+        return $this->render('admin/wiki/new.html.twig', [
             'wiki' => $wiki,
             'form' => $form->createView(),
         ]);
@@ -70,22 +70,22 @@ class WikiController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="wiki_edit", methods={"GET","POST"})
+     * @Route("/admin/wiki/{id}/edit", name="admin_wiki_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Wiki $wiki): Response
     {
+        $wiki->setUpdatedAt(new \DateTime());
+
         $form = $this->createForm(WikiType::class, $wiki);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('wiki_index', [
-                'id' => $wiki->getId(),
-            ]);
+            return $this->redirectToRoute('admin_wiki_index');
         }
 
-        return $this->render('wiki/edit.html.twig', [
+        return $this->render('admin/wiki/edit.html.twig', [
             'wiki' => $wiki,
             'form' => $form->createView(),
         ]);

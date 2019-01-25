@@ -7,7 +7,7 @@
 <ul>
     {% for tag in tags %}
     <li>{{ tag.name }}
-        <a href=""><i class="fas fa-edit"></i></a>
+        <a href="{{ path('admin_tag_edit', {"id": tag.id}) }}"><i class="fas fa-edit"></i></a>
         <a href=""><i class="fas fa-trash-alt"></i></a>
     </li>
     {% endfor %}

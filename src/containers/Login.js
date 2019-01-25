@@ -43,9 +43,9 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère la soumission du form d'inscription
     dispatch(submitNewUser(pseudo, email, password));
   },
-  connectUser: (name, password) => {
+  connectUser: (email, password) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(connectUser(name, password));
+    dispatch(connectUser(email, password));
   },
 });
 

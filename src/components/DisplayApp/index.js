@@ -13,6 +13,7 @@ import Header from 'src/components/Header';
 
 import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
+import Timer from 'src/containers/Timer';
 import Game from 'src/components/Game';
 import Anecdotes from 'src/components/Anecdotes';
 import Footer from 'src/components/Footer';
@@ -41,6 +42,7 @@ const DisplayApp = () => (
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />
     </Switch>
+    <Timer />
     <Footer />
   </div>
 );

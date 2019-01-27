@@ -2,8 +2,10 @@
  * Npm import
  */
 import React from 'react';
-import { Button, Icon } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import classnames from 'classnames';
+
 
 
 
@@ -14,16 +16,48 @@ import { NavLink } from 'react-router-dom';
 /**
  * Code
  */
-const Settings = () => (
-  <div id="settings">
-    <NavLink
-      to="/mon-profil"
-      exact
+const Settings = ({ menuDisplay, menuOppenned }) => {  
+
+  // Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
+  const handleStopPropagation = () => {
+    menuDisplay();
+  };
+
+  return (
+    <div
+      onClick={handleStopPropagation}
+      className={classnames({
+        open: true,
+        oppenned: menuOppenned,
+      })}
     >
-      <Icon name="bars" size="large" id="settings-menu" />
-    </NavLink>
-  </div>
-);
+      <span className="cls" />
+      <span>
+        <ul className="sub-menu ">
+          <li>
+            <NavLink to="/mon-profil">Mon Profil</NavLink>
+          </li>
+          <li>
+            <NavLink to="/mon-profil">Nous contacter</NavLink>
+          </li>
+          <li>
+            <NavLink to="/mon-profil">Aide</NavLink>
+          </li>
+          <li>
+            <NavLink to="/mon-profil">Classements</NavLink>
+          </li>
+        </ul>
+      </span>
+      <span className="cls" />
+    </div>
+  );
+};
+
+Settings.propTypes = {
+  menuDisplay: PropTypes.func.isRequired,
+  menuOppenned: PropTypes.bool.isRequired,
+};
+
 
 /**
  * Export

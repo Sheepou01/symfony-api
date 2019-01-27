@@ -1,0 +1,18 @@
+#timer {
+  padding: 10em;
+  margin: 5em auto;
+
+  &-digits {
+    font-size: 4em;
+    color: white;
+    background-color: orange;
+    text-align: center;
+    width: 3em;
+    margin: auto;
+    border-radius: 50%;
+    height: 2.7em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

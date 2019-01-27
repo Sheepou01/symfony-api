@@ -6,8 +6,8 @@ import React from 'react';
 /**
  * Local import
  */
+import Settings from 'src/containers/Settings';
 import Logo from './Logo';
-import Settings from './Settings';
 import './style.scss';
 /**
  * Code

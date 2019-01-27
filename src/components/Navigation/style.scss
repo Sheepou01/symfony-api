@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 10em auto;
+  margin: 15em auto;
   width : 70%;
   
 }
@@ -28,7 +28,7 @@
 .icon-cards {
   position: relative;
 	width: 60vw;
-	height: 40vw;
+	height: 10em;
   max-width: 380px;
   max-height: 250px;
   margin: 0;
@@ -51,30 +51,30 @@
 
 	&__item {
 		position: absolute;
-		top: 0;
-		left: 0;
-		width: 60vw;
-		height: 40vw;
-    max-width: 380px;
-    max-height: 250px;
-    box-shadow: 0 5px 20px rgba(0,0,0,.1);
+    top: 0;
+    left: 0;
+    width: 60vw;
+    height: 70vw;
+    max-width: 450px;
+    max-height: 410px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 6px;
     display: flex;
     justify-content: center;
     align-items: center;
 
 		&:nth-child(1) {
-			background: #F7B040;
+			background: rgb(243, 214, 134);
 			transform: rotateY(0) translateZ(35vw);
 		}
 
 		&:nth-child(2) {
-			background: #F7B040;
+			background: rgb(243, 214, 134);
 			transform: rotateY(120deg) translateZ(35vw);
 		}
 
 		&:nth-child(3) {
-			background: #F7B040;
+			background: rgb(243, 214, 134);
 			transform: rotateY(240deg) translateZ(35vw);
 		}
 	}

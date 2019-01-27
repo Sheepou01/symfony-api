@@ -46,6 +46,7 @@
   "dependencies": {
     "@babel/polyfill": "*",
     "axios": "^0.18.0",
+    "classnames": "^2.2.6",
     "prop-types": "^15.6.2",
     "react": "*",
     "react-dom": "*",

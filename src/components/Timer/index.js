@@ -51,8 +51,8 @@ const Timer = ({ seconds }) => {
   const getMinutes = () => Math.floor(seconds / 60);
 
   return (
-    <div className="timer">
-      <h1>{getMinutes()}:{getSeconds()}</h1>
+    <div id="timer">
+      <div id="timer-digits">{getMinutes()}:{getSeconds()}</div>
       <div>
         {/* <button type="button" onClick={this.handleStartClick}>Start</button>
         <button type="button" onClick={this.handleStopClick}>Stop</button> */}

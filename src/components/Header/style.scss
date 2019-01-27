@@ -6,33 +6,140 @@
   height: 7em;
   &-logo {
     grid-column: 3;
-    grid-row-start: 3;
+    grid-row-start: 2;
     display: flex;
     justify-content: center;
   }
   &-menu {
-    grid-column: 5 / 7;
+    grid-column: 5;
     grid-row-start: 2;
     display: flex;
     justify-content: center;
   }
 }
 
-#settings {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;   
-    width : 15%;
-
-    &-menu {
-      color: white;
-    }
-}
-
-#logo {
-  color: black;
+// CSS du logo
+#logo img {
+  height: 6em;
   font-size: 2em;
-
 }
+
+
+// CSS du Menu
+// MENU quand il n'est pas ouvert
+.open{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;   
+  width : 15%;
+	cursor: pointer;
+	transition: opacity 0.2s linear;
+	&:hover{
+		opacity: 0.8;
+	}
+	span{
+		display: block;
+		float: left;
+		clear: both;
+		height: 4px;
+		width: 30px;
+		border-radius: 40px;
+		background-color: #fff;
+		position: absolute;
+		top: 27px;
+		overflow: hidden;
+		transition: all 0.4s ease;
+		&:nth-child(1){
+			margin-top: 10px;
+			z-index: 9;
+		}
+		&:nth-child(2){
+			margin-top: 20px;
+		}
+		&:nth-child(3){
+			margin-top: 30px;
+		}
+	}
+}
+.sub-menu{
+	transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+		height: 0;
+		width: 0;
+		right: 0;
+		top: 0;
+		position: absolute;
+		background-color: rgb(243, 214, 134);
+		border-radius: 50%;
+		z-index: 18;
+		overflow: hidden;
+		li{
+			display: block;
+			float: right;
+			clear: both;
+			height: auto;
+			margin-right: -160px;
+			transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+			&:first-child{
+				margin-top: 200px;
+			}
+			&:nth-child(1){
+				-webkit-transition-delay: 0.05s;
+			}
+			&:nth-child(2){
+				-webkit-transition-delay: 0.10s;
+			}
+			&:nth-child(3){
+				-webkit-transition-delay: 0.15s;
+			}
+			&:nth-child(4){
+				-webkit-transition-delay: 0.20s;
+			}
+			&:nth-child(5){
+				-webkit-transition-delay: 0.25s;
+			}
+			a{
+				color: #4C8DF0;
+				font-family: 'Lato', Arial, Helvetica, sans-serif;
+				font-size: 16px;
+				width: 100%;
+				display: block;
+				float: left;
+				line-height: 40px;
+			}
+		}
+	}
+// CSS quand on clique sur le menu 
+	.oppenned{
+		.sub-menu{
+			opacity: 1;
+			height: 400px;
+			width: 400px;
+		}
+		span:nth-child(2){
+			overflow: visible;
+		}
+		span:nth-child(1), span:nth-child(3){
+			z-index: 100;
+			transform: rotate(45deg);
+		}
+		span:nth-child(1){
+			transform: rotate(45deg) translateY(12px) translateX(12px);
+		}
+		span:nth-child(2){
+			height: 400px;
+			width: 400px;
+			right: -160px;
+			top: -160px;
+			border-radius: 50%;
+			background-color: #4C8DF0;
+		}
+		span:nth-child(3){			
+			transform: rotate(-45deg) translateY(-10px) translateX(10px);
+		}
+		li{
+			margin-right: 168px;
+		}
+	}
+
 
 

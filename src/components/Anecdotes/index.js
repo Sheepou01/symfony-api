@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Loader } from 'semantic-ui-react'
 /**
  * Local import
  */
@@ -17,10 +18,6 @@ import './style.scss';
 const Anecdotes = ({ activeTopito, topitosList, arrayIndexTopito }) => {
 
  // FONCTION RANDOM
-
-
-
-
 
   // TOPITO
   if (topitosList.length > 0) {
@@ -44,7 +41,7 @@ const Anecdotes = ({ activeTopito, topitosList, arrayIndexTopito }) => {
   );
 }
 
-return <div><h2>Pas de topitos</h2></div>;
+return <div><h2><Loader active inline='centered' /></h2></div>;
 };
 
 Anecdotes.propTypes = {

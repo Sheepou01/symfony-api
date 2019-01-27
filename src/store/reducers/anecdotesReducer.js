@@ -3,6 +3,7 @@
  */
 const initialState = {
 topitosList: [],
+//activeTopito: 6,
 };
 
 /**
@@ -25,14 +26,31 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
       };
     case RECEIVED_TOPITO:
-    const topitoList = action.topito
-    console.log(topitoList[1].name);
+    const topitoList = [...action.topito];
+    // tableau d'index
+    
+    //console.log(arrayTopito);
+    const arrayTopito= topitoList.map(item => item.id);
+    // Fonction random//
+    
+    // je recupere le tableau d'id
+    const index = arrayTopito;
+    console.log (index);
+    // Je recupere le min et le max
+    const min=Math.max(...index); 
+    const max=Math.min(...index);  
+    // Je  creer ma fonction random qui me rendra un entier
+    const random = Math.floor(Math.random() * (+max - +min)) + +min; 
+    console.log(random);  
+
       return {
         ...state,
         // je récupere les nouveaus topitos, et je l'ajoute à l'existant
-        topitosName: topitoList[1].name,
-        topitosBody: topitoList[1].body,
-        topitosDate: topitoList[1].created_at,
+        topitosList: topitoList,
+        activeTopito: random,
+
+        //topitosName: topitoList[1].name,
+        
        
       };
 

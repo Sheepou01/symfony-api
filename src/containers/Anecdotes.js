@@ -19,11 +19,18 @@ import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer'
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
+
 const mapStateToProps = state => ({
   // J'utilise le state de mon loginReducer
-name: state.anecdotesReducer.topitosName,
-body: state.anecdotesReducer.topitosBody,
-created_at: state.anecdotesReducer.topitosDate,
+
+// Je retourne mon tableau d'objet recu
+topitosList: state.anecdotesReducer.topitosList,
+
+activeTopito : state.anecdotesReducer.activeTopito,
+// Je retourne mon tableau d'index
+arrayIndexTopito :state.anecdotesReducer.arrayTopito,
+// Je retourne uniquement un nom de mon tableau d'objet (pas obligatoire)
+//name: state.anecdotesReducer.topitosName,
 });
 
 /* === Actions ===
@@ -34,6 +41,7 @@ created_at: state.anecdotesReducer.topitosDate,
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
+  // received Topito renvoie un objet action pret à l'emploi
   receivedTopito: () => {
     dispatch(receivedTopito());
   },

@@ -15,7 +15,7 @@ const anecdotesMiddleware = store => next => (action) => {
       axios.get(urlWiki)
          .then(function (response) {
            // handle success
-          console.log(response.data);
+          //console.log(response);
           store.dispatch(receivedTopito(response.data));
          })
          .catch(function (error) {

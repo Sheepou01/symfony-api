@@ -14,14 +14,19 @@ import './style.scss';
  */
 
 
+const Anecdotes = ({ activeTopito, topitosList, arrayIndexTopito }) => {
 
-const Anecdotes = ({ receivedTopito, topito, name, body, created_at }) => {
-  function handleClick(e) {
-    e.preventDefault();
-    const test = name;
-  console.log(test);
-  };
+ // FONCTION RANDOM
 
+
+
+
+
+  // TOPITO
+  if (topitosList.length > 0) {
+    // Je récupère name, body et created_at dans l'objet à l'index 0 (activeTopito) dans le tableau (topitosList)
+    const { name, body, created_at } = topitosList[activeTopito];
+    
   return (
   <div>
     <div id="wiki-view">
@@ -32,12 +37,25 @@ const Anecdotes = ({ receivedTopito, topito, name, body, created_at }) => {
       </ul>
       <p className="description">
       {body}</p>
-      <button onClick={handleClick}> </button>
+      
     </div>
     <Next className="next-button" />
   </div>
-)};
+  );
+}
 
+return <div><h2>Pas de topitos</h2></div>;
+};
+
+Anecdotes.propTypes = {
+  //activeTopito: PropTypes.number.isRequired,
+  topitosList: PropTypes.arrayOf(
+    PropTypes.shape({
+      created_at: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+    }).isRequired,
+  )};
 
 /**
  * Export

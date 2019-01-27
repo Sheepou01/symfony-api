@@ -17,21 +17,6 @@ import './style.scss';
 
 const Timer = ({ seconds }) => {
 
-  // Le timer se met en route dès le render effectué
-  // componentDidMount() {
-  //   const { decrementTimer } = this.props;
-  //   this.incrementer = setInterval(decrementTimer, 1000);
-  // }
-
-  // Test
-  
-  // shouldComponentUpdate() {
-  //   const { seconds } = this.props;
-  //   if (seconds === 0) {
-  //     clearInterval(this.incrementer);
-  //   }
-  // }
-
   // SI on actionner le timer à un moment donné précis (par ex: un clic)
 
   // handleStartClick = () => {

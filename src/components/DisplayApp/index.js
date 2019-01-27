@@ -32,6 +32,7 @@ import './style.scss';
 const DisplayApp = () => (
   <div id="app">
     <Header />
+    <Timer />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/mon-profil" component={Login} />
@@ -42,7 +43,6 @@ const DisplayApp = () => (
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />
     </Switch>
-    <Timer />
     <Footer />
   </div>
 );

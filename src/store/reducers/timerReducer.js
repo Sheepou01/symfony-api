@@ -10,7 +10,8 @@ const initialState = {
 /**
  * Types
  */
-const DECREMENT_TIMER = 'DECREMENT_TIMER';
+export const DECREMENT_TIMER = 'DECREMENT_TIMER';
+export const END_TIMER = 'END_TIMER';
 
 /**
  * Traitements
@@ -34,6 +35,10 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         seconds: state.seconds - 1,
         timerOff: false,
+      };
+    case END_TIMER:
+      return {
+        ...state,
       };
     default:
       return state;

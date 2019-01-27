@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Settings from 'src/components/Header/Settings';
 
 // Action Creators
-import { menuOpen } from 'src/store/reducers/settingsReducer';
+import { menuDisplay } from 'src/store/reducers/settingsReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -33,7 +33,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   menuDisplay: () => {
     // dispatch de mon action creator qui gère l'ouverture du menu dans le header
-    dispatch(menuOpen());
+    dispatch(menuDisplay());
   },
 });
 

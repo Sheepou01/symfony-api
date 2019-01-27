@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 15em auto;
+  margin: 1em auto 18em;
   width : 70%;
   
 }
@@ -64,17 +64,20 @@
     align-items: center;
 
 		&:nth-child(1) {
-			background: rgb(243, 214, 134);
+      background: orange;
+      color: white;
 			transform: rotateY(0) translateZ(35vw);
 		}
 
 		&:nth-child(2) {
-			background: rgb(243, 214, 134);
+      background: orange;
+      color: white;
 			transform: rotateY(120deg) translateZ(35vw);
 		}
 
 		&:nth-child(3) {
-			background: rgb(243, 214, 134);
+      background: orange;      
+      color: white;
 			transform: rotateY(240deg) translateZ(35vw);
 		}
 	}

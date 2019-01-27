@@ -1,9 +1,9 @@
 #login{
   display: flex;
-  justify-content: center;
-  flex-direction: column;
-  margin: 5em;
-  align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin: 10em 0 -10em 0;
+    align-items: center;
 
   &-signin, &-signup {
     width: 70%;

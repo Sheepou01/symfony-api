@@ -30,11 +30,11 @@ const reducer = (state = initialState, action = {}) => {
     // tableau d'index
     
     //console.log(arrayTopito);
-    const arrayTopito= topitoList.map(item => item.id);
+    const index = topitoList.map(item => item.id);
     // Fonction random//
     
     // je recupere le tableau d'id
-    const index = arrayTopito;
+    //const index = arrayTopito;
     //console.log (index);
     // Je recupere le min et le max
     const min=Math.min(...index); 

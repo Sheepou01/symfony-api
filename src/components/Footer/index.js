@@ -6,8 +6,8 @@ import React from 'react';
 /**
  * Local import
  */
-import Timer from 'src/containers/Timer';
-import Help from './Help';
+import { Icon } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 import './style.scss';
 
 /**
@@ -15,8 +15,22 @@ import './style.scss';
  */
 const Footer = () => (
   <div id="footer">
-    <Timer />
-    <Help />
+    <NavLink to="/mentions-légales" id="footer-legal-mentions">Mentions-légales</NavLink>
+    <NavLink to="/contact" id="footer-contact">Nous contacter</NavLink>
+    <div id="footer-social-networks">
+      <NavLink to="/aide" id="footer-facebook">
+        <Icon name="facebook" size="big" />
+      </NavLink>
+      <NavLink to="/aide" id="footer-twitter">
+        <Icon name="twitter" size="big" />
+      </NavLink>
+      <NavLink to="/aide" id="footer-instagram">
+        <Icon name="instagram" size="big" />
+      </NavLink>
+    </div>
+    <NavLink to="/aide" id="footer-help">
+      <Icon name="help circle" size="big" />
+    </NavLink>
   </div>
 );
 

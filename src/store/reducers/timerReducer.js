@@ -2,15 +2,16 @@
  * Initial State
  */
 const initialState = {
-  seconds: '100',
-  minutes: '05',
+  seconds: 10,
+  timerOff: true,
+  gameOver: false,
 };
 
 /**
  * Types
  */
-const CHANGE_INPUT = 'CHANGE_INPUT';
-const DECREMENT_TIMER = 'DECREMENT_TIMER';
+export const DECREMENT_TIMER = 'DECREMENT_TIMER';
+export const END_TIMER = 'END_TIMER';
 
 /**
  * Traitements
@@ -22,15 +23,22 @@ const DECREMENT_TIMER = 'DECREMENT_TIMER';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // Action qui permet de mettre dans le state les données qui arrivent de chaque input
-    case CHANGE_INPUT:
+    case DECREMENT_TIMER:
+      if (state.seconds === 0) {
+        return {
+          ...state,
+          gameOver: true,
+          timerOff: true,
+        };
+      }
       return {
         ...state,
-        seconds: action.value,
+        seconds: state.seconds - 1,
+        timerOff: false,
       };
-    case DECREMENT_TIMER:
+    case END_TIMER:
       return {
-        seconds: state.seconds + 1,
+        ...state,
       };
     default:
       return state;
@@ -40,11 +48,6 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
-
-export const changeInput = value => ({
-  type: CHANGE_INPUT,
-  value,
-});
 
 export const decrementTimer = () => ({
   type: DECREMENT_TIMER,

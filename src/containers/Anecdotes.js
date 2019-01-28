@@ -6,11 +6,11 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Navigation from 'src/components/Navigation';
+import Anecdotes from 'src/components/Anecdotes';
+
 
 // Action Creators
-import { decrementTimer } from 'src/store/reducers/timerReducer';
-
+import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,11 +19,18 @@ import { decrementTimer } from 'src/store/reducers/timerReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
+
 const mapStateToProps = state => ({
-  // J'utilise le state de mon timerReducer
-  seconds: state.timerReducer.seconds,
-  timerOff: state.timerReducer.timerOff,
-  gameOver: state.timerReducer.gameOver,
+  // J'utilise le state de mon loginReducer
+
+// Je retourne mon tableau d'objet recu
+topitosList: state.anecdotesReducer.topitosList,
+
+activeTopito : state.anecdotesReducer.activeTopito,
+// Je retourne mon tableau d'index
+arrayIndexTopito :state.anecdotesReducer.arrayTopito,
+// Je retourne uniquement un nom de mon tableau d'objet (pas obligatoire)
+//name: state.anecdotesReducer.topitosName,
 });
 
 /* === Actions ===
@@ -34,17 +41,18 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  decrementTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(decrementTimer());
+  // received Topito renvoie un objet action pret à l'emploi
+  receivedTopito: () => {
+    dispatch(receivedTopito());
+  },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(Navigation);
+const AnecdotesContainer = connect(mapStateToProps, mapDispatchToProps)(Anecdotes);
 
 
 /**
  * Export
  */
-export default NavigationContainer;
+export default AnecdotesContainer;

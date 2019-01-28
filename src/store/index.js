@@ -4,6 +4,8 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import loginMiddleware from './middlewares/loginMiddleware';
 import timerMiddleware from './middlewares/timerMiddleware';
+import anecdotesMiddleware from './middlewares/anecdotesMiddleware';
+
 
 /*
  * Local import
@@ -16,7 +18,7 @@ import reducer from './reducers/index';
  */
 
 // ajout du/des middlewares
-const appliedMiddlewares = applyMiddleware(loginMiddleware, timerMiddleware);
+const appliedMiddlewares = applyMiddleware(loginMiddleware, timerMiddleware, anecdotesMiddleware );
 
 // onglet redux dans le navigateur
 const devTools = [

@@ -7,12 +7,15 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
+
 import { NavLink } from 'react-router-dom';
 import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';
+
 /**
  * Code
  */
+
 const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
   const handleStartClick = () => {
     if (timerOff) {
@@ -53,6 +56,7 @@ Navigation.propTypes = {
   timerOff: PropTypes.bool.isRequired,
   gameOver: PropTypes.bool.isRequired,
 };
+
 
 /**
  * Export

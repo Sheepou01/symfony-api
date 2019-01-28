@@ -13,7 +13,7 @@ const timerMiddleware = store => next => (action) => {
 
   switch (action.type) {
     case DECREMENT_TIMER:
-    // console.log(store.dispatch(decrementTimer()));
+      //console.log(store.dispatch(decrementTimer()));
       // action.interval = setInterval(() => store.dispatch(decrementTimer()), 1000);
       next(action);
       break;

@@ -2,7 +2,7 @@
  * Import
  */
 import axios from 'axios';
-import { TOPITO,RECEIVED_TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer.js';
+import { TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer.js';
 
 /**
 * Code
@@ -17,6 +17,7 @@ const anecdotesMiddleware = store => next => (action) => {
            // handle success
           //console.log(response);
           store.dispatch(receivedTopito(response.data));
+          //store.dispatch(randomTopito(response.data));
          })
          .catch(function (error) {
            // handle error

@@ -10,7 +10,7 @@ import Anecdotes from 'src/components/Anecdotes';
 
 
 // Action Creators
-import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer';
+import { randomTopito, receivedTopito } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,7 +19,7 @@ import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer'
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-
+//console.log('Middleware' + randomTopito);
 const mapStateToProps = state => ({
   // J'utilise le state de mon loginReducer
 
@@ -28,7 +28,7 @@ topitosList: state.anecdotesReducer.topitosList,
 
 activeTopito : state.anecdotesReducer.activeTopito,
 // Je retourne mon tableau d'index
-arrayIndexTopito :state.anecdotesReducer.arrayTopito,
+//arrayIndexTopito :state.anecdotesReducer.arrayTopito,
 // Je retourne uniquement un nom de mon tableau d'objet (pas obligatoire)
 //name: state.anecdotesReducer.topitosName,
 });
@@ -42,9 +42,10 @@ arrayIndexTopito :state.anecdotesReducer.arrayTopito,
  */
 const mapDispatchToProps = dispatch => ({
   // received Topito renvoie un objet action pret à l'emploi
-  receivedTopito: () => {
-    dispatch(receivedTopito());
+  randomTopito: (array) => {
+    dispatch(randomTopito(array));
   },
+  
 });
 
 // Container

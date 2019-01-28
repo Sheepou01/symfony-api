@@ -4,6 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react'
+import ReactHtmlParser, { processNodes, convertNodeToElement, htmlparser2 } from 'react-html-parser';
 /**
  * Local import
  */
@@ -15,15 +16,14 @@ import './style.scss';
  */
 
 
-const Anecdotes = ({ activeTopito, topitosList, arrayIndexTopito }) => {
+const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
 
  // FONCTION RANDOM
 
   // TOPITO
   if (topitosList.length > 0) {
     // Je récupère name, body et created_at dans l'objet à l'index 0 (activeTopito) dans le tableau (topitosList)
-    const { name, body, created_at } = topitosList[activeTopito];
-    
+    const { name, body, created_at } = topitosList[activeTopito]; 
   return (
   <div>
     <div id="wiki-view">
@@ -33,10 +33,10 @@ const Anecdotes = ({ activeTopito, topitosList, arrayIndexTopito }) => {
         <li className="source"> source : http://www.topito.com/top-20-des-phrases-cultes-de-nos-entraineurs-de-rugby </li>
       </ul>
       <p className="description">
-      {body}</p>
+      {ReactHtmlParser(body)}</p>
       
     </div>
-    <Next className="next-button" />
+    <Next className="next-button" randomTopito={randomTopito} topitosList={topitosList}/>
   </div>
   );
 }

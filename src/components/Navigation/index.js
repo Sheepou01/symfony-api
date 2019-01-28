@@ -16,7 +16,7 @@ import './style.scss';
  * Code
  */
 
-const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
+const Navigation = ({ decrementTimer, timerOff, gameOver, randomTopito }) => {
   const handleStartClick = () => {
     if (timerOff) {
       setInterval(decrementTimer, 1000);
@@ -29,7 +29,9 @@ const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
   //     clearInterval(this.decrementer);
   //   }
   // };
-  
+
+  //Fonction randomisation au clic
+
   return (
     <div id="navigation">
       <div>

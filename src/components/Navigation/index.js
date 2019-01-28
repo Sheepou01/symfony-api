@@ -18,6 +18,7 @@ const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
     if (timerOff) {
       setInterval(decrementTimer, 1000);
     }
+    // decrementTimer();
   };
 
   // const stopDecrement = () => {

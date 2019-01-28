@@ -6,16 +6,16 @@ import React from 'react';
 /**
  * Local import
  */
-import FlipClock from './Timer';
+import Timer from 'src/containers/Timer';
 import Help from './Help';
 import './style.scss';
-import './Timer.sass';
+
 /**
  * Code
  */
 const Footer = () => (
   <div id="footer">
-    <FlipClock />
+    <Timer />
     <Help />
   </div>
 );

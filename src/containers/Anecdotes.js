@@ -6,10 +6,11 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Login from 'src/components/Login';
+import Anecdotes from 'src/components/Anecdotes';
+
 
 // Action Creators
-import { changeInput, submitNewUser, connectUser } from 'src/store/reducers/loginReducer';
+import { receivedTopito, topitosList } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -18,13 +19,18 @@ import { changeInput, submitNewUser, connectUser } from 'src/store/reducers/logi
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
+
 const mapStateToProps = state => ({
   // J'utilise le state de mon loginReducer
-  inputPseudo: state.loginReducer.inputPseudo,
-  inputEmail: state.loginReducer.inputEmail,
-  inputPassword: state.loginReducer.inputPassword,
-  inputUserEmail: state.loginReducer.inputUserEmail,
-  inputUserPassword: state.loginReducer.inputUserPassword,
+
+// Je retourne mon tableau d'objet recu
+topitosList: state.anecdotesReducer.topitosList,
+
+activeTopito : state.anecdotesReducer.activeTopito,
+// Je retourne mon tableau d'index
+arrayIndexTopito :state.anecdotesReducer.arrayTopito,
+// Je retourne uniquement un nom de mon tableau d'objet (pas obligatoire)
+//name: state.anecdotesReducer.topitosName,
 });
 
 /* === Actions ===
@@ -35,26 +41,18 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  handleInput: (name, value) => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(changeInput(name, value));
-  },
-  addUser: (pseudo, email, password) => {
-    // dispatch de mon action creator qui gère la soumission du form d'inscription
-    dispatch(submitNewUser(pseudo, email, password));
-  },
-  connectUser: (email, password) => {
-    // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(connectUser(email, password));
+  // received Topito renvoie un objet action pret à l'emploi
+  receivedTopito: () => {
+    dispatch(receivedTopito());
   },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
+const AnecdotesContainer = connect(mapStateToProps, mapDispatchToProps)(Anecdotes);
 
 
 /**
  * Export
  */
-export default LoginContainer;
+export default AnecdotesContainer;

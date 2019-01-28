@@ -7,31 +7,36 @@ import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT } from 'src/store/reducers/loginRe
 /**
 * Code
 */
-const urlSignUp = 'http://92.243.9.56/signup';
+const urlSignUp = 'http://92.243.9.56/api/signup';
+const urlSignIn = 'http://92.243.9.56/api/signin';
+// Const pour l'url du wiki
+const urlWiki = 'http://92.243.9.56/api/wiki';
 
 const loginMiddleware = store => next => (action) => {
-  // Je veux vérifier si l'action que je reçois m'intéresse
+
   switch (action.type) {
     case NEW_USER_SUBMIT:
-      console.log('coucou');
       // Je veux faire une requête axios
       axios({
         method: 'post',
         url: urlSignUp,
+        // Je transmets les infos dynamiquement grâce à l'action NEW_USER_SUBMIT
         data: {
-          firstName: 'Fred',
-          lastName: 'Flintstone',
+          username: action.pseudo,
+          email: action.email,
+          password: action.password,
         },
-      }).then(function(response) {
+      }).then((response) => {
         console.log(response);
-      }).catch(function(error) {
-        console.log('Error on Authentication');
+      }).catch((error) => {
+        console.log(error);
       });
 
-      // axios.get(urlSignUp)
+      //Conection axios pour obtenir les wikis:
+      //axios.get(urlWiki)
       //   .then(function (response) {
       //     // handle success
-      //     console.log(response);
+      //     console.log(response.data);
       //   })
       //   .catch(function (error) {
       //     // handle error
@@ -40,9 +45,23 @@ const loginMiddleware = store => next => (action) => {
       //   .then(function () {
       //     // always executed
       //   });
+
       next(action);
       break;
     case CONNECT_USER_SUBMIT:
+      axios({
+        method: 'post',
+        url: urlSignIn,
+        data: {
+          // Je transmets les infos dynamiquement grâce à l'action CONNECT_USER_SUBMIT
+          email: action.email,
+          password: action.password,
+        },
+      }).then((response) => {
+        console.log(response);
+      }).catch((error) => {
+        console.log(error);
+      });
       next(action);
       break;
     default:

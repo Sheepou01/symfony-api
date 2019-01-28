@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Login from 'src/components/Login';
+import Timer from 'src/components/Timer';
 
 // Action Creators
-import { changeInput, submitNewUser, connectUser } from 'src/store/reducers/loginReducer';
+import { changeInput, decrementTimer } from 'src/store/reducers/timerReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,12 +19,9 @@ import { changeInput, submitNewUser, connectUser } from 'src/store/reducers/logi
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  // J'utilise le state de mon loginReducer
-  inputPseudo: state.loginReducer.inputPseudo,
-  inputEmail: state.loginReducer.inputEmail,
-  inputPassword: state.loginReducer.inputPassword,
-  inputUserEmail: state.loginReducer.inputUserEmail,
-  inputUserPassword: state.loginReducer.inputUserPassword,
+  // J'utilise le state de mon timerReducer
+  seconds: state.timerReducer.seconds,
+  minutes: state.timerReducer.minutes,
 });
 
 /* === Actions ===
@@ -35,26 +32,22 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  handleInput: (name, value) => {
+  handleChange: (value) => {
     // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(changeInput(name, value));
+    dispatch(changeInput(value));
   },
-  addUser: (pseudo, email, password) => {
-    // dispatch de mon action creator qui gère la soumission du form d'inscription
-    dispatch(submitNewUser(pseudo, email, password));
-  },
-  connectUser: (email, password) => {
-    // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(connectUser(email, password));
+  decrementTimer: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(decrementTimer());
   },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const LoginContainer = connect(mapStateToProps, mapDispatchToProps)(Login);
+const TimerContainer = connect(mapStateToProps, mapDispatchToProps)(Timer);
 
 
 /**
  * Export
  */
-export default LoginContainer;
+export default TimerContainer;

@@ -37,6 +37,7 @@ const mapDispatchToProps = dispatch => ({
   decrementTimer: () => {
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(decrementTimer());
+  },
 });
 
 // Container

@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Loader } from 'semantic-ui-react'
+import { Loader } from 'semantic-ui-react';
 /**
  * Local import
  */

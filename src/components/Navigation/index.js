@@ -16,12 +16,12 @@ import './style.scss';
  * Code
  */
 
-const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
+const Navigation = ({ startTimer, timerOff, gameOver }) => {
   const handleStartClick = () => {
-    if (timerOff) {
-      setInterval(decrementTimer, 1000);
-    }
-    // decrementTimer();
+    // if (timerOff) {
+    //   setInterval(decrementTimer, 1000);
+    // }
+    startTimer();
   };
 
   // const stopDecrement = () => {
@@ -52,7 +52,7 @@ const Navigation = ({ decrementTimer, timerOff, gameOver }) => {
 };
 
 Navigation.propTypes = {
-  decrementTimer: PropTypes.func.isRequired,
+  startTimer: PropTypes.func.isRequired,
   timerOff: PropTypes.bool.isRequired,
   gameOver: PropTypes.bool.isRequired,
 };

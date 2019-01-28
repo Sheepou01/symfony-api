@@ -10,8 +10,10 @@ const initialState = {
 /**
  * Types
  */
-export const DECREMENT_TIMER = 'DECREMENT_TIMER';
+export const START_TIMER = 'START_TIMER';
+export const TICK = 'TICK';
 export const END_TIMER = 'END_TIMER';
+const CLICK_END_VIEW = 'CLICK_END_VIEW';
 
 /**
  * Traitements
@@ -23,7 +25,13 @@ export const END_TIMER = 'END_TIMER';
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case DECREMENT_TIMER:
+    case START_TIMER:
+      return {
+        ...state,
+        // seconds: state.seconds - 1,
+        timerOff: false,
+      };
+    case TICK:
       if (state.seconds === 0) {
         return {
           ...state,
@@ -34,11 +42,16 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         seconds: state.seconds - 1,
-        timerOff: false,
+        // timerOff: false,
       };
     case END_TIMER:
       return {
         ...state,
+      };
+    case CLICK_END_VIEW:
+      return {
+        ...state,
+        gameOver: false,
       };
     default:
       return state;
@@ -49,8 +62,14 @@ const reducer = (state = initialState, action = {}) => {
  * Action Creators
  */
 
-export const decrementTimer = () => ({
-  type: DECREMENT_TIMER,
+export const startTimer = () => ({
+  type: START_TIMER,
+});
+export const tick = () => ({
+  type: TICK,
+});
+export const clickEndView = () => ({
+  type: CLICK_END_VIEW,
 });
 
 /**

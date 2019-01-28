@@ -10,9 +10,8 @@ import 'semantic-ui-css/semantic.min.css';
  */
 
 import WelcomeMessage from 'src/components/WelcomeMessage';
-import Navigation from 'src/components/Navigation';
+import Navigation from 'src/containers/Navigation';
 import './style.scss';
-
 
 
 /**
@@ -20,7 +19,7 @@ import './style.scss';
  */
 const Home = () => (
   <div id="app">
-    <WelcomeMessage/>
+    <WelcomeMessage />
     <Navigation />
   </div>
 );

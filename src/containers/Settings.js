@@ -6,10 +6,10 @@ import { connect } from 'react-redux';
 /**
  * Local import
  */
-import Timer from 'src/components/Timer';
+import Settings from 'src/components/Header/Settings';
 
 // Action Creators
-import { decrementTimer } from 'src/store/reducers/timerReducer';
+import { menuDisplay } from 'src/store/reducers/settingsReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,8 +19,8 @@ import { decrementTimer } from 'src/store/reducers/timerReducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  // J'utilise le state de mon timerReducer
-  seconds: state.timerReducer.seconds,
+  // J'utilise le state de mon settingsReducer
+  menuOppenned: state.settingsReducer.menuOppenned,
 });
 
 /* === Actions ===
@@ -31,18 +31,18 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  decrementTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(decrementTimer());
+  menuDisplay: () => {
+    // dispatch de mon action creator qui gère l'ouverture du menu dans le header
+    dispatch(menuDisplay());
   },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const TimerContainer = connect(mapStateToProps, mapDispatchToProps)(Timer);
+const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);
 
 
 /**
  * Export
  */
-export default TimerContainer;
+export default SettingsContainer;

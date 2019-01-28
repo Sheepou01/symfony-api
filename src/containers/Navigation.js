@@ -7,10 +7,10 @@ import { connect } from 'react-redux';
  * Local import
  */
 import Navigation from 'src/components/Navigation';
-import { receivedTopito } from 'src/store/reducer';
 
 // Action Creators
-//import { receivedTopito } from 'src/store/reducers/anedoctesReducer';
+import { decrementTimer } from 'src/store/reducers/timerReducer';
+
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -20,7 +20,10 @@ import { receivedTopito } from 'src/store/reducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  topito: state.anecdotesReducer.topito,
+  // J'utilise le state de mon timerReducer
+  seconds: state.timerReducer.seconds,
+  timerOff: state.timerReducer.timerOff,
+  gameOver: state.timerReducer.gameOver,
 });
 
 /* === Actions ===
@@ -31,9 +34,9 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  receivedTopito: () => {
-    dispatch(receivedTopito());
-  },
+  decrementTimer: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(decrementTimer());
 });
 
 // Container

@@ -13,6 +13,7 @@ import Header from 'src/components/Header';
 
 import WelcomeMessage from 'src/components/WelcomeMessage';
 import Navigation from 'src/components/Navigation';
+import Timer from 'src/containers/Timer';
 import Game from 'src/components/Game';
 import Anecdotes from 'src/containers/Anecdotes';
 import Footer from 'src/components/Footer';
@@ -32,6 +33,7 @@ import './style.scss';
 const DisplayApp = () => (
   <div id="app">
     <Header />
+    <Timer />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/mon-profil" component={Login} />

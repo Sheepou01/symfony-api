@@ -6,10 +6,10 @@ use App\Entity\User;
 use App\Repository\RoleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Component\Validator\Constraints\DateTime;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -24,9 +24,6 @@ class FOSUserController extends FOSRestController{
      */
 
     public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
-
-       
-
         $roleUser = $role->findOneBy(['code' => 'ROLE_USER']);
         $em = $this->getDoctrine()->getManager();
         $user->setCreatedAt(new \DateTime);
@@ -40,6 +37,7 @@ class FOSUserController extends FOSRestController{
     }
 
     /**
+<<<<<<< HEAD
       * @Rest\Post("/api/signin")
       * @Rest\View(StatusCode=202)
       * @Rest\Get("/api/signin")
@@ -54,4 +52,21 @@ class FOSUserController extends FOSRestController{
          
           return new Response('Connexion effectuée');
      }
+=======
+     * @Rest\Post("/api/signin")
+     * @Rest\Get("/api/signin")
+     */
+    public function signin(AuthenticationUtils $authenticationUtils){
+        // get the login error if there is one
+        $error = $authenticationUtils->getLastAuthenticationError();
+        dd($error);
+        if($error->getMessage() == 'Bad credentials.'){
+            return new Response ('Connexion échouée, erreur identifiant ou mot de passe');
+        }
+    }
+
+    /**
+     * @Rest\
+     */
+>>>>>>> ca47c619f4d88e46a3d089f2b467256fc41cf30e
 }

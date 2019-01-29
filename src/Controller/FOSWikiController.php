@@ -23,12 +23,8 @@ class FOSWikiController extends FOSRestController{
         $wikis = $wikiRepository->findBy([
             'online' => true,            
         ]);
-        shuffle($wikis);
-        // return $wikis[0];
-        foreach($wikis as $wiki){
-            dd($wiki);
-            return $wiki;
-        }
+        return $wikis;
+        
         
     }
 }

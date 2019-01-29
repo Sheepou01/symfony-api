@@ -39,17 +39,19 @@ class FOSUserController extends FOSRestController{
         return new Response('Inscription effectuée');
     }
 
-    // /**
-    //  * @Rest\Post("/api/signin")
-    //  * @Rest\View(StatusCode=202)
-    //  * @Rest\Get("/api/signin")
-    //  */
-    // public function signin(AuthenticationUtils $authenticationUtils){
-    //      // get the login error if there is one
-    //      $error = $authenticationUtils->getLastAuthenticationError();
-    //      // last username entered by the user
-    //      $lastUsername = $authenticationUtils->getLastUsername();
-    //      dd($this->getUser());
-    //      return new Response('Connexion effectuée');
-    // }
+    /**
+      * @Rest\Post("/api/signin")
+      * @Rest\View(StatusCode=202)
+      * @Rest\Get("/api/signin")
+      */
+     public function signin(AuthenticationUtils $authenticationUtils, Request $request){
+          // get the login error if there is one
+         
+         
+          $error = $authenticationUtils->getLastAuthenticationError();
+          // last username entered by the user
+          $lastUsername = $authenticationUtils->getLastUsername();
+         
+          return new Response('Connexion effectuée');
+     }
 }

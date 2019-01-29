@@ -10,7 +10,7 @@ security:
         5map:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
 
     firewalls:
         dev:

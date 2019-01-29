@@ -31,21 +31,6 @@ const loginMiddleware = store => next => (action) => {
       }).catch((error) => {
         console.log(error);
       });
-
-      //Conection axios pour obtenir les wikis:
-      //axios.get(urlWiki)
-      //   .then(function (response) {
-      //     // handle success
-      //     console.log(response.data);
-      //   })
-      //   .catch(function (error) {
-      //     // handle error
-      //     console.log(error);
-      //   })
-      //   .then(function () {
-      //     // always executed
-      //   });
-
       next(action);
       break;
     case CONNECT_USER_SUBMIT:
@@ -54,8 +39,9 @@ const loginMiddleware = store => next => (action) => {
         url: urlSignIn,
         data: {
           // Je transmets les infos dynamiquement grâce à l'action CONNECT_USER_SUBMIT
-          email: action.email,
-          password: action.password,
+          // Username car contrainte Symfo - connexion
+          _username: action.email,
+          _password: action.password,
         },
       }).then((response) => {
         console.log(response);

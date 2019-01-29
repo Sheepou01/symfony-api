@@ -35,18 +35,33 @@ const Navigation = ({ startTimer, timerOff, gameOver }) => {
       <div>
         <figure className="icon-cards mt-3">
           <div className="icon-cards__content step-animation" onClick={handleStartClick}>
-            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/jeu">Games</NavLink>
-            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz">Quiz </NavLink>
-            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote">Anecdotes</NavLink>
+            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/jeu">
+              <div className="card">
+                <img src="src/styles/images/facts.png" alt="" className="card-image" />
+                <div className="card-banner">
+                  <div className="card-title">Games</div>
+                </div>
+              </div>
+            </NavLink>
+            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz">
+              <div className="card">
+                <img src="src/styles/images/facts.png" alt="" className="card-image" />
+                <div className="card-banner">
+                  <div className="card-title">Quiz</div>
+                </div>
+              </div>
+            </NavLink>
+            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote">
+              <div className="card">
+                <img src="src/styles/images/facts.png" alt="" className="card-image" />
+                <div className="card-banner">
+                  <div className="card-title">Anecdotes</div>
+                </div>
+              </div>
+            </NavLink>
           </div>
         </figure>
       </div>
-      {/* <Card>
-        <Image src="src/styles/images/facts.png" />
-        <Card.Content>
-          <Card.Header>Game</Card.Header>
-        </Card.Content>
-      </Card> */}
     </div>
   );
 };

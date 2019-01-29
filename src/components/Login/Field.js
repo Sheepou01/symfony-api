@@ -20,7 +20,7 @@ const Field = ({ name, type, placeholder, value, handleInputChange }) => (
   <div className="field">
     <Input
       className="field-input"
-      name={name.trim()}
+      name={name}
       type={type}
       value={value}
       onChange={handleInputChange}

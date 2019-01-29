@@ -13,8 +13,7 @@ class AnswerType extends AbstractType
     {
         $builder
             ->add('text')
-            ->add('correct')
-            ->add('question')
+        
         ;
     }
 

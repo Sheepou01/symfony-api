@@ -14,7 +14,7 @@ class QuestionType extends AbstractType
         $builder
             
             ->add('text')
-            ->add('quizz')
+            
         ;
     }
 

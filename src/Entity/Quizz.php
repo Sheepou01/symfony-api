@@ -48,11 +48,22 @@ class Quizz
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="quizzs")
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default":1})
+     */
+    private $online;
+
     public function __construct()
     {
         $this->quizzScores = new ArrayCollection();
         $this->questions = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->online = true;
     }
 
     public function getId(): ?int
@@ -182,6 +193,35 @@ class Quizz
             $this->tags->removeElement($tag);
             $tag->removeQuizz($this);
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->title;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
 
         return $this;
     }

@@ -10,7 +10,7 @@ security:
         5map:
             entity:
                 class: App\Entity\User
-                property: username
+                property: email
 
     firewalls:
         dev:
@@ -24,8 +24,9 @@ security:
             # http_basic: true
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
             form_login:
-                login_path: signin
-                check_path: signin
+                provider: 5map
+                login_path: /api/signin
+                check_path: /api/signin
 
             logout:
                 path: logout

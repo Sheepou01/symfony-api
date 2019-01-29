@@ -3,26 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\Wiki;
-use FOS\RestBundle\Controller\Annotations\Get;
-use FOS\RestBundle\Controller\Annotations\View;
 use App\Repository\WikiRepository;
+use FOS\RestBundle\Controller\Annotations\Get;
+use Symfony\Component\HttpFoundation\Response;
+use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 
 
 class FOSWikiController extends FOSRestController{
-
-    /**
-     * @GET(
-     *  path="/api/wiki/{id}",
-     * name="show_wiki",
-     * requirements = {"id"="\d+"}
-     * )
-     * @View
-     */
-    public function show(Wiki $wiki){
-        return $wiki;
-    }
-
     /**
      * @GET(
      *  path="/api/wiki",
@@ -31,7 +19,12 @@ class FOSWikiController extends FOSRestController{
      * @View
      */
     public function showAll(WikiRepository $wikiRepository){
-        $wikis = $wikiRepository->findAll();
+        
+        $wikis = $wikiRepository->findBy([
+            'online' => true,            
+        ]);
         return $wikis;
+        
+        
     }
 }

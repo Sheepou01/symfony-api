@@ -48,9 +48,15 @@ class Game
      */
     private $help;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":1})
+     */
+    private $online;
+
     public function __construct()
     {
         $this->gameScores = new ArrayCollection();
+        $this->online = true;
     }
 
     public function getId(): ?int
@@ -145,6 +151,18 @@ class Game
     public function setHelp(?Help $help): self
     {
         $this->help = $help;
+
+        return $this;
+    }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
 
         return $this;
     }

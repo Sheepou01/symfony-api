@@ -8,11 +8,36 @@
 {{ include('admin/question/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
 <h2>Réponses possibles:</h2>
-<ul>
-    {% for answer in question.answers %}
-    <li><a href="{{ path('admin_answer_edit', {'question_id': question.id, 'answer_id': answer.id}) }}">{{ answer.text }}</a></li>
-    {% endfor %}
-</ul>
+
+<table class="table">
+        <thead>
+            <tr>
+                <th>Intitulé</th>
+                <th>Editer</th>
+                <th>Bonne réponse</th>
+                <th>Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for answer in question.answers %}
+            <tr>
+                <td>{{ answer.text }}</td>
+                <td><a href="{{ path('admin_answer_edit', {'question_id': question.id, 'answer_id': answer.id}) }}"><i class="fas fa-pen"></i></a></td>
+                <td>{% if answer.correct == true %}
+                    <a href="{{ path('admin_answer_correct', {"id": answer.id}) }}"><i class="far fa-check-square"></i></a>
+                    {% else %}
+                    <a href="{{ path('admin_answer_correct', {"id": answer.id}) }}"><i class="far fa-square"></i></a>
+                    {% endif %}
+                </td>
+                <td><a href="{{ path('admin_answer_delete', {'question_id': question.id, 'answer_id': answer.id}) }}"><i class="far fa-times-circle"></i></a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 
 <a class="badge badge-success" href="{{ path('admin_answer_new', {"id": question.id}) }}">Ajouter une réponse</a>
 

@@ -9,11 +9,11 @@
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>Body</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>actions</th>
+                <th>Titre</th>
+                <th>Crée le</th>
+                <th>Mis à jour le</th>
+                <th>Action</th>
+                <th>En ligne</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +21,17 @@
             <tr>
                 <td>{{ wiki.id }}</td>
                 <td>{{ wiki.name }}</td>
-                <td>{{ wiki.body }}</td>
                 <td>{{ wiki.createdAt ? wiki.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ wiki.updatedAt ? wiki.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('wiki_show', {'id': wiki.id}) }}">show</a>
-                    <a href="{{ path('wiki_edit', {'id': wiki.id}) }}">edit</a>
+                    <a href="{{ path('admin_wiki_edit', {'id': wiki.id}) }}"><i class="fas fa-pencil-alt"></i> Editer</a>
+                </td>
+                <td>
+                    {% if wiki.online == true %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-check-square"></i></a>
+                    {% else %}
+                    <a href="{{ path('admin_wiki_online', {"id": wiki.id}) }}"><i class="far fa-square"></i></a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +42,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('wiki_new') }}">Create new</a>
+    <a class="btn btn-success" href="{{ path('admin_wiki_new') }}">Nouveau</a>
 {% endblock %}

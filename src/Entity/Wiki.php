@@ -43,9 +43,30 @@ class Wiki
      */
     private $tags;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default":1})
+     */
+    private $online;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="wikis")
+     */
+    private $author;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $source;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $image;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
+        $this->online = true;
     }
 
     public function getId(): ?int
@@ -125,6 +146,59 @@ class Wiki
             $this->tags->removeElement($tag);
             $tag->removeWiki($this);
         }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
+    public function getOnline(): ?bool
+    {
+        return $this->online;
+    }
+
+    public function setOnline(bool $online): self
+    {
+        $this->online = $online;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
+
+        return $this;
+    }
+
+    public function getSource(): ?string
+    {
+        return $this->source;
+    }
+
+    public function setSource(?string $source): self
+    {
+        $this->source = $source;
+
+        return $this;
+    }
+
+    public function getImage(): ?string
+    {
+        return $this->image;
+    }
+
+    public function setImage(?string $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

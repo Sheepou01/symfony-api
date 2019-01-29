@@ -65,12 +65,24 @@ class User implements UserInterface
      */
     private $quizzScores;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Quizz", mappedBy="author")
+     */
+    private $quizzs;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Wiki", mappedBy="author")
+     */
+    private $wikis;
+
     public function __construct()
     {
         $this->favorite_tag = new ArrayCollection();
         $this->gameScores = new ArrayCollection();
         $this->quizzScores = new ArrayCollection();
         $this->createdAt = new \DateTime();
+        $this->quizzs = new ArrayCollection();
+        $this->wikis = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,5 +259,72 @@ class User implements UserInterface
     
     public function getSalt(){}
     public function eraseCredentials(){}
+
+        public function __toString()
+        {
+            return $this->username;
+        }
+
+        /**
+         * @return Collection|Quizz[]
+         */
+        public function getQuizzs(): Collection
+        {
+            return $this->quizzs;
+        }
+
+        public function addQuizz(Quizz $quizz): self
+        {
+            if (!$this->quizzs->contains($quizz)) {
+                $this->quizzs[] = $quizz;
+                $quizz->setAuthor($this);
+            }
+
+            return $this;
+        }
+
+        public function removeQuizz(Quizz $quizz): self
+        {
+            if ($this->quizzs->contains($quizz)) {
+                $this->quizzs->removeElement($quizz);
+                // set the owning side to null (unless already changed)
+                if ($quizz->getAuthor() === $this) {
+                    $quizz->setAuthor(null);
+                }
+            }
+
+            return $this;
+        }
+
+        /**
+         * @return Collection|Wiki[]
+         */
+        public function getWikis(): Collection
+        {
+            return $this->wikis;
+        }
+
+        public function addWiki(Wiki $wiki): self
+        {
+            if (!$this->wikis->contains($wiki)) {
+                $this->wikis[] = $wiki;
+                $wiki->setAuthor($this);
+            }
+
+            return $this;
+        }
+
+        public function removeWiki(Wiki $wiki): self
+        {
+            if ($this->wikis->contains($wiki)) {
+                $this->wikis->removeElement($wiki);
+                // set the owning side to null (unless already changed)
+                if ($wiki->getAuthor() === $this) {
+                    $wiki->setAuthor(null);
+                }
+            }
+
+            return $this;
+        }
 }
 

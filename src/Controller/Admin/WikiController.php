@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin;
 
 use App\Entity\Wiki;
 use App\Form\WikiType;
@@ -13,36 +13,31 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Serializer\Encoder\XmlEncoder;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Doctrine\ORM\EntityManagerInterface;
 
-/**
- * @Route("/wiki")
- */
+
 class WikiController extends AbstractController
 {
     /**
-     * @Route("/", name="wiki_index", methods={"GET"})
+     * @Route("/admin/wiki", name="admin_wiki_index")
      */
     public function index(WikiRepository $wikiRepository): Response
     {
         $wikis = $wikiRepository->findAll();
-        $encoders = [new XmlEncoder(), new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
         
-        $serializer = new Serializer($normalizers, $encoders);
-        $data =  $serializer->serialize($wikis, 'json');
-
-        $response = new Response($data);
-        $response->headers->set('Content-Type', 'application/json');
-        // $response->headers->set('Access-Control-Allow-Origin', '*');
-        return $response;
+        return $this->render('admin/wiki/index.html.twig', [
+            'wikis' => $wikis
+        ]);
     }
 
     /**
-     * @Route("/new", name="wiki_new", methods={"GET","POST"})
+     * @Route("/admin/wiki/new", name="admin_wiki_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
         $wiki = new Wiki();
+        $wiki->setCreatedAt(new \DateTime());
+
         $form = $this->createForm(WikiType::class, $wiki);
         $form->handleRequest($request);
 
@@ -51,10 +46,10 @@ class WikiController extends AbstractController
             $entityManager->persist($wiki);
             $entityManager->flush();
 
-            return $this->redirectToRoute('wiki_index');
+            return $this->redirectToRoute('admin_wiki_index');
         }
 
-        return $this->render('wiki/new.html.twig', [
+        return $this->render('admin/wiki/new.html.twig', [
             'wiki' => $wiki,
             'form' => $form->createView(),
         ]);
@@ -78,31 +73,31 @@ class WikiController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="wiki_edit", methods={"GET","POST"})
+     * @Route("/admin/wiki/{id}/edit", name="admin_wiki_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Wiki $wiki): Response
+    public function edit(Wiki $wiki, Request $request): Response
     {
+        $wiki->setUpdatedAt(new \DateTime());
+
         $form = $this->createForm(WikiType::class, $wiki);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('wiki_index', [
-                'id' => $wiki->getId(),
-            ]);
+            return $this->redirectToRoute('admin_wiki_index');
         }
 
-        return $this->render('wiki/edit.html.twig', [
+        return $this->render('admin/wiki/edit.html.twig', [
             'wiki' => $wiki,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="wiki_delete", methods={"DELETE"})
+     * @Route("/admin/wiki/{id}/delete", name="admin_wiki_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, Wiki $wiki): Response
+    public function delete(Wiki $wiki, Request $request): Response
     {
         if ($this->isCsrfTokenValid('delete'.$wiki->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -110,6 +105,19 @@ class WikiController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('wiki_index');
+        return $this->redirectToRoute('admin_wiki_index');
+    }
+
+
+      /**
+     * @Route("/admin/wiki/{id}/set_online_status", name="admin_wiki_online", methods={"GET", "POST"})
+     */
+    public function changeOnlineStatus(Wiki $wiki, EntityManagerInterface $em)
+    {
+        $wiki->setOnline(!$wiki->getOnline());
+
+        $em->flush();
+
+        return $this->redirectToRoute('admin_wiki_index');
     }
 }

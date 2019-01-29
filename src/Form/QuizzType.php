@@ -2,18 +2,17 @@
 
 namespace App\Form;
 
-use App\Entity\Wiki;
+use App\Entity\Quizz;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class WikiType extends AbstractType
+class QuizzType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('body')
+            ->add('title')
             ->add('tags')
         ;
     }
@@ -21,7 +20,7 @@ class WikiType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Wiki::class,
+            'data_class' => Quizz::class,
         ]);
     }
 }

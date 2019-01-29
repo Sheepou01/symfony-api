@@ -4,6 +4,7 @@ namespace App\Controller\Admin;
 
 use App\Entity\Quizz;
 use App\Form\QuizzType;
+use App\Form\QuestionType;
 use App\Repository\QuizzRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,10 +60,12 @@ class QuizzController extends AbstractController
     {
         $quizz->setUpdatedAt(new \DateTime());
 
-        $form = $this->createForm(QuizzType::class, $quizz);
-        $form->handleRequest($request);
+        $quizzForm = $this->createForm(QuizzType::class, $quizz);
+        $quizzForm->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        $questionForm = $this->createForm(QuestionType::class);
+
+        if ($quizzForm->isSubmitted() && $quizzForm->isValid()) {
 
             $em->persist($quizz);
             $em->flush();
@@ -71,7 +74,8 @@ class QuizzController extends AbstractController
         }
 
         return $this->render('admin/quizz/edit.html.twig', [
-            'form' => $form->createView(),
+            'quizz_form' => $quizzForm->createView(),
+            'question_form' => $questionForm->createView(),
             'quizz' => $quizz
         ]);
     }

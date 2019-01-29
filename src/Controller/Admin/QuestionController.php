@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use App\Form\AnswerType;
 
 class QuestionController extends AbstractController
 {
@@ -53,10 +54,12 @@ class QuestionController extends AbstractController
     {
         $question->setUpdatedAt(new \DateTime());
         
-        $form = $this->createForm(QuestionType::class, $question);
-        $form->handleRequest($request);
+        $questionForm = $this->createForm(QuestionType::class, $question);
+        $questionForm->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
+        $answerForm = $this->createForm(AnswerType::class);
+
+        if($questionForm->isSubmitted() && $questionForm->isValid()) {
             
             $em->flush();
 
@@ -68,7 +71,8 @@ class QuestionController extends AbstractController
         return$this->render('admin/question/edit.html.twig', [
             'quizz' => $quizz,
             'question' => $question,
-            'form' => $form->createView()
+            'question_form' => $questionForm->createView(),
+            'answer_form' => $answerForm->createView()
         ]);
     }
 

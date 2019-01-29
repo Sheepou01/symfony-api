@@ -41,6 +41,11 @@ class Answer
      */
     private $question;
 
+    public function __construct()
+    {
+        $this->correct = false;
+    }
+
     public function getId(): ?int
     {
         return $this->id;

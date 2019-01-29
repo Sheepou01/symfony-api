@@ -27,6 +27,7 @@ class AnswerController extends AbstractController
         $answer = new Answer();
         $answer->setCreatedAt(new \DateTime());
         $answer->setQuestion($question);
+    
 
         $form = $this->createForm(AnswerType::class, $answer);
         $form->handleRequest($request);

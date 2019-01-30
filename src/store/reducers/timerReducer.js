@@ -45,9 +45,12 @@ const reducer = (state = initialState, action = {}) => {
         // timerOff: false,
       };
     case END_TIMER:
-      return {
-        ...state,
-      };
+      if (state.seconds === 0) {
+        return {
+          ...state,
+        };
+      }
+      break;
     case CLICK_END_VIEW:
       return {
         ...state,
@@ -64,6 +67,9 @@ const reducer = (state = initialState, action = {}) => {
 
 export const startTimer = () => ({
   type: START_TIMER,
+});
+export const endTimer = () => ({
+  type: END_TIMER,
 });
 export const tick = () => ({
   type: TICK,

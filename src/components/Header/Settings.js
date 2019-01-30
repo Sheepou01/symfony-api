@@ -31,16 +31,16 @@ const Settings = ({ menuDisplay, menuOppenned }) => {
       <span>
         <ul className="sub-menu ">
           <li>
+            <NavLink to="/">Accueil</NavLink>
+          </li>
+          <li>
             <NavLink to="/mon-profil">Mon Profil</NavLink>
           </li>
           <li>
-            <NavLink to="/mon-profil">Nous contacter</NavLink>
+            <NavLink to="">Classements</NavLink>
           </li>
           <li>
-            <NavLink to="/mon-profil">Aide</NavLink>
-          </li>
-          <li>
-            <NavLink to="/mon-profil">Classements</NavLink>
+            <NavLink to="/">Deconnexion</NavLink>
           </li>
         </ul>
       </span>

@@ -1,3 +1,6 @@
+@import 'src/styles/vars';
+
+
 #navigation {
   display : flex;
   flex-direction: column;
@@ -5,82 +8,127 @@
   align-items: center;
   margin: 1em auto 18em;
   width : 70%;
-  
+
+}
+div #navigation{
+  &-card {
+    &-game, &-quiz, &-anecdote {
+      border: 10px solid $orange;
+    }
+  }
+  &-content {
+    &-game, &-quiz, &-anecdote {
+      background: $orange;
+      text-align: center;
+      text-transform: uppercase;
+    }
+  }
 }
 
-.bigButton {
-  border : solid white 5px;
-  padding: 2em 5em;
-  margin-left: 1em;
-  border-radius: 15px;
-  color : white;
-  background-color: #fdc841;
-  text-transform: uppercase;
-  font-weight: bold;
-  width : 15%;
-  text-align: center;
-  text-shadow: black 0.1em 0.1em 0.2em;
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 13em;
+  border-radius: .28571429rem;
+  box-shadow: 0 1px 3px 0 #d4d4d5, 0 0 0 1px #d4d4d5;
+  border: 10px solid $orange;
+  &-image{
+    height: 10em;
+  }
+  &-banner{
+    background: $orange;
+    text-align: center;
+    text-transform: uppercase;
+    border-top: 1px solid rgba(34, 36, 38, 0.1);
+    padding: 1em 1em;
+  }
+  &-title{
+    display: block;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    color:white;
+  }
 }
 
-// Cards Carousel
+@media screen and (max-width: 426px)  {
+  .card {
+    border: none;
+    margin: 3em;
+    &-image{
+      display: none
+    }
+    &-banner{
+      background: $orange;
+      text-align: center;
+      text-transform: uppercase;
+      border-top: none;
+      padding: 1em 1em;
+    }
+    &-title{
+      display: block;
+      font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+      color:white;
+    }
+  }
+}
+
+
+// Carousel
 // ----------------------------------------------
+@media screen and (min-width: 426px)  {
+  .icon-cards {
+    position: relative;
+    width: 13em;
+    height: 14em;
+    max-width: 380px;
+    max-height: 250px;
+    margin: 0;
+    color: white;
+    font-size: 2em;
+    perspective: 1000px;
 
-.icon-cards {
-  position: relative;
-	width: 60vw;
-	height: 10em;
-  max-width: 380px;
-  max-height: 250px;
-  margin: 0;
-  color: white;
-  font-size: 2em;
-	perspective: 1000px;
+    // This is the element that rotates with the animation
 
-	// This is the element that rotates with the animation
+    &__content {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transform: translateZ(-30vw) rotateY(0);
+      animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    }
 
-	&__content {
-		position: absolute;
-		width: 100%;
-		height: 100%;
-		transform-style: preserve-3d;
-		transform: translateZ(-30vw) rotateY(0);
-		animation: carousel 10s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
-	}
+    // Individual cards
 
-	// Individual cards
+    &__item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 13em;
+      height: 15em;
+      max-width: 450px;
+      max-height: 410px;
+      // box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 6px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-	&__item {
-		position: absolute;
-    top: 0;
-    left: 0;
-    width: 60vw;
-    height: 70vw;
-    max-width: 450px;
-    max-height: 410px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-    border-radius: 6px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      &:nth-child(1) {
+        color: $orange;
+        transform: rotateY(0) translateZ(35vw);
+      }
 
-		&:nth-child(1) {
-      background: orange;
-      color: white;
-			transform: rotateY(0) translateZ(35vw);
-		}
+      &:nth-child(2) {
+        color: white;
+        transform: rotateY(120deg) translateZ(35vw);
+      }
 
-		&:nth-child(2) {
-      background: orange;
-      color: white;
-			transform: rotateY(120deg) translateZ(35vw);
-		}
-
-		&:nth-child(3) {
-      background: orange;      
-      color: white;
-			transform: rotateY(240deg) translateZ(35vw);
-		}
-	}
+      &:nth-child(3) {    
+        color: white;
+        transform: rotateY(240deg) translateZ(35vw);
+      }
+    }
+  }
 }
 
 // Carousel animation

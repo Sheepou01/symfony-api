@@ -76,7 +76,7 @@ const Login = ({
             type="password"
             placeholder="Mot de Passe"
           />
-          <Button>Envoyer</Button>
+          <Button className="login-button">Envoyer</Button>
         </form>
       </div>
 

@@ -12,9 +12,15 @@ class GameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('content')
-            ->add('help')
+            ->add('name', null, [
+                'label' => 'Nom du jeu'
+            ])
+            ->add('content', null, [
+                'label' => 'Contenu'
+            ])
+            ->add('help', null, [
+                'label' => 'Aide'
+            ])
         ;
     }
 

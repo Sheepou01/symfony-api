@@ -12,9 +12,17 @@ class WikiType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('body')
-            ->add('tags')
+            ->add('name', null, [
+                'label' => 'Titre'
+            ])
+            ->add('body', null, [
+                'label' => 'Contenu'
+            ])
+            ->add('tags', null, [
+                'label' => 'Thème(s)',
+                'expanded' => true,
+                'multiple' => true
+            ])
         ;
     }
 

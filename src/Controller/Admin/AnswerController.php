@@ -75,7 +75,7 @@ class AnswerController extends AbstractController
         return $this->render('admin/answer/edit.html.twig', [
             'question' => $question,
             'answer' => $answer,
-            'form' => $form->createView()
+            'question_form' => $form->createView()
         ]);
     }
 

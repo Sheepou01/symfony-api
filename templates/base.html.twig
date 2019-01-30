@@ -11,14 +11,26 @@
     <body>
         <header>
             <nav class="navbar navbar-dark bg-dark justify-content-center">
-                <a class="nav-link" href="{{ path('admin_user_index') }}">Membres</a>
-                <a class="nav-link" href="{{ path('admin_game_index') }}">Jeux</a>
-                <a class="nav-link" href="{{ path('admin_wiki_index') }}">Fiches wiki</a>
-                <a class="nav-link" href="{{ path('admin_quizz_index') }}">Quizz</a>
-                <a class="nav-link" href="{{ path('admin_tag_index') }}">Thèmes</a>
+                <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
+                <a class="nav-link text-light" href="{{ path('admin_game_index') }}">Jeux</a>
+                <a class="nav-link text-light" href="{{ path('admin_wiki_index') }}">Fiches wiki</a>
+                <a class="nav-link text-light" href="{{ path('admin_quizz_index') }}">Quizz</a>
+                <a class="nav-link text-light" href="{{ path('admin_tag_index') }}">Thèmes</a>
             </nav>
         </header>
-        {% block body %}{% endblock %}
+        <main>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div class="col-8 text-center">
+                        {% block body %}{% endblock %}
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="bg-dark p-5 mt-5">
+            <p class="text-center text-light">Made with &#9829; by 5MAP Team</p>
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

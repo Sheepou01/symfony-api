@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello GameController!{% endblock %}
+{% block title %}Administration 5MAP{% endblock %}
 
 {% block body %}
-<h2>Administration des jeux</h2>
-<table class="table">
-        <thead>
+<h2 class="my-4">Administration des jeux</h2>
+
+<table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Nom</th>
@@ -39,5 +40,5 @@
         {% endfor %}
         </tbody>
     </table>
-<a class="btn btn-success" href="{{ path('admin_game_new') }}">Nouveau</a>
-{% endblock %}
+<a class="btn btn-success" href="{{ path('admin_game_new') }}">Nouveau jeu</a>
+{% endblock %} 

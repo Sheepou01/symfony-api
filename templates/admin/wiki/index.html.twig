@@ -1,12 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Wiki index{% endblock %}
+{% block title %}Administration 5MAP{% endblock %}
 
 {% block body %}
-    <h1>Wiki index</h1>
+    <h2 class="my-4">Administration des fiches wiki</h2>
 
-    <table class="table">
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
@@ -42,5 +42,5 @@
         </tbody>
     </table>
 
-    <a class="btn btn-success" href="{{ path('admin_wiki_new') }}">Nouveau</a>
+    <a class="btn btn-success" href="{{ path('admin_wiki_new') }}">Nouvelle fiche</a>
 {% endblock %}

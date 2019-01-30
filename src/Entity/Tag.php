@@ -58,6 +58,7 @@ class Tag
         $this->users = new ArrayCollection();
         $this->quizz = new ArrayCollection();
         $this->wiki = new ArrayCollection();
+        $this->favorite = false;
     }
 
     public function getId(): ?int

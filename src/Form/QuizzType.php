@@ -12,8 +12,14 @@ class QuizzType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title')
-            ->add('tags')
+            ->add('title', null, [
+                'label' => 'Titre'
+            ])
+            ->add('tags', null, [
+                'label' => 'Thème(s)',
+                'expanded' => true,
+                'multiple' => true
+            ])
         ;
     }
 

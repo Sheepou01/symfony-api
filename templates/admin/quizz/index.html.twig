@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello QuizzController!{% endblock %}
+{% block title %}Administration 5MAP{% endblock %}
 
 {% block body %}
-<h2>Administration des quizz</h2>
-<table class="table">
-        <thead>
+<h2 class="my-4">Administration des quizz</h2>
+
+<table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
@@ -40,5 +41,5 @@
         </tbody>
     </table>
 
-<a class="btn btn-success" href="{{ path('admin_quizz_new') }}">Nouveau</a>
+<a class="btn btn-success" href="{{ path('admin_quizz_new') }}">Nouveau quizz</a>
 {% endblock %}

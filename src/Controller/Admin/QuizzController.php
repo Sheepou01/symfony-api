@@ -47,7 +47,7 @@ class QuizzController extends AbstractController
 
 
         return $this->render('admin/quizz/new.html.twig', [
-            'form' => $form->createView(),
+            'quizz_form' => $form->createView(),
             'quizz' => $quizz
         ]);
 

@@ -13,7 +13,9 @@ class QuestionType extends AbstractType
     {
         $builder
             
-            ->add('text')
+            ->add('text', null, [
+                'label' => 'Intitulé'
+            ])
             
         ;
     }

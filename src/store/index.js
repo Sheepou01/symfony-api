@@ -28,7 +28,7 @@ const appliedMiddlewares = applyMiddleware(
 
 // onglet redux dans le navigateur
 const devTools = [
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  window.REDUX_DEVTOOLS_EXTENSION ? window.REDUX_DEVTOOLS_EXTENSION() : f => f,
 ];
 
 // compose des middlewares et devtools

@@ -6,9 +6,6 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
-
-
-
 /**
  * Local import
  */
@@ -16,9 +13,8 @@ import classnames from 'classnames';
 /**
  * Code
  */
-const Settings = ({ menuDisplay, menuOppenned }) => {  
-
-  // Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
+const Settings = ({ menuDisplay, menuOppenned }) => {
+// Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
   const handleStopPropagation = () => {
     menuDisplay();
   };

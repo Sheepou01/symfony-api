@@ -13,6 +13,7 @@ const timerMiddleware = store => next => (action) => {
   const { seconds } = store.getState().timerReducer;
 
   switch (action.type) {
+
     case START_TIMER:
       clearInterval(timer);
       timer = setInterval(() => store.dispatch(tick()), 1000);

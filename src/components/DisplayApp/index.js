@@ -11,9 +11,8 @@ import { Route, Switch } from 'react-router-dom';
 
 // import Header from 'src/components/Header';
 
-// import WelcomeMessage from 'src/components/WelcomeMessage';
-// import Navigation from 'src/components/Navigation';
-// import Timer from 'src/containers/Timer';
+
+import Timer from 'src/containers/Timer';
 import Game from 'src/components/Game';
 import Anecdotes from 'src/containers/Anecdotes';
 // import Footer from 'src/components/Footer';
@@ -23,7 +22,6 @@ import Quiz from 'src/components/Quiz';
 import Mentions from 'src/components/Mentions';
 import Help from 'src/components/Help';
 import NotFound from 'src/components/NotFound';
-// import Ending from 'src/components/Ending';
 import './style.scss';
 
 

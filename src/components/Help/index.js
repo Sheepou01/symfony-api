@@ -1,6 +1,4 @@
-/**</p>
- * Npm import
- */
+
 import React from 'react';
 
 /**
@@ -13,11 +11,11 @@ import './style.scss';
  */
 const Help = () => (
   <div id="help-view">
-  <h1>Help ?</h1>
-  <p className='help'>
-  Demande à Pierric !
-  </p>
-</div>
+    <h1>Help ?</h1>
+    <p className="help">
+    Demande à Pierric !
+    </p>
+  </div>
 
 );
 

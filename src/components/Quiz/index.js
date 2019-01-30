@@ -1,9 +1,9 @@
 import React from 'react';
-import { Icon } from 'semantic-ui-react';
+import { Icon, Button } from 'semantic-ui-react';
 /**
  * Local import
  */
-import Next from 'src/components/Next';
+// import Next from 'src/components/Next';
 import './style.scss';
 
 /**
@@ -19,11 +19,11 @@ const Quizz = () => (
         <div className="quiz-question">
           <h2>On y arrive pas à cause de :</h2>
           <div className="quiz-answers">
-          <ul>
-            <li>Jérémie <input type="checkbox"></input></li>
-            <li>Jérémie <input type="checkbox"></input></li>
-            <li>Jérémie <input type="checkbox"></input></li>
-          </ul>
+            <ul>
+              <li>Jérémie <input type="checkbox"></input></li>
+              <li>Jérémie <input type="checkbox"></input></li>
+              <li>Jérémie <input type="checkbox"></input></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -32,11 +32,11 @@ const Quizz = () => (
         <div className="quiz-question">
           <h2>css est dégueu à cause de : </h2>
           <div className="quiz-answers">
-          <ul>
-            <li>Jérémie <input type="checkbox"></input></li>
-            <li>Jérémie <input type="checkbox"></input></li>
-            <li>Jérémie <input type="checkbox"></input></li>
-          </ul>
+            <ul>
+              <li>Jérémie <input type="checkbox"></input></li>
+              <li>Jérémie <input type="checkbox"></input></li>
+              <li>Jérémie <input type="checkbox"></input></li>
+            </ul>
           </div>
         </div>
       </div>
@@ -45,18 +45,18 @@ const Quizz = () => (
         <div className="quiz-question">
           <h2>Qui sauvera les meubles ?</h2>
           <div className="quiz-answers">
-          <ul>
-            <li>Laurent <input type="checkbox"></input></li>
-            <li>Laurent <input type="checkbox"></input></li>
-            <li>Laurent <input type="checkbox"></input></li>
-          </ul>
+            <ul>
+              <li>Laurent <input type="checkbox"></input></li>
+              <li>Laurent <input type="checkbox"></input></li>
+              <li>Laurent <input type="checkbox"></input></li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
 
     <div id="check-icon">
-      <button><Icon name='check' size='huge' /></button>
+      <Button><Icon name="check" size="huge" /></Button>
     </div>
   </div>
 );

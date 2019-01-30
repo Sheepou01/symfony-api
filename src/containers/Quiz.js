@@ -29,7 +29,6 @@ const mapStateToProps = null;
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = {};
-;
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
 const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);

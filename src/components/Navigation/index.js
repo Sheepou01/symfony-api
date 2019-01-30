@@ -9,14 +9,14 @@ import PropTypes from 'prop-types';
  */
 
 import { NavLink } from 'react-router-dom';
-import { Card, Icon, Image } from 'semantic-ui-react';
+// import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';
 
 /**
  * Code
  */
 
-const Navigation = ({ decrementTimer, timerOff, gameOver, randomTopito }) => {
+const Navigation = ({ decrementTimer, timerOff }) => {
   const handleStartClick = () => {
     if (timerOff) {
       setInterval(decrementTimer, 1000);
@@ -30,7 +30,7 @@ const Navigation = ({ decrementTimer, timerOff, gameOver, randomTopito }) => {
   //   }
   // };
 
-  //Fonction randomisation au clic
+  // Fonction randomisation au clic
 
   return (
     <div id="navigation">
@@ -56,7 +56,7 @@ const Navigation = ({ decrementTimer, timerOff, gameOver, randomTopito }) => {
 Navigation.propTypes = {
   decrementTimer: PropTypes.func.isRequired,
   timerOff: PropTypes.bool.isRequired,
-  gameOver: PropTypes.bool.isRequired,
+  // gameOver: PropTypes.bool.isRequired,
 };
 
 

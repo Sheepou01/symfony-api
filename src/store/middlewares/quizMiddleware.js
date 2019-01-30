@@ -2,7 +2,7 @@
  * Import
  */
 import axios from 'axios';
-import { QUIZ } from 'src/store/reducers/quizReducer.js';
+import { QUIZ } from 'src/store/reducers/quizReducer';
 
 /**
 * Code
@@ -13,14 +13,14 @@ const quizMiddleware = store => next => (action) => {
   switch (action.type) {
     case QUIZ:
       axios.get(urlQuiz)
-         .then(function (response) {
+        .then(function (response) {
            // handle success
           console.log(response);
          })
-         .catch(function (error) {
+        .catch(function (error) {
            // handle error
            console.log(error);
-         })
+         });
       break;
     default:
       next(action);

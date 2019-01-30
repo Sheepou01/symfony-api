@@ -2,7 +2,7 @@
  * Initial State
  */
 const initialState = {
-  seconds: 10,
+  seconds: 420,
   timerOff: true,
   gameOver: false,
 };

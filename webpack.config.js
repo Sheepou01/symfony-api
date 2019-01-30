@@ -101,7 +101,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'src/styles/assets/',
+              outputPath: 'assets/',
             },
           },
         ],

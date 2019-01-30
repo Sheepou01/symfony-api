@@ -37,22 +37,6 @@ class FOSUserController extends FOSRestController{
     }
 
     /**
-<<<<<<< HEAD
-      * @Rest\Post("/api/signin")
-      * @Rest\View(StatusCode=202)
-      * @Rest\Get("/api/signin")
-      */
-     public function signin(AuthenticationUtils $authenticationUtils, Request $request){
-          // get the login error if there is one
-         
-         
-          $error = $authenticationUtils->getLastAuthenticationError();
-          // last username entered by the user
-          $lastUsername = $authenticationUtils->getLastUsername();
-         
-          return new Response('Connexion effectuée');
-     }
-=======
      * @Rest\Post("/api/signin")
      * @Rest\Get("/api/signin")
      */
@@ -68,5 +52,4 @@ class FOSUserController extends FOSRestController{
     /**
      * @Rest\
      */
->>>>>>> ca47c619f4d88e46a3d089f2b467256fc41cf30e
 }

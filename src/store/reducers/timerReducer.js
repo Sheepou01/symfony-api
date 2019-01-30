@@ -55,6 +55,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         gameOver: false,
+        timerOff: true,
+        seconds: initialState.seconds,
       };
     default:
       return state;

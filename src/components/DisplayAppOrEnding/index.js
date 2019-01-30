@@ -23,8 +23,8 @@ const DisplayAppOrEnding = ({ gameOver }) => {
     <div>
       <Header />
       <Timer />
-      <DisplayApp />
-      {/* {gameOver ? <Ending /> : <DisplayApp /> } */}
+      {/* <DisplayApp /> */}
+      {gameOver ? <Ending /> : <DisplayApp /> }
       <Footer />
     </div>
   );

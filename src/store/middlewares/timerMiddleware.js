@@ -17,14 +17,11 @@ const timerMiddleware = store => next => (action) => {
     case START_TIMER:
       clearInterval(timer);
       timer = setInterval(() => store.dispatch(tick()), 1000);
-      if (seconds === 0) {
-        console.log('coucou');
-      }
       next(action);
       break;
     case END_TIMER:
-      clearInterval(timer);      
-
+      console.log('coucou endTimer');
+      clearInterval(timer);
       next(action);
       break;
     default:

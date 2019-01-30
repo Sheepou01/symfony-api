@@ -1,6 +1,9 @@
+@import 'src/styles/vars';
+
+
 #footer {
   background-color: black;
-  border-top: 3px solid #4B8DF0;
+  border-top: 3px solid $blue;
   padding: 1em;
   font-size: 1.2em;
   height: 10em;
@@ -28,7 +31,7 @@
 
   &-social-networks {
     grid-column: 3;
-    grid-row-start: 3;
+    grid-row-start: 2;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -56,6 +59,23 @@
   flex-direction: column;
   align-items: center;
   color: black;
+}
+
+@media screen and (max-width: 425px)  {
+  #footer {
+    font-size: 0.8em;
+
+    &-legal-mentions {
+      grid-column: 1;
+      width: 10em
+    } 
+
+    &-help{
+      grid-column: 5;
+      width: 0em;
+    }
+  
+  }
 }
 
 

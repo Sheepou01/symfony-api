@@ -1,34 +1,9 @@
 #ending-view{
   display:flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-end center;
-  margin-bottom : 10em;
-
+  justify-content: center;
+  margin: 10em;
+  font-size: 1.5em;
 }
 
 
 
-
-
-#first-message {
-  margin : 7em auto;
-  border : solid white 5px;
-  border-radius: 15px;
-  background-color: #fdc841;
-  text-transform: uppercase;
-  width : 30%;
-  padding : 1em;
-  text-align: center;
-}
-
-#second-message {
-  margin : 7em auto;
-  border : solid white 5px;
-  border-radius: 15px;
-  background-color: #fdc841;
-  text-transform: uppercase;
-  width : 30%;
-  padding : 1em;
-  text-align: center;
-}

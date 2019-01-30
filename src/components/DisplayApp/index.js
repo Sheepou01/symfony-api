@@ -9,13 +9,13 @@ import { Route, Switch } from 'react-router-dom';
  * Local import
  */
 
-import Header from 'src/components/Header';
+// import Header from 'src/components/Header';
 
 
 import Timer from 'src/containers/Timer';
 import Game from 'src/components/Game';
 import Anecdotes from 'src/containers/Anecdotes';
-import Footer from 'src/components/Footer';
+// import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
 import Quiz from 'src/components/Quiz';
@@ -30,8 +30,6 @@ import './style.scss';
  */
 const DisplayApp = () => (
   <div id="app">
-    <Header />
-    <Timer />
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/mon-profil" component={Login} />
@@ -42,7 +40,6 @@ const DisplayApp = () => (
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />
     </Switch>
-    <Footer />
   </div>
 );
 

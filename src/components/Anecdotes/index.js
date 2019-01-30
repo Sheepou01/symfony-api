@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Loader } from 'semantic-ui-react';
 import ReactHtmlParser from 'react-html-parser';
+
 /**
  * Local import
  */
@@ -31,6 +32,7 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
             <li className="Date">{created_at}</li>
             <li className="source"> source : http://www.topito.com/top-20-des-phrases-cultes-de-nos-entraineurs-de-rugby </li>
           </ul>
+
           <p className="description">
             { ReactHtmlParser(body) }
           </p>
@@ -39,7 +41,6 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
       </div>
     );
   }
-
   return <div><h2><Loader active inline="centered" /></h2></div>;
 };
 

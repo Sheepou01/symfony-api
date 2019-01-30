@@ -2,18 +2,14 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
  */
-import Navigation from 'src/components/Navigation';
+import Ending from 'src/components/Ending';
 
 // Action Creators
-
-import { startTimer } from 'src/store/reducers/timerReducer';
-
-
+import { clickEndView } from 'src/store/reducers/timerReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -24,8 +20,6 @@ import { startTimer } from 'src/store/reducers/timerReducer';
  */
 const mapStateToProps = state => ({
   // J'utilise le state de mon timerReducer
-  seconds: state.timerReducer.seconds,
-  timerOff: state.timerReducer.timerOff,
   gameOver: state.timerReducer.gameOver,
 });
 
@@ -37,21 +31,17 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  startTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-
-
-    dispatch(startTimer());
+  clickEndView: () => {
+    dispatch(clickEndView());
   },
-
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(Navigation);
+const EndingContainer = connect(mapStateToProps, mapDispatchToProps)(Ending);
 
 
 /**
  * Export
  */
-export default withRouter(NavigationContainer);
+export default EndingContainer;

@@ -2,7 +2,7 @@
  * Npm import
  */
 import React from 'react';
-import DisplayApp from 'src/components/DisplayApp';
+import DisplayAppOrEnding from 'src/containers/DisplayAppOrEnding';
 
 /**
  * Local import
@@ -13,7 +13,7 @@ import './app.scss';
 /**
  * Code
  */
-const App = () => <DisplayApp />;
+const App = () => <DisplayAppOrEnding />;
 
 /**
  * Export

@@ -2,6 +2,7 @@
  * Npm import
  */
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
@@ -45,4 +46,4 @@ const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings)
 /**
  * Export
  */
-export default SettingsContainer;
+export default withRouter(SettingsContainer);

@@ -9,6 +9,7 @@ import PropTypes from 'prop-types';
  */
 
 import { NavLink } from 'react-router-dom';
+import facts from 'src/styles/assets/facts.png';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';
 
@@ -40,7 +41,7 @@ const Navigation = ({ startTimer, timerOff, gameOver }) => {
           <div className="icon-cards__content step-animation" onClick={handleStartClick}>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/jeu">
               <div className="card">
-                <img src="src/assets/facts.png" alt="" className="card-image" />
+                <img src={facts} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Games</div>
                 </div>
@@ -48,7 +49,7 @@ const Navigation = ({ startTimer, timerOff, gameOver }) => {
             </NavLink>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz">
               <div className="card">
-                <img src="src/assets/facts.png" alt="" className="card-image" />
+                <img src={facts} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Quiz</div>
                 </div>
@@ -56,7 +57,7 @@ const Navigation = ({ startTimer, timerOff, gameOver }) => {
             </NavLink>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote">
               <div className="card">
-                <img src="src/assets/facts.png" alt="" className="card-image" />
+                <img src={facts} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Anecdotes</div>
                 </div>

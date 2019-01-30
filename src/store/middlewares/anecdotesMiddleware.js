@@ -2,7 +2,7 @@
  * Import
  */
 import axios from 'axios';
-import { TOPITO,RECEIVED_TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer.js';
+import { TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer';
 
 /**
 * Code
@@ -13,15 +13,16 @@ const anecdotesMiddleware = store => next => (action) => {
   switch (action.type) {
     case TOPITO:
       axios.get(urlWiki)
-         .then(function (response) {
-           // handle success
-          //console.log(response);
-          store.dispatch(receivedTopito(response.data));
-         })
-         .catch(function (error) {
-           // handle error
-           console.log(error);
-         })
+        .then(function (response) {
+        // handle success
+        //console.log(response);
+        store.dispatch(receivedTopito(response.data));
+         //store.dispatch(randomTopito(response.data));
+        })
+        .catch(function (error) {
+        // handle error
+          console.log(error);
+        });
       break;
     default:
       next(action);

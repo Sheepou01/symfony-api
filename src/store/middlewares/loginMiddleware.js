@@ -32,8 +32,8 @@ const loginMiddleware = store => next => (action) => {
         console.log(error);
       });
 
-      //Conection axios pour obtenir les wikis:
-      //axios.get(urlWiki)
+      // Conection axios pour obtenir les wikis:
+      // axios.get(urlWiki)
       //   .then(function (response) {
       //     // handle success
       //     console.log(response.data);

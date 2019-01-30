@@ -17,11 +17,11 @@ const Snake = () => {
     var heightInBlocks = canvasHeight / blockSize;
     var score;
   
-  
     init();
     // methode
     function init() {
       var canvas = document.createElement("canvas"); // je donne une taille (on ne peut mettre qu'en px à vérifier)
+      //var body = document.getElementById("root");
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
       canvas.style.border = '30px solid green'; // je mets une bordure

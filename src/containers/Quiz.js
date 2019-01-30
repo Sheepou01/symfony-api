@@ -2,17 +2,14 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
  */
-import Navigation from 'src/components/Navigation';
+import Quiz from 'src/components/Quiz';
+
 
 // Action Creators
-
-import { startTimer } from 'src/store/reducers/timerReducer';
-
 
 
 /* === State (données) ===
@@ -22,12 +19,7 @@ import { startTimer } from 'src/store/reducers/timerReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = state => ({
-  // J'utilise le state de mon timerReducer
-  seconds: state.timerReducer.seconds,
-  timerOff: state.timerReducer.timerOff,
-  gameOver: state.timerReducer.gameOver,
-});
+const mapStateToProps = null;
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation
@@ -36,22 +28,12 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = dispatch => ({
-  startTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-
-
-    dispatch(startTimer());
-  },
-
-});
-
+const mapDispatchToProps = {};
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const NavigationContainer = connect(mapStateToProps, mapDispatchToProps)(Navigation);
-
+const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);
 
 /**
  * Export
  */
-export default withRouter(NavigationContainer);
+export default QuizContainer;

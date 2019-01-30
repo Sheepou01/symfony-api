@@ -30,7 +30,7 @@ module.exports = {
       './src/styles/index.scss',
       // JS
       './src/index.js',
-      '.src/styles/assets',
+      './src/styles/assets',
     ],
   },
   // Sortie
@@ -102,7 +102,7 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              outputPath: 'src/styles/assets/',
+              outputPath: 'assets/',
             },
           },
         ],

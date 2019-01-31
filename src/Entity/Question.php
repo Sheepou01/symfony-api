@@ -19,11 +19,6 @@ class Question
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=75)
-     */
-    private $title;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $text;
@@ -56,18 +51,6 @@ class Question
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
     }
 
     public function getText(): ?string

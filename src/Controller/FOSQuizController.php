@@ -2,19 +2,18 @@
 
 namespace App\Controller;
 
-use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainController extends AbstractController
+class FOSQuizController extends AbstractController
 {
     /**
-     * @Rest\GET("/", name="main")
+     * @Route("/quiz", name="quiz")
      */
     public function index()
     {
-        $user = $this->getUser();
-        dd($user);
-        
+        return $this->render('quiz/index.html.twig', [
+            'controller_name' => 'QuizController',
+        ]);
     }
 }

@@ -7,10 +7,10 @@ use App\Repository\WikiRepository;
 use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
-use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\AbstractFOSRestController;
 
 
-class FOSWikiController extends FOSRestController{
+class FOSWikiController extends AbstractFOSRestController{
     /**
      * @GET(
      *  path="/api/wiki",
@@ -21,10 +21,8 @@ class FOSWikiController extends FOSRestController{
     public function showAll(WikiRepository $wikiRepository){
         
         $wikis = $wikiRepository->findBy([
-            'online' => true,            
-        ]);
+            'online' => true]);
+        
         return $wikis;
-        
-        
     }
 }

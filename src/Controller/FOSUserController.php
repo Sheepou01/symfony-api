@@ -43,13 +43,10 @@ class FOSUserController extends FOSRestController{
     public function signin(AuthenticationUtils $authenticationUtils){
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
-        dd($error);
+        // dd($error);
         if($error->getMessage() == 'Bad credentials.'){
             return new Response ('Connexion échouée, erreur identifiant ou mot de passe');
         }
     }
 
-    /**
-     * @Rest\
-     */
-}
+}   

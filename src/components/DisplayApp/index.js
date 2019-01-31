@@ -22,6 +22,7 @@ import Quiz from 'src/components/Quiz';
 import Mentions from 'src/components/Mentions';
 import Help from 'src/components/Help';
 import NotFound from 'src/components/NotFound';
+import UserProfile from 'src/components/UserProfile';
 import './style.scss';
 
 
@@ -36,6 +37,7 @@ const DisplayApp = () => (
       <Route path="/anecdote" component={Anecdotes} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/jeu" component={Game} />
+      <Route path="/user-profile" component={UserProfile} />
       <Route path="/mentions-légales" component={Mentions} />
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />

@@ -1,0 +1,84 @@
+@import 'src/styles/vars';
+
+#profile {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+
+  &-edit, &-themes{
+    margin-bottom: 2em;
+  }
+}
+
+@media screen and (max-width: 425px)  {
+  #profile {  
+    width: 100%;
+    &-edit, &-themes{
+      margin: 2em;
+    }
+  }
+}
+
+.field-input{
+  width: 20em;
+}
+.ui.input {
+  font-size: 1.2em;
+  width: 35%;
+  margin: 0.5em;
+}
+
+@media screen and (max-width: 425px)  {
+  .ui.input {
+    width: 65%;
+    margin: 1em;
+  }
+}
+
+.profile-scores{
+  display: flex;
+  margin-bottom: 5em;
+}
+
+@media screen and (max-width: 425px)  {
+  .profile-scores {
+    display: flex;
+    margin-bottom: 5em;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+.scores {
+  width: 50%;
+  & h3 {
+    font-size: 1.8em;
+  }
+  & ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & li{
+    border: 1px solid $orange;
+    border-radius: 5px;
+    width: 45%;
+    text-align: left;
+    padding: 0.2em;
+    margin: 0.5em;
+  }
+}
+
+@media screen and (max-width: 425px)  {
+  .scores {
+    width: 100%;
+    margin: 1em;  
+    & li{
+      width: 65%;
+    }
+  }
+}
+
+

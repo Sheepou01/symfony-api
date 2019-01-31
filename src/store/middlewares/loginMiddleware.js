@@ -8,9 +8,8 @@ import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT } from 'src/store/reducers/loginRe
 * Code
 */
 const urlSignUp = 'http://92.243.9.56/api/signup';
-const urlSignIn = 'http://92.243.9.56/api/signin';
-// Const pour l'url du wiki
-const urlWiki = 'http://92.243.9.56/api/wiki';
+const urlSignIn = 'http://92.243.9.56/api/login_check';
+// const urlSignIn = 'http://92.243.9.56/api/signin';
 
 const loginMiddleware = store => next => (action) => {
 
@@ -35,13 +34,13 @@ const loginMiddleware = store => next => (action) => {
       break;
     case CONNECT_USER_SUBMIT:
       axios({
-        method: 'post',
+        method: 'get',
         url: urlSignIn,
         data: {
           // Je transmets les infos dynamiquement grâce à l'action CONNECT_USER_SUBMIT
           // Username car contrainte Symfo - connexion
-          _username: action.email,
-          _password: action.password,
+          username: action.email,
+          password: action.password,
         },
       }).then((response) => {
         console.log(response);

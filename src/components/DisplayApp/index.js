@@ -18,7 +18,7 @@ import Anecdotes from 'src/containers/Anecdotes';
 // import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
-import Quiz from 'src/components/Quiz';
+import Quiz from 'src/containers/Quiz';
 import Mentions from 'src/components/Mentions';
 import Help from 'src/components/Help';
 import NotFound from 'src/components/NotFound';

@@ -24,7 +24,6 @@ const mapStateToProps = state => ({
   // J'utilise le state de mon loginReducer
   // Je retourne mon tableau d'objet recu
   topitosList: state.anecdotesReducer.topitosList,
-
   activeTopito: state.anecdotesReducer.activeTopito,
   // Je retourne mon tableau d'index
   // arrayIndexTopito :state.anecdotesReducer.arrayTopito,

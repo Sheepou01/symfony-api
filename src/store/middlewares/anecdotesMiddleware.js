@@ -13,13 +13,13 @@ const anecdotesMiddleware = store => next => (action) => {
   switch (action.type) {
     case TOPITO:
       axios.get(urlWiki)
-        .then(function (response) {
+        .then((response) => {
         // handle success
-        //console.log(response);
-        store.dispatch(receivedTopito(response.data));
-         //store.dispatch(randomTopito(response.data));
+        // console.log(response);
+          store.dispatch(receivedTopito(response.data));
+        // store.dispatch(randomTopito(response.data));
         })
-        .catch(function (error) {
+        .catch((error) => {
         // handle error
           console.log(error);
         });

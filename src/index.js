@@ -12,6 +12,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from 'src/store';
 import App from 'src/components/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
+import { quiz } from 'src/store/reducers/quizReducer';
 /**
  * Render - Rendu d'un composant React dans le DOM
  */
@@ -29,3 +30,4 @@ const target = document.getElementById('root');
 render(rootComponent, target);
 
 store.dispatch(topito());
+store.dispatch(quiz());

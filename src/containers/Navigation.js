@@ -12,6 +12,7 @@ import Navigation from 'src/components/Navigation';
 // Action Creators
 
 import { startTimer } from 'src/store/reducers/timerReducer';
+import { quiz } from 'src/store/reducers/quizReducer';
 
 
 
@@ -39,10 +40,13 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   startTimer: () => {
     // dispatch de mon action creator qui gère les modifs des inputs
-
-
     dispatch(startTimer());
   },
+  quiz: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(quiz());
+  },
+  
 
 });
 

@@ -2,6 +2,7 @@
  * Npm import
  */
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
@@ -19,7 +20,10 @@ import Quiz from 'src/components/Quiz';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  quiz: state.quizReducer.quiz,
+  loading: state.quizReducer.loading,
+});
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation
@@ -36,4 +40,4 @@ const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);
 /**
  * Export
  */
-export default QuizContainer;
+export default withRouter(QuizContainer);

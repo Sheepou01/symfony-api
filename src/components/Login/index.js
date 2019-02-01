@@ -26,6 +26,7 @@ const Login = ({
   inputUserPassword,
   addUser,
   connectUser,
+  setCurrentUser,
 }) => {
 // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
 // à mon conteneur le nom de l'input qui est modifié et sa valeur

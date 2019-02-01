@@ -13,8 +13,6 @@ const urlSignUp = 'http://92.243.9.56/api/signup';
 const urlSignIn = 'http://217.70.191.8/api/login_check';
 const test = 'http://217.70.191.8/api/test';
 
-// const urlSignIn = 'http://92.243.9.56/api/signin';
-
 const loginMiddleware = store => next => (action) => {
 
   switch (action.type) {
@@ -60,6 +58,17 @@ const loginMiddleware = store => next => (action) => {
         setAuthorizationToken(token);
         // J'appelle mon action creator qui va mettre les infos du token dans mon initial state
         store.dispatch(setCurrentUser(jwtDecode(token)));
+        axios({
+          method: 'post',
+          url: test,
+          header: {
+            Authorization: `Bearer${token}`,
+          },
+        }).then((res) => {
+          console.log(res);
+        }).catch((error) => {
+          console.log(error);
+        });
       }).catch((error) => {
         console.log(error);
       });

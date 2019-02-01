@@ -1,7 +1,16 @@
+import isEmpty from 'lodash.isempty';
+
 /**
  * Initial State
  */
 const initialState = {
+  inputPseudo: '',
+  inputEmail: '',
+  inputPassword: '',
+  inputUserEmail: '',
+  inputUserPassword: '',
+  isAuthenticated: false,
+  user: {},
   themes: [
     { key: 1, text: 'Animaux', value: 1 },
     { key: 2, text: 'Cinema', value: 2 },
@@ -13,23 +22,78 @@ const initialState = {
 /**
  * Types
  */
-const USER_FAV_THEME = 'USER';
+const CHANGE_INPUT = 'CHANGE_INPUT';
+export const SIGNUP_USER = 'SIGNUP_USER';
+export const SIGNIN_USER = 'SIGNIN_USER';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const LOGOUT = 'LOGOUT';
+const USER_FAV_THEME = 'USER_FAV_THEME';
+export const LOAD_THEME = 'LOAD_THEME';
 
 /**
  * Traitements
  */
-
 
 /**
  * Reducer
  */
 const reducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    // action qui ne fait rien pour le moment
+    // Action qui permet de mettre dans le state les données qui arrivent de chaque input
+    case CHANGE_INPUT:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
+    // Action qui permet de mettre dans le state les données qui arrivent du formulaire d'inscription
+    case SIGNUP_USER:
+      return {
+        ...state,
+        // Je créé un nouveau state newUser qui est un tableau avec un objet
+        // avec le pseudo, nom et mot de passe
+        newUser: [
+          {
+            pseudo: action.pseudo,
+            email: action.email,
+            password: action.password,
+          },
+        ],
+        // Je remets les inputs à zéro
+        inputPseudo: '',
+        inputEmail: '',
+        inputPassword: '',
+      };
+    // Action qui permet de mettre dans le state les données qui arrivent du formulaire de connexion
+    case SIGNIN_USER:
+      return {
+        ...state,
+        // Je remets les inputs à zéro
+        inputUserEmail: '',
+        inputUserPassword: '',
+      };
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        // utilisation de la dépendance lodash.isempty
+        // check si mon objet action.user n'est pas vide. si il ne l'est pas, ça passe à true
+        // https://lodash.com/docs/4.17.11#isEmpty
+        isAuthenticated: !isEmpty(action.user),
+        user: action.user,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+      };
     case USER_FAV_THEME:
       return {
         ...state,
-        idFavoriteTheme: action.theme,
+        themes: action.themeList,
+        idFavoriteTheme: action.themeId,
+      };
+    case LOAD_THEME:
+      return {
+        ...state,
+        themes: action.themeList,
       };
     default:
       return state;
@@ -39,10 +103,44 @@ const reducer = (state = initialState, action = {}) => {
 /**
  * Action Creators
  */
+export const changeInput = (name, value) => ({
+  type: CHANGE_INPUT,
+  name,
+  value,
+});
 
-export const userFavTheme = theme => ({
+// Je récupère le pseudo, email et mdp depuis le formulaire d'inscription
+export const signUpUser = (pseudo, email, password) => ({
+  type: SIGNUP_USER,
+  pseudo,
+  email,
+  password,
+});
+
+// Je récupère le pseudo, email et mdp depuis le formulaire de connexion
+export const signInUser = (email, password) => ({
+  type: SIGNIN_USER,
+  email,
+  password,
+});
+
+export const setCurrentUser = user => ({
+  type: SET_CURRENT_USER,
+  user,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
+});
+
+export const userFavTheme = themeId => ({
   type: USER_FAV_THEME,
-  theme,
+  themeId,
+});
+
+export const loadTheme = themeList => ({
+  type: LOAD_THEME,
+  themeList,
 });
 
 /**

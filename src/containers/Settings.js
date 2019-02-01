@@ -11,7 +11,7 @@ import Settings from 'src/components/Header/Settings';
 
 // Action Creators
 import { menuDisplay } from 'src/store/reducers/settingsReducer';
-import { logout } from 'src/store/reducers/loginReducer';
+import { logout, loadTheme } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -23,7 +23,7 @@ import { logout } from 'src/store/reducers/loginReducer';
 const mapStateToProps = state => ({
   // J'utilise le state de mon settingsReducer
   menuOppenned: state.settingsReducer.menuOppenned,
-  isAuthenticated: state.loginReducer.isAuthenticated,
+  isAuthenticated: state.userReducer.isAuthenticated,
 });
 
 /* === Actions ===
@@ -40,6 +40,9 @@ const mapDispatchToProps = dispatch => ({
   },
   logout: () => {
     dispatch(logout());
+  },
+  loadTheme: () => {
+    dispatch(loadTheme());
   },
 });
 

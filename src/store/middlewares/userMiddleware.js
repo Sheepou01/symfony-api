@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT, setCurrentUser, LOGOUT } from 'src/store/reducers/loginReducer';
+import { SIGNUP_USER, SIGNIN_USER, setCurrentUser, LOGOUT, LOAD_THEME, loadTheme } from 'src/store/reducers/userReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
 /**
@@ -12,16 +12,18 @@ import setAuthorizationToken from '../setAuthorizationToken';
 const urlSignUp = 'http://92.243.9.56/api/signup';
 const urlSignIn = 'http://217.70.191.8/api/login_check';
 const test = 'http://217.70.191.8/api/test';
+const tag = 'http://217.70.191.8/api/tag';
 
-const loginMiddleware = store => next => (action) => {
+
+const userMiddleware = store => next => (action) => {
 
   switch (action.type) {
-    case NEW_USER_SUBMIT:
+    case SIGNUP_USER:
       // Je veux faire une requête axios
       axios({
         method: 'post',
         url: urlSignUp,
-        // Je transmets les infos dynamiquement grâce à l'action NEW_USER_SUBMIT
+        // Je transmets les infos dynamiquement grâce à l'action SIGNUP_USER
         data: {
           username: action.pseudo,
           email: action.email,
@@ -34,12 +36,12 @@ const loginMiddleware = store => next => (action) => {
       });
       next(action);
       break;
-    case CONNECT_USER_SUBMIT:
+    case SIGNIN_USER:
       axios({
         method: 'post',
         url: urlSignIn,
         data: {
-          // Je transmets les infos dynamiquement grâce à l'action CONNECT_USER_SUBMIT
+          // Je transmets les infos dynamiquement grâce à l'action SIGNIN_USER
           // action email et action.password viennent de mon action qui prennent les valeurs enregistrées dans mes inputs
           // Username car contrainte Symfo - connexion
           username: action.email,
@@ -83,9 +85,20 @@ const loginMiddleware = store => next => (action) => {
       store.dispatch(setCurrentUser({}));
       next(action);
       break;
+    case LOAD_THEME:
+      axios({
+        method: 'get',
+        url: tag,
+      }).then((response) => {
+        store.dispatch(loadTheme(response.data));
+      }).catch((error) => {
+        console.log(error);
+      });
+      next(action);
+      break;
     default:
       next(action);
   }
 };
 
-export default loginMiddleware;
+export default userMiddleware;

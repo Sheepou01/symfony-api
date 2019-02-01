@@ -14,7 +14,7 @@ import App from 'src/components/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';
-import { setCurrentUser } from './store/reducers/loginReducer';
+import { setCurrentUser } from './store/reducers/userReducer';
 /**
  * Render - Rendu d'un composant React dans le DOM
  */

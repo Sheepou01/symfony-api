@@ -25,7 +25,7 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
   return (
     <div id="profile">
       <div id="profile-edit">
-        <h2>Tu veux modifier quelque chose</h2>
+        <h2>Tu veux modifier quelque chose?</h2>
         <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
@@ -57,34 +57,13 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
           <Button icon="check" />
         </form>
       </div>
-      <div id="profile-themes">
-        <h2>Tes thèmes préférés?</h2>
-        <form>
-          <select name="" id="">
-            <option value="">Choisi un thème</option>
-            {themes.map(theme => <option value={theme.value}>{theme.text}</option>)}
-          </select>
-        </form>
-        <ThemeList userFavTheme={userFavTheme} themes={themes} idFavoriteTheme={idFavoriteTheme} />
-        <ThemeList userFavTheme={userFavTheme} themes={themes} idFavoriteTheme={idFavoriteTheme} />
-        <form>
-          <Field
-            // handleInputChange={handleInputChange}
-            // value={inputPassword}
-            name="inputTheme2"
-            type="text"
-            placeholder="Thème n°2"
-          />
-        </form>
-        <form>
-          <Field
-            // handleInputChange={handleInputChange}
-            // value={inputPassword}
-            name="inputTheme3"
-            type="text"
-            placeholder="Thème n°3"
-          />
-        </form>
+      <div id="profile-theme">
+        <h2>Ton thème préféré?</h2>
+        <ThemeList
+          userFavTheme={userFavTheme}
+          themes={themes}
+          idFavoriteTheme={idFavoriteTheme}
+        />
       </div>
       <h2>Tes scores</h2>
       <div className="profile-scores">

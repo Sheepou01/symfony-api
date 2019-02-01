@@ -31,8 +31,8 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  userFavTheme: (theme) => {
-    dispatch(userFavTheme(theme));
+  userFavTheme: (themeId) => {
+    dispatch(userFavTheme(themeId));
   },
 });
 

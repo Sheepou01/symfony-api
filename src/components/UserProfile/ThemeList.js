@@ -1,5 +1,6 @@
 import React from 'react';
-import { Dropdown, Grid, Segment } from 'semantic-ui-react';
+import PropTypes from 'prop-types';
+import { Dropdown, Grid } from 'semantic-ui-react';
 
 
 class ThemeList extends React.Component {
@@ -17,7 +18,7 @@ class ThemeList extends React.Component {
     const { themes } = this.props;
 
     return (
-      <Grid>
+      <Grid className="theme-list">
         <Dropdown
           onChange={this.handleChange}
           options={themes}
@@ -29,5 +30,9 @@ class ThemeList extends React.Component {
     );
   }
 }
+
+ThemeList.propTypes = {
+  userFavTheme: PropTypes.func.isRequired,
+};
 
 export default ThemeList;

@@ -2,7 +2,7 @@
  * Npm import
  */
 import { createStore, applyMiddleware, compose } from 'redux';
-import loginMiddleware from './middlewares/loginMiddleware';
+import userMiddleware from './middlewares/userMiddleware';
 import timerMiddleware from './middlewares/timerMiddleware';
 import anecdotesMiddleware from './middlewares/anecdotesMiddleware';
 import quizMiddleware from './middlewares/quizMiddleware';
@@ -20,7 +20,7 @@ import reducer from './reducers/index';
 
 // ajout du/des middlewares
 const appliedMiddlewares = applyMiddleware(
-  loginMiddleware,
+  userMiddleware,
   timerMiddleware,
   anecdotesMiddleware,
   quizMiddleware,

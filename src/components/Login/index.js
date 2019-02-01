@@ -25,8 +25,7 @@ const Login = ({
   inputUserEmail,
   inputUserPassword,
   addUser,
-  connectUser,
-  setCurrentUser,
+  signInUser,
 }) => {
 // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
 // à mon conteneur le nom de l'input qui est modifié et sa valeur
@@ -46,7 +45,7 @@ const Login = ({
   // lors de la soumission du formulaire de connexion
   const handleSubmitConnexion = (event) => {
     event.preventDefault();
-    connectUser(inputUserEmail, inputUserPassword);
+    signInUser(inputUserEmail, inputUserPassword);
   };
 
   return (
@@ -116,7 +115,7 @@ Login.propTypes = {
   inputUserPassword: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
   addUser: PropTypes.func.isRequired,
-  connectUser: PropTypes.func.isRequired,
+  signInUser: PropTypes.func.isRequired,
 };
 
 

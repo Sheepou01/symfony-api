@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { changeInput, submitNewUser, connectUser, setCurrentUser } from 'src/store/reducers/loginReducer';
+import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -19,12 +19,12 @@ import { changeInput, submitNewUser, connectUser, setCurrentUser } from 'src/sto
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  // J'utilise le state de mon loginReducer
-  inputPseudo: state.loginReducer.inputPseudo,
-  inputEmail: state.loginReducer.inputEmail,
-  inputPassword: state.loginReducer.inputPassword,
-  inputUserEmail: state.loginReducer.inputUserEmail,
-  inputUserPassword: state.loginReducer.inputUserPassword,
+  // J'utilise le state de mon userReducer
+  inputPseudo: state.userReducer.inputPseudo,
+  inputEmail: state.userReducer.inputEmail,
+  inputPassword: state.userReducer.inputPassword,
+  inputUserEmail: state.userReducer.inputUserEmail,
+  inputUserPassword: state.userReducer.inputUserPassword,
 });
 
 /* === Actions ===
@@ -41,11 +41,11 @@ const mapDispatchToProps = dispatch => ({
   },
   addUser: (pseudo, email, password) => {
     // dispatch de mon action creator qui gère la soumission du form d'inscription
-    dispatch(submitNewUser(pseudo, email, password));
+    dispatch(signUpUser(pseudo, email, password));
   },
-  connectUser: (email, password) => {
+  signInUser: (email, password) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(connectUser(email, password));
+    dispatch(signInUser(email, password));
   },
   setCurrentUser: (email, password) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion

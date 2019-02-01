@@ -21,7 +21,7 @@ import { randomTopito } from '../store/reducers/anecdotesReducer';
  */
 // console.log('Middleware' + randomTopito);
 const mapStateToProps = state => ({
-  // J'utilise le state de mon loginReducer
+  // J'utilise le state de mon userReducer
   // Je retourne mon tableau d'objet recu
   topitosList: state.anecdotesReducer.topitosList,
 

@@ -60,14 +60,6 @@ const reducer = (state = initialState, action = {}) => {
     case CONNECT_USER_SUBMIT:
       return {
         ...state,
-        // Je créé un nouveau state connectUser qui est un tableau avec un objet
-        // avec le nom et mot de passe
-        connectUser: [
-          {
-            email: action.email,
-            password: action.password,
-          },
-        ],
         // Je remets les inputs à zéro
         inputUserEmail: '',
         inputUserPassword: '',

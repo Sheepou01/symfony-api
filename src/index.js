@@ -12,7 +12,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from 'src/store';
 import App from 'src/components/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';
 import { setCurrentUser } from './store/reducers/loginReducer';
 /**
@@ -28,7 +28,7 @@ const rootComponent = (
 );
 if (localStorage.jwtToken) {
   setAuthorizationToken(localStorage.jwtToken);
-  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+  store.dispatch(setCurrentUser(jwtDecode(localStorage.jwtToken)));
 }
 
 const target = document.getElementById('root');

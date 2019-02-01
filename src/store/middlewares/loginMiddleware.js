@@ -2,7 +2,7 @@
  * Import
  */
 import axios from 'axios';
-import jwt from 'jsonwebtoken';
+import jwtDecode from 'jwt-decode';
 import { NEW_USER_SUBMIT, CONNECT_USER_SUBMIT, setCurrentUser, LOGOUT } from 'src/store/reducers/loginReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
@@ -59,7 +59,7 @@ const loginMiddleware = store => next => (action) => {
         // notre token dans la propriété Authorization
         setAuthorizationToken(token);
         // J'appelle mon action creator qui va mettre les infos du token dans mon initial state
-        store.dispatch(setCurrentUser(jwt.decode(token)));
+        store.dispatch(setCurrentUser(jwtDecode(token)));
       }).catch((error) => {
         console.log(error);
       });

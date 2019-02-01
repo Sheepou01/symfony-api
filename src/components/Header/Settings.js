@@ -13,15 +13,20 @@ import classnames from 'classnames';
 /**
  * Code
  */
-const Settings = ({ menuDisplay, menuOppenned }) => {
+const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout }) => {
 // Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
-  const handleStopPropagation = () => {
+  const handleMenuDisplay = () => {
     menuDisplay();
+  };
+
+  const handleLogout = (evt) => {
+    evt.preventDefault();
+    logout();
   };
 
   return (
     <div
-      onClick={handleStopPropagation}
+      onClick={handleMenuDisplay}
       className={classnames({
         open: true,
         oppenned: menuOppenned,
@@ -29,20 +34,34 @@ const Settings = ({ menuDisplay, menuOppenned }) => {
     >
       <span className="cls" />
       <span>
-        <ul className="sub-menu ">
-          <li>
-            <NavLink to="/">Accueil</NavLink>
-          </li>
-          <li>
-            <NavLink to="/mon-profil">Mon Profil</NavLink>
-          </li>
-          <li>
-            <NavLink to="">Classements</NavLink>
-          </li>
-          <li>
-            <NavLink to="/">Deconnexion</NavLink>
-          </li>
-        </ul>
+        {!isAuthenticated
+          ? (
+            <ul className="sub-menu ">
+              <li>
+                <NavLink to="/">Accueil</NavLink>
+              </li>
+              <li>
+                <NavLink to="/connexion">Se Connecter</NavLink>
+              </li>
+            </ul>
+          )
+          : (
+            <ul className="sub-menu ">
+              <li>
+                <NavLink to="/">Accueil</NavLink>
+              </li>
+              <li>
+                <NavLink to="/mon-profil">Mon Profil</NavLink>
+              </li>
+              <li>
+                <NavLink to="">Classements</NavLink>
+              </li>
+              <li>
+                <NavLink to="/" onClick={handleLogout}>Deconnexion</NavLink>
+              </li>
+            </ul>
+          )
+        }
       </span>
       <span className="cls" />
     </div>
@@ -52,6 +71,8 @@ const Settings = ({ menuDisplay, menuOppenned }) => {
 Settings.propTypes = {
   menuDisplay: PropTypes.func.isRequired,
   menuOppenned: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  logout: PropTypes.func.isRequired,
 };
 
 

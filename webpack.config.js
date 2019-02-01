@@ -144,4 +144,9 @@ module.exports = {
       chunkFilename: '[id].css',
     }),
   ],
+  // permet d'utiliser le jsonwebtoken, qui rencontre des conflits entre ses dépendances et les browsers
+  node: {
+    net: 'empty',
+    dns: 'empty',
+  }
 };

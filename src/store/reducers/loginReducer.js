@@ -1,3 +1,6 @@
+import isEmpty from 'lodash.isempty';
+import setAuthorizationToken from '../setAuthorizationToken';
+
 /**
  * Initial State
  */
@@ -7,6 +10,8 @@ const initialState = {
   inputPassword: '',
   inputUserEmail: '',
   inputUserPassword: '',
+  isAuthenticated: false,
+  user: {},
 };
 
 /**
@@ -15,6 +20,8 @@ const initialState = {
 const CHANGE_INPUT = 'CHANGE_INPUT';
 export const NEW_USER_SUBMIT = 'NEW_USER_SUBMIT';
 export const CONNECT_USER_SUBMIT = 'CONNECT_USER_SUBMIT';
+const SET_CURRENT_USER = 'SET_CURRENT_USER';
+export const LOGOUT = 'LOGOUT';
 
 /**
  * Traitements
@@ -65,7 +72,16 @@ const reducer = (state = initialState, action = {}) => {
         inputUserEmail: '',
         inputUserPassword: '',
       };
-
+    case SET_CURRENT_USER:
+      return {
+        ...state,
+        isAuthenticated: !isEmpty(action.user),
+        user: action.user,
+      };
+    case LOGOUT:
+      return {
+        ...state,
+      };
     default:
       return state;
   }
@@ -93,6 +109,15 @@ export const connectUser = (email, password) => ({
   type: CONNECT_USER_SUBMIT,
   email,
   password,
+});
+
+export const setCurrentUser = user => ({
+  type: SET_CURRENT_USER,
+  user,
+});
+
+export const logout = () => ({
+  type: LOGOUT,
 });
 
 

@@ -12,6 +12,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from 'src/store';
 import App from 'src/components/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
+import jwt from 'jsonwebtoken';
+import setAuthorizationToken from './store/setAuthorizationToken';
+import { setCurrentUser } from './store/reducers/loginReducer';
 /**
  * Render - Rendu d'un composant React dans le DOM
  */
@@ -23,6 +26,11 @@ const rootComponent = (
     </Router>
   </Provider>
 );
+if (localStorage.jwtToken) {
+  setAuthorizationToken(localStorage.jwtToken);
+  store.dispatch(setCurrentUser(jwt.decode(localStorage.jwtToken)));
+}
+
 const target = document.getElementById('root');
 // 1 - Le composant à rendre
 // 2 - La cible dans le DOM

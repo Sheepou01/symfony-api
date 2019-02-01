@@ -29,6 +29,15 @@
     align-items: center;
   }
 
+  &-joke{
+    color: white;
+    grid-column: 3;
+    grid-row-start: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   &-social-networks {
     grid-column: 3;
     grid-row-start: 2;
@@ -69,6 +78,10 @@
       grid-column: 1;
       width: 10em
     } 
+
+    &-joke{
+      grid-column: 2/5;
+    }
 
     &-help{
       grid-column: 5;

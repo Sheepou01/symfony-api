@@ -28,6 +28,7 @@ const Footer = () => (
         <Icon name="instagram" size="big" />
       </NavLink>
     </div>
+    <div id="footer-joke">On a rien de tout ça, mais ça fait classe</div>
     <NavLink to="/aide" id="footer-help">
       <Icon name="help circle" size="big" />
     </NavLink>

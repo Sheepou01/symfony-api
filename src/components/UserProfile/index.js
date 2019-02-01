@@ -7,18 +7,26 @@ import React from 'react';
  * Local import
  */
 import Field from 'src/components/Login/Field';
-import { Input } from 'semantic-ui-react';
+import { Input, Button } from 'semantic-ui-react';
+import ThemeList from './ThemeList';
 import './style.scss';
 /**
  * Code
  */
-const UserProfile = () => {
-  const theme = 'animaux';
+const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
+
+  const handleChange = (e) => {
+    console.log(e);
+    // return (
+    //   userFavTheme(value)
+    // );
+  }
+
   return (
     <div id="profile">
       <div id="profile-edit">
         <h2>Tu veux modifier quelque chose</h2>
-        <form>
+        <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
             // value={inputPseudo}
@@ -26,8 +34,9 @@ const UserProfile = () => {
             type="text"
             placeholder="Votre Pseudo"
           />
+          <Button icon="check" />
         </form>
-        <form>
+        <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
             // value={inputEmail}
@@ -35,8 +44,9 @@ const UserProfile = () => {
             type="text"
             placeholder="Votre Email"
           />
+          <Button icon="check" />
         </form>
-        <form>
+        <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
             // value={inputPassword}
@@ -44,19 +54,19 @@ const UserProfile = () => {
             type="password"
             placeholder="Mot de Passe"
           />
+          <Button icon="check" />
         </form>
       </div>
       <div id="profile-themes">
         <h2>Tes thèmes préférés?</h2>
         <form>
-          <Field
-            // handleInputChange={handleInputChange}
-            // value={inputPassword}
-            name="inputTheme1"
-            type="text"
-            placeholder={theme}
-          />
+          <select name="" id="">
+            <option value="">Choisi un thème</option>
+            {themes.map(theme => <option value={theme.value}>{theme.text}</option>)}
+          </select>
         </form>
+        <ThemeList userFavTheme={userFavTheme} themes={themes} idFavoriteTheme={idFavoriteTheme} />
+        <ThemeList userFavTheme={userFavTheme} themes={themes} idFavoriteTheme={idFavoriteTheme} />
         <form>
           <Field
             // handleInputChange={handleInputChange}
@@ -96,7 +106,12 @@ const UserProfile = () => {
         </div>
       </div>
       <h2>Tu cherches quelqu'un?</h2>
-      <Input icon='users' iconPosition='left' placeholder='Entre son pseudo' />
+      <Input
+        className="inputSearch"
+        icon="users"
+        iconPosition="left"
+        placeholder="Entre son pseudo"
+      />
       <h2>Ses scores</h2>
       <div className="profile-scores">
         <div className="scores">

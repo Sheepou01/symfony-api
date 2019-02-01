@@ -25,6 +25,22 @@ class FOSWikiController extends FOSRestController{
         ]);
         return $wikis;
         
-        
     }
+
+    /**
+     * @GET(
+     *  path="/api/custom_wiki",
+     * name="show_custom_wiki",
+     * )
+     * @View
+     */
+    public function customAll(WikiRepository $wikiRepository)
+    {
+
+        $wikis = $wikiRepository->findAllCustom();
+       
+
+        return $wikis;
+    }
+
 }

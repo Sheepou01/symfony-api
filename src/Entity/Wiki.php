@@ -40,6 +40,7 @@ class Wiki
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="wiki")
+     * @ORM\JoinTable(name="tag_wiki", * joinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}, * inverseJoinColumns={@ORM\JoinColumn(name="wiki_id", referencedColumnName="id")}
      */
     private $tags;
 

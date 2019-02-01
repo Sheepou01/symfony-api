@@ -19,6 +19,21 @@ class WikiRepository extends ServiceEntityRepository
         parent::__construct($registry, Wiki::class);
     }
 
+    public function findAllCustom(){
+
+        $entityManager = $this->getEntityManager();
+
+        
+        $query = $entityManager->createQuery(
+            'SELECT wiki.id, wiki.name, wiki.body, wiki.createdAt as created, wiki.source, wiki.image, a.username as author
+             FROM App\Entity\Wiki wiki INNER JOIN tag_wiki ON wiki.id = tag_wiki.wiki_id WHERE tag_wiki.tag_id = 4
+            --  JOIN wiki.author a WHERE wiki.online = true
+            '
+        );
+
+        return $query->execute();
+        
+    }
     // /**
     //  * @return Wiki[] Returns an array of Wiki objects
     //  */
@@ -47,4 +62,5 @@ class WikiRepository extends ServiceEntityRepository
         ;
     }
     */
+
 }

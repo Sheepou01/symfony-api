@@ -22,7 +22,7 @@ class FOSWikiController extends AbstractFOSRestController{
         
         $wikis = $wikiRepository->findBy([
             'online' => true]);
-        
+        dd($wikis);
         return $wikis;
     }
 }

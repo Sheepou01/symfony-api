@@ -22,6 +22,7 @@ import Quiz from 'src/components/Quiz';
 import Mentions from 'src/components/Mentions';
 import Help from 'src/components/Help';
 import NotFound from 'src/components/NotFound';
+import UserProfile from 'src/containers/UserProfile';
 import './style.scss';
 
 
@@ -32,10 +33,11 @@ const DisplayApp = () => (
   <div id="app">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/mon-profil" component={Login} />
+      <Route path="/connexion" component={Login} />
       <Route path="/anecdote" component={Anecdotes} />
       <Route path="/quiz" component={Quiz} />
       <Route path="/jeu" component={Game} />
+      <Route path="/mon-profil" component={UserProfile} />
       <Route path="/mentions-légales" component={Mentions} />
       <Route path="/aide" component={Help} />
       <Route component={NotFound} />

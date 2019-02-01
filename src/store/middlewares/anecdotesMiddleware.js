@@ -7,7 +7,7 @@ import { TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer';
 /**
 * Code
 */
-const urlWiki = 'http://92.243.9.56/api/wiki';
+const urlWiki = 'http://217.70.191.8/api/wiki';
 
 const anecdotesMiddleware = store => next => (action) => {
   switch (action.type) {

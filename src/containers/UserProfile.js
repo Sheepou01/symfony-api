@@ -2,16 +2,14 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
  */
-import Settings from 'src/components/Header/Settings';
+import UserProfile from 'src/components/UserProfile';
+import { userFavTheme } from 'src/store/reducers/userReducer';
 
 // Action Creators
-import { menuDisplay } from 'src/store/reducers/settingsReducer';
-import { logout, loadTheme } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -21,9 +19,8 @@ import { logout, loadTheme } from 'src/store/reducers/userReducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  // J'utilise le state de mon settingsReducer
-  menuOppenned: state.settingsReducer.menuOppenned,
-  isAuthenticated: state.userReducer.isAuthenticated,
+  themes: state.userReducer.themes,
+  idFavoriteTheme: state.userReducer.idFavoriteTheme,
 });
 
 /* === Actions ===
@@ -34,24 +31,17 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  menuDisplay: () => {
-    // dispatch de mon action creator qui gère l'ouverture du menu dans le header
-    dispatch(menuDisplay());
-  },
-  logout: () => {
-    dispatch(logout());
-  },
-  loadTheme: () => {
-    dispatch(loadTheme());
+  userFavTheme: (themeId) => {
+    dispatch(userFavTheme(themeId));
   },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const UserProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfile);
 
 
 /**
  * Export
  */
-export default withRouter(SettingsContainer);
+export default UserProfileContainer;

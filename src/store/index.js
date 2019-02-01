@@ -2,7 +2,7 @@
  * Npm import
  */
 import { createStore, applyMiddleware, compose } from 'redux';
-import loginMiddleware from './middlewares/loginMiddleware';
+import userMiddleware from './middlewares/userMiddleware';
 import timerMiddleware from './middlewares/timerMiddleware';
 import anecdotesMiddleware from './middlewares/anecdotesMiddleware';
 import quizMiddleware from './middlewares/quizMiddleware';
@@ -20,16 +20,21 @@ import reducer from './reducers/index';
 
 // ajout du/des middlewares
 const appliedMiddlewares = applyMiddleware(
-  loginMiddleware,
+  userMiddleware,
   timerMiddleware,
   anecdotesMiddleware,
   quizMiddleware,
 );
 
 // onglet redux dans le navigateur
-const devTools = [
-  window.REDUX_DEVTOOLS_EXTENSION ? window.REDUX_DEVTOOLS_EXTENSION() : f => f,
-];
+// const devTools = [
+//   window.REDUX_DEVTOOLS_EXTENSION ? window.REDUX_DEVTOOLS_EXTENSION() : f => f,
+// ];
+
+let devTools = [];
+if (window.devToolsExtension) {
+  devTools = [window.devToolsExtension()];
+}
 
 // compose des middlewares et devtools
 const enhancers = compose(appliedMiddlewares, ...devTools);

@@ -34,9 +34,6 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
             type="text"
             placeholder="Votre Pseudo"
           />
-          <Button icon="check" />
-        </form>
-        <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
             // value={inputEmail}
@@ -44,9 +41,6 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
             type="text"
             placeholder="Votre Email"
           />
-          <Button icon="check" />
-        </form>
-        <form className="form-edit">
           <Field
             // handleInputChange={handleInputChange}
             // value={inputPassword}
@@ -54,7 +48,7 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
             type="password"
             placeholder="Mot de Passe"
           />
-          <Button icon="check" />
+          <Button icon="check">Valider</Button>
         </form>
       </div>
       <div id="profile-theme">

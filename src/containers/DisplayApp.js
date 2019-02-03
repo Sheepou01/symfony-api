@@ -2,16 +2,15 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 /**
  * Local import
  */
-import Settings from 'src/components/GeneralPattern/Header/Settings';
+import DisplayApp from 'src/components/DisplayApp';
+
 
 // Action Creators
-import { menuDisplay } from 'src/store/reducers/settingsReducer';
-import { logout, loadTheme } from 'src/store/reducers/userReducer';
+import { randomTopito } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -20,9 +19,8 @@ import { logout, loadTheme } from 'src/store/reducers/userReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
+// console.log('Middleware' + randomTopito);
 const mapStateToProps = state => ({
-  // J'utilise le state de mon settingsReducer
-  menuOppenned: state.settingsReducer.menuOppenned,
   isAuthenticated: state.userReducer.isAuthenticated,
 });
 
@@ -33,25 +31,14 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = dispatch => ({
-  menuDisplay: () => {
-    // dispatch de mon action creator qui gère l'ouverture du menu dans le header
-    dispatch(menuDisplay());
-  },
-  logout: () => {
-    dispatch(logout());
-  },
-  loadTheme: () => {
-    dispatch(loadTheme());
-  },
-});
+const mapDispatchToProps = {};
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const DisplayAppContainer = connect(mapStateToProps, mapDispatchToProps)(DisplayApp);
 
 
 /**
  * Export
  */
-export default withRouter(SettingsContainer);
+export default DisplayAppContainer;

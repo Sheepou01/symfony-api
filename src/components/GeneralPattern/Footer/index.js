@@ -16,7 +16,7 @@ import './style.scss';
 const Footer = () => (
   <div id="footer">
     <NavLink to="/mentions-légales" id="footer-legal-mentions">Mentions-légales</NavLink>
-    <div id="footer-contact">Suivez-nous:</div>
+    <div id="footer-follow">Suivez-nous:</div>
     <div id="footer-social-networks">
       <NavLink to="/aide" id="footer-facebook">
         <Icon name="facebook" size="big" />

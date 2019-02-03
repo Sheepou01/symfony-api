@@ -5,6 +5,9 @@
   margin: auto;
   text-align: center;
 
+  & h2 {
+    margin: 2em;
+  }
   &-edit, &-theme{
     margin-bottom: 2em;
   }
@@ -16,16 +19,23 @@
     &-edit, &-themes{
       margin: 2em;
     }
+    & h3{
+      margin: 1em;
+    }
   }
 }
 
 // CSS de la partie de edit profil
 .form-edit {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  & button {
+  & button.ui.button {
     height: 2.5em;
+    margin: 1em;
+    background-color: $orange;
+    color: white;
   }
 }
 
@@ -33,7 +43,7 @@
 // CSS des inputs pour l'edit de profil
 .field {
   width: 33em;
-  margin: 0 1em;
+  margin: 0 auto;
 }
 
 @media screen and (max-width: 425px)  {

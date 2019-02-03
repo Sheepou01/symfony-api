@@ -47,6 +47,7 @@
     "@babel/polyfill": "*",
     "axios": "^0.18.0",
     "classnames": "^2.2.6",
+    "history": "^4.7.2",
     "jsonwebtoken": "^8.4.0",
     "jwt-decode": "^2.2.0",
     "lodash.isempty": "^4.4.0",

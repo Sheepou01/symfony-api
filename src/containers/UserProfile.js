@@ -21,6 +21,8 @@ import { userFavTheme } from 'src/store/reducers/userReducer';
 const mapStateToProps = state => ({
   themes: state.userReducer.themes,
   idFavoriteTheme: state.userReducer.idFavoriteTheme,
+  isAuthenticated: state.userReducer.isAuthenticated,
+  username: state.userReducer.user.username,
 });
 
 /* === Actions ===

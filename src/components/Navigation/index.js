@@ -3,12 +3,12 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 
 /**
  * Local import
  */
 
-import { NavLink } from 'react-router-dom';
 import facts from 'src/styles/assets/facts.png';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';

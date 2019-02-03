@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 /*
  * Npm import
  */
@@ -32,8 +33,8 @@ const appliedMiddlewares = applyMiddleware(
 // ];
 
 let devTools = [];
-if (window.devToolsExtension) {
-  devTools = [window.devToolsExtension()];
+if (window.__REDUX_DEVTOOLS_EXTENSION__) {
+  devTools = [window.__REDUX_DEVTOOLS_EXTENSION__()];
 }
 
 // compose des middlewares et devtools

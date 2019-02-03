@@ -8,12 +8,13 @@ import React from 'react';
  */
 import Field from 'src/components/Login/Field';
 import { Input, Button } from 'semantic-ui-react';
+import WelcomeMessage from './WelcomeMessage';
 import ThemeList from './ThemeList';
 import './style.scss';
 /**
  * Code
  */
-const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
+const UserProfile = ({ themes, userFavTheme, idFavoriteTheme, isAuthenticated, username }) => {
 
   const handleChange = (e) => {
     console.log(e);
@@ -24,6 +25,7 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
 
   return (
     <div id="profile">
+      {isAuthenticated ? <WelcomeMessage username={username} /> : ''}
       <div id="profile-edit">
         <h2>Tu veux modifier quelque chose?</h2>
         <form className="form-edit">
@@ -48,7 +50,7 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme }) => {
             type="password"
             placeholder="Mot de Passe"
           />
-          <Button icon="check">Valider</Button>
+          <Button>Valider</Button>
         </form>
       </div>
       <div id="profile-theme">

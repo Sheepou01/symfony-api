@@ -15,7 +15,7 @@ import logo from 'src/styles/assets/logo.png';
  */
 const Logo = () => (
   <NavLink id="logo" to="/">
-    <img src={logo} alt=""/>
+    <img src={logo} alt="" />
   </NavLink>
 );
 

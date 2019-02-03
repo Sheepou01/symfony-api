@@ -10,7 +10,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
  * import : local
  */
 import store from 'src/store';
-import App from 'src/components/App';
+import App from 'src/containers/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';

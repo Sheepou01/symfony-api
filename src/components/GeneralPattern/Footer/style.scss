@@ -10,6 +10,12 @@
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   grid-template-rows: 30% 30% 30%;
+  clear: both;
+  // I put my footer in position absolute to be sure that it will be always at the bottom of my app
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
 
   &-legal-mentions {
     color: white;
@@ -92,7 +98,7 @@
   }
 }
 
-@media screen and (min-width: 426px) and (max-width: 769px)  {
+@media screen and (min-width: 426px) and (max-width: 768px)  {
   #footer {
     grid-template-columns: 15% 15% 15% 15% 15% 15%;
      
@@ -118,6 +124,14 @@
   
   }  
 
+}
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  #footer {
+    &-joke{
+      width: max-content;
+      margin-left: -3em;
+    } 
+  }  
 }
 
 

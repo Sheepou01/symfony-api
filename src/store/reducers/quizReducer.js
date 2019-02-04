@@ -2,48 +2,81 @@
  * Initial State
  */
 const initialState = {
-  
-  //activeTopito: 11,
-  };
-  
-  /**
+  quiz: {},
+  loading: true,
+  formSubmitted: false,
+  score: 0,
+};
+
+/**
    * Types
    */
-  export const QUIZ = 'QUIZ';
-  
-  /**
-   * Traitements
-   */
-  
-  /**
-   * Reducer
-   */
-  const reducer = (state = initialState, action = {}) => {
-    switch (action.type) {
-      case QUIZ:
+export const QUIZ = 'QUIZ';
+export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
+const SCORE = 'SCORE';
+const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
+/**
+* Traitements
+*/
 
+/**
+ * Reducer
+ */
+const reducer = (state = initialState, action = {}) => {
+  switch (action.type) {
+    case QUIZ:
       return {
         ...state,
       };
+    case RECEIVED_QUIZ:
+    // console.log(action.data)
+      return {
+        ...state,
+        quiz: action.data,
+        loading: false,
+      };
+    case SCORE:
+    // console.log(action.data)
+      return {
+        ...state,
+        score: state.score + 1,
+      };
+    case QUIZ_SUBMITTED:
+    // console.log(action.data)
+      return {
+        ...state,
+        formSubmitted: true,
+      };
+    default:
+      return state;
+  }
+};
 
-      default:
-        return state;
-    }
-  };
-  
-  /**
+/**
    * Action Creators
    */
-  // j'envoi mes props à mon container
-  export const topito = () => ({
-    type: QUIZ,
-  });
+// j'envoi mes props à mon container
+export const quiz = () => ({
+  type: QUIZ,
+});
+
+export const score = () => ({
+  type: SCORE,
+});
+
+export const quizSubmitted = () => ({
+  type: QUIZ_SUBMITTED,
+});
+
+export const receivedQuiz = data => ({
+  type: RECEIVED_QUIZ,
+  data,
+});
   /**
    * Selectors
    */
-  
-  /**
+
+/**
    * Export
    */
-  export default reducer;
-  
+export default reducer;

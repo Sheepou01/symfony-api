@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Redirect, withRouter } from 'react-router-dom';
 import { Button } from 'semantic-ui-react';
 
 
@@ -17,93 +18,126 @@ import './style.scss';
  */
 
 // Je passe mes props depuis le container Login
-const Login = ({
-  handleInput,
-  inputPseudo,
-  inputEmail,
-  inputPassword,
-  inputUserEmail,
-  inputUserPassword,
-  addUser,
-  signInUser,
-}) => {
-// Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
-// à mon conteneur le nom de l'input qui est modifié et sa valeur
-  const handleInputChange = (event) => {
+// const Login = ({
+//   handleInput,
+//   inputPseudo,
+//   inputEmail,
+//   inputPassword,
+//   inputUserEmail,
+//   inputUserPassword,
+//   addUser,
+//   signInUser,
+// }) => {
+// // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
+// // à mon conteneur le nom de l'input qui est modifié et sa valeur
+//   const handleInputChange = (event) => {
+//     const { name, value } = event.target;
+//     handleInput(name, value);
+//   };
+
+//   // Fonction qui me permet de récupérer le pseudo, l'email et le MDP
+//   // lors de la soumission du formulaire inscription
+//   const handleSubmitInscription = (event) => {
+//     event.preventDefault();
+//     addUser(inputPseudo, inputEmail, inputPassword);
+//   };
+
+//   // Fonction qui me permet de récupérer l'email et le MDP
+//   // lors de la soumission du formulaire de connexion
+//   const handleSubmitConnexion = (event) => {
+//     event.preventDefault();
+//     signInUser(inputUserEmail, inputUserPassword);
+//   };
+
+class Login extends React.Component {
+
+  // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
+  // à mon conteneur le nom de l'input qui est modifié et sa valeur
+  handleInputChange = (event) => {
+    const { handleInput } = this.props;
     const { name, value } = event.target;
     handleInput(name, value);
   };
 
   // Fonction qui me permet de récupérer le pseudo, l'email et le MDP
   // lors de la soumission du formulaire inscription
-  const handleSubmitInscription = (event) => {
+  handleSubmitInscription = (event) => {
     event.preventDefault();
+    const { inputPseudo, inputEmail, inputPassword, addUser } = this.props;
     addUser(inputPseudo, inputEmail, inputPassword);
   };
 
   // Fonction qui me permet de récupérer l'email et le MDP
   // lors de la soumission du formulaire de connexion
-  const handleSubmitConnexion = (event) => {
+  handleSubmitConnexion = (event) => {
     event.preventDefault();
+    const { inputUserEmail, inputUserPassword, signInUser } = this.props;
     signInUser(inputUserEmail, inputUserPassword);
   };
 
-  return (
-    <div id="login">
-      <div id="login-signup">
-        <h2>Inscription</h2>
-        {/* Premier Formulaire: Inscription */}
-        {/* Je transmets les props nécessaires à mon composant Field (input) */}
-        <form onSubmit={handleSubmitInscription}>
-          <Field
-            handleInputChange={handleInputChange}
-            value={inputPseudo}
-            name="inputPseudo"
-            type="text"
-            placeholder="Votre Pseudo"
-          />
-          <Field
-            handleInputChange={handleInputChange}
-            value={inputEmail}
-            name="inputEmail"
-            type="text"
-            placeholder="Votre Email"
-          />
-          <Field
-            handleInputChange={handleInputChange}
-            value={inputPassword}
-            name="inputPassword"
-            type="password"
-            placeholder="Mot de Passe"
-          />
-          <Button className="login-button">Envoyer</Button>
-        </form>
-      </div>
+  render() {
+    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated } = this.props;
+    if (isAuthenticated) {
+      return <Redirect to="/mon-profil" />;
+    }
 
-      <div id="login-signin">
-        <h2>Déjà Inscrit?</h2>
-        {/* Premier Formulaire: Connexion */}
-        {/* Je transmets les props nécessaires à mon composant Field (input) */}
-        <form method="POST" action="" onSubmit={handleSubmitConnexion}>
-          <Field
-            handleInputChange={handleInputChange}
-            value={inputUserEmail}
-            name="inputUserEmail"
-            type="text"
-            placeholder="Votre Email"
-          />
-          <Field
-            handleInputChange={handleInputChange}
-            value={inputUserPassword}
-            name="inputUserPassword"
-            type="password"
-            placeholder="Mot de Passe"
-          />
-          <Button>Envoyer</Button>
-        </form>
+    return (
+      <div id="login">
+        <div id="login-signup">
+          <h2>Inscription</h2>
+          {/* Premier Formulaire: Inscription */}
+          {/* Je transmets les props nécessaires à mon composant Field (input) */}
+          <form onSubmit={this.handleSubmitInscription}>
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputPseudo}
+              name="inputPseudo"
+              type="text"
+              placeholder="Votre Pseudo"
+            />
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputEmail}
+              name="inputEmail"
+              type="text"
+              placeholder="Votre Email"
+            />
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputPassword}
+              name="inputPassword"
+              type="password"
+              placeholder="Mot de Passe"
+            />
+            <Button className="login-button">Envoyer</Button>
+          </form>
+        </div>
+    
+        <div id="login-signin">
+          <h2>Déjà Inscrit?</h2>
+          {/* Premier Formulaire: Connexion */}
+          {/* Je transmets les props nécessaires à mon composant Field (input) */}
+          <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputUserEmail}
+              name="inputUserEmail"
+              type="text"
+              placeholder="Votre Email"
+            />
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputUserPassword}
+              name="inputUserPassword"
+              type="password"
+              placeholder="Mot de Passe"
+            />
+            <Button>Envoyer</Button>
+          </form>
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
 };
 
 // PropTypes des props de Login
@@ -122,4 +156,4 @@ Login.propTypes = {
 /**
  * Export
  */
-export default Login;
+export default withRouter(Login);

@@ -9,6 +9,9 @@ const initialState = {
   inputPassword: '',
   inputUserEmail: '',
   inputUserPassword: '',
+  editInputPseudo: '',
+  editInputPassword: '',
+  editInputEmail: '',
   isAuthenticated: false,
   user: {},
   themes: [
@@ -25,6 +28,7 @@ const initialState = {
 const CHANGE_INPUT = 'CHANGE_INPUT';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNIN_USER = 'SIGNIN_USER';
+export const EDIT_USER = 'EDIT_USER';
 const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOGOUT = 'LOGOUT';
 const USER_FAV_THEME = 'USER_FAV_THEME';
@@ -71,6 +75,14 @@ const reducer = (state = initialState, action = {}) => {
         inputUserEmail: '',
         inputUserPassword: '',
       };
+    case EDIT_USER:
+      return {
+        ...state,
+        // Je remets les inputs à zéro
+        editInputPseudo: '',
+        editInputPassword: '',
+        editInputEmail: '',
+      };
     case SET_CURRENT_USER:
       return {
         ...state,
@@ -112,6 +124,13 @@ export const changeInput = (name, value) => ({
 // Je récupère le pseudo, email et mdp depuis le formulaire d'inscription
 export const signUpUser = (pseudo, email, password) => ({
   type: SIGNUP_USER,
+  pseudo,
+  email,
+  password,
+});
+
+export const editUser = (pseudo, email, password) => ({
+  type: EDIT_USER,
   pseudo,
   email,
   password,

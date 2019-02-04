@@ -12,6 +12,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import store from 'src/store';
 import App from 'src/containers/App';
 import { topito } from 'src/store/reducers/anecdotesReducer';
+import { quiz } from 'src/store/reducers/quizReducer';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';
 import { setCurrentUser } from './store/reducers/userReducer';
@@ -37,3 +38,4 @@ const target = document.getElementById('root');
 render(rootComponent, target);
 
 store.dispatch(topito());
+store.dispatch(quiz());

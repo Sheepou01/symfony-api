@@ -4,27 +4,21 @@
 
 #quiz-boxes{
   display: flex;
-  margin: auto 0;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  
+  width : 80%;
+  margin: 0 auto;
 }
 
-
-#quiz-box{
-  margin-top: 20px;
-  width: 10%;
+.quiz-box{
+  width : 30%;
 }
 
-#quiz-view{
-  width: 50%;
-  margin : 3em auto;
-  height : 500px;
-}
-
-.quiz-answers li{
+.quiz-answers{
   display: flex;
-  justify-content: space-around;
   align-items: center;
 }
 
@@ -35,6 +29,8 @@
   margin: 3em auto;
 }
 
-
+h2 { 
+  width : 100%;
+}
 
 

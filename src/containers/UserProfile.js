@@ -2,12 +2,14 @@
  * Npm import
  */
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 
 /**
  * Local import
  */
 import UserProfile from 'src/components/UserProfile';
-import { userFavTheme } from 'src/store/reducers/userReducer';
+import { userFavTheme, changeInput, editUser } from 'src/store/reducers/userReducer';
 
 // Action Creators
 
@@ -23,6 +25,9 @@ const mapStateToProps = state => ({
   idFavoriteTheme: state.userReducer.idFavoriteTheme,
   isAuthenticated: state.userReducer.isAuthenticated,
   username: state.userReducer.user.username,
+  editInputPseudo: state.userReducer.user.editInputPseudo,
+  editInputEmail: state.userReducer.user.editInputEmail,
+  editInputPassword: state.userReducer.user.editInputPassword,
 });
 
 /* === Actions ===
@@ -36,6 +41,14 @@ const mapDispatchToProps = dispatch => ({
   userFavTheme: (themeId) => {
     dispatch(userFavTheme(themeId));
   },
+  handleInput: (name, value) => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(changeInput(name, value));
+  },
+  editUser: (pseudo, email, password) => {
+    // dispatch de mon action creator qui gère la soumission du form d'inscription
+    dispatch(editUser(pseudo, email, password));
+  },
 });
 
 // Container
@@ -46,4 +59,4 @@ const UserProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UserPr
 /**
  * Export
  */
-export default UserProfileContainer;
+export default withRouter(UserProfileContainer);

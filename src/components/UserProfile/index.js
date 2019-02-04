@@ -14,7 +14,18 @@ import './style.scss';
 /**
  * Code
  */
-const UserProfile = ({ themes, userFavTheme, idFavoriteTheme, isAuthenticated, username }) => {
+const UserProfile = ({ 
+  themes,
+  userFavTheme,
+  idFavoriteTheme,
+  isAuthenticated,
+  username,
+  editInputPseudo,
+  editInputEmail,
+  editInputPassword,
+  editUser,
+  handleInput,
+}) => {
 
   const handleChange = (e) => {
     console.log(e);
@@ -23,30 +34,40 @@ const UserProfile = ({ themes, userFavTheme, idFavoriteTheme, isAuthenticated, u
     // );
   }
 
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    handleInput(name, value);
+  };
+
+  const handleEditSubmit = (evt) => {
+    evt.preventDefault();
+    editUser(editInputPseudo, editInputEmail, editInputPassword)
+  };
+
   return (
     <div id="profile">
       {isAuthenticated ? <WelcomeMessage username={username} /> : ''}
       <div id="profile-edit">
         <h2>Tu veux modifier quelque chose?</h2>
-        <form className="form-edit">
+        <form className="form-edit" onSubmit={handleEditSubmit}>
           <Field
-            // handleInputChange={handleInputChange}
-            // value={inputPseudo}
-            name="inputPseudo"
+            handleInputChange={handleInputChange}
+            value={editInputPseudo}
+            name="editInputPseudo"
             type="text"
             placeholder="Votre Pseudo"
           />
           <Field
-            // handleInputChange={handleInputChange}
-            // value={inputEmail}
-            name="inputEmail"
+            handleInputChange={handleInputChange}
+            value={editInputEmail}
+            name="editInputEmail"
             type="text"
             placeholder="Votre Email"
           />
           <Field
-            // handleInputChange={handleInputChange}
-            // value={inputPassword}
-            name="inputPassword"
+            handleInputChange={handleInputChange}
+            value={editInputPassword}
+            name="editInputPassword"
             type="password"
             placeholder="Mot de Passe"
           />

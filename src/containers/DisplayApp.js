@@ -2,6 +2,7 @@
  * Npm import
  */
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 
 /**
  * Local import
@@ -41,4 +42,4 @@ const DisplayAppContainer = connect(mapStateToProps, mapDispatchToProps)(Display
 /**
  * Export
  */
-export default DisplayAppContainer;
+export default withRouter(DisplayAppContainer);

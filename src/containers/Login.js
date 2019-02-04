@@ -25,6 +25,7 @@ const mapStateToProps = state => ({
   inputPassword: state.userReducer.inputPassword,
   inputUserEmail: state.userReducer.inputUserEmail,
   inputUserPassword: state.userReducer.inputUserPassword,
+  isAuthenticated: state.userReducer.isAuthenticated,
 });
 
 /* === Actions ===

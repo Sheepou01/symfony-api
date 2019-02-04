@@ -4,6 +4,8 @@
 const initialState = {
   quiz: {},
   loading: true,
+  // valeur du bouton radio
+  selectedOption: false,
 };
 
 /**
@@ -30,6 +32,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         quiz: action.data,
         loading: false,
+        selectedOption: false,
       };
     default:
       return state;
@@ -43,7 +46,6 @@ const reducer = (state = initialState, action = {}) => {
 export const quiz = () => ({
   type: QUIZ,
 });
-
 
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,

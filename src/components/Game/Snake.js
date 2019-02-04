@@ -2,9 +2,7 @@ import React from 'react';
 
 
 const Snake = () => { 
-
-  return (
-  onload = function () {
+  onload = () => {
     // propriete
     var canvasWidth = 900; // je donne une largeur à  mon canvas
     var canvasHeight = 600;
@@ -23,7 +21,7 @@ const Snake = () => {
     function init() {
       var canvas = document.createElement("canvas"); // je donne une taille (on ne peut mettre qu'en px à vérifier)
       //var body = document.getElementById("root");
-      var app = document.getElementById("app");
+      var app = document.getElementById("snake");
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
       canvas.style.border = '30px solid green'; // je mets une bordure
@@ -52,7 +50,7 @@ const Snake = () => {
           snakee.ateApple=true; // mon snake à manger une pomme
           do 
           {
-            applee.setNewPosition(); //alors je donne une nouvelle position à ma pommeapplee.setNewPosition(); //alors je donne une nouvelle position à ma pomm
+            applee.setNewPosition(); // alors je donne une nouvelle position à ma pommeapplee.setNewPosition(); //alors je donne une nouvelle position à ma pomm
           }
            while(applee.isOnSnake(snakee)) // si isOnsnake, alors ca me renvoi directement sur le do
         }
@@ -67,8 +65,7 @@ const Snake = () => {
       // xCoord et yCoord seront des coordonnéés indiqué plus tard afin de déterminé la position du rectangle sur le canvas
       // ctx.fillRect(xCoord, yCoord, 100, 50); pas obligatoire
     }
-    function gameOver() 
-    {
+    function gameOver() {
   
       ctx.save(); // j'enregistre mon CANVAS comme il est lors de la défaite
       ctx.font = 'bold 70px sans-serif';
@@ -89,8 +86,8 @@ const Snake = () => {
   
     }
   
-    function restart() // une fois game over je relance le jeu
-    { 
+    function restart() {// une fois game over je relance le jeu
+ 
       snakee = new Snake([[6, 4],[5, 4],[4, 4], [3, 4]], 'right'); // je fais reapparaitre la pomme
       applee = new Apple([10,10]);// je fais reapparaitre la pomme
       score = 0;
@@ -98,8 +95,8 @@ const Snake = () => {
   
     }
   
-    function drawScore ()  // j'affiche le sore
-    {
+    function drawScore () {  // j'affiche le sore
+    
       ctx.save();
       ctx.font = 'bold 200px sans-serif';
       ctx.fillStyle = 'grey'; // couleur dans laquuelle on va ecrire
@@ -291,9 +288,11 @@ const Snake = () => {
       //Erreur possible
     };
     }
-  ); 
-  };
+ 
   
+  return ( onload
+    ); 
+  };
 
 
 export default Snake;

@@ -9,49 +9,70 @@ import {
  */
 // import Next from 'src/components/Next';
 import './style.scss';
+import Response from './Response';
 
 /**
  * Code
  */
-const Quiz = ({ quiz, loading }) => {
+const Quiz = ({ quiz, loading, selectedOption }) => {
+  // console.log(selectedOption);
+  // Fonction pour le bouton radio
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    console.log('The Radio was clicked.');
+    const result = (!selectedOption);
+    console.log(result);
+    return (result);
+  }
+  // Fonction pour le clic
+  function handleClick(e) {
+    e.preventDefault();
+    console.log('The button was clicked.');
+  }
   //  console.log(quiz);
 
-  // console.log(questions)
-  // console.log(questions.map(question => question.text));
   if (!loading) {
     const { title, questions } = quiz;
     console.log(questions);
     return (
       <div id="quiz-view">
         <h1>{title}</h1>
-        {questions.map(question => (
-          <div key={question.id} id="quiz-boxes">
-            <div className="quiz-box">
+        <div id="quiz-boxes">
+          {questions.map(question => (
+            <div key={question.id} className="quiz-box">
               <div className="quiz-question">
                 <h2>{question.text}</h2>
-                <div className="quiz-answers">
+                <div className="quiz-form">
                   <form>
-                    <div>
-                      <input type="radio" id="contactChoice1"
-                      name="contact" value="email" />
-                      <label htmlFor="contactChoice1">Email</label>
-
-                      <input type="radio" id="contactChoice2"
-                      name="contact" value="telephone" />
-                      <label htmlFor="contactChoice2">Téléphone</label>
-
-                      <input type="radio" id="contactChoice3"
-                      name="contact" value="courrier" />
-                      <label htmlFor="contactChoice3">Courrier</label>
-                    </div>
+                    {question.answers.map(answer => (
+                      <div
+                        className="quiz-answers"
+                        key={answer.id}
+                        value={answer.correct}
+                      >
+                        <label>
+                          <input
+                            type="radio"
+                            id={answer.id}
+                            name={question.text}
+                            value={answer.correct}
+                            onChange={handleFormSubmit}
+                          />
+                          {answer.text}
+                        </label>
+                      </div>
+                    ))}
+                    <Response
+                      quiz= {quiz}              
+                    />                
                   </form>
                 </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
         <div id="check-icon">
-          <Button><Icon name="check" size="huge" /></Button>
+          <Button onClick={handleClick}><Icon name="check" size="huge" /></Button>
         </div>
       </div>
     );
@@ -60,6 +81,7 @@ const Quiz = ({ quiz, loading }) => {
 };
 
 Quiz.propTypes = {
+  selectedOption: PropTypes.bool.isRequired,
   quiz: PropTypes.object.isRequired,
   loading: PropTypes.bool.isRequired,
 };
@@ -69,14 +91,3 @@ Quiz.propTypes = {
  * Export
  */
 export default Quiz;
-
-/**<div className="quiz-answers">
-                  <form>
-                    {question.answers.map(answer => 
-                      <div key={answer.id}>
-                      <label htmlFor={answer.id}>{answer.text}</label>
-                        <input type="radio" name={answer.id} value={answer.id} />
-                      </div>
-                    )}
-                  </form>
-                </div> */

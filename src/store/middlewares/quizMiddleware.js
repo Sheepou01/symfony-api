@@ -7,7 +7,7 @@ import { QUIZ, receivedQuiz } from 'src/store/reducers/quizReducer';
 /**
 * Code
 */
-const urlQuiz = 'http://92.243.9.56/api/quizz';
+const urlQuiz = 'http://217.70.191.8/api/quizz';
 
 const quizMiddleware = store => next => (action) => {
   switch (action.type) {

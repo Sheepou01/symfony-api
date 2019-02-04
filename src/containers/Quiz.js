@@ -23,6 +23,7 @@ import Quiz from 'src/components/Quiz';
 const mapStateToProps = state => ({
   quiz: state.quizReducer.quiz,
   loading: state.quizReducer.loading,
+  selectedOption: state.quizReducer.selectedOption,
 });
 
 /* === Actions ===

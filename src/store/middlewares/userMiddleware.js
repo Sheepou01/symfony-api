@@ -18,7 +18,7 @@ const userMiddleware = store => next => (action) => {
   const test = 'http://217.70.191.8/api/test';
   // const tag = 'http://217.70.191.8/api/tag'; pour recup la liste des themes pour l'instant j'ai fait en dur
   const { user } = store.getState().userReducer;
-  console.log(user.id);
+  // console.log(user.id);
   const urlEditUser = `http://217.70.191.8/user/${user.id}/edit`;
   const urlFavTheme = `http://217.70.191.8/user/${user.id}/tag/edit`;
 
@@ -43,7 +43,6 @@ const userMiddleware = store => next => (action) => {
       break;
     case EDIT_USER:
       // Je veux faire une requête axios
-      console.log(action.pseudo)
       axios({
         method: 'post',
         url: urlEditUser,

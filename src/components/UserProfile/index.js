@@ -43,6 +43,7 @@ const UserProfile = ({
   // Function which will handle the submit of the user's form (edit of the user details)
   const handleEditSubmit = (evt) => {
     evt.preventDefault();
+    console.log(editInputPseudo);
     editUser(editInputPseudo, editInputEmail, editInputPassword);
   };
 

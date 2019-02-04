@@ -26,9 +26,9 @@ const mapStateToProps = state => ({
   idFavoriteTheme: state.userReducer.idFavoriteTheme,
   isAuthenticated: state.userReducer.isAuthenticated,
   username: state.userReducer.user.username,
-  editInputPseudo: state.userReducer.user.editInputPseudo,
-  editInputEmail: state.userReducer.user.editInputEmail,
-  editInputPassword: state.userReducer.user.editInputPassword,
+  editInputPseudo: state.userReducer.editInputPseudo,
+  editInputEmail: state.userReducer.editInputEmail,
+  editInputPassword: state.userReducer.editInputPassword,
   editInputTimer: state.timerReducer.editInputTimer,
 });
 

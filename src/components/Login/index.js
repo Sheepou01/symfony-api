@@ -38,6 +38,7 @@ class Login extends React.Component {
   handleSubmitConnexion = (event) => {
     event.preventDefault();
     const { inputUserEmail, inputUserPassword, signInUser } = this.props;
+    console.log(inputUserEmail);
     signInUser(inputUserEmail, inputUserPassword);
   };
 

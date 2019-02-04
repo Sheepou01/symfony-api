@@ -7,6 +7,7 @@ use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use App\Repository\AnswerRepository;
 
 class FOSQuizzController extends FOSRestController{
     /**
@@ -16,11 +17,29 @@ class FOSQuizzController extends FOSRestController{
      * )
      * @View
      */
-    public function showQuizz(QuizzRepository $quizzRepository){
+    public function showQuizz(QuizzRepository $quizzRepository, AnswerRepository $answerRepo){
         
-        $quizz = $quizzRepository->findAll();
+        $quizz = $quizzRepository->findBy([
+            'online' => true
+        ]);
+
+        $quizzToSend = $quizz[array_rand($quizz)];
         
-        return $quizz[array_rand($quizz)];
+        $questions = $quizzToSend->getQuestions();
+
+        $allAnswers = [];
+        foreach($questions as $question) {
+            $answers = $answerRepo->findBy([
+                'question' => $question->getId()
+            ], [
+                'text' => 'ASC'
+            ]);
+
+           $allAnswers[$question->getText()] = $answers;
+        }
+        
+         return [$quizzToSend, $allAnswers];
+
         
     }
 }

@@ -45,7 +45,6 @@ class Quizz
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz")
-     * @Serializer\Expose
      */
     private $questions;
 

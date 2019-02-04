@@ -2,15 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Wiki;
 use App\Repository\WikiRepository;
+use App\Entity\Wiki;
 use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
-use FOS\RestBundle\Controller\AbstractFOSRestController;
+use FOS\RestBundle\Controller\FOSRestController;
 
 
-class FOSWikiController extends AbstractFOSRestController{
+class FOSWikiController extends FOSRestController{
     /**
      * @GET(
      *  path="/api/wiki",

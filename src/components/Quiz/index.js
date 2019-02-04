@@ -8,7 +8,6 @@ import {
  */
 // import Next from 'src/components/Next';
 import './style.scss';
-import { green } from 'ansi-colors';
 
 /**
  * Code
@@ -24,22 +23,12 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
   // Fonction pour le clic
   function handleClick(e) {
     const answer = Number(e.currentTarget.id);
-    const goodAnswer = {
-      color: 'white',
-      background: 'red',
-    };    
+    changeColor(); 
     // console.log(style);
     if (answer === 1) {
       scoreIncrement();
-      `style=${goodAnswer}`;
     }
   }
-
-  const goodAnswer = {
-    color: 'white',
-    background: 'green',
-  };
-  //  console.log(quiz);
 
   if (!loading) {
     const { title, questions } = quiz;
@@ -62,7 +51,9 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
                           className="quiz-answers"
                           onClick={handleClick}
                           id={Number(answer.correct)}
-                        >{answer.text}</li>
+                        >
+                          {answer.text}
+                        </li>
                       ))}
                     </ul>
                     {formSubmitted ? <Answer {...question} /> : ''}

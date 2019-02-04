@@ -11,7 +11,7 @@ import Settings from 'src/components/GeneralPattern/Header/Settings';
 
 // Action Creators
 import { menuDisplay } from 'src/store/reducers/settingsReducer';
-import { logout, loadTheme } from 'src/store/reducers/userReducer';
+import { logout } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -40,9 +40,6 @@ const mapDispatchToProps = dispatch => ({
   },
   logout: () => {
     dispatch(logout());
-  },
-  loadTheme: () => {
-    dispatch(loadTheme());
   },
 });
 

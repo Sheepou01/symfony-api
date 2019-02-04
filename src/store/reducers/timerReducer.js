@@ -5,6 +5,7 @@ const initialState = {
   seconds: 420,
   timerOff: true,
   gameOver: false,
+  editInputTimer: '',
 };
 
 /**
@@ -14,6 +15,8 @@ export const START_TIMER = 'START_TIMER';
 export const TICK = 'TICK';
 export const END_TIMER = 'END_TIMER';
 const CLICK_END_VIEW = 'CLICK_END_VIEW';
+const EDIT_TIMER = 'EDIT_TIMER';
+const CHANGE_INPUT_TIMER = 'CHANGE_INPUT_TIMER';
 
 /**
  * Traitements
@@ -58,6 +61,17 @@ const reducer = (state = initialState, action = {}) => {
         timerOff: true,
         seconds: initialState.seconds,
       };
+    case EDIT_TIMER:
+      return {
+        ...state,
+        seconds: action.time,
+        editInputTimer: '',
+      };
+    case CHANGE_INPUT_TIMER:
+      return {
+        ...state,
+        [action.name]: action.value,
+      };
     default:
       return state;
   }
@@ -78,6 +92,15 @@ export const tick = () => ({
 });
 export const clickEndView = () => ({
   type: CLICK_END_VIEW,
+});
+export const editTimer = time => ({
+  type: EDIT_TIMER,
+  time,
+});
+export const handleInputTimer = (name, value) => ({
+  type: CHANGE_INPUT_TIMER,
+  name,
+  value,
 });
 
 /**

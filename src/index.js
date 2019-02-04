@@ -15,7 +15,7 @@ import { topito } from 'src/store/reducers/anecdotesReducer';
 import { quiz } from 'src/store/reducers/quizReducer';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';
-import { setCurrentUser } from './store/reducers/userReducer';
+import { setCurrentUser, themeList } from './store/reducers/userReducer';
 /**
  * Render - Rendu d'un composant React dans le DOM
  */
@@ -39,3 +39,4 @@ render(rootComponent, target);
 
 store.dispatch(topito());
 store.dispatch(quiz());
+store.dispatch(themeList());

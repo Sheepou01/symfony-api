@@ -13,6 +13,7 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use App\Repository\TagRepository;
 
 /**
  * @Route("/user")
@@ -56,18 +57,14 @@ class UserController extends AbstractController
      * @ParamConverter("tag", converter="fos_rest.request_body")
      */
 
-    public function editTag(User $user, Tag $tag){
+    public function editTag(User $user,Tag $tag, TagRepository $repoTag){
         
-        dd($tag);
-        $user->addFavoriteTag($tag);
-        
+        $tagId= $tag->getId();
+        $tagSearch = $repoTag->findOneBy(['id' => $tagId]);
+        $toto = $user->addFavoriteTag($tagSearch);
         $em = $this->getDoctrine()->getManager();
-        
-        $em->flush();
-        
-
         // $em->persist($user);
-        // $em->flush();
-        return new Response('Tag modifié');
+        $em->flush();
+        return new Response('Ok');
     }
 }

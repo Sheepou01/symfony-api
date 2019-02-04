@@ -18,9 +18,14 @@ class FOSQuizzController extends FOSRestController{
      */
     public function showQuizz(QuizzRepository $quizzRepository){
         
-        $quizz = $quizzRepository->findAll();
-        
-        return $quizz[array_rand($quizz)];
+        $quizzes = $quizzRepository->findAll();
+            foreach($quizzes as $quizz){
+                
+                $toto = $quizz->getQuestions()->toArray();               
+                 
+                return $quizzes[array_rand($quizzes)];
+            }
+
         
     }
 }

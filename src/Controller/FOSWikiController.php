@@ -20,27 +20,11 @@ class FOSWikiController extends FOSRestController{
      */
     public function showAll(WikiRepository $wikiRepository){
         
-        $wikis = $wikiRepository->findBy([
-            'online' => true,            
-        ]);
+        $wikis = $wikiRepository->findAllCustom();
+        
         return $wikis;
         
     }
 
-    /**
-     * @GET(
-     *  path="/api/custom_wiki",
-     * name="show_custom_wiki",
-     * )
-     * @View
-     */
-    public function customAll(WikiRepository $wikiRepository)
-    {
-
-        $wikis = $wikiRepository->findAllCustom();
-       
-
-        return $wikis;
-    }
-
+    
 }

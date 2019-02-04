@@ -20,11 +20,11 @@ class FOSQuizzController extends FOSRestController{
      */
     public function showQuizz(QuizzRepository $quizzRepository){
         
-        $quizz = $quizzRepository->find(1);
+        $quizz = $quizzRepository->findAll();
 
       
         
-        return $quizz;
+        return $quizz[array_rand($quizz)];
         
     }
 }

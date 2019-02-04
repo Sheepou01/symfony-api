@@ -19,6 +19,21 @@ class GameRepository extends ServiceEntityRepository
         parent::__construct($registry, Game::class);
     }
 
+    public function getGames(){
+
+        $entityManager = $this->getEntityManager();
+
+        
+        $query = $entityManager->createQuery(
+            'SELECT game.id, game.name, game.content
+             FROM App\Entity\Game game WHERE game.online = true
+            '
+        );
+
+        return $query->execute();
+        
+    }
+
     // /**
     //  * @return Game[] Returns an array of Game objects
     //  */

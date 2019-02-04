@@ -19,6 +19,20 @@ class TagRepository extends ServiceEntityRepository
         parent::__construct($registry, Tag::class);
     }
 
+    public function getTagsName(){
+
+        $entityManager = $this->getEntityManager();
+
+        
+        $query = $entityManager->createQuery(
+            'SELECT tag.id, tag.name
+             FROM App\Entity\Tag tag
+            '
+        );
+
+        return $query->execute();
+        
+    }
     // /**
     //  * @return Tag[] Returns an array of Tag objects
     //  */

@@ -9,20 +9,20 @@ use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 
-class FOSTagController extends FOSRestController{
-    /**
+
+class FOSTagController extends FOSRestController
+{
+     /**
      * @GET(
-     *  path="/api/tag",
-     * name="show_tag",
+     *  path="/api/tags",
+     * name="show_all_tags",
      * )
      * @View
      */
-    public function showTag(TagRepository $tagRepository){
-        
-        $tags = $tagRepository->findAll();
-      
-        
+    public function showTags(TagRepository $tagRepo)
+    {
+        $tags = $tagRepo->getTagsName();
+
         return $tags;
-        
     }
 }

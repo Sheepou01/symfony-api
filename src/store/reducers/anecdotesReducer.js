@@ -39,10 +39,10 @@ const reducer = (state = initialState, action = {}) => {
       // const index = arrayTopito;
       // console.log (index);
       // Je recupere le min et le max
-      const min= Math.min(...index); 
-      const max= (Math.max(...index));  
+      const min = Math.min(...index);
+      const max = (Math.max(...index));
       // Je  creer ma fonction random qui me rendra un entier
-      const random = Math.floor(Math.random() * (+max - +min)) + +min; 
+      const random = Math.floor(Math.random() * (+max - +min)) + +min;
       // console.log(random);
       return {
         ...state,
@@ -60,10 +60,10 @@ const reducer = (state = initialState, action = {}) => {
       // je recupere le tableau d'id via les keys
       const test = Object.keys(topitoListRandom);
       // Je recupere le min et le max
-      const mini=Math.min(...test); 
-      const maxi=(Math.max(...test));
+      const mini = Math.min(...test);
+      const maxi = (Math.max(...test));
       // Je  creer ma fonction random qui me rendra un entier
-      const randomi = Math.floor(Math.random() * (+maxi - +mini)) + +mini; 
+      const randomi = Math.floor(Math.random() * (+maxi - +mini)) + +mini;
       // console.log(randomi);
       return {
         ...state,

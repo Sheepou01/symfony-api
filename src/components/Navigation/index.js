@@ -18,19 +18,14 @@ import './style.scss';
  */
 
 
-const Navigation = ({ startTimer, timerOff, gameOver }) => {
+const Navigation = ({ startTimer, quiz }) => {
   const handleStartClick = () => {
-    // if (timerOff) {
-    //   setInterval(decrementTimer, 1000);
-    // }
     startTimer();
   };
 
-  // const stopDecrement = () => {
-  //   if (gameOver) {
-  //     clearInterval(this.decrementer);
-  //   }
-  // };
+  const handleReceiveQuiz = () => {
+    quiz();
+  };
 
   // Fonction randomisation au clic
 
@@ -47,7 +42,7 @@ const Navigation = ({ startTimer, timerOff, gameOver }) => {
                 </div>
               </div>
             </NavLink>
-            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz">
+            <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz" onClick={handleReceiveQuiz}>
               <div className="card">
                 <img src={facts} alt="" className="card-image" />
                 <div className="card-banner">

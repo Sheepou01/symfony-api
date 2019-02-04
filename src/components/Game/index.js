@@ -10,7 +10,8 @@ import React from 'react';
 import './style.scss';
 // import Bomber from './Bomber';
 import Snake from './Snake';
-// import Test from './Test';
+import Test from './Test';
+// import Reacteroid from './Reacteroid/';
 
 /**
  * Code

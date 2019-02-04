@@ -13,6 +13,7 @@ import { green } from 'ansi-colors';
 /**
  * Code
  */
+
 const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitted}) => {
   // console.log(selectedOption);
   // Fonction pour le bouton radio
@@ -75,6 +76,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
             <Button><Icon name="check" size="huge" /></Button>
           </div>
         </form>
+
       </div>
     );
   }
@@ -98,7 +100,9 @@ const Answer = ({id, answers}) => {
 }
 
 
+
 /**
  * Export
  */
 export default Quiz;
+

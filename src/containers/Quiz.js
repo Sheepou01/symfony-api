@@ -23,8 +23,10 @@ import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
 const mapStateToProps = state => ({
   quiz: state.quizReducer.quiz,
   loading: state.quizReducer.loading,
+
   formSubmitted: state.quizReducer.formSubmitted,
   score: state.quizReducer.score,
+
 });
 
 /* === Actions ===

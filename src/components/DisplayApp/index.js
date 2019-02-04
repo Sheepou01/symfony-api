@@ -19,6 +19,7 @@ import Mentions from 'src/components/GeneralPattern/Mentions';
 import Help from 'src/components/GeneralPattern/Help';
 import NotFound from 'src/components/GeneralPattern/NotFound';
 import UserProfile from 'src/containers/UserProfile';
+
 import './style.scss';
 
 

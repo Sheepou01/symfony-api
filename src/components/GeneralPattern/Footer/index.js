@@ -16,7 +16,7 @@ import './style.scss';
 const Footer = () => (
   <div id="footer">
     <NavLink to="/mentions-légales" id="footer-legal-mentions">Mentions-légales</NavLink>
-    <div id="footer-contact">Suivez-nous:</div>
+    <div id="footer-follow">Suivez-nous:</div>
     <div id="footer-social-networks">
       <NavLink to="/aide" id="footer-facebook">
         <Icon name="facebook" size="big" />
@@ -28,6 +28,7 @@ const Footer = () => (
         <Icon name="instagram" size="big" />
       </NavLink>
     </div>
+    <div id="footer-joke">On a rien de tout ça, mais ça fait classe</div>
     <NavLink to="/aide" id="footer-help">
       <Icon name="help circle" size="big" />
     </NavLink>

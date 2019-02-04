@@ -17,10 +17,11 @@ const anecdotesMiddleware = store => next => (action) => {
         // handle success
           // console.log(response);
           store.dispatch(receivedTopito(response.data));
-        // store.dispatch(randomTopito(response.data));
+
+          // store.dispatch(randomTopito(response.data));
         })
         .catch((error) => {
-        // handle error
+
           console.log(error);
         });
       break;

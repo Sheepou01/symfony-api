@@ -4,14 +4,14 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+
 /**
  * Local import
  */
-import Settings from 'src/components/GeneralPattern/Header/Settings';
+import UserProfile from 'src/components/UserProfile';
+import { userFavTheme, changeInput, editUser } from 'src/store/reducers/userReducer';
 
 // Action Creators
-import { menuDisplay } from 'src/store/reducers/settingsReducer';
-import { logout, loadTheme } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -21,9 +21,13 @@ import { logout, loadTheme } from 'src/store/reducers/userReducer';
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
 const mapStateToProps = state => ({
-  // J'utilise le state de mon settingsReducer
-  menuOppenned: state.settingsReducer.menuOppenned,
+  themes: state.userReducer.themes,
+  idFavoriteTheme: state.userReducer.idFavoriteTheme,
   isAuthenticated: state.userReducer.isAuthenticated,
+  username: state.userReducer.user.username,
+  editInputPseudo: state.userReducer.user.editInputPseudo,
+  editInputEmail: state.userReducer.user.editInputEmail,
+  editInputPassword: state.userReducer.user.editInputPassword,
 });
 
 /* === Actions ===
@@ -34,24 +38,25 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  menuDisplay: () => {
-    // dispatch de mon action creator qui gère l'ouverture du menu dans le header
-    dispatch(menuDisplay());
+  userFavTheme: (themeId) => {
+    dispatch(userFavTheme(themeId));
   },
-  logout: () => {
-    dispatch(logout());
+  handleInput: (name, value) => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(changeInput(name, value));
   },
-  loadTheme: () => {
-    dispatch(loadTheme());
+  editUser: (pseudo, email, password) => {
+    // dispatch de mon action creator qui gère la soumission du form d'inscription
+    dispatch(editUser(pseudo, email, password));
   },
 });
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const SettingsContainer = connect(mapStateToProps, mapDispatchToProps)(Settings);
+const UserProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfile);
 
 
 /**
  * Export
  */
-export default withRouter(SettingsContainer);
+export default withRouter(UserProfileContainer);

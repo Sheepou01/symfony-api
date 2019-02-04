@@ -11,7 +11,7 @@ import Quiz from 'src/components/Quiz';
 
 
 // Action Creators
-
+import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -23,7 +23,14 @@ import Quiz from 'src/components/Quiz';
 const mapStateToProps = state => ({
   quiz: state.quizReducer.quiz,
   loading: state.quizReducer.loading,
+<<<<<<< HEAD
   selectedOption: state.quizReducer.selectedOption,
+=======
+
+  formSubmitted: state.quizReducer.formSubmitted,
+  score: state.quizReducer.score,
+
+>>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
 });
 
 /* === Actions ===
@@ -33,7 +40,15 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = {};
+const mapDispatchToProps = dispatch => ({
+  scoreIncrement: () => {
+    dispatch(score());
+  },
+  quizSubmitted: () => {
+    dispatch(quizSubmitted());
+  },
+
+});
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
 const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);

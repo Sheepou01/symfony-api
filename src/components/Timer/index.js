@@ -16,7 +16,6 @@ import './style.scss';
 
 
 const Timer = ({ seconds }) => {
-
   // SI on actionner le timer à un moment donné précis (par ex: un clic)
 
   // handleStartClick = () => {

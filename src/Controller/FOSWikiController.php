@@ -2,8 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Wiki;
 use App\Repository\WikiRepository;
+use App\Entity\Wiki;
 use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
@@ -21,10 +21,7 @@ class FOSWikiController extends FOSRestController{
     public function showAll(WikiRepository $wikiRepository){
         
         $wikis = $wikiRepository->findBy([
-            'online' => true,            
-        ]);
+            'online' => true]);
         return $wikis;
-        
-        
     }
 }

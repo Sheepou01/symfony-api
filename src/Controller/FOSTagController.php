@@ -1,27 +1,28 @@
 <?php
+
 namespace App\Controller;
 
-use App\Entity\Quizz;
-use App\Repository\QuizzRepository;
+use App\Entity\Tag;
+use App\Repository\TagRepository;
 use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 
-class FOSQuizzController extends FOSRestController{
+class FOSTagController extends FOSRestController{
     /**
      * @GET(
-     *  path="/api/quizz",
-     * name="show_quizz",
+     *  path="/api/tag",
+     * name="show_tag",
      * )
      * @View
      */
-    public function showQuizz(QuizzRepository $quizzRepository){
+    public function showTag(TagRepository $tagRepository){
         
-        $quizz = $quizzRepository->find(1);
+        $tags = $tagRepository->findAll();
       
         
-        return $quizz;
+        return $tags;
         
     }
 }

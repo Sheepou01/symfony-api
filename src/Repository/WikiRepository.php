@@ -23,13 +23,11 @@ class WikiRepository extends ServiceEntityRepository
     //  * @return Wiki[] Returns an array of Wiki objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function online($value)
     {
         return $this->createQueryBuilder('w')
-            ->andWhere('w.exampleField = :val')
+            ->andWhere('w.online = :val')
             ->setParameter('val', $value)
-            ->orderBy('w.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;

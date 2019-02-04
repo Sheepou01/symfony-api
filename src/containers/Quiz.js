@@ -3,13 +3,10 @@
  */
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-
 /**
  * Local import
  */
 import Quiz from 'src/components/Quiz';
-
-
 // Action Creators
 import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
 
@@ -23,14 +20,10 @@ import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
 const mapStateToProps = state => ({
   quiz: state.quizReducer.quiz,
   loading: state.quizReducer.loading,
-<<<<<<< HEAD
-  selectedOption: state.quizReducer.selectedOption,
-=======
 
   formSubmitted: state.quizReducer.formSubmitted,
   score: state.quizReducer.score,
 
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
 });
 
 /* === Actions ===

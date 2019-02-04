@@ -8,37 +8,17 @@ import {
  */
 // import Next from 'src/components/Next';
 import './style.scss';
-<<<<<<< HEAD
-import Response from './Response';
-=======
-import { green } from 'ansi-colors';
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
+// import { green } from 'ansi-colors';
 
 /**
  * Code
  */
-<<<<<<< HEAD
-const Quiz = ({ quiz, loading, selectedOption }) => {
-=======
 
 const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitted}) => {
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
   // console.log(selectedOption);
   // Fonction pour le bouton radio
   function handleFormSubmit(event) {
     event.preventDefault();
-<<<<<<< HEAD
-    console.log('The Radio was clicked.');
-    const result = (!selectedOption);
-    console.log(result);
-    return (result);
-  }
-  // Fonction pour le clic
-  function handleClick(e) {
-    e.preventDefault();
-    console.log('The button was clicked.');
-  }
-=======
     quizSubmitted();
     console.log(`Votre score est de : ${score}`);
   }
@@ -60,7 +40,6 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     color: 'white',
     background: 'green',
   };
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
   //  console.log(quiz);
 
   if (!loading) {
@@ -68,46 +47,6 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     // console.log(questions);
     return (
       <div id="quiz-view">
-<<<<<<< HEAD
-        <h1>{title}</h1>
-        <div id="quiz-boxes">
-          {questions.map(question => (
-            <div key={question.id} className="quiz-box">
-              <div className="quiz-question">
-                <h2>{question.text}</h2>
-                <div className="quiz-form">
-                  <form>
-                    {question.answers.map(answer => (
-                      <div
-                        className="quiz-answers"
-                        key={answer.id}
-                        value={answer.correct}
-                      >
-                        <label>
-                          <input
-                            type="radio"
-                            id={answer.id}
-                            name={question.text}
-                            value={answer.correct}
-                            onChange={handleFormSubmit}
-                          />
-                          {answer.text}
-                        </label>
-                      </div>
-                    ))}
-                    <Response
-                      quiz= {quiz}              
-                    />                
-                  </form>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <div id="check-icon">
-          <Button onClick={handleClick}><Icon name="check" size="huge" /></Button>
-        </div>
-=======
         <form onSubmit={handleFormSubmit}>
           {formSubmitted ? <div>{score}/10</div> : ''}
           <h1>{title}</h1>
@@ -138,7 +77,6 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
           </div>
         </form>
 
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
       </div>
     );
   }
@@ -146,12 +84,6 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
 };
 
 Quiz.propTypes = {
-<<<<<<< HEAD
-  selectedOption: PropTypes.bool.isRequired,
-  quiz: PropTypes.object.isRequired,
-=======
-
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
   loading: PropTypes.bool.isRequired,
 };
 
@@ -172,7 +104,3 @@ const Answer = ({id, answers}) => {
  * Export
  */
 export default Quiz;
-<<<<<<< HEAD
-=======
-
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f

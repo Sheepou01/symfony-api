@@ -4,15 +4,10 @@
 const initialState = {
   quiz: {},
   loading: true,
-<<<<<<< HEAD
-  // valeur du bouton radio
-  selectedOption: false,
-=======
 
   formSubmitted: false,
   score: 0,
 
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
 };
 
 /**
@@ -72,8 +67,6 @@ export const quiz = () => ({
   type: QUIZ,
 });
 
-<<<<<<< HEAD
-=======
 
 export const score = () => ({
   type: SCORE,
@@ -84,7 +77,6 @@ export const quizSubmitted = () => ({
 });
 
 
->>>>>>> 766e955e45660c477c76a9843c4286d5a2d5717f
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,
   data,

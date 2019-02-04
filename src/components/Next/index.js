@@ -8,9 +8,7 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
-
 import './style.scss';
-
 /**
  * Code
  */

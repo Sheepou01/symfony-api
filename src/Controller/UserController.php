@@ -56,9 +56,15 @@ class UserController extends AbstractController
      * @ParamConverter("tag", converter="fos_rest.request_body")
      */
 
-    public function editTag(User $user,Tag $tag){
+    public function editTag(User $user, Tag $tag){
         
         dd($tag);
+        $user->addFavoriteTag($tag);
+        
+        $em = $this->getDoctrine()->getManager();
+        
+        $em->flush();
+        
 
         // $em->persist($user);
         // $em->flush();

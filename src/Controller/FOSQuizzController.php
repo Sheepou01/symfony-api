@@ -25,19 +25,20 @@ class FOSQuizzController extends FOSRestController{
 
         $quizzToSend = $quizz[array_rand($quizz)];
         
-        $questions = $quizzToSend->getQuestions();
+        return $quizzToSend;
+        // $questions = $quizzToSend->getQuestions();
 
-        $allAnswers = [];
-        foreach($questions as $question) {
-            $answers = $answerRepo->findBy([
-                'question' => $question->getId()
-            ]);
+        // $allAnswers = [];
+        // foreach($questions as $question) {
+        //     $answers = $answerRepo->findBy([
+        //         'question' => $question->getId()
+        //     ]);
 
-            shuffle($answers);
-           $allAnswers[$question->getText()] = $answers;
-        }
+        //     shuffle($answers);
+        //    $allAnswers[$question->getText()] = $answers;
+        // }
         
-         return [$quizzToSend, $allAnswers];
+        //  return [$quizzToSend, $allAnswers];
 
         
     }

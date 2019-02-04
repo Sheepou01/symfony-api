@@ -15,7 +15,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
-class FOSUserController extends FOSRestController{
+class FOSSecurityController extends FOSRestController{
 
     /**
      * @Rest\Post("/api/signup")
@@ -35,21 +35,4 @@ class FOSUserController extends FOSRestController{
         $em->flush();
         return new Response('Inscription effectuée');
     }
-
-    /**
-     * @Rest\Post("/api/signin")
-     * @Rest\Get("/api/signin")
-     */
-    public function signin(AuthenticationUtils $authenticationUtils){
-        // get the login error if there is one
-         $error = $authenticationUtils->getLastAuthenticationError();
-        
-        if($error->getMessage() == 'Bad credentials.'){
-             return new Response ('Connexion échouée, erreur identifiant ou mot de passe');
-         }
-    }
-
-    /**
-     * @Rest\
-     */
 }

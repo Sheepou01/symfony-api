@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use App\Entity\Tag;
 use App\Repository\TagRepository;
 use FOS\RestBundle\Controller\Annotations\Get;

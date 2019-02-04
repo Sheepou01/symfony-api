@@ -56,7 +56,7 @@ class WikiController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="wiki_show", methods={"GET"})
+     * @Route("/admin/wiki/{id}", name="wiki_show", methods={"GET"})
      */
     public function show(Wiki $wiki): Response
     {

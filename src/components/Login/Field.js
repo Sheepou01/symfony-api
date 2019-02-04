@@ -31,11 +31,11 @@ const Field = ({ name, type, placeholder, value, handleInputChange }) => (
 
 // PropTypes des props de Field
 Field.propTypes = {
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  placeholder: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
-  handleInputChange: PropTypes.func.isRequired,
+  // name: PropTypes.string.isRequired,
+  // type: PropTypes.string.isRequired,
+  // placeholder: PropTypes.string.isRequired,
+  // value: PropTypes.string.isRequired,
+  // handleInputChange: PropTypes.func.isRequired,
 };
 
 /**

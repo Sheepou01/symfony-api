@@ -3,56 +3,80 @@ import PropTypes from 'prop-types';
 import {
   Icon, Button, Loader, Checkbox, Card,
 } from 'semantic-ui-react';
-
 /**
  * Local import
  */
 // import Next from 'src/components/Next';
 import './style.scss';
+import { green } from 'ansi-colors';
 
 /**
  * Code
  */
-const Quiz = ({ quiz, loading }) => {
+
+const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitted}) => {
+  // console.log(selectedOption);
+  // Fonction pour le bouton radio
+  function handleFormSubmit(event) {
+    event.preventDefault();
+    quizSubmitted();
+    console.log(`Votre score est de : ${score}`);
+  }
+  // Fonction pour le clic
+  function handleClick(e) {
+    const answer = Number(e.currentTarget.id);
+    const goodAnswer = {
+      color: 'white',
+      background: 'red',
+    };    
+    // console.log(style);
+    if (answer === 1) {
+      scoreIncrement();
+      `style=${goodAnswer}`;
+    }
+  }
+
+  const goodAnswer = {
+    color: 'white',
+    background: 'green',
+  };
   //  console.log(quiz);
 
-  // console.log(questions)
-  // console.log(questions.map(question => question.text));
   if (!loading) {
     const { title, questions } = quiz;
-    console.log(questions);
+    // console.log(questions);
     return (
       <div id="quiz-view">
-        <h1>{title}</h1>
-        {questions.map(question => (
-          <div key={question.id} id="quiz-boxes">
-            <div className="quiz-box">
-              <div className="quiz-question">
-                <h2>{question.text}</h2>
-                <div className="quiz-answers">
-                  <form>
-                    <div>
-                      <input type="radio" id="contactChoice1"
-                      name="contact" value="email" />
-                      <label htmlFor="contactChoice1">Email</label>
-
-                      <input type="radio" id="contactChoice2"
-                      name="contact" value="telephone" />
-                      <label htmlFor="contactChoice2">Téléphone</label>
-
-                      <input type="radio" id="contactChoice3"
-                      name="contact" value="courrier" />
-                      <label htmlFor="contactChoice3">Courrier</label>
-                    </div>
-                  </form>
+        <form onSubmit={handleFormSubmit}>
+          {formSubmitted ? <div>{score}/10</div> : ''}
+          <h1>{title}</h1>
+          <div id="quiz-boxes">
+            {questions.map(question => (
+              <div key={question.id} className="quiz-box">
+                <div className="quiz-question">
+                  <h2>{question.text}</h2>
+                  <div className="quiz-form">
+                    <ul>
+                      {question.answers.map(answer => (
+                        <li 
+                          key={answer.id}
+                          className="quiz-answers"
+                          onClick={handleClick}
+                          id={Number(answer.correct)}
+                        >{answer.text}</li>
+                      ))}
+                    </ul>
+                    {formSubmitted ? <Answer {...question} /> : ''}
+                  </div>
                 </div>
               </div>
-            </div>
+            ))}
           </div>
-        ))}
-        <div id="check-icon">
-          <Button><Icon name="check" size="huge" /></Button>
-        </div>
+          <div id="check-icon">
+            <Button><Icon name="check" size="huge" /></Button>
+          </div>
+        </form>
+
       </div>
     );
   }
@@ -60,9 +84,21 @@ const Quiz = ({ quiz, loading }) => {
 };
 
 Quiz.propTypes = {
-  quiz: PropTypes.object.isRequired,
+
   loading: PropTypes.bool.isRequired,
 };
+
+const Answer = ({id, answers}) => {
+  // console.log(answers);
+  const answersMap = answers.map(item => item.correct);
+  console.log(answersMap);
+  return (
+    <div>
+      lol
+    </div>
+  )
+}
+
 
 
 /**
@@ -70,13 +106,3 @@ Quiz.propTypes = {
  */
 export default Quiz;
 
-/**<div className="quiz-answers">
-                  <form>
-                    {question.answers.map(answer => 
-                      <div key={answer.id}>
-                      <label htmlFor={answer.id}>{answer.text}</label>
-                        <input type="radio" name={answer.id} value={answer.id} />
-                      </div>
-                    )}
-                  </form>
-                </div> */

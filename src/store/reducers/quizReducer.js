@@ -4,6 +4,10 @@
 const initialState = {
   quiz: {},
   loading: true,
+
+  formSubmitted: false,
+  score: 0,
+
 };
 
 /**
@@ -11,6 +15,10 @@ const initialState = {
    */
 export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
+
+const SCORE = 'SCORE';
+const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
+
 /**
 * Traitements
 */
@@ -31,6 +39,20 @@ const reducer = (state = initialState, action = {}) => {
         quiz: action.data,
         loading: false,
       };
+
+    case SCORE:
+    // console.log(action.data)
+      return {
+        ...state,
+        score: state.score + 1,
+      };
+    case QUIZ_SUBMITTED:
+    // console.log(action.data)
+      return {
+        ...state,
+        formSubmitted: true,
+      };
+
     default:
       return state;
   }
@@ -42,6 +64,15 @@ const reducer = (state = initialState, action = {}) => {
 // j'envoi mes props à mon container
 export const quiz = () => ({
   type: QUIZ,
+});
+
+
+export const score = () => ({
+  type: SCORE,
+});
+
+export const quizSubmitted = () => ({
+  type: QUIZ_SUBMITTED,
 });
 
 

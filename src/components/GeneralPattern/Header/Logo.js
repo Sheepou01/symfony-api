@@ -8,13 +8,14 @@ import { NavLink } from 'react-router-dom';
 /**
  * Local import
  */
+import logo from 'src/styles/assets/logo.png';
 
 /**
  * Code
  */
 const Logo = () => (
   <NavLink id="logo" to="/">
-    <img src="src/styles/images/logo.png" alt=""/>
+    <img src={logo} alt="" />
   </NavLink>
 );
 

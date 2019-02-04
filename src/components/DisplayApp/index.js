@@ -2,46 +2,51 @@
  * Npm import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import 'semantic-ui-css/semantic.min.css';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 /**
  * Local import
  */
 
-// import Header from 'src/components/Header';
-
-
-import Timer from 'src/containers/Timer';
 import Game from 'src/components/Game';
 import Anecdotes from 'src/containers/Anecdotes';
-// import Footer from 'src/components/Footer';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';
 import Quiz from 'src/containers/Quiz';
-import Mentions from 'src/components/Mentions';
-import Help from 'src/components/Help';
-import NotFound from 'src/components/NotFound';
+import Mentions from 'src/components/GeneralPattern/Mentions';
+import Help from 'src/components/GeneralPattern/Help';
+import NotFound from 'src/components/GeneralPattern/NotFound';
+import UserProfile from 'src/containers/UserProfile';
+
 import './style.scss';
 
 
 /**
  * Code
  */
-const DisplayApp = () => (
+const DisplayApp = ({ isAuthenticated }) => (
   <div id="app">
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/mon-profil" component={Login} />
-      <Route path="/anecdote" component={Anecdotes} />
-      <Route path="/quiz" component={Quiz} />
-      <Route path="/jeu" component={Game} />
-      <Route path="/mentions-légales" component={Mentions} />
-      <Route path="/aide" component={Help} />
+      <Route exact path="/anecdote" component={Anecdotes} />
+      <Route exact path="/quiz" component={Quiz} />
+      <Route exact path="/jeu" component={Game} />
+      <Route exact path="/mentions-légales" component={Mentions} />
+      <Route exact path="/aide" component={Help} />
+      <Route exact path="/connexion" component={Login} />
+      <Route exact path="/mon-profil" component={UserProfile} />
+      {/* If the user is nnot authenticated and wants to connect to the url /mon-profil, we redirect him to /connexion */}
+      <Route exact path="/mon-profil" render={() => (isAuthenticated ? <UserProfile /> : <Redirect to="/connexion" />)} />
       <Route component={NotFound} />
     </Switch>
   </div>
 );
+
+DisplayApp.propTypes = {
+  isAuthenticated: PropTypes.bool.isRequired,
+};
 
 /**
  * Export

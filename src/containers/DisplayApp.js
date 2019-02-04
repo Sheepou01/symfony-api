@@ -2,16 +2,16 @@
  * Npm import
  */
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 /**
  * Local import
  */
-import Quiz from 'src/components/Quiz';
+import DisplayApp from 'src/components/DisplayApp';
 
 
 // Action Creators
-import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
+import { randomTopito } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -20,13 +20,9 @@ import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
+// console.log('Middleware' + randomTopito);
 const mapStateToProps = state => ({
-  quiz: state.quizReducer.quiz,
-  loading: state.quizReducer.loading,
-
-  formSubmitted: state.quizReducer.formSubmitted,
-  score: state.quizReducer.score,
-
+  isAuthenticated: state.userReducer.isAuthenticated,
 });
 
 /* === Actions ===
@@ -36,20 +32,14 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = dispatch => ({
-  scoreIncrement: () => {
-    dispatch(score());
-  },
-  quizSubmitted: () => {
-    dispatch(quizSubmitted());
-  },
+const mapDispatchToProps = {};
 
-});
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)
-const QuizContainer = connect(mapStateToProps, mapDispatchToProps)(Quiz);
+const DisplayAppContainer = connect(mapStateToProps, mapDispatchToProps)(DisplayApp);
+
 
 /**
  * Export
  */
-export default withRouter(QuizContainer);
+export default withRouter(DisplayAppContainer);

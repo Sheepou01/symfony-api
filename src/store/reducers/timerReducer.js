@@ -2,7 +2,7 @@
  * Initial State
  */
 const initialState = {
-  seconds: 10,
+  seconds: 420,
   timerOff: true,
   gameOver: false,
 };
@@ -55,6 +55,8 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         gameOver: false,
+        timerOff: true,
+        seconds: initialState.seconds,
       };
     default:
       return state;

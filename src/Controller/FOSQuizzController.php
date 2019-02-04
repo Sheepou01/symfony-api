@@ -31,10 +31,9 @@ class FOSQuizzController extends FOSRestController{
         foreach($questions as $question) {
             $answers = $answerRepo->findBy([
                 'question' => $question->getId()
-            ], [
-                'text' => 'ASC'
             ]);
 
+            shuffle($answers);
            $allAnswers[$question->getText()] = $answers;
         }
         

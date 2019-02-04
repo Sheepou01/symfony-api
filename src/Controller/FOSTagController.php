@@ -3,21 +3,22 @@
 namespace App\Controller;
 
 use App\Entity\Tag;
+use App\Entity\User;
 use App\Repository\TagRepository;
-use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
-use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
+use FOS\RestBundle\Controller\Annotations as Rest;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 
 class FOSTagController extends FOSRestController
 {
      /**
-     * @GET(
+     * @Rest\GET(
      *  path="/api/tags",
      * name="show_all_tags",
      * )
-     * @View
+     * @Rest\View
      */
     public function showTags(TagRepository $tagRepo)
     {

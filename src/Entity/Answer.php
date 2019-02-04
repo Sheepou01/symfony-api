@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AnswerRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Answer
 {
@@ -13,16 +15,19 @@ class Answer
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=200)
+     * @Serializer\Expose
      */
     private $text;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Serializer\Expose
      */
     private $correct;
 

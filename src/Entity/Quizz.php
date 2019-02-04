@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\QuizzRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Quizz
 {
@@ -15,11 +17,13 @@ class Quizz
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Serializer\Expose
      */
     private $title;
 
@@ -35,16 +39,19 @@ class Quizz
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\QuizzScore", mappedBy="quizz")
+     * @Serializer\Expose
      */
     private $quizzScores;
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz")
+     * @Serializer\Expose
      */
     private $questions;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz")
+     * @Serializer\Expose
      */
     private $tags;
 

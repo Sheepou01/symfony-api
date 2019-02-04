@@ -5,9 +5,11 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\WikiRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class Wiki
 {
@@ -20,11 +22,13 @@ class Wiki
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Expose
      */
     private $name;
 
     /**
      * @ORM\Column(type="text")
+     * @Serializer\Expose
      */
     private $body;
 
@@ -40,6 +44,7 @@ class Wiki
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="wiki")
+     * @Serializer\Expose
      */
     private $tags;
 
@@ -55,6 +60,7 @@ class Wiki
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Serializer\Expose
      */
     private $source;
 

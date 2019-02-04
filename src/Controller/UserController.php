@@ -2,13 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Tag;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Routing\Annotation as Rest;
+use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -49,22 +50,18 @@ class UserController extends AbstractController
         return new Response('Maj Ok');
     }
 
-    //  /**
-    //  * @Rest\Post("/api/signup")
-    //  * @Rest\View(StatusCode=201)
-    //  * @ParamConverter("user", converter="fos_rest.request_body")
-    //  */
+     /**
+     * @Rest\Post("/{id}/tag/edit")
+     * @Rest\View(StatusCode=201)
+     * @ParamConverter("tag", converter="fos_rest.request_body")
+     */
 
-    // public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
-    //     $roleUser = $role->findOneBy(['code' => 'ROLE_USER']);
-    //     $em = $this->getDoctrine()->getManager();
-    //     $user->setCreatedAt(new \DateTime);
-    //     // dd($user->getPassword());
-    //     $hash = $encoder->encodePassword($user,$user->getPassword());
-    //     $user->setPassword($hash);
-    //     $user->setRole($roleUser);
-    //     $em->persist($user);
-    //     $em->flush();
-    //     return new Response('Inscription effectuée');
-    // }
+    public function editTag(User $user,Tag $tag){
+        
+        dd($tag);
+
+        // $em->persist($user);
+        // $em->flush();
+        return new Response('Tag modifié');
+    }
 }

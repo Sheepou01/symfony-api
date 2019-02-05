@@ -23,14 +23,14 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
   if (topitosList.length > 0) {
   // Je récupère name, body et created_at dans l'objet à l'index 0 (activeTopito)
   // dans le tableau (topitosList)
-    const { name, body, created_at } = topitosList[activeTopito];
+    const { name, body, created_at, source } = topitosList[activeTopito];
     return (
       <div>
         <div id="wiki-view">
           <h1>{name}</h1>
           <ul className="wiki-info">
             <li className="Date">{created_at}</li>
-            <li className="source"> source : http://www.topito.com/top-20-des-phrases-cultes-de-nos-entraineurs-de-rugby </li>
+            <li className="source">{source}</li>
           </ul>
 
           <p className="description">

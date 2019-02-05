@@ -10,13 +10,15 @@ import React from 'react';
 import './style.scss';
 // import Bomber from './Bomber';
 import Snake from './Snake';
+// import CasseBrique from './CasseBrique';
 // import Test from './Test';
+// import Reacteroids from './Reacteroid/Reacteroids';
 
 /**
  * Code
  */
 const Game = () => (
-  <div>
+  <div id="snake">
     <Snake />
   </div>
 );

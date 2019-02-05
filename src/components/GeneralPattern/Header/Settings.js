@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import classnames from 'classnames';
 
 /**
@@ -19,8 +19,7 @@ const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout }) => {
     menuDisplay();
   };
 
-  const handleLogout = (evt) => {
-    evt.preventDefault();
+  const handleLogout = () => {
     logout();
   };
 

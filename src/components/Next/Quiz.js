@@ -15,16 +15,24 @@ import './style.scss';
  */
 // Bouton Next pour passer sur un autre quiz
 
-const NextQuiz = () => (
-  <div id="next">
-    <NavLink to="/quiz">
-      <Button>
-        Next
-        <Icon name="chevron right" size="huge" />
-      </Button>
-    </NavLink>
-  </div>
-);
+
+const NextQuiz = (quiz) => {
+  const handleReceiveQuiz = () => {
+    // evt.preventDefault();
+    quiz();
+  };
+
+  return (
+    <div id="next">
+      <NavLink to="/quiz" onClick={handleReceiveQuiz}>
+        <Button>
+          Next
+          <Icon name="chevron right" size="huge" />
+        </Button>
+      </NavLink>
+    </div>
+  );
+};
 
 
 /**

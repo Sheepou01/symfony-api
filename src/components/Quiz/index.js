@@ -3,11 +3,13 @@ import PropTypes from 'prop-types';
 import {
   Icon, Button, Loader, Checkbox, Card,
 } from 'semantic-ui-react';
+import classNames from 'classnames';
 /**
  * Local import
  */
 // import Next from 'src/components/Next';
 import './style.scss';
+import NextQuiz from '../Next/Quiz';
 // import { green } from 'ansi-colors';
 
 /**
@@ -25,14 +27,16 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
   // Fonction pour le clic
   function handleClick(e) {
     const answer = Number(e.currentTarget.id);
+    const li = e.currentTarget;
+    const cible = document.getElementById(e.currentTarget);
     const goodAnswer = {
       color: 'white',
       background: 'red',
-    };    
+    };
     // console.log(style);
     if (answer === 1) {
       scoreIncrement();
-      `style=${goodAnswer}`;
+      cible.style.backgroundColor = 'red';
     }
   }
 
@@ -76,7 +80,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
             <Button><Icon name="check" size="huge" /></Button>
           </div>
         </form>
-
+        <NextQuiz />
       </div>
     );
   }
@@ -95,10 +99,8 @@ const Answer = ({id, answers}) => {
     <div>
       lol
     </div>
-  )
-}
-
-
+  );
+};
 
 /**
  * Export

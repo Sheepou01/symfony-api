@@ -12,7 +12,7 @@ import './style.scss';
 import Snake from './Snake';
 // import CasseBrique from './CasseBrique';
 // import Test from './Test';
-// import Reacteroid from './Reacteroid/';
+// import Reacteroids from './Reacteroid/Reacteroids';
 
 /**
  * Code

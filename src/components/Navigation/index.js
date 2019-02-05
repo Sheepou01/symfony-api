@@ -9,7 +9,10 @@ import { NavLink } from 'react-router-dom';
  * Local import
  */
 
-import facts from 'src/styles/assets/facts.png';
+// import facts from 'src/styles/assets/facts.png';
+import Topito from 'src/styles/assets/anecdoteFinal.png';
+import Game from 'src/styles/assets/gameFinal.png';
+import Quiz from 'src/styles/assets/quizFinal.png';
 // import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';
 
@@ -36,7 +39,7 @@ const Navigation = ({ startTimer, quiz }) => {
           <div className="icon-cards__content step-animation" onClick={handleStartClick}>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/jeu">
               <div className="card">
-                <img src={facts} alt="" className="card-image" />
+                <img src={Game} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Games</div>
                 </div>
@@ -44,7 +47,7 @@ const Navigation = ({ startTimer, quiz }) => {
             </NavLink>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/quiz" onClick={handleReceiveQuiz}>
               <div className="card">
-                <img src={facts} alt="" className="card-image" />
+                <img src={Quiz} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Quiz</div>
                 </div>
@@ -52,7 +55,7 @@ const Navigation = ({ startTimer, quiz }) => {
             </NavLink>
             <NavLink className="icon-cards__item d-flex align-items-center justify-content-center" to="/anecdote">
               <div className="card">
-                <img src={facts} alt="" className="card-image" />
+                <img src={Topito} alt="" className="card-image" />
                 <div className="card-banner">
                   <div className="card-title">Anecdotes</div>
                 </div>

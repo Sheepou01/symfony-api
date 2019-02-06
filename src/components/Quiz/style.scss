@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 #quiz-view h1 {
   text-align: center;
 }
@@ -14,23 +16,43 @@
 }
 
 .quiz-box{
-  width : 30%;
+  width: 30%;
+  padding: 1em;
+  border: 1px solid;
+  margin: 0.5em;
 }
 
 .quiz-answers{
   display: flex;
   align-items: center;
+  margin: 0.5em;
+  cursor: pointer;
 }
+
+.answer-clicked{
+  color: $orange;
+  display: flex;
+  align-items: center;
+  margin: 0.5em;
+  cursor: pointer;
+}
+
+.quiz-question h2{
+  height: 4em;
+}
+
+.quiz-score {
+  text-align: center;
+  font-size: 2em;
+  margin: 2em;
+}
+
 
 #check-icon {
   display: flex;
   justify-content: space-around;
   width: 40%;
   margin: 3em auto;
-}
-
-h2 { 
-  width : 100%;
 }
 
 

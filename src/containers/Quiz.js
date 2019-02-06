@@ -41,6 +41,9 @@ const mapDispatchToProps = dispatch => ({
   quizSubmitted: () => {
     dispatch(quizSubmitted());
   },
+  clickAnswer: () => {
+    dispatch(clickAnswer());
+  },
 
 });
 // Container

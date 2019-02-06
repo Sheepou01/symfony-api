@@ -5,6 +5,7 @@ const initialState = {
   quiz: {},
   loading: true,
   formSubmitted: false,
+  answerClicked: false,
   score: 0,
 };
 
@@ -15,6 +16,7 @@ export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
 const SCORE = 'SCORE';
 const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
+const CLICK_ANSWER = 'CLICK_ANSWER';
 /**
 * Traitements
 */
@@ -47,6 +49,12 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         formSubmitted: true,
       };
+    case CLICK_ANSWER:
+    // console.log(action.data)
+      return {
+        ...state,
+        answerClicked: !state.answerClicked,
+      };
     default:
       return state;
   }
@@ -66,6 +74,9 @@ export const score = () => ({
 
 export const quizSubmitted = () => ({
   type: QUIZ_SUBMITTED,
+});
+export const clickAnswer = () => ({
+  type: CLICK_ANSWER,
 });
 
 export const receivedQuiz = data => ({

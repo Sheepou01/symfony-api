@@ -33,9 +33,9 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
             <li className="source">{source}</li>
           </ul>
 
-          <p className="description">
+          <section className="description">
             { ReactHtmlParser(body) }
-          </p>
+          </section>
         </div>
         <Next className="next-button" randomTopito={randomTopito} topitosList={topitosList} />
       </div>

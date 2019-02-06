@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
-import { Button } from 'semantic-ui-react';
+import { Button, Popup } from 'semantic-ui-react';
 
 
 /**
@@ -30,8 +30,24 @@ class Login extends React.Component {
   // lors de la soumission du formulaire inscription
   handleSubmitInscription = (event) => {
     event.preventDefault();
-    const { inputPseudo, inputEmail, inputPassword, signUpUser } = this.props;
-    signUpUser(inputPseudo, inputEmail, inputPassword);
+    const {
+      inputPseudo,
+      inputEmail,
+      inputPassword,
+      signUpUser,
+      inputPasswordConfirmation,
+      actionIncorrectPassword,
+      actionShortPassword,
+    } = this.props;
+    if (inputPassword !== inputPasswordConfirmation) {
+      actionIncorrectPassword();
+    }
+    else if (inputPassword.length < 8) {
+      actionShortPassword();
+    }
+    else {
+      signUpUser(inputPseudo, inputEmail, inputPassword);
+    }
   };
 
   // Fonction qui me permet de récupérer l'email et le MDP
@@ -42,9 +58,22 @@ class Login extends React.Component {
     signInUser(inputUserEmail, inputUserPassword);
   };
 
-
   render() {
+<<<<<<< HEAD
     const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation, user, facebook } = this.props;
+=======
+    const {
+      inputUserEmail,
+      inputUserPassword,
+      inputPseudo,
+      inputEmail,
+      inputPassword,
+      isAuthenticated,
+      inputPasswordConfirmation,
+      alertMessagePasswordIncorrect,
+      alertMessageShortPassword,
+    } = this.props;
+>>>>>>> Marsh2
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }
@@ -55,6 +84,17 @@ class Login extends React.Component {
           <h2>Inscription</h2>
           {/* Premier Formulaire: Inscription */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
+          {alertMessagePasswordIncorrect ? (
+            <div className="alert-message">Votre mot de passe n'est pas identique</div>
+          )
+            : ''
+          }
+          {alertMessageShortPassword ? (
+            <div className="alert-message">Votre mot de passe est trop court</div>
+          )
+            : ''
+          }
+
           <form onSubmit={this.handleSubmitInscription}>
             <Field
               handleInputChange={this.handleInputChange}
@@ -75,7 +115,7 @@ class Login extends React.Component {
               value={inputPassword}
               name="inputPassword"
               type="password"
-              placeholder="Mot de Passe"
+              placeholder="Mot de Passe de 8 caractères minimum"
             />
             <Field
               handleInputChange={this.handleInputChange}
@@ -87,7 +127,6 @@ class Login extends React.Component {
             <Button className="login-button">Envoyer</Button>
           </form>
         </div>
-    
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
           {/* <Facebook facebook={facebook} /> */}
@@ -114,19 +153,24 @@ class Login extends React.Component {
       </div>
     );
   }
-};
+}
 
 // PropTypes des props de Login
 Login.propTypes = {
   inputPseudo: PropTypes.string.isRequired,
   inputEmail: PropTypes.string.isRequired,
   inputPassword: PropTypes.string.isRequired,
+  inputPasswordConfirmation: PropTypes.string.isRequired,
   inputUserEmail: PropTypes.string.isRequired,
   inputUserPassword: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
   signUpUser: PropTypes.func.isRequired,
   signInUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  alertMessagePasswordIncorrect: PropTypes.bool.isRequired,
+  alertMessageShortPassword: PropTypes.bool.isRequired,
+  actionIncorrectPassword: PropTypes.func.isRequired,
+  actionShortPassword: PropTypes.func.isRequired,
 };
 
 

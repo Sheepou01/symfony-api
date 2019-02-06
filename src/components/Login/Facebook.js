@@ -9,7 +9,8 @@ class Facebook extends React.Component {
     userId: '',
 	  name: '',
 	  email: '',
-	  picture: '',
+    picture: '',
+    isAuthenticated: false,
 	}
 
 	responseFacebook = response => {
@@ -18,16 +19,18 @@ class Facebook extends React.Component {
 	    isLoggedIn: true,
 	    userId: response.userId,
 	    name: response.name,
-	    email: response.email,
+      email: response.email,
+      isAuthenticated: true,
 	  })
 	}
 	componentClicked = () => console.log('clicked');
 
 	render() {
-    console.log(this.props);
+    const {isAuthenticated} = this.props;
 	  let fbContent;
 	  if(this.state.isLoggedIn) {
-	    fbContent = `Hello ${this.state.name}`;
+      fbContent = `Hello ${this.state.name}`;
+      // isAuthenticated = true;
 	  } else {
 	    fbContent = (
 				<FacebookLogin

@@ -36,6 +36,7 @@ const initialState = {
  * Types
  */
 const CHANGE_INPUT = 'CHANGE_INPUT';
+const FACEBOOK = 'FACEBOOK';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNIN_USER = 'SIGNIN_USER';
 export const EDIT_USER = 'EDIT_USER';
@@ -120,6 +121,12 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
+    case FACEBOOK:
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: { username: action.username },
+      };
     default:
       return state;
   }
@@ -177,6 +184,10 @@ export const themeList = () => ({
 export const loadTheme = listTheme => ({
   type: LOAD_THEME,
   listTheme,
+});
+export const facebook = username => ({
+  type: FACEBOOK,
+  username,
 });
 
 /**

@@ -26,14 +26,10 @@ class Facebook extends React.Component {
 	componentClicked = () => console.log('clicked');
 
 	render() {
-    const { isAuthenticated, user } = this.props;
+    const { facebook } = this.props;
 	  let fbContent;
 	  if(this.state.isLoggedIn) {
-      fbContent = `Hello ${this.state.name}`;
-      isAuthenticated = true;
-      user = {
-        username: this.state.name,
-      }
+      facebook(this.state.name)
 	  } else {
 	    fbContent = (
 				<FacebookLogin

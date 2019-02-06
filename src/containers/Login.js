@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/reducers/userReducer';
+import { changeInput, signUpUser, signInUser, facebook } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -50,6 +50,11 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère la soumission du form de connexion
     dispatch(signInUser(email, password));
   },
+  facebook: (user) => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
+    dispatch(facebook(user));
+  },
+
 });
 
 // Container

@@ -13,6 +13,7 @@ class Facebook extends React.Component {
 	}
 
 	responseFacebook = response => {
+    console.log(response);
 	  this.setState({
 	    isLoggedIn: true,
 	    userId: response.userId,

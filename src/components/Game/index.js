@@ -17,11 +17,20 @@ import Snake from './Snake';
 /**
  * Code
  */
-const Game = () => (
-  <div id="snake">
-    <Snake />
-  </div>
-);
+class Game extends React.Component {
+  componentDidMount() {
+    const { startTimer } = this.props;
+    startTimer();
+  }
+
+  render() {
+    return (
+      <div id="snake">
+        <Snake />
+      </div>
+    );
+  }
+}
 
 
 /**

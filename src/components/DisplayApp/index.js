@@ -10,7 +10,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
  * Local import
  */
 
-import Game from 'src/components/Game';
+import Game from 'src/containers/Game';
 import Anecdotes from 'src/containers/Anecdotes';
 import Home from 'src/components/Home';
 import Login from 'src/containers/Login';

@@ -7,6 +7,7 @@ const initialState = {
   inputPseudo: '',
   inputEmail: '',
   inputPassword: '',
+  inputPasswordConfirmation: '',
   inputUserEmail: '',
   inputUserPassword: '',
   editInputPseudo: '',
@@ -65,7 +66,7 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         // Je créé un nouveau state newUser qui est un tableau avec un objet
         // avec le pseudo, nom et mot de passe
-        newUser: [
+        user: [
           {
             pseudo: action.pseudo,
             email: action.email,

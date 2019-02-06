@@ -30,8 +30,8 @@ class Login extends React.Component {
   // lors de la soumission du formulaire inscription
   handleSubmitInscription = (event) => {
     event.preventDefault();
-    const { inputPseudo, inputEmail, inputPassword, addUser } = this.props;
-    addUser(inputPseudo, inputEmail, inputPassword);
+    const { inputPseudo, inputEmail, inputPassword, signUpUser } = this.props;
+    signUpUser(inputPseudo, inputEmail, inputPassword);
   };
 
   // Fonction qui me permet de récupérer l'email et le MDP
@@ -43,8 +43,9 @@ class Login extends React.Component {
     signInUser(inputUserEmail, inputUserPassword);
   };
 
+
   render() {
-    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated } = this.props;
+    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation } = this.props;
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }
@@ -76,6 +77,13 @@ class Login extends React.Component {
               name="inputPassword"
               type="password"
               placeholder="Mot de Passe"
+            />
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputPasswordConfirmation}
+              name="inputPasswordConfirmation"
+              type="password"
+              placeholder="Confirmez votre Mot de Passe"
             />
             <Button className="login-button">Envoyer</Button>
           </form>
@@ -117,8 +125,9 @@ Login.propTypes = {
   inputUserEmail: PropTypes.string.isRequired,
   inputUserPassword: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
-  addUser: PropTypes.func.isRequired,
+  signUpUser: PropTypes.func.isRequired,
   signInUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 

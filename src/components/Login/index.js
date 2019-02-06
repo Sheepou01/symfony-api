@@ -12,45 +12,12 @@ import { Button } from 'semantic-ui-react';
  */
 import Field from './Field';
 import './style.scss';
+import Facebook from './Facebook';
 
 /**
  * Code
  */
-
-// Je passe mes props depuis le container Login
-// const Login = ({
-//   handleInput,
-//   inputPseudo,
-//   inputEmail,
-//   inputPassword,
-//   inputUserEmail,
-//   inputUserPassword,
-//   addUser,
-//   signInUser,
-// }) => {
-// // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
-// // à mon conteneur le nom de l'input qui est modifié et sa valeur
-//   const handleInputChange = (event) => {
-//     const { name, value } = event.target;
-//     handleInput(name, value);
-//   };
-
-//   // Fonction qui me permet de récupérer le pseudo, l'email et le MDP
-//   // lors de la soumission du formulaire inscription
-//   const handleSubmitInscription = (event) => {
-//     event.preventDefault();
-//     addUser(inputPseudo, inputEmail, inputPassword);
-//   };
-
-//   // Fonction qui me permet de récupérer l'email et le MDP
-//   // lors de la soumission du formulaire de connexion
-//   const handleSubmitConnexion = (event) => {
-//     event.preventDefault();
-//     signInUser(inputUserEmail, inputUserPassword);
-//   };
-
 class Login extends React.Component {
-
   // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
   // à mon conteneur le nom de l'input qui est modifié et sa valeur
   handleInputChange = (event) => {
@@ -72,6 +39,7 @@ class Login extends React.Component {
   handleSubmitConnexion = (event) => {
     event.preventDefault();
     const { inputUserEmail, inputUserPassword, signInUser } = this.props;
+    console.log(inputUserEmail);
     signInUser(inputUserEmail, inputUserPassword);
   };
 
@@ -115,6 +83,7 @@ class Login extends React.Component {
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
+          <Facebook />
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>

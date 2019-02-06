@@ -1,3 +1,5 @@
+@import 'src/styles/vars';
+
 #quiz-view h1 {
   text-align: center;
 }
@@ -49,6 +51,13 @@
   padding-left : 3em;
 }
 
+.quiz-score {
+  text-align: center;
+  font-size: 2em;
+  margin: 2em;
+}
+
+
 #check-icon {
   display: flex;
   justify-content: space-around;
@@ -57,7 +66,6 @@
 }
 
 h2 { 
-
   width : 100%;
 }
 
@@ -66,5 +74,4 @@ h2 {
   font-size: 2em;
   margin: 2em;
 }
-
 

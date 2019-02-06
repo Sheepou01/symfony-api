@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom';
  */
 import UserProfile from 'src/components/UserProfile';
 import { userFavTheme, changeInput, editUser } from 'src/store/reducers/userReducer';
+import { editTimer, handleInputTimer } from 'src/store/reducers/timerReducer';
 
 // Action Creators
 
@@ -25,9 +26,10 @@ const mapStateToProps = state => ({
   idFavoriteTheme: state.userReducer.idFavoriteTheme,
   isAuthenticated: state.userReducer.isAuthenticated,
   username: state.userReducer.user.username,
-  editInputPseudo: state.userReducer.user.editInputPseudo,
-  editInputEmail: state.userReducer.user.editInputEmail,
-  editInputPassword: state.userReducer.user.editInputPassword,
+  editInputPseudo: state.userReducer.editInputPseudo,
+  editInputEmail: state.userReducer.editInputEmail,
+  editInputPassword: state.userReducer.editInputPassword,
+  editInputTimer: state.timerReducer.editInputTimer,
 });
 
 /* === Actions ===
@@ -45,9 +47,17 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(changeInput(name, value));
   },
+  handleInputTimer: (name, value) => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(handleInputTimer(name, value));
+  },
   editUser: (pseudo, email, password) => {
     // dispatch de mon action creator qui gère la soumission du form d'inscription
     dispatch(editUser(pseudo, email, password));
+  },
+  editTimer: (time) => {
+    // dispatch de mon action creator qui gère la soumission du form d'inscription
+    dispatch(editTimer(time));
   },
 });
 

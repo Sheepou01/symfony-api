@@ -6,6 +6,7 @@ const initialState = {
   loading: true,
 
   formSubmitted: false,
+  answerClicked: false,
   score: 0,
 
 };
@@ -53,7 +54,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         formSubmitted: true,
       };
-
     default:
       return state;
   }
@@ -74,6 +74,9 @@ export const score = () => ({
 
 export const quizSubmitted = () => ({
   type: QUIZ_SUBMITTED,
+});
+export const clickAnswer = () => ({
+  type: CLICK_ANSWER,
 });
 
 

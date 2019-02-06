@@ -3,14 +3,18 @@ import PropTypes from 'prop-types';
 import {
   Icon, Button, Loader, Checkbox, Card,
 } from 'semantic-ui-react';
+
 import classNames from 'classnames';
+
 /**
  * Local import
  */
 // import Next from 'src/components/Next';
 import './style.scss';
+
 import NextQuiz from '../Next/Quiz';
 // import { green } from 'ansi-colors';
+
 
 /**
  * Code
@@ -35,6 +39,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     }
   }
   // Fonction pour le clic
+
   const handleClick = (evt) => {
     const answer = Number(evt.currentTarget.id);
     const { className } = evt.target;
@@ -50,11 +55,13 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     }
   };
 
+
   //  console.log(quiz);
+
 
   if (!loading) {
     const { title, questions } = quiz;
-    // console.log(questions);
+    console.log(questions);
     return (
       <div id="quiz-view">
         <form onSubmit={handleFormSubmit}>

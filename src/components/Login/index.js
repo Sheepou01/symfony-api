@@ -44,7 +44,7 @@ class Login extends React.Component {
 
 
   render() {
-    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation } = this.props;
+    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation, user } = this.props;
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }
@@ -90,7 +90,7 @@ class Login extends React.Component {
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
-          <Facebook isAuthenticated={isAuthenticated} />
+          <Facebook isAuthenticated={isAuthenticated} user={user} />
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>

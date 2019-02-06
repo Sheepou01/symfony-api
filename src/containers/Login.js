@@ -20,6 +20,7 @@ import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/r
  */
 const mapStateToProps = state => ({
   // J'utilise le state de mon userReducer
+  user: state.userReducer.user,
   inputPseudo: state.userReducer.inputPseudo,
   inputEmail: state.userReducer.inputEmail,
   inputPassword: state.userReducer.inputPassword,

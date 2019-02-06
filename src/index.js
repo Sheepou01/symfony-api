@@ -16,6 +16,7 @@ import { quiz } from 'src/store/reducers/quizReducer';
 import jwtDecode from 'jwt-decode';
 import setAuthorizationToken from './store/setAuthorizationToken';
 import { setCurrentUser, themeList } from './store/reducers/userReducer';
+
 /**
  * Render - Rendu d'un composant React dans le DOM
  */

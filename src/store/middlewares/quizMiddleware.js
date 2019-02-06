@@ -7,7 +7,9 @@ import { QUIZ, receivedQuiz } from 'src/store/reducers/quizReducer';
 /**
 * Code
 */
+
 const urlQuiz = 'http://217.70.191.8/api/quizz';
+
 
 const quizMiddleware = store => next => (action) => {
   switch (action.type) {
@@ -15,7 +17,7 @@ const quizMiddleware = store => next => (action) => {
       axios.get(urlQuiz)
         .then((response) => {
           // handle success
-          // console.log(response.data);
+          console.log(response.data);
           store.dispatch(receivedQuiz(response.data));
         })
         .catch((error) => {

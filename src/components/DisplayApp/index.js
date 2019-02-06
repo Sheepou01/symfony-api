@@ -19,6 +19,8 @@ import Mentions from 'src/components/GeneralPattern/Mentions';
 import Help from 'src/components/GeneralPattern/Help';
 import NotFound from 'src/components/GeneralPattern/NotFound';
 import UserProfile from 'src/containers/UserProfile';
+import LoaderRoom from 'src/components/LoaderRoom';
+
 import './style.scss';
 
 
@@ -28,6 +30,7 @@ import './style.scss';
 const DisplayApp = ({ isAuthenticated }) => (
   <div id="app">
     <Switch>
+      <Route exact path="/Loader" component={LoaderRoom} />
       <Route exact path="/" component={Home} />
       <Route exact path="/anecdote" component={Anecdotes} />
       <Route exact path="/quiz" component={Quiz} />

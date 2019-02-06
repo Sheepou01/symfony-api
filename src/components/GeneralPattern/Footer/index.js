@@ -35,7 +35,9 @@ const Footer = () => (
   </div>
 );
 
-/**
+/**Modèles
+Modèles
+
  * Export
  */
 export default Footer;

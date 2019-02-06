@@ -44,12 +44,17 @@ class Quizz
     private $quizzScores;
 
     /**
+<<<<<<< HEAD
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz")
+=======
+     * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz", fetch="EAGER")
+     * @Serializer\Expose
+>>>>>>> Guiz
      */
     private $questions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz", fetch="EAGER")
      * @Serializer\Expose
      */
     private $tags;

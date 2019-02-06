@@ -19,22 +19,23 @@ class QuizzRepository extends ServiceEntityRepository
         parent::__construct($registry, Quizz::class);
     }
 
-    // /**
-    //  * @return Quizz[] Returns an array of Quizz objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Quizz[] Returns an array of Quizz objects
+     */
+    
+    public function findQuizByTags($id)
     {
         return $this->createQueryBuilder('q')
-            ->andWhere('q.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('q.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
+        
+        ->innerJoin('q.tags', 't')
+        ->innerJoin('t.users', 'u')        
+        ->andWhere('u.id = :id')
+        ->setParameter('id', $id)
+        ->getQuery()
+        ->getResult()
         ;
     }
-    */
+    
 
     /*
     public function findOneBySomeField($value): ?Quizz

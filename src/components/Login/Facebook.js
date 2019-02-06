@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React from 'react';
+import Facebook from 'src/containers/Facebook';
 import FacebookLogin from 'react-facebook-login';
 
 
@@ -24,9 +25,10 @@ class Facebook extends React.Component {
 	componentClicked = () => console.log('clicked');
 
 	render() {
+    console.log(this.props)
 	  let fbContent;
 	  if(this.state.isLoggedIn) {
-	    fbContent = null;
+	    fbContent = `Hello ${this.state.name}`;
 	  } else {
 	    fbContent = (
 				<FacebookLogin

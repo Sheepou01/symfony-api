@@ -43,7 +43,7 @@ class Question
     private $quizz;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="question")
+     * @ORM\OneToMany(targetEntity="App\Entity\Answer", mappedBy="question", fetch="EAGER")
      * @Serializer\Expose
      */
     private $answers;

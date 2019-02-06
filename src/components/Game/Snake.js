@@ -1,7 +1,9 @@
 import React from 'react';
 
 
-const Snake = () => { 
+const Snake = () => {
+ 
+
   onload = () => {
     // propriet  e
     var canvasWidth = 900; // je donne une largeur à  mon canvas
@@ -24,10 +26,10 @@ const Snake = () => {
       var app = document.getElementById("snake");
       canvas.width = canvasWidth;
       canvas.height = canvasHeight;
-      canvas.style.border = '30px solid green'; // je mets une bordure
+      canvas.style.border = '30px solid #578a34'; // je mets une bordure
       canvas.style.margin = "50px auto" // je le centre en haut et en bas de 50px (il faut qu'il soit obligatoirement de type display block)
       canvas.style.display = "block";
-      canvas.style.backgroundColor = '#DDD';
+      canvas.style.backgroundColor = '#aad751';
       app.appendChild(canvas); // je lie mon élement body de ma page html à mon canvas javascript
       ctx = canvas.getContext('2d'); // je vais dessiner dans un "contexte" 2d
       snakee = new Snake([[6, 4],[5, 4],[4, 4], [3, 4]], 'right'); // taille de mon serpent de base je commence par la tete et je lui dit d'aller à  droite
@@ -99,7 +101,7 @@ const Snake = () => {
     
       ctx.save();
       ctx.font = 'bold 200px sans-serif';
-      ctx.fillStyle = 'grey'; // couleur dans laquuelle on va ecrire
+      ctx.fillStyle = '#578a34'; // couleur dans laquuelle on va ecrire
       ctx.textAlign = "center";
       var centreX = canvasWidth / 2; // centre sur la ligne horizontal de mon canvas
       var centreY = canvasHeight / 2;
@@ -123,7 +125,7 @@ const Snake = () => {
       this.ateApple = false; // propriete qui grandit le serpent, on la met false car sinon il grandirait dès le départ
       this.draw = function () { // methode du dessin du corps du serpent
         ctx.save(); // je sauvegarde le contexte du canvas
-        ctx.fillStyle = "orange";
+        ctx.fillStyle = "#3f6cde";
         for (var i = 0; i < this.body.length; i++) // me permet de passer sur chacun des carrées du serpent
         {
           drawBlock(ctx, this.body[i]); // je dessine un block du body
@@ -291,8 +293,8 @@ const Snake = () => {
  
   
   return ( onload
-    ); 
-  };
+  ); 
+};
 
 
 export default Snake;

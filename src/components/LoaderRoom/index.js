@@ -6,6 +6,7 @@ import { Button, Icon } from 'semantic-ui-react';
 // import PropTypes from 'prop-types';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import Quiz from 'src/containers/Quiz';
+import { NavLink } from 'react-router-dom';
 /**
  * Local import
  */
@@ -17,12 +18,12 @@ import './style.scss';
 
 const LoaderRoom = () => (
   <div id="LoaderRoom">
-    <Switch>
+    <NavLink to="/quiz">
       <Button>
         Next
         <Icon name="chevron right" size="huge" />
       </Button>
-    </Switch>
+    </NavLink>
   </div>
 );
 

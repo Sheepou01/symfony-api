@@ -12,6 +12,7 @@ import DisplayApp from 'src/containers/DisplayApp';
 import Ending from 'src/containers/Ending';
 import Timer from 'src/containers/Timer';
 import Footer from 'src/components/GeneralPattern/Footer';
+import Video from 'src/components/Video';
 import './app.scss';
 
 /**

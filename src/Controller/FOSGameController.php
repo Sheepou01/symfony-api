@@ -25,4 +25,19 @@ class FOSGameController extends FOSRestController
 
         return $games[array_rand($games)];
     }
+
+    /**
+     * @GET(
+     * path="/api/game/{id}/help",
+     * name="help_game"
+     * )
+     * @View
+     */
+    public function helpGame(GameRepository $gameRepo, $id)
+    {
+        $currentGame = $gameRepo->findOneBy(['id'=>$id]);
+
+        return $currentGame->getHelp();
+        
+    }
 }

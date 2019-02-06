@@ -30,6 +30,8 @@ const initialState = {
     { key: 11, text: 'Santé', value: 11 },
   ],
   idFavoriteTheme: undefined,
+  passwordIncorrect: false,
+  shortPassword: false,
 };
 
 /**
@@ -44,6 +46,8 @@ export const LOGOUT = 'LOGOUT';
 export const USER_FAV_THEME = 'USER_FAV_THEME';
 export const THEME_LIST = 'THEME_LIST';
 export const LOAD_THEME = 'LOAD_THEME';
+const INCORRECT_PASSWORD = 'INCORRECT_PASSWORD';
+const SHORT_PASSWORD = 'SHORT_PASSWORD';
 
 /**
  * Traitements
@@ -77,6 +81,7 @@ const reducer = (state = initialState, action = {}) => {
         inputPseudo: '',
         inputEmail: '',
         inputPassword: '',
+        inputPasswordConfirmation: '',
       };
     // Action qui permet de mettre dans le state les données qui arrivent du formulaire de connexion
     case SIGNIN_USER:
@@ -119,6 +124,16 @@ const reducer = (state = initialState, action = {}) => {
     case LOAD_THEME:
       return {
         ...state,
+      };
+    case INCORRECT_PASSWORD:
+      return {
+        ...state,
+        passwordIncorrect: true,
+      };
+    case SHORT_PASSWORD:
+      return {
+        ...state,
+        shortPassword: true,
       };
     default:
       return state;
@@ -177,6 +192,14 @@ export const themeList = () => ({
 export const loadTheme = listTheme => ({
   type: LOAD_THEME,
   listTheme,
+});
+
+export const actionIncorrectPassword = () => ({
+  type: INCORRECT_PASSWORD,
+});
+
+export const actionShortPassword = () => ({
+  type: SHORT_PASSWORD,
 });
 
 /**

@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/reducers/userReducer';
+import { changeInput, signUpUser, signInUser, actionIncorrectPassword, actionShortPassword } from 'src/store/reducers/userReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -27,6 +27,8 @@ const mapStateToProps = state => ({
   inputUserEmail: state.userReducer.inputUserEmail,
   inputUserPassword: state.userReducer.inputUserPassword,
   isAuthenticated: state.userReducer.isAuthenticated,
+  alertMessagePasswordIncorrect: state.userReducer.passwordIncorrect,
+  alertMessageShortPassword: state.userReducer.shortPassword,
 });
 
 /* === Actions ===
@@ -48,6 +50,14 @@ const mapDispatchToProps = dispatch => ({
   signInUser: (email, password) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion
     dispatch(signInUser(email, password));
+  },
+  actionIncorrectPassword: () => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
+    dispatch(actionIncorrectPassword());
+  },
+  actionShortPassword: () => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
+    dispatch(actionShortPassword());
   },
 });
 

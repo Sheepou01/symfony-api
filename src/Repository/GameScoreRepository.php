@@ -19,6 +19,43 @@ class GameScoreRepository extends ServiceEntityRepository
         parent::__construct($registry, GameScore::class);
     }
 
+    /**
+     * @return GameScore[] Returns an array of GameScore objects
+     */
+    public function findLastestScores($user, $game)
+    {
+        return $this->createQueryBuilder('q')
+        
+        ->add('select', 'gs')
+        ->add('from', 'App\Entity\GameScore gs')
+        ->add('orderBy', 'gs.createdAt DESC')        
+        ->where('gs.user = :user')
+        ->andWhere('gs.game = :game')
+        ->setParameters(['user' => $user, 'game' => $game])
+        ->setMaxResults(3)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
+
+    /**
+     * @return GameScore[] Returns an array of GameScore objects
+     */
+    public function findBestGameScores($game)
+    {
+        return $this->createQueryBuilder('q')
+        
+        ->add('select', 'gs')
+        ->add('from', 'App\Entity\GameScore gs')
+        ->add('orderBy', 'gs.score DESC')        
+        ->where('gs.game = :game')
+        ->setParameter('game', $game)
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
     // /**
     //  * @return GameScore[] Returns an array of GameScore objects
     //  */

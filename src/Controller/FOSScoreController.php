@@ -64,5 +64,19 @@ class FOSScoreController extends FOSRestController{
         return $bestScores;
     }
 
+     /**
+     * @GET(
+     *  path="/api/best_scores/quizz/{id}",
+     * name="best_quizz_score",
+     * )
+     * @View
+     */
+    public function bestQuizzScores(Quizz $quizz, QuizzScoreRepository $quizzScoreRepo) {
+
+        $bestScores = $quizzScoreRepo->findBestQuizzScores($quizz);
+
+        return $bestScores;
+    }
+
     
 }

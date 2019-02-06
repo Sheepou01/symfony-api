@@ -2,7 +2,7 @@
  * Initial State
  */
 const initialState = {
-  seconds: 5,
+  seconds: 300,
   timerOff: true,
   gameOver: false,
   editInputTimer: '',

@@ -12,6 +12,7 @@ import { Button } from 'semantic-ui-react';
  */
 import Field from './Field';
 import './style.scss';
+import Facebook from './Facebook';
 
 /**
  * Code
@@ -82,6 +83,7 @@ class Login extends React.Component {
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
+          <Facebook />
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>

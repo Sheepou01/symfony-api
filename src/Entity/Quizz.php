@@ -50,7 +50,7 @@ class Quizz
     private $questions;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz", fetch="EAGER")
      * @Serializer\Expose
      */
     private $tags;

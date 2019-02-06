@@ -51,6 +51,7 @@ class Game
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Help", cascade={"persist", "remove"})
+     * @Serializer\Expose
      */
     private $help;
 

@@ -54,6 +54,7 @@
     "prop-types": "^15.6.2",
     "react": "*",
     "react-dom": "^16.7.0",
+    "react-facebook-login": "^4.1.1",
     "react-html-parser": "^2.0.2",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",

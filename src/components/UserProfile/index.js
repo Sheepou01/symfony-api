@@ -25,27 +25,38 @@ const UserProfile = ({
   editInputPassword,
   editUser,
   handleInput,
+  editInputTimer,
+  editTimer,
+  handleInputTimer
 }) => {
-
-  const handleChange = (e) => {
-    console.log(e);
-    // return (
-    //   userFavTheme(value)
-    // );
-  }
-
+  // Function which will handle every changement on the inputs of the user
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     handleInput(name, value);
   };
+  // Function which will handle every changement on the input of the timer
+  const handleInputTimerChange = (event) => {
+    const { name, value } = event.target;
+    handleInputTimer(name, value);
+  };
 
+  // Function which will handle the submit of the user's form (edit of the user details)
   const handleEditSubmit = (evt) => {
     evt.preventDefault();
-    editUser(editInputPseudo, editInputEmail, editInputPassword)
+    console.log(editInputPseudo);
+    editUser(editInputPseudo, editInputEmail, editInputPassword);
   };
+
+  // Function which will handle the submit of the Timer's form (edit of the time)
+  const handleEditTimer = (evt) => {
+    evt.preventDefault();
+    editTimer((editInputTimer * 60));
+  };
+  
 
   return (
     <div id="profile">
+      {/* Here is the message when the user is connected end redirected to his profile page */}
       {isAuthenticated ? <WelcomeMessage username={username} /> : ''}
       <div id="profile-edit">
         <h2>Tu veux modifier quelque chose?</h2>
@@ -70,6 +81,19 @@ const UserProfile = ({
             name="editInputPassword"
             type="password"
             placeholder="Mot de Passe"
+          />
+          <Button>Valider</Button>
+        </form>
+      </div>
+      <div id="login-edit">
+        <h2>Si tu le souhaites, tu peux modifier la durée du timer :</h2>
+        <form className="form-edit" onSubmit={handleEditTimer}>
+          <Field
+            handleInputChange={handleInputTimerChange}
+            value={editInputTimer}
+            name="editInputTimer"
+            type="number"
+            placeholder="Entre le nombre de minutes"
           />
           <Button>Valider</Button>
         </form>

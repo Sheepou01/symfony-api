@@ -3,20 +3,24 @@
  */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, LOAD_THEME, loadTheme } from 'src/store/reducers/userReducer';
+import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME } from 'src/store/reducers/userReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
 /**
 * Code
 */
-const urlSignUp = 'http://217.70.191.8/api/signup';
-const urlSignIn = 'http://217.70.191.8/api/login_check';
-const urlEditUser = 'http://217.70.191.8/user/:id/edit';
-const test = 'http://217.70.191.8/api/test';
-const tag = 'http://217.70.191.8/api/tag';
 
 
 const userMiddleware = store => next => (action) => {
+
+  const urlSignUp = 'http://217.70.191.8/api/signup';
+  const urlSignIn = 'http://217.70.191.8/api/login_check';
+  const test = 'http://217.70.191.8/api/test';
+  // const tag = 'http://217.70.191.8/api/tag'; pour recup la liste des themes pour l'instant j'ai fait en dur
+  const { user } = store.getState().userReducer;
+  // console.log(user.id);
+  const urlEditUser = `http://217.70.191.8/user/${user.id}/edit`;
+  const urlFavTheme = `http://217.70.191.8/user/${user.id}/tag/edit`;
 
   switch (action.type) {
     case SIGNUP_USER:
@@ -104,13 +108,15 @@ const userMiddleware = store => next => (action) => {
       store.dispatch(setCurrentUser({}));
       next(action);
       break;
-    case LOAD_THEME:
+    case USER_FAV_THEME:
       axios({
-        method: 'get',
-        url: tag,
+        method: 'post',
+        url: urlFavTheme,
+        data: {
+          id: action.themeId,
+        },
       }).then((response) => {
-        console.log(response.data);
-        store.dispatch(loadTheme(response.data));
+        console.log(response);
       }).catch((error) => {
         console.log(error);
       });

@@ -21,6 +21,7 @@ import { clickEndView } from 'src/store/reducers/timerReducer';
 const mapStateToProps = state => ({
   // J'utilise le state de mon timerReducer
   gameOver: state.timerReducer.gameOver,
+  seconds: state.timerReducer.seconds,
 });
 
 /* === Actions ===

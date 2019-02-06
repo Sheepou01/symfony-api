@@ -15,9 +15,18 @@ const initialState = {
   isAuthenticated: false,
   user: {},
   themes: [
-    { key: 1, text: 'Animaux', value: 1 },
-    { key: 2, text: 'Cinema', value: 2 },
-    { key: 3, text: 'Sport', value: 3 },
+    { key: 0, text: 'Tous', value: 0 },
+    { key: 1, text: 'Histoire', value: 1 },
+    { key: 2, text: 'Cuisine', value: 2 },
+    { key: 3, text: 'Animaux', value: 3 },
+    { key: 4, text: 'Amour/Sexe', value: 4 },
+    { key: 5, text: 'Cinéma', value: 5 },
+    { key: 6, text: 'Jeux Videos', value: 6 },
+    { key: 7, text: 'Life', value: 7 },
+    { key: 8, text: 'Musique', value: 8 },
+    { key: 9, text: 'Sport', value: 9 },
+    { key: 10, text: 'Voyage', value: 10 },
+    { key: 11, text: 'Santé', value: 11 },
   ],
   idFavoriteTheme: undefined,
 };
@@ -31,7 +40,8 @@ export const SIGNIN_USER = 'SIGNIN_USER';
 export const EDIT_USER = 'EDIT_USER';
 const SET_CURRENT_USER = 'SET_CURRENT_USER';
 export const LOGOUT = 'LOGOUT';
-const USER_FAV_THEME = 'USER_FAV_THEME';
+export const USER_FAV_THEME = 'USER_FAV_THEME';
+export const THEME_LIST = 'THEME_LIST';
 export const LOAD_THEME = 'LOAD_THEME';
 
 /**
@@ -99,13 +109,15 @@ const reducer = (state = initialState, action = {}) => {
     case USER_FAV_THEME:
       return {
         ...state,
-        themes: action.themeList,
         idFavoriteTheme: action.themeId,
+      };
+    case THEME_LIST:
+      return {
+        ...state,
       };
     case LOAD_THEME:
       return {
         ...state,
-        themes: action.themeList,
       };
     default:
       return state;
@@ -157,9 +169,13 @@ export const userFavTheme = themeId => ({
   themeId,
 });
 
-export const loadTheme = themeList => ({
+export const themeList = () => ({
+  type: THEME_LIST,
+});
+
+export const loadTheme = listTheme => ({
   type: LOAD_THEME,
-  themeList,
+  listTheme,
 });
 
 /**

@@ -19,6 +19,7 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose
      */
     private $id;
 
@@ -35,6 +36,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=75)
+     * @Serializer\Expose
      */
     private $email;
 
@@ -50,6 +52,7 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
+     * @Serializer\Expose
      */
     private $role;
 

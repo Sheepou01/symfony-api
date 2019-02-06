@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Entity\User;
-use App\Form\UserType;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -52,11 +51,10 @@ class UserController extends AbstractController
     }
 
      /**
-     * @Rest\Post("/{id}/tag/edit")
+     * @Rest\POST("/{id}/tag/edit")
      * @Rest\View(StatusCode=201)
      * @ParamConverter("tag", converter="fos_rest.request_body")
      */
-
     public function editTag(User $user,Tag $tag, TagRepository $repoTag){
         
         $tagId= $tag->getId();

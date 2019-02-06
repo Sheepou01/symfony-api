@@ -1,6 +1,5 @@
 /* eslint-disable */
 import React from 'react';
-import FBContainer from 'src/containers/Facebook';
 import FacebookLogin from 'react-facebook-login';
 
 

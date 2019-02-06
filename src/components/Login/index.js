@@ -39,7 +39,6 @@ class Login extends React.Component {
   handleSubmitConnexion = (event) => {
     event.preventDefault();
     const { inputUserEmail, inputUserPassword, signInUser } = this.props;
-    console.log(inputUserEmail);
     signInUser(inputUserEmail, inputUserPassword);
   };
 
@@ -91,7 +90,7 @@ class Login extends React.Component {
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
-          <Facebook />
+          <Facebook isAuthenticated={isAuthenticated} />
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>

@@ -30,8 +30,8 @@ class Login extends React.Component {
   // lors de la soumission du formulaire inscription
   handleSubmitInscription = (event) => {
     event.preventDefault();
-    const { inputPseudo, inputEmail, inputPassword, addUser } = this.props;
-    addUser(inputPseudo, inputEmail, inputPassword);
+    const { inputPseudo, inputEmail, inputPassword, signUpUser } = this.props;
+    signUpUser(inputPseudo, inputEmail, inputPassword);
   };
 
   // Fonction qui me permet de récupérer l'email et le MDP
@@ -39,12 +39,12 @@ class Login extends React.Component {
   handleSubmitConnexion = (event) => {
     event.preventDefault();
     const { inputUserEmail, inputUserPassword, signInUser } = this.props;
-    console.log(inputUserEmail);
     signInUser(inputUserEmail, inputUserPassword);
   };
 
+
   render() {
-    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated } = this.props;
+    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation, user, facebook } = this.props;
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }
@@ -77,13 +77,20 @@ class Login extends React.Component {
               type="password"
               placeholder="Mot de Passe"
             />
+            <Field
+              handleInputChange={this.handleInputChange}
+              value={inputPasswordConfirmation}
+              name="inputPasswordConfirmation"
+              type="password"
+              placeholder="Confirmez votre Mot de Passe"
+            />
             <Button className="login-button">Envoyer</Button>
           </form>
         </div>
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
-          <Facebook />
+          {/* <Facebook facebook={facebook} /> */}
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>
@@ -117,8 +124,9 @@ Login.propTypes = {
   inputUserEmail: PropTypes.string.isRequired,
   inputUserPassword: PropTypes.string.isRequired,
   handleInput: PropTypes.func.isRequired,
-  addUser: PropTypes.func.isRequired,
+  signUpUser: PropTypes.func.isRequired,
   signInUser: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
 
 

@@ -90,7 +90,7 @@ class Login extends React.Component {
     
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
-          <Facebook facebook={facebook} />
+          {/* <Facebook facebook={facebook} /> */}
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>

@@ -24,7 +24,6 @@ class FOSSecurityController extends FOSRestController{
      */
 
     public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
-        dd($user);
         $roleUser = $role->findOneBy(['code' => 'ROLE_USER']);
         $em = $this->getDoctrine()->getManager();
         $user->setCreatedAt(new \DateTime);

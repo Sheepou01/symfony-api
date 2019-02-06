@@ -3,7 +3,7 @@ import React from 'react';
 
 const Snake = () => { 
   onload = () => {
-    // propriete
+    // propriet  e
     var canvasWidth = 900; // je donne une largeur à  mon canvas
     var canvasHeight = 600;
     var blockSize = 30; // je créer la taille de mes blocs qui vont cadrillé mon canvas il mesure 30 px sur 30 px

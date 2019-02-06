@@ -56,22 +56,12 @@ class UserController extends AbstractController
      * @ParamConverter("tag", converter="fos_rest.request_body")
      */
 
-<<<<<<< HEAD
     public function editTag(User $user,Tag $tag, TagRepository $repoTag){
         
         $tagId= $tag->getId();
         $tagSearch = $repoTag->findOneBy(['id' => $tagId]);
         $toto = $user->addFavoriteTag($tagSearch);
         $em = $this->getDoctrine()->getManager();
-=======
-    public function editTag(UserRepository $repoUser, Tag $tag, $id) :Response
-    {
-        $currentUser = $repoUser->findOneBy(['id' => $id]);
-        dd($tag);
-        $em = $this->getDoctrine()->getManager();
-        
-
->>>>>>> Guiz
         // $em->persist($user);
         $em->flush();
         return new Response('Ok');

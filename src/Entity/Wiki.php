@@ -55,6 +55,7 @@ class Wiki
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="wikis")
+     * @Serializer\Expose
      */
     private $author;
 

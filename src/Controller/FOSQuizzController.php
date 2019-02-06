@@ -13,7 +13,6 @@ use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
-
 class FOSQuizzController extends FOSRestController{
     /**
      * @GET(
@@ -42,8 +41,9 @@ class FOSQuizzController extends FOSRestController{
         ]);
 
         $quizzToSend = $quizz[array_rand($quizz)];
+
         
-        return new Response('coucou');
+        return $quizzToSend;
         }
     }
 }

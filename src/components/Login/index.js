@@ -44,7 +44,11 @@ class Login extends React.Component {
 
 
   render() {
+<<<<<<< HEAD
     const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation, user, facebook } = this.props;
+=======
+    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation } = this.props;
+>>>>>>> 1a0a1d25358979ebd0ee58cb62878abc0ffa1ae7
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }

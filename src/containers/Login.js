@@ -23,6 +23,7 @@ const mapStateToProps = state => ({
   inputPseudo: state.userReducer.inputPseudo,
   inputEmail: state.userReducer.inputEmail,
   inputPassword: state.userReducer.inputPassword,
+  inputPasswordConfirmation: state.userReducer.inputPasswordConfirmation,
   inputUserEmail: state.userReducer.inputUserEmail,
   inputUserPassword: state.userReducer.inputUserPassword,
   isAuthenticated: state.userReducer.isAuthenticated,
@@ -40,17 +41,13 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(changeInput(name, value));
   },
-  addUser: (pseudo, email, password) => {
+  signUpUser: (pseudo, email, password) => {
     // dispatch de mon action creator qui gère la soumission du form d'inscription
     dispatch(signUpUser(pseudo, email, password));
   },
   signInUser: (email, password) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion
     dispatch(signInUser(email, password));
-  },
-  setCurrentUser: (email, password) => {
-    // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(setCurrentUser());
   },
 });
 

@@ -29,7 +29,7 @@ class Facebook extends React.Component {
 	  } else {
 	    fbContent = (
 				<FacebookLogin
-					appId="293168777999146"
+					appId="552237008586166"
 					autoLoad={true}
 					fields="name,email,picture"
 					onClick={this.componentClicked}

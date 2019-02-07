@@ -26,10 +26,10 @@ class FOSSecurityController extends FOSRestController{
      */
 
     public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
-        dd($user);
-        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
-        $userSign = $serializer->serialize($user, 'json', SerializationContext::create()->setGroups(array('signup')));
-        dd($userSign);
+        // dd($user);
+        // $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+        // $userSign = $serializer->serialize($user, 'json', SerializationContext::create()->setGroups(array('signup')));
+        // dd($userSign);
         $roleUser = $role->findOneBy(['code' => 'ROLE_USER']);
         $em = $this->getDoctrine()->getManager();
         $user->setCreatedAt(new \DateTime);

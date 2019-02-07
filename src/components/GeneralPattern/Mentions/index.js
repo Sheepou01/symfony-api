@@ -32,8 +32,9 @@ const Mentions = () => (
       souvent possible
       afin d’en prendre connaissance.
     </p>
+    
+    <h2 className="mentions-title">DESCRIPTION DES SERVICES FOURNIS.</h2>
     <p>
-      DESCRIPTION DES SERVICES FOURNIS.
       Le site www.5MAP.fr a pour objet de fournir une information concernant
       l’ensemble des activités de la société.
       L’agence 5MAP s’efforce de fournir sur le site www.5MAP.fr des informations
@@ -50,8 +51,9 @@ const Mentions = () => (
       l’utilisation du site. De plus, l’utilisateur du site s’engage à accéder au
       site en utilisant un matériel récent, ne contenant pas de virus et avec un
       navigateur de dernière génération mis-à-jour
-      PROPRIÉTÉ INTELLECTUELLE ET CONTREFAÇONS.
-      L’Agence web 5MAP est propriétaire des droits de propriété intellectuelle ou
+    </p>
+    <h2 className="mentions-title">PROPRIÉTÉ INTELLECTUELLE ET CONTREFAÇONS.</h2>
+    <p>L’Agence web 5MAP est propriétaire des droits de propriété intellectuelle ou
       détient les droits d’usage sur tous les éléments accessibles sur le site,
       notamment les textes, images, graphismes, logo, icônes, sons, logiciels.
       Toute reproduction, représentation, modification, publication, adaptation de
@@ -60,9 +62,9 @@ const Mentions = () => (
       Toute exploitation non autorisée du site ou de l’un quelconque des éléments
       qu’il contient sera considérée comme constitutive d’une contrefaçon et poursuivie
       conformément aux dispositions des articles L.335-2 et suivants du Code de
-      Propriété Intellectuelle.
-      LIMITATIONS DE RESPONSABILITÉ.
-      5MAP ne pourra être tenue responsable des dommages directs et indirects causés
+      Propriété Intellectuelle.</p>
+      <h2 className="mentions-title">LIMITATIONS DE RESPONSABILITÉ.</h2>
+      <p>5MAP ne pourra être tenue responsable des dommages directs et indirects causés
       au matériel de l’utilisateur, lors de l’accès au site de l’agence web 5MAP, et
       résultant soit de l’utilisation d’un matériel ne répondant pas aux
       spécifications indiquées au point 4, soit de l’apparition d’un bug ou d’une incompatibilité.
@@ -74,9 +76,9 @@ const Mentions = () => (
       réserve également la possibilité de mettre en cause la responsabilité civile
       et/ou pénale de l’utilisateur, notamment en cas de message à caractère raciste,
       injurieux, diffamant, ou pornographique, quel que soit le support utilisé
-      (texte, photographie).
-      GESTION DES DONNÉES PERSONNELLES.
-      En France, les données personnelles sont notamment protégées par la
+      (texte, photographie).</p>
+      <h2 className="mentions-title">GESTION DES DONNÉES PERSONNELLES.</h2>
+      <p>En France, les données personnelles sont notamment protégées par la
       loi n° 78-87 du 6 janvier 1978, la loi n° 2004-801 du 6 août 2004,
       l’article L. 226-13 du Code pénal et la Directive Européenne du 24
       octobre 1995.
@@ -107,8 +109,9 @@ const Mentions = () => (
       du site www.5MAP.fr.
       Les bases de données sont protégées par les dispositions de la loi du 1er
       juillet 1998 transposant la directive 96/9 du 11 mars 1996 relative à la
-      protection juridique des bases de données.
-      LIENS HYPERTEXTES ET COOKIES.
+      protection juridique des bases de données.</p>
+      <h2 className="mentions-title">LIENS HYPERTEXTES ET COOKIES.</h2>
+    <p>
       Le site www.5MAP.fr contient un certain nombre de liens hypertextes vers
       d’autres sites, mis en place avec l’autorisation de 5MAP. Cependant, 5MAP
       n’a pas la possibilité de vérifier le contenu des sites ainsi visités, et

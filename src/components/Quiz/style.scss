@@ -4,57 +4,191 @@
   text-align: center;
 }
 
+@media screen and (max-width: 426px)  {
+  #quiz-view h1 {
+    margin: 1em;
+  }
+}
+
 #quiz-boxes{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  
   width : 80%;
   margin: 0 auto;
 }
 
-.quiz-box{
-  width : 30%;
-  margin-top: 10px;
+@media screen and (max-width: 1023px)  {
+  #quiz-boxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width : 80%;
+    margin: 0 auto;
+  }
 }
 
-.quiz-answers{
-  display: flex;
-  align-items: center;
-  color: color;
-  padding-left : 3em;
+@media screen and (min-width: 426px) and (max-width: 1023px)  {
+  #quiz-boxes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width : 80%;
+    margin: 0 auto;
+  }
+}
+  
+.quiz{
+  &-question{
+  margin: 1em;
+  border: 1px solid $orange;
+  padding: 2em;
+  height: 19em;
+  }
+  &-box{
+    width : 30%;
+    margin-top: 10px;
+  }
+  &-answers{
+    display: flex;
+    align-items: center;
+    color: color;
+    padding-left : 1em;
+  }
+  &-score{
+    text-align: center;
+    font-size: 2em;
+    margin: 2em;
+  }
 }
 
-.answer-clicked{
-  display: flex;
-  align-items: center;
-  color : $orange;
-
+@media screen and (max-width: 426px)  {
+  .quiz{
+    &-question{
+    margin: 1em 0;
+    height: 25em;
+    }
+    &-box{
+      width: 100%;
+      padding: 1em;
+    }
+    &-answers{
+      display: flex;
+      align-items: center;
+      color: color;
+      padding-left : 1em;
+      height: 1.5em;
+    }
+    &-score{
+      font-size: 1.5em;
+      margin: 2em;
+      line-height: 1.8em;
+    }
+  }
 }
 
-.good-answer{
-  display: flex;
-  align-items: center;
-  background-color: #32e926;
-  color : white;
-  padding-left : 3em;
+@media screen and (min-width: 427px) and (max-width: 1024px)  {
+  .quiz{
+    &-question{
+    margin: 1em 0;
+    height: 20em;
+    }
+    &-box{
+      width: 100%;
+      padding: 1em;
+    }
+    &-answers{
+      display: flex;
+      align-items: center;
+      color: color;
+      padding-left : 1em;
+      height: 1.5em;
+    }
+    &-score{
+      font-size: 1.5em;
+      margin: 2em;
+      line-height: 1.8em;
+    }
+  }
 }
 
-.bad-answer{
-  display: flex;
-  align-items: center;
-  text-decoration: line-through;
-  color : black;
-  padding-left : 3em;
+.answer{
+  &-clicked{
+    display: flex;
+    align-items: center;
+    color : $orange;
+    padding-left : 1em;
+  }
+  &-good{
+    display: flex;
+    align-items: center;
+    background-color: $orange;
+    color : white;
+    padding-left : 1em;
+  }
+  &-bad{
+    display: flex;
+    align-items: center;
+    text-decoration: line-through;
+    padding-left : 1em;
+  }
+}  
+
+@media screen and (max-width: 1023px)  {
+  .answer{
+    &-clicked{
+      display: flex;
+      align-items: center;
+      color : $orange;
+      padding-left : 1em;
+    }
+    &-good{
+      display: flex;
+      align-items: center;
+      background-color: $orange;
+      color : white;
+      padding-left : 1em;
+      line-height: 1.8em;
+    }
+    &-bad{
+      display: flex;
+      align-items: center;
+      text-decoration: line-through;
+      padding-left : 1em;
+      line-height: 1.8em;
+    }
+  } 
 }
 
-.quiz-score {
-  text-align: center;
-  font-size: 2em;
-  margin: 2em;
+@media screen and (min-width: 427px) and (max-width: 1023px)  {
+  .answer{
+    &-clicked{
+      display: flex;
+      align-items: center;
+      color : $orange;
+      padding-left : 1em;
+    }
+    &-good{
+      display: flex;
+      align-items: center;
+      background-color: $orange;
+      color : white;
+      padding-left : 1em;
+    }
+    &-bad{
+      display: flex;
+      align-items: center;
+      text-decoration: line-through;
+      padding-left : 1em;
+    }
+  } 
 }
+
 
 
 #check-icon {
@@ -64,13 +198,5 @@
   margin: 3em auto;
 }
 
-h2 { 
-  width : 100%;
-}
 
-.quiz-score {
-  text-align: center;
-  font-size: 2em;
-  margin: 2em;
-}
 

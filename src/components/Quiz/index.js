@@ -36,7 +36,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     // console.log(answerClick);
 
     if (className === 'answer-clicked' && answer === 1) {
-      className = 'good-answer';
+      className = 'answer-good';
     }
   }
   // Fonction pour le clic
@@ -81,7 +81,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
                         question.answers.map(answer => (
                           <li 
                             key={answer.id}
-                            className={answer.correct ? 'good-answer' : 'bad-answer'}
+                            className={answer.correct ? 'answer-good' : 'answer-bad'}
                             onClick={handleClick}
                             id={Number(answer.correct)} // We use the Number function to convert our string true or false on Number
                           >

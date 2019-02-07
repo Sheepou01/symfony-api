@@ -45,7 +45,6 @@ class Game
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\GameScore", mappedBy="game")
-     * @Serializer\Expose
      */
     private $gameScores;
 

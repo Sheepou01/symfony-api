@@ -19,6 +19,43 @@ class QuizzScoreRepository extends ServiceEntityRepository
         parent::__construct($registry, QuizzScore::class);
     }
 
+    /**
+     * @return QuizzScore[] Returns an array of GameScore objects
+     */
+    public function findLastestScores($user, $quizz)
+    {
+        return $this->createQueryBuilder('q')
+        
+        ->add('select', 'qs')
+        ->add('from', 'App\Entity\QuizzScore qs')
+        ->add('orderBy', 'qs.createdAt DESC')        
+        ->where('qs.user = :user')
+        ->andWhere('qs.quizz = :quizz')
+        ->setParameters(['user' => $user, 'quizz' => $quizz])
+        ->setMaxResults(3)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
+     /**
+     * @return QuizzScore[] Returns an array of QuizzScore objects
+     */
+    public function findBestQuizzScores($quizz)
+    {
+        return $this->createQueryBuilder('q')
+        
+        ->add('select', 'qs')
+        ->add('from', 'App\Entity\QuizzScore qs')
+        ->add('orderBy', 'qs.score DESC')        
+        ->where('qs.quizz = :quizz')
+        ->setParameter('quizz', $quizz)
+        ->setMaxResults(5)
+        ->getQuery()
+        ->getResult()
+        ;
+    }
+
     // /**
     //  * @return QuizzScore[] Returns an array of QuizzScore objects
     //  */

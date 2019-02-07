@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\QuizzScoreRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class QuizzScore
 {
@@ -13,11 +15,13 @@ class QuizzScore
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Serializer\Expose
      */
     private $score;
 

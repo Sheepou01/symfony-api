@@ -2,6 +2,7 @@
  * Npm import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 
 /**
  * Local import
@@ -31,6 +32,10 @@ class Game extends React.Component {
     );
   }
 }
+
+Game.propTypes = {
+  startTimer: PropTypes.func.isRequired,
+};
 
 
 /**

@@ -126,13 +126,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
       };
-<<<<<<< HEAD
-    case FACEBOOK:
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: { username: action.username },
-=======
     case INCORRECT_PASSWORD:
       return {
         ...state,
@@ -142,7 +135,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         shortPassword: true,
->>>>>>> Marsh2
       };
     default:
       return state;

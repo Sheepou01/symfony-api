@@ -8,7 +8,7 @@ import { QUIZ, receivedQuiz } from 'src/store/reducers/quizReducer';
 * Code
 */
 
-const urlQuiz = 'http://217.70.191.8/api/quizz';
+const urlQuiz = 'https://guillaume-marques.fr/api/quizz';
 
 
 const quizMiddleware = store => next => (action) => {

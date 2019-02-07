@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
-import { Button, Popup } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 /**
@@ -59,9 +59,6 @@ class Login extends React.Component {
   };
 
   render() {
-<<<<<<< HEAD
-    const { inputUserEmail, inputUserPassword, inputPseudo, inputEmail, inputPassword, isAuthenticated, inputPasswordConfirmation, user, facebook } = this.props;
-=======
     const {
       inputUserEmail,
       inputUserPassword,
@@ -73,7 +70,6 @@ class Login extends React.Component {
       alertMessagePasswordIncorrect,
       alertMessageShortPassword,
     } = this.props;
->>>>>>> Marsh2
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
     }

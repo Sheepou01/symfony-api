@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 use App\Entity\User;
+use SocialLinks\Page;
+use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -12,7 +14,6 @@ use FOS\RestBundle\Controller\Annotations as Rest;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use App\Repository\TagRepository;
 
 /**
  * @Route("/user")
@@ -65,5 +66,25 @@ class UserController extends AbstractController
         // $em->persist($user);
         $em->flush();
         return new Response('Ok');
+    }
+
+    /**
+     * @Rest\GET("/shareFB")
+     * @Rest\View(StatusCode=201)
+     */
+    public function shareFB()
+    {
+        $page = new Page([
+            'url' => 'https://www.5map.fr',
+            'title' => '5MAP',
+            'text' => 'Si tu as 5minutes à perdre rejoins-nous',
+            'image' => '#',
+            'icon' => '#',
+            'twitterUser' => '@Guizmoooe'
+        ]);
+
+        $fb = $page->facebook->shareUrl;
+
+        return $fb;
     }
 }

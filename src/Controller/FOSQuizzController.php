@@ -25,27 +25,29 @@ class FOSQuizzController extends FOSRestController{
      */
 
     public function showQuizz(User $user = null, QuizzRepository $quizzRepository, AnswerRepository $answerRepo, UserRepository $userRepo, TagRepository $tagRepo){
-        if($user != null){
+        
+	if($user != null){
             $registeredUser = $userRepo->findOneBy([
                 'id' => $user->getId()
-            ]);
+                ]);
+                
         
-            if ($registeredUser != null && !empty($registeredUser->getFavoriteTag())) {
+            if (!empty($registeredUser->getFavoriteTag())) {
                 
                 $currentId = $registeredUser->getId();
                 $quizz = $quizzRepository->findQuizByTags($currentId);
                 return $quizz;
             }
         }else{
-            $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
-            $quizz = $quizzRepository->findBy([
-                'online' => true
-                ]);
-                
-                $quizzToSend = $quizz[array_rand($quizz)];        
-                $quizzes = $serializer->serialize($quizzToSend, 'json', SerializationContext::create()->setGroups(array('quizz_score','quizz')));
-                dd($quizzes);
+    
+        $quizz = $quizzRepository->findBy([
+            'online' => true
+        ]);
+
+        $quizzToSend = $quizz[array_rand($quizz)];
+          
         return $quizzToSend;
         }
     }
 }
+

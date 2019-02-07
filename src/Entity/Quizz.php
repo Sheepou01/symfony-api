@@ -11,8 +11,7 @@ use JMS\Serializer\Annotation as Serializer;
  * @ORM\Entity(repositoryClass="App\Repository\QuizzRepository")
  * @Serializer\ExclusionPolicy("ALL")
  */
-class Quizz
-{
+class Quizz{
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()

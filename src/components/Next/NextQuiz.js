@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
+
 // import PropTypes from 'prop-types';
+
 import { NavLink } from 'react-router-dom';
 
 /**
@@ -47,3 +49,4 @@ class NextQuiz extends React.Component {
  * Export
  */
 export default NextQuiz;
+

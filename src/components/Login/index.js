@@ -4,7 +4,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Redirect, withRouter } from 'react-router-dom';
-import { Button, Popup } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 
 
 /**

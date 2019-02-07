@@ -45,7 +45,7 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
 };
 
 Anecdotes.propTypes = {
-  activeTopito: PropTypes.number.isRequired,
+  // activeTopito: PropTypes.number.isRequired,
   randomTopito: PropTypes.func.isRequired,
   topitosList: PropTypes.array.isRequired,
 };

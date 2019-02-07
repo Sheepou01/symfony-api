@@ -9,7 +9,10 @@ import { Icon, Button, Loader } from 'semantic-ui-react';
 // import Next from 'src/components/Next';
 import './style.scss';
 
-import NextQuiz from '../Next/NextQuiz';
+
+import NextQuiz from 'src/components/Next/NextQuiz';
+
+
 // import { green } from 'ansi-colors';
 
 
@@ -34,8 +37,10 @@ const Quiz = ({
     console.log(`Votre score est de : ${score}`);
     const answer = Number(evt.currentTarget.id);
     // console.log(answer);
-    const { className } = evt.target;
-    // const answerClick = document.getElementsByClassName('answer-clicked');
+
+    let { className } = evt.target;
+    const answerClick = document.getElementsByClassName('answer-clicked');
+
     // console.log(answerClick);
 
     if (className === 'answer-clicked' && answer === 1) {

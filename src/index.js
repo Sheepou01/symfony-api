@@ -9,8 +9,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 /**
  * import : local
  */
-import store from 'src/store';
+import { store, persistor } from 'src/store';
 import App from 'src/containers/App';
+import { PersistGate } from 'redux-persist/integration/react';
 import { topito } from 'src/store/reducers/anecdotesReducer';
 import { quiz } from 'src/store/reducers/quizReducer';
 import jwtDecode from 'jwt-decode';
@@ -23,9 +24,11 @@ import { setCurrentUser, themeList } from './store/reducers/userReducer';
 
 const rootComponent = (
   <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
+    <PersistGate loading={null} persistor={persistor}>
+      <Router>
+        <App />
+      </Router>
+    </PersistGate>
   </Provider>
 );
 if (localStorage.jwtToken) {

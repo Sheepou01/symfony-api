@@ -14,12 +14,23 @@ import Snake from './Snake';
 /**
  * Code
  */
-const Game = () => (
-  <div id="snake">
-    <h1 className="h1-game">Demarre le jeu en appuyant sur F5 !</h1>
-    <Snake />
-  </div>
-);
+
+class Game extends React.Component {
+  componentDidMount() {
+    const { startTimer } = this.props;
+    startTimer();
+  }
+
+  render() {
+    return (
+      <div id="snake">
+      <h1 className="h1-game">Demarre le jeu en appuyant sur F5 !</h1>
+        <Snake />
+      </div>
+    );
+  }
+}
+
 
 /**
  * Export

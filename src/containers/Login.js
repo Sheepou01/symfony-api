@@ -9,7 +9,11 @@ import { connect } from 'react-redux';
 import Login from 'src/components/Login';
 
 // Action Creators
-import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/reducers/userReducer';
+<<<<<<< HEAD
+import { changeInput, signUpUser, signInUser, facebook } from 'src/store/reducers/userReducer';
+=======
+import { changeInput, signUpUser, signInUser, actionIncorrectPassword, actionShortPassword } from 'src/store/reducers/userReducer';
+>>>>>>> Marsh2
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -20,12 +24,16 @@ import { changeInput, signUpUser, signInUser, setCurrentUser } from 'src/store/r
  */
 const mapStateToProps = state => ({
   // J'utilise le state de mon userReducer
+  user: state.userReducer.user,
   inputPseudo: state.userReducer.inputPseudo,
   inputEmail: state.userReducer.inputEmail,
   inputPassword: state.userReducer.inputPassword,
+  inputPasswordConfirmation: state.userReducer.inputPasswordConfirmation,
   inputUserEmail: state.userReducer.inputUserEmail,
   inputUserPassword: state.userReducer.inputUserPassword,
   isAuthenticated: state.userReducer.isAuthenticated,
+  alertMessagePasswordIncorrect: state.userReducer.passwordIncorrect,
+  alertMessageShortPassword: state.userReducer.shortPassword,
 });
 
 /* === Actions ===
@@ -40,7 +48,7 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(changeInput(name, value));
   },
-  addUser: (pseudo, email, password) => {
+  signUpUser: (pseudo, email, password) => {
     // dispatch de mon action creator qui gère la soumission du form d'inscription
     dispatch(signUpUser(pseudo, email, password));
   },
@@ -48,10 +56,22 @@ const mapDispatchToProps = dispatch => ({
     // dispatch de mon action creator qui gère la soumission du form de connexion
     dispatch(signInUser(email, password));
   },
-  setCurrentUser: (email, password) => {
+<<<<<<< HEAD
+  facebook: (user) => {
     // dispatch de mon action creator qui gère la soumission du form de connexion
-    dispatch(setCurrentUser());
+    dispatch(facebook(user));
   },
+
+=======
+  actionIncorrectPassword: () => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
+    dispatch(actionIncorrectPassword());
+  },
+  actionShortPassword: () => {
+    // dispatch de mon action creator qui gère la soumission du form de connexion
+    dispatch(actionShortPassword());
+  },
+>>>>>>> Marsh2
 });
 
 // Container

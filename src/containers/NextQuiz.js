@@ -6,9 +6,11 @@ import { withRouter } from 'react-router-dom';
 /**
  * Local import
  */
-import NextQuiz from 'src/components/Next/Quiz';
-import { quiz } from 'src/store/reducers/quizReducer';
+import NextQuiz from 'src/components/Next/NextQuiz';
+
 // Action Creators
+import { quiz } from 'src/store/reducers/quizReducer';
+import { startTimer } from 'src/store/reducers/timerReducer';
 
 
 /* === State (données) ===
@@ -33,7 +35,10 @@ const mapDispatchToProps = dispatch => ({
   quiz: () => {
     dispatch(quiz());
   },
-
+  startTimer: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(startTimer());
+  },
 });
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)

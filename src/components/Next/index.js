@@ -23,7 +23,7 @@ const Next = ({ randomTopito, topitosList }) => {
   return (
     <div id="next">
       <Button onClick={handleClick}>
-      Next
+        Next
         <Icon name="chevron right" size="huge" />
       </Button>
     </div>

@@ -37,4 +37,17 @@
   .field-input {
     width: 100%;
   }
+  .field{
+    width: 20em;
+    margin: 0px -9px;
+  }
+}
+
+.alert-message {
+  background: orange;
+  width: 20em;
+  margin: 2em auto;
+  padding: 1em;
+  color: white;
+  border-radius: 5px;
 }

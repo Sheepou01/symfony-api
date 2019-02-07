@@ -38,6 +38,7 @@ const initialState = {
  * Types
  */
 const CHANGE_INPUT = 'CHANGE_INPUT';
+const FACEBOOK = 'FACEBOOK';
 export const SIGNUP_USER = 'SIGNUP_USER';
 export const SIGNIN_USER = 'SIGNIN_USER';
 export const EDIT_USER = 'EDIT_USER';
@@ -192,6 +193,10 @@ export const themeList = () => ({
 export const loadTheme = listTheme => ({
   type: LOAD_THEME,
   listTheme,
+});
+export const facebook = username => ({
+  type: FACEBOOK,
+  username,
 });
 
 export const actionIncorrectPassword = () => ({

@@ -9,7 +9,7 @@ import { Icon, Button, Loader } from 'semantic-ui-react';
 // import Next from 'src/components/Next';
 import './style.scss';
 
-import NextQuiz from '../Next/Quiz';
+import NextQuiz from '../Next/NextQuiz';
 // import { green } from 'ansi-colors';
 
 

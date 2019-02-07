@@ -9,6 +9,8 @@ import { withRouter } from 'react-router-dom';
 import Quiz from 'src/components/Quiz';
 // Action Creators
 import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
+import { startTimer } from 'src/store/reducers/timerReducer';
+
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -40,8 +42,9 @@ const mapDispatchToProps = dispatch => ({
   quizSubmitted: () => {
     dispatch(quizSubmitted());
   },
-  clickAnswer: () => {
-    dispatch(clickAnswer());
+  startTimer: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(startTimer());
   },
 
 });

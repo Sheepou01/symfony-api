@@ -1,10 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {
-  Icon, Button, Loader, Checkbox, Card,
-} from 'semantic-ui-react';
+import { Icon, Button, Loader } from 'semantic-ui-react';
 
-import classNames from 'classnames';
 
 /**
  * Local import
@@ -12,7 +9,9 @@ import classNames from 'classnames';
 // import Next from 'src/components/Next';
 import './style.scss';
 
+
 import NextQuiz from 'src/components/Next/NextQuiz';
+
 
 // import { green } from 'ansi-colors';
 
@@ -21,7 +20,14 @@ import NextQuiz from 'src/components/Next/NextQuiz';
  * Code
  */
 
-const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitted}) => {
+const Quiz = ({
+  quiz,
+  loading,
+  scoreIncrement,
+  score,
+  formSubmitted,
+  quizSubmitted 
+}) => {
   // console.log(selectedOption);
   // Fonction pour le bouton radio
   function handleFormSubmit(evt) {
@@ -31,8 +37,10 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
     console.log(`Votre score est de : ${score}`);
     const answer = Number(evt.currentTarget.id);
     // console.log(answer);
+
     let { className } = evt.target;
     const answerClick = document.getElementsByClassName('answer-clicked');
+
     // console.log(answerClick);
 
     if (className === 'answer-clicked' && answer === 1) {
@@ -43,6 +51,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
 
   const handleClick = (evt) => {
     const answer = Number(evt.currentTarget.id);
+    console.log (evt.target);
     const { className } = evt.target;
     // console.log(evt);
     if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
@@ -121,17 +130,7 @@ const Quiz = ({ quiz, loading, scoreIncrement, score, formSubmitted, quizSubmitt
 
 Quiz.propTypes = {
   loading: PropTypes.bool.isRequired,
-};
-
-const Answer = ({id, answers}) => {
-  // console.log(answers);
-  const answersMap = answers.map(item => item.correct);
-  // console.log(answersMap);
-  return (
-    <div>
-      lol
-    </div>
-  );
+  quiz: PropTypes.func.isRequired,
 };
 
 /**

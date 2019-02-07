@@ -10,13 +10,11 @@ import React from 'react';
 import './style.scss';
 // import Bomber from './Bomber';
 import Snake from './Snake';
-// import CasseBrique from './CasseBrique';
-// import Test from './Test';
-// import Reacteroids from './Reacteroid/Reacteroids';
 
 /**
  * Code
  */
+
 class Game extends React.Component {
   componentDidMount() {
     const { startTimer } = this.props;
@@ -26,6 +24,7 @@ class Game extends React.Component {
   render() {
     return (
       <div id="snake">
+      <h1 className="h1-game">Demarre le jeu en appuyant sur F5 !</h1>
         <Snake />
       </div>
     );

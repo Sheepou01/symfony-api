@@ -46,7 +46,7 @@ class FOSQuizzController extends FOSRestController{
 
         $quizzToSend = $quizz[array_rand($quizz)];
           
-        return new Response('Aléatoire');
+        return $quizzToSend;
         }
     }
 }

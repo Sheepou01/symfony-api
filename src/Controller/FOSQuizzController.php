@@ -31,7 +31,7 @@ class FOSQuizzController extends FOSRestController{
                 'id' => $user->getId()
                 ]);
                 
-        
+                // dd($registeredUser);
             if (!empty($registeredUser->getFavoriteTag())) {
                 
                 $currentId = $registeredUser->getId();

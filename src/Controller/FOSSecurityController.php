@@ -24,7 +24,6 @@ class FOSSecurityController extends FOSRestController{
      * @Rest\View(StatusCode=201)
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
-
     public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
         // dd($user);
         // $serializer = \JMS\Serializer\SerializerBuilder::create()->build();

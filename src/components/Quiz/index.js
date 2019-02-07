@@ -34,12 +34,12 @@ class Quiz extends React.Component {
     if (isAuthenticated) {
       sendingScore();
     }
-}
+  }
   // Fonction pour le clic
 
   handleClick = (evt) => {
     const answer = Number(evt.currentTarget.id);
-    console.log (evt.target);
+    // console.log (evt.target);
     const { className } = evt.target;
     // console.log(evt);
     const { formSubmitted, scoreIncrement } = this.props;
@@ -47,9 +47,11 @@ class Quiz extends React.Component {
       scoreIncrement();
     }
     if (className === 'quiz-answers') {
+      // eslint-disable-next-line no-return-assign
       return evt.target.className = 'answer-clicked';
     }
-    if (className ===  'answer-clicked') {
+    if (className === 'answer-clicked') {
+      // eslint-disable-next-line no-return-assign
       return evt.target.className = 'quiz-answers';
     }
     return null;
@@ -126,11 +128,13 @@ class Quiz extends React.Component {
 Quiz.propTypes = {
   loading: PropTypes.bool.isRequired,
   formSubmitted: PropTypes.bool.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
   startTimer: PropTypes.func.isRequired,
   quizSubmitted: PropTypes.func.isRequired,
   scoreIncrement: PropTypes.func.isRequired,
   quiz: PropTypes.object.isRequired,
   score: PropTypes.number.isRequired,
+  sendingScore: PropTypes.func.isRequired,
 };
 
 // const Answer = ({id, answers}) => {

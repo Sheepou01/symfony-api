@@ -18,6 +18,7 @@ class Question
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      * @Serializer\Expose
+     * @Serializer\Groups({"quizz"})
      */
     private $id;
 

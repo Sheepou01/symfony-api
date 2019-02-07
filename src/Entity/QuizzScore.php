@@ -3,9 +3,11 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\QuizzScoreRepository")
+ * @Serializer\ExclusionPolicy("ALL")
  */
 class QuizzScore
 {
@@ -18,6 +20,7 @@ class QuizzScore
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Serializer\Expose
      */
     private $score;
 
@@ -33,11 +36,14 @@ class QuizzScore
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="quizzScores")
+     * @Serializer\Expose
+     * @Serializer\Groups({"quizz_score"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Quizz", inversedBy="quizzScores")
+     * @Serializer\Expose
      */
     private $quizz;
 

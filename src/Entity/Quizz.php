@@ -24,6 +24,7 @@ class Quizz
     /**
      * @ORM\Column(type="string", length=30)
      * @Serializer\Expose
+     * @Serializer\Groups({"quizz"})
      */
     private $title;
 
@@ -40,6 +41,7 @@ class Quizz
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\QuizzScore", mappedBy="quizz")
      * @Serializer\Expose
+     * @Serializer\Groups({"quizz_score"})
      */
     private $quizzScores;
 
@@ -47,12 +49,14 @@ class Quizz
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz")
      * @ORM\OneToMany(targetEntity="App\Entity\Question", mappedBy="quizz", fetch="EAGER")
      * @Serializer\Expose
+     * @Serializer\Groups({"quizz"})
      */
     private $questions;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Tag", mappedBy="quizz", fetch="EAGER")
      * @Serializer\Expose
+     * @Serializer\Groups({"quizz"})
      */
     private $tags;
 

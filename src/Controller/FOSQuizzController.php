@@ -7,11 +7,13 @@ use App\Repository\TagRepository;
 use App\Repository\UserRepository;
 use App\Repository\QuizzRepository;
 use App\Repository\AnswerRepository;
+use JMS\Serializer\SerializationContext;
 use FOS\RestBundle\Controller\Annotations\Get;
 use Symfony\Component\HttpFoundation\Response;
 use FOS\RestBundle\Controller\Annotations\View;
 use FOS\RestBundle\Controller\FOSRestController;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+
 class FOSQuizzController extends FOSRestController{
     /**
      * @GET(
@@ -35,12 +37,14 @@ class FOSQuizzController extends FOSRestController{
                 return $quizz;
             }
         }else{
-        
-        $quizz = $quizzRepository->findBy([
-            'online' => true
-        ]);
-
-        $quizzToSend = $quizz[array_rand($quizz)];        
+            $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+            $quizz = $quizzRepository->findBy([
+                'online' => true
+                ]);
+                
+                $quizzToSend = $quizz[array_rand($quizz)];        
+                $quizzes = $serializer->serialize($quizzToSend, 'json', SerializationContext::create()->setGroups(array('quizz_score','quizz')));
+                dd($quizzes);
         return $quizzToSend;
         }
     }

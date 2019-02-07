@@ -19,24 +19,27 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Serializer\Expose
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=30)
      * @Serializer\Expose
+     * @Serializer\Groups({"signup","quizz_score"})
      */
     private $username;
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Serializer\Expose
+     * @Serializer\Groups({"signup"})
      */
     private $password;
 
     /**
      * @ORM\Column(type="string", length=75)
      * @Serializer\Expose
+     * @Serializer\Groups({"signup"})
      */
     private $email;
 
@@ -52,7 +55,6 @@ class User implements UserInterface
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Role", inversedBy="users")
-     * @Serializer\Expose
      */
     private $role;
 

@@ -30,8 +30,7 @@
 .answer-clicked{
   display: flex;
   align-items: center;
-  background-color: black;
-  color : white;
+  color : $orange;
 
 }
 
@@ -46,7 +45,7 @@
 .bad-answer{
   display: flex;
   align-items: center;
-  background-color: red;
+  text-decoration: line-through;
   color : black;
   padding-left : 3em;
 }

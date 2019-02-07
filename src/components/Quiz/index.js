@@ -9,8 +9,8 @@ import { Icon, Button, Loader } from 'semantic-ui-react';
 // import Next from 'src/components/Next';
 import './style.scss';
 
-
 import NextQuiz from 'src/components/Next/NextQuiz';
+// import NextQuiz from 'src/containers/NextQuiz';
 
 
 // import { green } from 'ansi-colors';
@@ -29,21 +29,12 @@ class Quiz extends React.Component {
 
   handleFormSubmit = (evt) => {
     evt.preventDefault();
-    const { quizSubmitted } = this.props;
+    const { quizSubmitted, sendingScore, isAuthenticated } = this.props;
     quizSubmitted();
-
-    const answer = Number(evt.currentTarget.id);
-    // console.log(answer);
-
-    let { className } = evt.target;
-    const answerClick = document.getElementsByClassName('answer-clicked');
-
-    // console.log(answerClick);
-
-    if (className === 'answer-clicked' && answer === 1) {
-      className = 'answer-good';
+    if (isAuthenticated) {
+      sendingScore();
     }
-  }
+}
   // Fonction pour le clic
 
   handleClick = (evt) => {
@@ -74,13 +65,10 @@ class Quiz extends React.Component {
 
     if (!loading) {
       const { title, questions } = quiz;
-      console.log(questions);
+      // console.log(questions);
       return (
         <div id="quiz-view">
           <form onSubmit={this.handleFormSubmit}>
-            {formSubmitted && score < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {score}/10</div> : ''}
-            {formSubmitted && score >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {score}/10</div> : ''}
-            {formSubmitted && score >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {score}/10</div> : ''}
             <h1>{title}</h1>
             <div id="quiz-boxes">
               {questions.map(question => (
@@ -120,11 +108,14 @@ class Quiz extends React.Component {
                 </div>
               ))}
             </div>
-            <div id="check-icon">
-              <Button><Icon name="check" size="huge" /></Button>
+            {formSubmitted && score < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {score}/10</div> : ''}
+            {formSubmitted && score >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {score}/10</div> : ''}
+            {formSubmitted && score >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {score}/10</div> : ''}
+            <div id="button-check">
+              <Button className="button-submit"><Icon name="check" size="large" /> Valides tes réponses</Button>
+              <NextQuiz />
             </div>
           </form>
-          <NextQuiz />
         </div>
       );
     }

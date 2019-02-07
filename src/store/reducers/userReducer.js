@@ -14,6 +14,7 @@ const initialState = {
   editInputPassword: '',
   editInputEmail: '',
   isAuthenticated: false,
+  isSignedUp: false,
   user: {},
   themes: [
     { key: 0, text: 'Tous', value: 0 },
@@ -78,11 +79,14 @@ const reducer = (state = initialState, action = {}) => {
             password: action.password,
           },
         ],
+        isSignedUp: true,
         // Je remets les inputs à zéro
         inputPseudo: '',
         inputEmail: '',
         inputPassword: '',
         inputPasswordConfirmation: '',
+        passwordIncorrect: false,
+        shortPassword: false,
       };
     // Action qui permet de mettre dans le state les données qui arrivent du formulaire de connexion
     case SIGNIN_USER:
@@ -112,6 +116,7 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...state,
+        isSignedUp: false,
       };
     case USER_FAV_THEME:
       return {
@@ -130,11 +135,13 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         passwordIncorrect: true,
+        shortPassword: false,
       };
     case SHORT_PASSWORD:
       return {
         ...state,
         shortPassword: true,
+        passwordIncorrect: false,
       };
     default:
       return state;

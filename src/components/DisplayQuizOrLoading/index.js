@@ -7,7 +7,7 @@ import Loading from 'src/components/Loading';
 // Sinon rendre App
 
 const DisplayQuizOrLoading = ({ loading, quiz }) => {
-console.log(quiz);
+// console.log(quiz);
  return (
 
   loading ? <Loading /> : <Quiz />

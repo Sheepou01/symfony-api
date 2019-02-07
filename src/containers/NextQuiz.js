@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
 import NextQuiz from 'src/components/Next/NextQuiz';
 
 // Action Creators
-import { quiz } from 'src/store/reducers/quizReducer';
+import { quiz, sendingScore } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 

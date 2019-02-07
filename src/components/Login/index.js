@@ -69,6 +69,7 @@ class Login extends React.Component {
       inputPasswordConfirmation,
       alertMessagePasswordIncorrect,
       alertMessageShortPassword,
+      isSignedUp,
     } = this.props;
     if (isAuthenticated) {
       return <Redirect to="/mon-profil" />;
@@ -90,38 +91,43 @@ class Login extends React.Component {
           )
             : ''
           }
-
-          <form onSubmit={this.handleSubmitInscription}>
-            <Field
-              handleInputChange={this.handleInputChange}
-              value={inputPseudo}
-              name="inputPseudo"
-              type="text"
-              placeholder="Votre Pseudo"
-            />
-            <Field
-              handleInputChange={this.handleInputChange}
-              value={inputEmail}
-              name="inputEmail"
-              type="text"
-              placeholder="Votre Email"
-            />
-            <Field
-              handleInputChange={this.handleInputChange}
-              value={inputPassword}
-              name="inputPassword"
-              type="password"
-              placeholder="Mot de Passe de 8 caractères minimum"
-            />
-            <Field
-              handleInputChange={this.handleInputChange}
-              value={inputPasswordConfirmation}
-              name="inputPasswordConfirmation"
-              type="password"
-              placeholder="Confirmez votre Mot de Passe"
-            />
-            <Button className="login-button">Envoyer</Button>
-          </form>
+          {isSignedUp ? (
+            <div className="alert-message">Tu es bien enregistré! Tu peux te connecter maintenant...</div>
+          )
+            : (
+              <form onSubmit={this.handleSubmitInscription}>
+                <Field
+                  handleInputChange={this.handleInputChange}
+                  value={inputPseudo}
+                  name="inputPseudo"
+                  type="text"
+                  placeholder="Votre Pseudo"
+                />
+                <Field
+                  handleInputChange={this.handleInputChange}
+                  value={inputEmail}
+                  name="inputEmail"
+                  type="text"
+                  placeholder="Votre Email"
+                />
+                <Field
+                  handleInputChange={this.handleInputChange}
+                  value={inputPassword}
+                  name="inputPassword"
+                  type="password"
+                  placeholder="Mot de Passe de 8 caractères minimum"
+                />
+                <Field
+                  handleInputChange={this.handleInputChange}
+                  value={inputPasswordConfirmation}
+                  name="inputPasswordConfirmation"
+                  type="password"
+                  placeholder="Confirmez votre Mot de Passe"
+                />
+                <Button className="login-button">Envoyer</Button>
+              </form>
+            )
+          }
         </div>
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
@@ -163,6 +169,7 @@ Login.propTypes = {
   signUpUser: PropTypes.func.isRequired,
   signInUser: PropTypes.func.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
+  isSignedUp: PropTypes.bool.isRequired,
   alertMessagePasswordIncorrect: PropTypes.bool.isRequired,
   alertMessageShortPassword: PropTypes.bool.isRequired,
   actionIncorrectPassword: PropTypes.func.isRequired,

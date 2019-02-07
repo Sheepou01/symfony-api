@@ -38,6 +38,15 @@
     color: white;
   }
 }
+#Button-admin {
+  height: 2.5em;
+  margin: 1em;
+  background-color: $orange;
+  color: white;
+  & a{
+    color: white;
+  }
+}
 
 
 // CSS des inputs pour l'edit de profil

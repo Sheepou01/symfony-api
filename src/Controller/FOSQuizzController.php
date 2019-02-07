@@ -23,7 +23,8 @@ class FOSQuizzController extends FOSRestController{
      * @ParamConverter("user", converter="fos_rest.request_body")
      */
     public function showQuizz(User $user = null, QuizzRepository $quizzRepository, AnswerRepository $answerRepo, UserRepository $userRepo, TagRepository $tagRepo){
-        if($user != null){
+        
+	if($user != null){
             $registeredUser = $userRepo->findOneBy([
                 'id' => $user->getId()
                 ]);
@@ -42,9 +43,10 @@ class FOSQuizzController extends FOSRestController{
         ]);
 
         $quizzToSend = $quizz[array_rand($quizz)];
-            // dd($quizzToSend);
+           
         
         return $quizzToSend;
         }
-    }
+  }
 }
+

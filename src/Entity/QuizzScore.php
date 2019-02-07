@@ -37,11 +37,14 @@ class QuizzScore
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="quizzScores")
+     * @Serializer\Expose
+     * @Serializer\Groups({"quizz_score"})
      */
     private $user;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Quizz", inversedBy="quizzScores")
+     * @Serializer\Expose
      */
     private $quizz;
 

@@ -9,7 +9,6 @@ use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GameRepository")
- * @Serializer\ExclusionPolicy("ALL")
  */
 class Game
 {

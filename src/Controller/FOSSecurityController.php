@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\RoleRepository;
+use JMS\Serializer\SerializerBuilder;
+use JMS\Serializer\SerializationContext;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,6 +26,10 @@ class FOSSecurityController extends FOSRestController{
      */
 
     public function signup(User $user, RoleRepository $role, UserPasswordEncoderInterface $encoder){
+        dd($user);
+        $serializer = \JMS\Serializer\SerializerBuilder::create()->build();
+        $userSign = $serializer->serialize($user, 'json', SerializationContext::create()->setGroups(array('signup')));
+        dd($userSign);
         $roleUser = $role->findOneBy(['code' => 'ROLE_USER']);
         $em = $this->getDoctrine()->getManager();
         $user->setCreatedAt(new \DateTime);

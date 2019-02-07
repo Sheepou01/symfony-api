@@ -26,9 +26,10 @@ class FOSQuizzController extends FOSRestController{
         if($user != null){
             $registeredUser = $userRepo->findOneBy([
                 'id' => $user->getId()
-            ]);
+                ]);
+                
         
-            if ($registeredUser != null && !empty($registeredUser->getFavoriteTag())) {
+            if (!empty($registeredUser->getFavoriteTag())) {
                 
                 $currentId = $registeredUser->getId();
                 $quizz = $quizzRepository->findQuizByTags($currentId);

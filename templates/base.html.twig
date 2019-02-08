@@ -11,11 +11,16 @@
     <body>
         <header>
             <nav class="navbar navbar-dark bg-dark justify-content-center">
+                {% if is_granted('ROLE_ADMIN')%}
                 <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
                 <a class="nav-link text-light" href="{{ path('admin_game_index') }}">Jeux</a>
                 <a class="nav-link text-light" href="{{ path('admin_wiki_index') }}">Fiches wiki</a>
                 <a class="nav-link text-light" href="{{ path('admin_quizz_index') }}">Quizz</a>
                 <a class="nav-link text-light" href="{{ path('admin_tag_index') }}">Thèmes</a>
+                {% endif %}
+                {% if app.user %}
+                <a class="nav-link text-light" href="{{ path('logout') }}">Déconnexion</a>
+                {% endif %}
             </nav>
         </header>
         <main>

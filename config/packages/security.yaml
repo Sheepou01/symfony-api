@@ -25,6 +25,15 @@ security:
                 check_path:               /api/login_check
                 success_handler:          lexik_jwt_authentication.handler.authentication_success
                 failure_handler:          lexik_jwt_authentication.handler.authentication_failure
+        main:
+            anonymous: ~
+            form_login:
+                login_path: signin
+                check_path: signin
+
+            logout:
+                path: logout
+                target: byebye
         # api:
         #     pattern:   ^/api/test/test
         #     stateless: true
@@ -32,14 +41,8 @@ security:
         #         authenticators:
         #             - lexik_jwt_authentication.jwt_token_authenticator
 
-        # admin:
-        #     pattern: ^/admin
-        #     stateless: true
-        #     guard:
-        #         authenticators:
-        #             - lexik_jwt_authentication.jwt_token_authenticator
-        #access_control:
-        #- { path: ^/admin, roles: ROLE_ADMIN }
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
         
     role_hierarchy:
         ROLE_ADMIN: ROLE_USER

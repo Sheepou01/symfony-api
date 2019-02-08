@@ -40,10 +40,7 @@ class FOSQuizzController extends FOSRestController{
             }
         }else{
     
-        $quizz = $quizzRepository->findBy([
-            'online' => true
-        ]);
-
+        $quizz = $quizzRepository->findBy(['online'=> true]);
         $quizzToSend = $quizz[array_rand($quizz)];
           
         return $quizzToSend;

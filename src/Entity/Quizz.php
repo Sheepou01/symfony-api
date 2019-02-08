@@ -39,8 +39,6 @@ class Quizz{
 
     /**
      * @ORM\OneToMany(targetEntity="App\Entity\QuizzScore", mappedBy="quizz")
-     * @Serializer\Expose
-     * @Serializer\Groups({"quizz_score"})
      */
     private $quizzScores;
 

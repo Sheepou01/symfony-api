@@ -56,6 +56,19 @@ class QuizzScoreRepository extends ServiceEntityRepository
         ;
     }
 
+    public function findScoreByUser($user)
+    {
+        $entityManager = $this->getEntityManager();
+        
+        $query = $entityManager->createQuery(
+            'SELECT qs.score, quizz.id
+             FROM App\Entity\QuizzScore qs JOIN qs.quizz as quizz WHERE qs.user = '.$user.' ORDER BY qs.createdAt DESC'
+            
+        )->setMaxResults(3);
+        
+        return $query->execute();
+    }
+
     // /**
     //  * @return QuizzScore[] Returns an array of QuizzScore objects
     //  */

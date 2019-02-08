@@ -22,7 +22,6 @@ class WikiRepository extends ServiceEntityRepository
     public function findAllCustom(){
 
         $entityManager = $this->getEntityManager();
-
         
         $query = $entityManager->createQuery(
             'SELECT wiki.id, wiki.name, wiki.body, wiki.createdAt as created, wiki.source, wiki.image, t.name as tag, a.username as author

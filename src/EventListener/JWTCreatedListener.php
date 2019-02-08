@@ -4,6 +4,7 @@ namespace App\EventListener;
 
 use Lexik\Bundle\JWTAuthenticationBundle\Event\JWTCreatedEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
+use App\Repository\QuizzScoreRepository;
 
 
 class JWTCreatedListener{
@@ -11,13 +12,18 @@ class JWTCreatedListener{
  * @var RequestStack
  */
 private $requestStack;
+    /**
+ * @var quizzScoreRepo
+ */
+private $quizzScoreRepo;
 
 /**
  * @param RequestStack $requestStack
  */
-public function __construct(RequestStack $requestStack)
+public function __construct(RequestStack $requestStack, QuizzScoreRepository $quizzScoreRepo)
 {
     $this->requestStack = $requestStack;
+    $this->quizzScoreRepo = $quizzScoreRepo;
 }
 
 /**
@@ -31,6 +37,7 @@ public function onJWTCreated(JWTCreatedEvent $event)
 
     $payload       = $event->getData();
     $payload['id'] = $event->getUser()->getId();
+    $payload['quizzScore'] = $this->quizzScoreRepo->findScoreByUser($event->getUser()->getId());
 
     $event->setData($payload);
     

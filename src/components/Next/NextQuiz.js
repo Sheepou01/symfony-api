@@ -18,8 +18,8 @@ import './style.scss';
 class NextQuiz extends React.Component {
   handleReceiveQuiz = () => {
     // evt.preventDefault();
-    const { quiz } = this.props;
-    quiz();
+    const { nextQuiz } = this.props;
+    nextQuiz();
   };
 
   render() {
@@ -36,9 +36,9 @@ class NextQuiz extends React.Component {
   }
 }
 
-// NextQuiz.propTypes = {
-//   quiz: PropTypes.func.isRequired,
-// };
+NextQuiz.propTypes = {
+  nextQuiz: PropTypes.func.isRequired,
+};
 
 /**
  * Export

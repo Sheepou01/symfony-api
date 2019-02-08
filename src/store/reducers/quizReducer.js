@@ -32,7 +32,6 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
       };
     case RECEIVED_QUIZ:
-    // console.log(action.data)
       return {
         ...state,
         quiz: action.data,
@@ -41,21 +40,19 @@ const reducer = (state = initialState, action = {}) => {
       };
 
     case SCORE:
-    // console.log(action.data)
       return {
         ...state,
         score: state.score + 1,
       };
     case QUIZ_SUBMITTED:
-    // console.log(action.data)
       return {
         ...state,
         formSubmitted: true,
       };
     case SEND_SCORE:
-    // console.log(action.data)
       return {
         ...state,
+        formSubmitted: true,
       };
     default:
       return state;

@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
  */
 import Quiz from 'src/components/Quiz';
 // Action Creators
-import { score, quizSubmitted, sendingScore } from 'src/store/reducers/quizReducer';
+import { score, quizSubmitted, sendingScore, quiz } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 
@@ -48,6 +48,9 @@ const mapDispatchToProps = dispatch => ({
   sendingScore: () => {
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(sendingScore());
+  },
+  nextQuiz: () => {
+    dispatch(quiz());
   },
 
 });

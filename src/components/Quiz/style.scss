@@ -59,6 +59,11 @@
     align-items: center;
     color: color;
     padding-left : 1em;
+    font-size: 1.2em;
+      & input[type=checkbox]{
+        width: 1em;
+        height: 2.2em;
+      }
   }
   &-score{
     text-align: center;

@@ -3,10 +3,12 @@
  */
 const initialState = {
   quiz: {},
+  questionNb: 0,
   loading: true,
   formSubmitted: false,
   answerClicked: false,
   score: 0,
+  user_answers: [],
 };
 
 /**
@@ -16,6 +18,8 @@ export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
 const SCORE = 'SCORE';
 const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
+const INCREASE_QUESTION_NB = 'INCREASE_QUESTION_NB';
+const ADD_USER_ANSWER = 'INCREASE_QUESTION_NB';
 export const SEND_SCORE = 'SEND_SCORE';
 
 /**
@@ -38,7 +42,6 @@ const reducer = (state = initialState, action = {}) => {
         loading: false,
         selectedOption: false,
       };
-
     case SCORE:
       return {
         ...state,
@@ -54,6 +57,15 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
         formSubmitted: true,
       };
+    case ADD_USER_ANSWER:
+      const newAnswer = {
+        [action.id]: action.value,
+      };
+      console.log(newAnswer)
+      return {
+        ...state,
+        user_answers: { ...state.user_answers, ...newAnswer },
+      };   
     default:
       return state;
   }
@@ -83,6 +95,12 @@ export const sendingScore = () => ({
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,
   data,
+});
+
+export const setStateAnswer = (id, value) => ({
+  type: ADD_USER_ANSWER,
+  id,
+  value,
 });
   /**
    * Selectors

@@ -6,14 +6,10 @@ import { Icon, Button, Loader } from 'semantic-ui-react';
 /**
  * Local import
  */
-// import Next from 'src/components/Next';
 import './style.scss';
 
 import NextQuiz from 'src/components/Next/NextQuiz';
 // import NextQuiz from 'src/containers/NextQuiz';
-
-
-// import { green } from 'ansi-colors';
 
 
 /**
@@ -27,43 +23,56 @@ const Quiz = ({
   isAuthenticated,
   formSubmitted,
   scoreIncrement,
-  quiz,
   loading,
-  score,
   nextQuiz,
+  quiz,
+  user_answers,
+  questionNb,
+  setStateAnswer
 }) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     quizSubmitted();
-    if (isAuthenticated) {
-      sendingScore();
-    }
+    // if (isAuthenticated) {
+    //   sendingScore();
+    // }
   };
   // Fonction pour le clic
+  // const handleClick = (evt) => {
+  //   const answer = Number(evt.currentTarget.id);
+  //   // console.log (evt.target);
+  //   const { className } = evt.target;
+  //   // console.log(evt);
+  //   if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
+  //     scoreIncrement();
+  //   }
+  //   if (className === 'quiz-answers') {
+  //     // eslint-disable-next-line no-return-assign
+  //     return evt.target.className = 'answer-clicked';
+  //   }
+  //   if (className === 'answer-clicked') {
+  //     // eslint-disable-next-line no-return-assign
+  //     return evt.target.className = 'quiz-answers';
+  //   }
+  //   return null;
+  // };
 
-  const handleClick = (evt) => {
-    const answer = Number(evt.currentTarget.id);
-    // console.log (evt.target);
-    const { className } = evt.target;
-    // console.log(evt);
-    if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
-      scoreIncrement();
+  const setAnswer = (event) => {
+    const isSelected = [event.target.checked];
+    const { value, id, checked } = event.target;
+    console.log(event.target)
+    // I verify if the checkbox that I checked is true && that the value of the input is a string true
+    // and I give the id and the value of my target to my action creator.
+    if (isSelected[0] === true && value === 'true') {
+      setStateAnswer(id, value);
     }
-    if (className === 'quiz-answers') {
-      // eslint-disable-next-line no-return-assign
-      return evt.target.className = 'answer-clicked';
-    }
-    if (className === 'answer-clicked') {
-      // eslint-disable-next-line no-return-assign
-      return evt.target.className = 'quiz-answers';
-    }
-    return null;
   };
 
   if (!loading) {
     const { title, questions } = quiz;
-    console.log(quiz);
+    // My const score is the length of my user_answers object that I change to an array
+    const score = Object.keys(user_answers).length;
     return (
       <div id="quiz-view">
         <form onSubmit={handleFormSubmit}>
@@ -74,31 +83,36 @@ const Quiz = ({
                 <div className="quiz-question">
                   <h2>{question.text}</h2>
                   <div className="quiz-form">
-                    <ul>
+                    <div>
                       {formSubmitted ? (
                         question.answers.map(answer => (
-                          <li
-                            key={answer.id}
-                            className={answer.correct ? 'answer-good' : 'answer-bad'}
-                            id={Number(answer.correct)} // We use the Number function to convert our string true or false on Number
-                          >
-                            {answer.text}
-                          </li>
+                          <div key={answer.id}>
+                            <label
+                              htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}
+                              className={answer.correct ? 'answer-good' : 'answer-bad'}
+                            >
+                              {`${answer.text}`}
+                            </label>
+                          </div>
                         ))
                       )
                         : (
                           question.answers.map(answer => (
-                            <li
-                              key={answer.id}
-                              className="quiz-answers"
-                              onClick={handleClick}
-                              id={Number(answer.correct)} // We use the Number function to convert our string true or false on Number
-                            >
-                              {answer.text}
-                            </li>
+                            <div key={answer.id} className="quiz-answers">
+                              <input
+                                id={`question-id-${question.id}-answer-input-${answer.id}`}
+                                type="checkbox"
+                                value={answer.correct}
+                                onClick={setAnswer}
+                                defaultChecked={false}
+                              />
+                              <label className="quiz-answers" htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}>
+                                {`${answer.text}`}
+                              </label>
+                            </div>
                           ))
                         )}
-                    </ul>
+                    </div>
                     {/* {formSubmitted ? <Answer {...question} /> : ''} */}
                   </div>
                 </div>
@@ -127,21 +141,9 @@ Quiz.propTypes = {
   quizSubmitted: PropTypes.func.isRequired,
   scoreIncrement: PropTypes.func.isRequired,
   quiz: PropTypes.object.isRequired,
-  score: PropTypes.number.isRequired,
   sendingScore: PropTypes.func.isRequired,
   nextQuiz: PropTypes.func.isRequired,
 };
-
-// const Answer = ({id, answers}) => {
-//   // console.log(answers);
-//   const answersMap = answers.map(item => item.correct);
-//   // console.log(answersMap);
-//   return (
-//     <div>
-//       lol
-//     </div>
-//   );
-// };
 
 
 /**

@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
  */
 import Quiz from 'src/components/Quiz';
 // Action Creators
-import { score, quizSubmitted, sendingScore, quiz } from 'src/store/reducers/quizReducer';
+import { score, quizSubmitted, sendingScore, quiz, increaseQuestionNb, setStateAnswer } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 
@@ -25,6 +25,8 @@ const mapStateToProps = state => ({
   formSubmitted: state.quizReducer.formSubmitted,
   score: state.quizReducer.score,
   isAuthenticated: state.userReducer.isAuthenticated,
+  questionNb: state.quizReducer.questionNb,
+  user_answers: state.quizReducer.user_answers,
 });
 
 /* === Actions ===
@@ -51,6 +53,9 @@ const mapDispatchToProps = dispatch => ({
   },
   nextQuiz: () => {
     dispatch(quiz());
+  },
+  setStateAnswer: (id, value) => {
+    dispatch(setStateAnswer(id, value));
   },
 
 });

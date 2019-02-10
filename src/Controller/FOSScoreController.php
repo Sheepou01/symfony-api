@@ -78,5 +78,42 @@ class FOSScoreController extends FOSRestController{
         return $bestScores;
     }
 
+
+    /**
+     * @POST("/api/set/quizz_score/{quizz_id}/user/{user_id}")
+     * @View(StatusCode=201)
+     * @ParamConverter("qscore", converter="fos_rest.request_body")
+     * @ParamConverter("user", options={"mapping": {"user_id": "id"}})
+     * @ParamConverter("quizz", options={"mapping": {"quizz_id": "id"}})
+     */
+    public function setQuizzScore(Quizz $quizz, User $user, QuizzScore $qscore)
+    {
+        $qscore->setUser($user);
+        $qscore->setQuizz($quizz);
+        $qscore->setCreatedAt(new \DateTime());
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($qscore);
+        $em->flush();
+        return new Response('Score enregistré');
+    }
+    /**
+     * @Rest\GET("/api/set/game_score/{game_id}/user/{user_id}")
+     * @Rest\View(StatusCode=201)
+     * @ParamConverter("gscore", converter="fos_rest.request_body")
+     * @ParamConverter("user", options={"mapping": {"user_id": "id"}})
+     * @ParamConverter("game", options={"mapping": {"game_id": "id"}})
+     */
+    public function setGameScore(Game $game, User $user, GameScore $gscore)
+    {
+        $gscore->setUser($user);
+        $gscore->setGame($game);
+        $gscore->setCreatedAt(new \DateTime());
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($gscore);
+        $em->flush();
+        return new Response('Score enregistré');
+    }
     
 }

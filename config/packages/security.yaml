@@ -30,7 +30,7 @@ security:
             form_login:
                 login_path: signin
                 check_path: signin
-
+    
             logout:
                 path: logout
                 target: byebye

@@ -10,7 +10,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-dark bg-dark justify-content-center">
+            <nav class="navbar navbar-dark bg-dark justify-content-center navbar-fixed-top p-3 mb-3">
                 {% if is_granted('ROLE_ADMIN')%}
                 <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
                 <a class="nav-link text-light" href="{{ path('admin_game_index') }}">Jeux</a>
@@ -33,7 +33,7 @@
             </div>
         </main>
         
-        <footer class="bg-dark p-5 mt-5">
+        <footer class="bg-dark p-3 mt-5 fixed-bottom">
             <p class="text-center text-light">Made with &#9829; by 5MAP Team</p>
         </footer>
         {% block javascripts %}{% endblock %}

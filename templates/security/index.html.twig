@@ -5,6 +5,9 @@
 {% block body %}
 {% if app.user.role is defined and app.user.role.code == 'ROLE_USER' %}
 <p>Vous n'êtes pas autorisé à accéder à ce site</p>
+{% elseif is_granted('ROLE_ADMIN') %}
+<p>Bienvenue <strong>{{ app.user.username }}</strong> sur l'administration de 5 minutes à perdre</p>
+<p>Choisissez parmi le menu en haut quelle catégorie vous voulez gérer.</p>
 {% endif %}
 <h2> Connexion </h2>
 

@@ -56,23 +56,19 @@ class QuizzScoreRepository extends ServiceEntityRepository
         ;
     }
 
-    /**
-     * @return QuizzScore[] Returns an array of QuizzScore objects
-     */
-    public function findLastestScoresFromUser($user)
+    public function findScoreByUser($user)
     {
-        return $this->createQueryBuilder('q')
+        $entityManager = $this->getEntityManager();
         
-        ->add('select', 'qs')
-        ->add('from', 'App\Entity\QuizzScore qs')
-        ->add('orderBy', 'qs.createdAt DESC')        
-        ->where('qs.user = :user')
-        ->setParameter('user', $user)
-        ->setMaxResults(3)
-        ->getQuery()
-        ->getResult()
-        ;
+        $query = $entityManager->createQuery(
+            'SELECT qs.score, quizz.title
+             FROM App\Entity\QuizzScore qs JOIN qs.quizz as quizz WHERE qs.user = '.$user.' ORDER BY qs.createdAt DESC'
+            
+        )->setMaxResults(3);
+        
+        return $query->execute();
     }
+
     // /**
     //  * @return QuizzScore[] Returns an array of QuizzScore objects
     //  */

@@ -35,7 +35,6 @@ class QuizzRepository extends ServiceEntityRepository
         ->getResult()
         ;
     }
-    
 
     /*
     public function findOneBySomeField($value): ?Quizz

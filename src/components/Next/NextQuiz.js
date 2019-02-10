@@ -34,7 +34,7 @@ class NextQuiz extends React.Component {
     return (
       <div id="next">
         <NavLink to="/quiz" onClick={this.handleReceiveQuiz}>
-          <Button>
+          <Button className="nextButton">
             Next
             <Icon name="chevron right" size="huge" />
           </Button>

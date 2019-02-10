@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
  */
 import Game from 'src/components/Game';
 import { startTimer } from 'src/store/reducers/timerReducer';
+import { gameLaunch } from 'src/store/reducers/gameReducer';
 // Action Creators
 
 
@@ -18,7 +19,10 @@ import { startTimer } from 'src/store/reducers/timerReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = null;
+const mapStateToProps = state => ({
+  launchGame: state.gameReducer.game,
+
+});
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation
@@ -31,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
   startTimer: () => {
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(startTimer());
+  },
+  gameLaunch: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(gameLaunch());
   },
 
 });

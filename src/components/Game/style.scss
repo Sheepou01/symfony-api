@@ -1,6 +1,23 @@
 
-.h1-game {
+.gameLaunch {
   display: flex;
   justify-content: center;
+  border : solid 10px #41a6fe;
+  border-radius : 15px;
+  background-color: #48aaff;
+  color : white;
+  padding : 0.25em 1em;
+  width : 20%;
+  margin: 0 auto;
+  font-size: 25px;
+  box-shadow:4px 4px 12px #999;
+  text-transform : uppercase;
+  font-weight : bold;
+}
+
+
+.gameClose {
+  display: none;
+  
 }
 

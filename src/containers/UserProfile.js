@@ -27,6 +27,7 @@ const mapStateToProps = state => ({
   isAuthenticated: state.userReducer.isAuthenticated,
   username: state.userReducer.user.username,
   userRole: state.userReducer.user.roles,
+  quizzScore: state.userReducer.user.quizzScore,
   editInputPseudo: state.userReducer.editInputPseudo,
   editInputEmail: state.userReducer.editInputEmail,
   editInputPassword: state.userReducer.editInputPassword,

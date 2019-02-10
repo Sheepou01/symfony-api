@@ -30,6 +30,7 @@ const UserProfile = ({
   editInputTimer,
   editTimer,
   handleInputTimer,
+  quizzScore,
 }) => {
   // Function which will handle every changement on the inputs of the user
   const handleInputChange = (event) => {
@@ -111,6 +112,7 @@ const UserProfile = ({
       </div>
       <h2>Tes scores</h2>
       <div className="profile-scores">
+        {/* We could show the scores of the games too if the games are coded with ReactJS
         <div className="scores">
           <h3>Jeux</h3>
           <ul>
@@ -118,13 +120,11 @@ const UserProfile = ({
             <li>Casse Brique: <span>900</span></li>
             <li>Bomber: <span>900</span></li>
           </ul>
-        </div>
+        </div> */}
         <div className="scores">
-          <h3>Quiz</h3>
+          <h3>Tes 3 derniers quiz</h3>
           <ul>
-            <li>Quiz n°1: <span>900</span></li>
-            <li>Quiz n°2: <span>900</span></li>
-            <li>Quiz n°3:  <span>900</span></li>
+            {quizzScore.map(quiz => <li>{quiz.title}: <p>{quiz.score} / 10</p></li>)}
           </ul>
         </div>
       </div>

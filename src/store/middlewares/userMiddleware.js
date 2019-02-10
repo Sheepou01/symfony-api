@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME } from 'src/store/reducers/userReducer';
+import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME, actionWrongSignin } from 'src/store/reducers/userReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
 /**
@@ -96,6 +96,7 @@ const userMiddleware = store => next => (action) => {
         });
       }).catch((error) => {
         console.log(error);
+        store.dispatch(actionWrongSignin());
       });
       next(action);
       break;

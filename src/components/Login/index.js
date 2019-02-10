@@ -69,6 +69,7 @@ class Login extends React.Component {
       inputPasswordConfirmation,
       alertMessagePasswordIncorrect,
       alertMessageShortPassword,
+      alertMessagewrongSignin,
       isSignedUp,
     } = this.props;
     if (isAuthenticated) {
@@ -131,6 +132,11 @@ class Login extends React.Component {
         </div>
         <div id="login-signin">
           <h2>Déjà Inscrit?</h2>
+          {alertMessagewrongSignin ? (
+            <div className="alert-message">Votre identifiant et/ou mot de passe est incorrect</div>
+          )
+            : ''
+          }
           {/* <Facebook facebook={facebook} /> */}
           {/* Premier Formulaire: Connexion */}
           {/* Je transmets les props nécessaires à mon composant Field (input) */}

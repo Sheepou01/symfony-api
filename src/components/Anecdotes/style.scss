@@ -1,12 +1,21 @@
+@import 'src/styles/vars';
+
 #wiki-view {
   display: flex;
   flex-direction: column;
-  margin: 2em 20%;
+  margin: 2em 10em;
   text-align: left;
   background-color: white;
   border : solid 5px #fdc841;
   border-radius : 15px;
   padding : 1em 2em;
+}
+
+@media screen and (max-width: 768px)  {
+  #wiki-view  {
+    margin: 2em 0.2em;
+    border : solid 1px $orange;
+  }
 }
 
 li {
@@ -32,4 +41,16 @@ li {
 
 .body {
   text-align: left;
+}
+
+button.ui.button{
+  margin: 1em;
+  padding: 1.5em;
+  color: white;
+  background-color: orange;
+  width: 10em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5em;
 }

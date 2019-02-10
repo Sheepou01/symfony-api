@@ -31,6 +31,7 @@ const mapStateToProps = state => ({
   isSignedUp: state.userReducer.isSignedUp,
   alertMessagePasswordIncorrect: state.userReducer.passwordIncorrect,
   alertMessageShortPassword: state.userReducer.shortPassword,
+  alertMessagewrongSignin: state.userReducer.wrongSigninMessage,
 });
 
 /* === Actions ===

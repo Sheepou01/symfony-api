@@ -61,7 +61,7 @@ class QuizzScoreRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            'SELECT qs.score, quizz.id
+            'SELECT qs.score, quizz.title
              FROM App\Entity\QuizzScore qs JOIN qs.quizz as quizz WHERE qs.user = '.$user.' ORDER BY qs.createdAt DESC'
             
         )->setMaxResults(3);

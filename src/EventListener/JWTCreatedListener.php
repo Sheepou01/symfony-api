@@ -38,6 +38,7 @@ public function onJWTCreated(JWTCreatedEvent $event)
     $payload       = $event->getData();
     $payload['id'] = $event->getUser()->getId();
     $payload['quizzScore'] = $this->quizzScoreRepo->findScoreByUser($event->getUser()->getId());
+    dump($payload);exit;
 
     $event->setData($payload);
     

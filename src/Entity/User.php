@@ -5,9 +5,11 @@ namespace App\Entity;
 use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
+use JMS\Serializer\Annotation\PreSerialize;
+use JMS\Serializer\Annotation as Serializer;
+use JMS\Serializer\Annotation\PostSerialize;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
-use JMS\Serializer\Annotation as Serializer;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -32,8 +34,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=100)
-     * @Serializer\Expose
-     * @Serializer\Groups({"signup"})
+     * 
      */
     private $password;
 
@@ -118,11 +119,17 @@ class User implements UserInterface
         return $this;
     }
 
+     /**
+     * @PostSerialize
+     */
     public function getPassword(): ?string
     {
         return $this->password;
     }
 
+     /**
+     * @PreSerialize
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;

@@ -2,6 +2,7 @@
  * Npm import
  */
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 /**
  * Local import
@@ -20,6 +21,7 @@ const UserProfile = ({
   idFavoriteTheme,
   isAuthenticated,
   username,
+  userRole,
   editInputPseudo,
   editInputEmail,
   editInputPassword,
@@ -27,7 +29,8 @@ const UserProfile = ({
   handleInput,
   editInputTimer,
   editTimer,
-  handleInputTimer
+  handleInputTimer,
+  quizzScore,
 }) => {
   // Function which will handle every changement on the inputs of the user
   const handleInputChange = (event) => {
@@ -52,12 +55,13 @@ const UserProfile = ({
     evt.preventDefault();
     editTimer((editInputTimer * 60));
   };
-  
+
 
   return (
     <div id="profile">
       {/* Here is the message when the user is connected end redirected to his profile page */}
       {isAuthenticated ? <WelcomeMessage username={username} /> : ''}
+      {userRole[0] === 'ROLE_ADMIN' ? <Button id="Button-admin"><a href="https://guillaume-marques.fr/admin/user">Interface Admin</a></Button> : ''}
       <div id="profile-edit">
         <h2>Tu veux modifier quelque chose?</h2>
         <form className="form-edit" onSubmit={handleEditSubmit}>
@@ -72,7 +76,7 @@ const UserProfile = ({
             handleInputChange={handleInputChange}
             value={editInputEmail}
             name="editInputEmail"
-            type="text"
+            type="email"
             placeholder="Votre Email"
           />
           <Field
@@ -108,6 +112,7 @@ const UserProfile = ({
       </div>
       <h2>Tes scores</h2>
       <div className="profile-scores">
+        {/* We could show the scores of the games too if the games are coded with ReactJS
         <div className="scores">
           <h3>Jeux</h3>
           <ul>
@@ -115,17 +120,15 @@ const UserProfile = ({
             <li>Casse Brique: <span>900</span></li>
             <li>Bomber: <span>900</span></li>
           </ul>
-        </div>
+        </div> */}
         <div className="scores">
-          <h3>Quiz</h3>
+          <h3>Tes 3 derniers quiz</h3>
           <ul>
-            <li>Quiz n°1: <span>900</span></li>
-            <li>Quiz n°2: <span>900</span></li>
-            <li>Quiz n°3:  <span>900</span></li>
+            {quizzScore.map(quiz => <li>{quiz.title}: <p>{quiz.score} / 10</p></li>)}
           </ul>
         </div>
       </div>
-      <h2>Tu cherches quelqu'un?</h2>
+      {/* <h2>Tu cherches quelqu'un?</h2>
       <Input
         className="inputSearch"
         icon="users"
@@ -150,7 +153,7 @@ const UserProfile = ({
             <li>Quiz n°3:  <span>900</span></li>
           </ul>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

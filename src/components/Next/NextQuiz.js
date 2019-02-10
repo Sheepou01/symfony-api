@@ -2,10 +2,8 @@
  * Npm import
  */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Button, Icon } from 'semantic-ui-react';
-
-// import PropTypes from 'prop-types';
-
 import { NavLink } from 'react-router-dom';
 
 /**
@@ -15,35 +13,32 @@ import './style.scss';
 /**
  * Code
  */
+
 // Bouton Next pour passer sur un autre quiz
-
-
 class NextQuiz extends React.Component {
-  componentDidMount() {
-    const { startTimer } = this.props;
-    console.log(startTimer);
-  }
-
   handleReceiveQuiz = () => {
     // evt.preventDefault();
-    const { quiz } = this.props;
-    quiz();
+    const { nextQuiz } = this.props;
+    nextQuiz();
   };
 
   render() {
     return (
       <div id="next">
         <NavLink to="/quiz" onClick={this.handleReceiveQuiz}>
-          <Button>
-            Next
-            <Icon name="chevron right" size="huge" />
+          <Button className="button-next">
+            Passes au prochain Quiz
+            <Icon name="chevron right" size="large" />
           </Button>
         </NavLink>
       </div>
     );
   }
-};
+}
 
+NextQuiz.propTypes = {
+  nextQuiz: PropTypes.func.isRequired,
+};
 
 /**
  * Export

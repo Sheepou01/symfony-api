@@ -14,6 +14,7 @@ const initialState = {
   editInputPassword: '',
   editInputEmail: '',
   isAuthenticated: false,
+  isSignedUp: false,
   user: {},
   themes: [
     { key: 0, text: 'Tous', value: 0 },
@@ -32,6 +33,7 @@ const initialState = {
   idFavoriteTheme: undefined,
   passwordIncorrect: false,
   shortPassword: false,
+  wrongSigninMessage: false,
 };
 
 /**
@@ -49,6 +51,7 @@ export const THEME_LIST = 'THEME_LIST';
 export const LOAD_THEME = 'LOAD_THEME';
 const INCORRECT_PASSWORD = 'INCORRECT_PASSWORD';
 const SHORT_PASSWORD = 'SHORT_PASSWORD';
+const WRONG_SIGNIN = 'WRONG_SIGNIN';
 
 /**
  * Traitements
@@ -78,11 +81,14 @@ const reducer = (state = initialState, action = {}) => {
             password: action.password,
           },
         ],
+        isSignedUp: true,
         // Je remets les inputs à zéro
         inputPseudo: '',
         inputEmail: '',
         inputPassword: '',
         inputPasswordConfirmation: '',
+        passwordIncorrect: false,
+        shortPassword: false,
       };
     // Action qui permet de mettre dans le state les données qui arrivent du formulaire de connexion
     case SIGNIN_USER:
@@ -112,6 +118,7 @@ const reducer = (state = initialState, action = {}) => {
     case LOGOUT:
       return {
         ...state,
+        isSignedUp: false,
       };
     case USER_FAV_THEME:
       return {
@@ -130,11 +137,18 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         passwordIncorrect: true,
+        shortPassword: false,
       };
     case SHORT_PASSWORD:
       return {
         ...state,
         shortPassword: true,
+        passwordIncorrect: false,
+      };
+    case WRONG_SIGNIN:
+      return {
+        ...state,
+        wrongSigninMessage: true,
       };
     default:
       return state;
@@ -205,6 +219,9 @@ export const actionIncorrectPassword = () => ({
 
 export const actionShortPassword = () => ({
   type: SHORT_PASSWORD,
+});
+export const actionWrongSignin = () => ({
+  type: WRONG_SIGNIN,
 });
 
 /**

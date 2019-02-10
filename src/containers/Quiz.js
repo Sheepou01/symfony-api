@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
  */
 import Quiz from 'src/components/Quiz';
 // Action Creators
-import { score, quizSubmitted } from 'src/store/reducers/quizReducer';
+import { score, quizSubmitted, sendingScore, quiz, setStateAnswer } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 
@@ -22,10 +22,11 @@ import { startTimer } from 'src/store/reducers/timerReducer';
 const mapStateToProps = state => ({
   quiz: state.quizReducer.quiz,
   loading: state.quizReducer.loading,
-
   formSubmitted: state.quizReducer.formSubmitted,
-  score: state.quizReducer.score,
-
+  scoreState: state.quizReducer.score,
+  isAuthenticated: state.userReducer.isAuthenticated,
+  questionNb: state.quizReducer.questionNb,
+  user_answers: state.quizReducer.user_answers,
 });
 
 /* === Actions ===
@@ -36,8 +37,8 @@ const mapStateToProps = state => ({
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
 const mapDispatchToProps = dispatch => ({
-  scoreIncrement: () => {
-    dispatch(score());
+  scoreIncrement: (newScore) => {
+    dispatch(score(newScore));
   },
   quizSubmitted: () => {
     dispatch(quizSubmitted());
@@ -45,6 +46,16 @@ const mapDispatchToProps = dispatch => ({
   startTimer: () => {
     // dispatch de mon action creator qui gère les modifs des inputs
     dispatch(startTimer());
+  },
+  sendingScore: () => {
+    // dispatch de mon action creator qui gère les modifs des inputs
+    dispatch(sendingScore());
+  },
+  nextQuiz: () => {
+    dispatch(quiz());
+  },
+  setStateAnswer: (id, value) => {
+    dispatch(setStateAnswer(id, value));
   },
 
 });

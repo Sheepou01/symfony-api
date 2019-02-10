@@ -18,7 +18,6 @@ export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
 const SCORE = 'SCORE';
 const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
-const INCREASE_QUESTION_NB = 'INCREASE_QUESTION_NB';
 const ADD_USER_ANSWER = 'INCREASE_QUESTION_NB';
 export const SEND_SCORE = 'SEND_SCORE';
 
@@ -45,7 +44,7 @@ const reducer = (state = initialState, action = {}) => {
     case SCORE:
       return {
         ...state,
-        score: state.score + 1,
+        score: action.newScore,
       };
     case QUIZ_SUBMITTED:
       return {
@@ -58,14 +57,14 @@ const reducer = (state = initialState, action = {}) => {
         formSubmitted: true,
       };
     case ADD_USER_ANSWER:
+      // eslint-disable-next-line no-case-declarations
       const newAnswer = {
         [action.id]: action.value,
       };
-      console.log(newAnswer)
       return {
         ...state,
         user_answers: { ...state.user_answers, ...newAnswer },
-      };   
+      };
     default:
       return state;
   }
@@ -80,8 +79,9 @@ export const quiz = () => ({
 });
 
 
-export const score = () => ({
+export const score = newScore => ({
   type: SCORE,
+  newScore,
 });
 
 export const quizSubmitted = () => ({

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Loader } from 'semantic-ui-react';
@@ -22,21 +23,23 @@ const Quiz = ({
   sendingScore,
   isAuthenticated,
   formSubmitted,
-  scoreIncrement,
   loading,
   nextQuiz,
   quiz,
   user_answers,
-  questionNb,
-  setStateAnswer
+  setStateAnswer,
+  scoreState,
+  scoreIncrement,
 }) => {
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
+    const score = Object.keys(user_answers).length;
+    scoreIncrement(score);
     quizSubmitted();
-    // if (isAuthenticated) {
-    //   sendingScore();
-    // }
+    if (isAuthenticated) {
+      sendingScore();
+    }
   };
   // Fonction pour le clic
   // const handleClick = (evt) => {
@@ -60,8 +63,8 @@ const Quiz = ({
 
   const setAnswer = (event) => {
     const isSelected = [event.target.checked];
-    const { value, id, checked } = event.target;
-    console.log(event.target)
+    const { value, id } = event.target;
+    console.log(event.target);
     // I verify if the checkbox that I checked is true && that the value of the input is a string true
     // and I give the id and the value of my target to my action creator.
     if (isSelected[0] === true && value === 'true') {
@@ -72,7 +75,6 @@ const Quiz = ({
   if (!loading) {
     const { title, questions } = quiz;
     // My const score is the length of my user_answers object that I change to an array
-    const score = Object.keys(user_answers).length;
     return (
       <div id="quiz-view">
         <form onSubmit={handleFormSubmit}>
@@ -113,15 +115,14 @@ const Quiz = ({
                           ))
                         )}
                     </div>
-                    {/* {formSubmitted ? <Answer {...question} /> : ''} */}
                   </div>
                 </div>
               </div>
             ))}
           </div>
-          {formSubmitted && score < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {score}/10</div> : ''}
-          {formSubmitted && score >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {score}/10</div> : ''}
-          {formSubmitted && score >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {score}/10</div> : ''}
+          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {scoreState}/10</div> : ''}
+          {formSubmitted && scoreState >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/10</div> : ''}
+          {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/10</div> : ''}
           <div id="button-check">
             <Button className="button-submit"><Icon name="check" size="large" /> Valides tes réponses</Button>
             <NextQuiz nextQuiz={nextQuiz} />
@@ -139,10 +140,10 @@ Quiz.propTypes = {
   formSubmitted: PropTypes.bool.isRequired,
   isAuthenticated: PropTypes.bool.isRequired,
   quizSubmitted: PropTypes.func.isRequired,
-  scoreIncrement: PropTypes.func.isRequired,
   quiz: PropTypes.object.isRequired,
   sendingScore: PropTypes.func.isRequired,
   nextQuiz: PropTypes.func.isRequired,
+  scoreState: PropTypes.number.isRequired,
 };
 
 

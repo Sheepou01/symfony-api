@@ -2,9 +2,8 @@
  * Import
  */
 import axios from 'axios';
-import $ from 'jquery'; 
+import $ from 'jquery';
 import { QUIZ, receivedQuiz, SEND_SCORE } from 'src/store/reducers/quizReducer';
-import { userFavTheme } from '../reducers/userReducer';
 
 /**
 * Code
@@ -66,18 +65,16 @@ const quizMiddleware = store => next => (action) => {
         header: {
           'content-type': 'application/json',
         },
-        // paramconverter in back-end, so we have to send an empty object. paramconverter is waiting something in return
         data: {
           score,
         },
       }).then((response) => {
         // handle success
         console.log(response.data);
-      })
-        .catch((error) => {
-          // handle error
-          console.log(error);
-        });
+      }).catch((error) => {
+        // handle error
+        console.log(error);
+      });
       break;
     default:
       next(action);

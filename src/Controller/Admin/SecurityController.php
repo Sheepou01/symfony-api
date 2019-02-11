@@ -23,17 +23,18 @@ class SecurityController extends AbstractController
             'error'         => $error,
         ));
     }
+    
     /**
      * @Route("/logout", name="logout")
      */
     public function logout(){}
+
     /**
      * @Route("/bye", name="byebye")
      */
     public function bybye(){
         return $this->redirect('https://www.5map.fr');
     }
-
 
 }
 

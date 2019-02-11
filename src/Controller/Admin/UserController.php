@@ -66,13 +66,9 @@ class UserController extends AbstractController
      * @Route("/admin/user/{id}/delete", name="admin_user_delete")
      */
     public function delete(User $user, EntityManagerInterface $em, Request $request)
-    {
-       
-            
+    {            
             $em->remove($user);
-            $em->flush();
-        
-
+            $em->flush(); 
         return $this->redirectToRoute('admin_user_index');
         
     }

@@ -1,8 +1,10 @@
 /**
  * Npm import
  */
+
 import React, { Component } from 'react';
 import classnames from 'classnames';
+
 /**
  * Local import
  */
@@ -56,7 +58,12 @@ class Game extends React.Component {
     );
   }
 }
-//
+
+
+Game.propTypes = {
+  startTimer: PropTypes.func.isRequired,
+};
+
 
 /**
  * Export

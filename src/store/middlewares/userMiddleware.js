@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME } from 'src/store/reducers/userReducer';
+import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME, actionWrongSignin } from 'src/store/reducers/userReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
 /**
@@ -13,14 +13,14 @@ import setAuthorizationToken from '../setAuthorizationToken';
 
 const userMiddleware = store => next => (action) => {
 
-  const urlSignUp = 'http://217.70.191.8/api/signup';
-  const urlSignIn = 'http://217.70.191.8/api/login_check';
-  const test = 'http://217.70.191.8/api/test';
+  const urlSignUp = 'https://guillaume-marques.fr/api/signup';
+  const urlSignIn = 'https://guillaume-marques.fr/api/login_check';
+  const test = 'https://guillaume-marques.fr/api/test';
   // const tag = 'http://217.70.191.8/api/tag'; pour recup la liste des themes pour l'instant j'ai fait en dur
   const { user } = store.getState().userReducer;
   // console.log(user.id);
-  const urlEditUser = `http://217.70.191.8/user/${user.id}/edit`;
-  const urlFavTheme = `http://217.70.191.8/user/${user.id}/tag/edit`;
+  const urlEditUser = `https://guillaume-marques.fr/user/${user.id}/edit`;
+  const urlFavTheme = `https://guillaume-marques.fr/user/${user.id}/tag/edit`;
 
   switch (action.type) {
     case SIGNUP_USER:
@@ -96,6 +96,7 @@ const userMiddleware = store => next => (action) => {
         });
       }).catch((error) => {
         console.log(error);
+        store.dispatch(actionWrongSignin());
       });
       next(action);
       break;

@@ -11,7 +11,11 @@
   padding : 1em 2em;
 }
 
-.mentions-title {
-  font-size: 14.5px;
 
+@media screen and (max-width: 425px)  {
+  #mentions-view {
+    margin: 2em 1em;
+    border: solid 1px #F5A834;
+    padding : 1em 1em;
+  }
 }

@@ -13,7 +13,7 @@ import classnames from 'classnames';
 /**
  * Code
  */
-const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout, clickEndView }) => {
+const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout }) => {
 // Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
   const handleMenuDisplay = () => {
     menuDisplay();
@@ -21,11 +21,6 @@ const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout, clickEnd
 
   const handleLogout = () => {
     logout();
-  };
-
-  const handleClickEndView = () => {
-    clickEndView();
-    console.log(clickEndView)
   };
 
   return (

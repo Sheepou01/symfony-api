@@ -3,12 +3,12 @@
  */
 const initialState = {
   quiz: {},
+  questionNb: 0,
   loading: true,
-
   formSubmitted: false,
   answerClicked: false,
   score: 0,
-
+  user_answers: [],
 };
 
 /**
@@ -16,9 +16,10 @@ const initialState = {
    */
 export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
-
 const SCORE = 'SCORE';
 const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
+const ADD_USER_ANSWER = 'INCREASE_QUESTION_NB';
+export const SEND_SCORE = 'SEND_SCORE';
 
 /**
 * Traitements
@@ -34,25 +35,35 @@ const reducer = (state = initialState, action = {}) => {
         ...state,
       };
     case RECEIVED_QUIZ:
-    // console.log(action.data)
       return {
         ...state,
         quiz: action.data,
         loading: false,
         selectedOption: false,
       };
-
     case SCORE:
-    // console.log(action.data)
       return {
         ...state,
-        score: state.score + 1,
+        score: action.newScore,
       };
     case QUIZ_SUBMITTED:
-    // console.log(action.data)
       return {
         ...state,
         formSubmitted: true,
+      };
+    case SEND_SCORE:
+      return {
+        ...state,
+        formSubmitted: true,
+      };
+    case ADD_USER_ANSWER:
+      // eslint-disable-next-line no-case-declarations
+      const newAnswer = {
+        [action.id]: action.value,
+      };
+      return {
+        ...state,
+        user_answers: { ...state.user_answers, ...newAnswer },
       };
     default:
       return state;
@@ -68,21 +79,28 @@ export const quiz = () => ({
 });
 
 
-export const score = () => ({
+export const score = newScore => ({
   type: SCORE,
+  newScore,
 });
 
 export const quizSubmitted = () => ({
   type: QUIZ_SUBMITTED,
 });
-export const clickAnswer = () => ({
-  type: CLICK_ANSWER,
-});
 
+export const sendingScore = () => ({
+  type: SEND_SCORE,
+});
 
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,
   data,
+});
+
+export const setStateAnswer = (id, value) => ({
+  type: ADD_USER_ANSWER,
+  id,
+  value,
 });
   /**
    * Selectors

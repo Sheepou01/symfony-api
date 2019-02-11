@@ -1,5 +1,6 @@
-#ending{
+@import 'src/styles/vars';
 
+#ending{
   &-view{
   display:flex;
   justify-content: center;
@@ -13,7 +14,9 @@
   }
 
   &-button{
-    width: 10em;
+    background-color: $orange;
+    color: white;
+    font-size: 0.8em;
   }
 }
 

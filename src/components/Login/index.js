@@ -155,6 +155,7 @@ class Login extends React.Component {
               type="password"
               placeholder="Mot de Passe"
             />
+            <a href="#">Mot de passe oublié ?</a>
             <Button>Envoyer</Button>
           </form>
         </div>

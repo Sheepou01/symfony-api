@@ -19,6 +19,7 @@
     padding : 1em 1em;
   }
 }
+
 @media screen and (min-width: 426px) and (max-width: 768px)  {
   #mentions-view {
     margin: 2em 5em;
@@ -31,4 +32,9 @@
     margin: 2em 5em;
     padding : 1em 1em;
   }
+}
+
+#cgu {
+  font-weight: bold;
+  font-size : 25px;
 }

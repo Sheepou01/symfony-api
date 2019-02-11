@@ -5,12 +5,13 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
         
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-dark bg-dark justify-content-center navbar-fixed-top p-3 mb-3">
+            <nav class="navbar justify-content-center navbar-fixed-top p-3 mb-3">
                 {% if is_granted('ROLE_ADMIN')%}
                 <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
                 <a class="nav-link text-light" href="{{ path('admin_game_index') }}">Jeux</a>
@@ -33,7 +34,7 @@
             </div>
         </main>
         
-        <footer class="bg-dark p-3 mt-5 fixed-bottom">
+        <footer class="footer p-3 mt-5 fixed-bottom">
             <p class="text-center text-light">Made with &#9829; by 5MAP Team</p>
         </footer>
         {% block javascripts %}{% endblock %}

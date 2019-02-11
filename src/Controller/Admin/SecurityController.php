@@ -34,6 +34,5 @@ class SecurityController extends AbstractController
         return $this->redirect('https://www.5map.fr');
     }
 
-
 }
 

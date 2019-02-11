@@ -37,6 +37,7 @@ const Quiz = ({
     evt.preventDefault();
     const score = Object.keys(user_answers).length;
     console.log(Object.keys(user_answers));
+
     scoreIncrement(score);
     quizSubmitted();
     if (isAuthenticated) {

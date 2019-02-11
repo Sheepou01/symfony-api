@@ -11,7 +11,7 @@ import { QUIZ, receivedQuiz, SEND_SCORE } from 'src/store/reducers/quizReducer';
 
 
 const quizMiddleware = store => next => (action) => {
-  
+
   const { quiz, score } = store.getState().quizReducer;
   const { user } = store.getState().userReducer;
   const urlQuiz = 'https://guillaume-marques.fr/api/quizz';
@@ -44,7 +44,7 @@ const quizMiddleware = store => next => (action) => {
       //   header: {
       //     'content-type': 'application/json',
       //   },
-      //   // paramconverter in back-end, so we have to send an empty object. paramconverter is waiting something in return
+      //   paramconverter in back-end, so we have to send an empty object. paramconverter is waiting something in return
       //   data: {
       //     id: user.id,
       //   },

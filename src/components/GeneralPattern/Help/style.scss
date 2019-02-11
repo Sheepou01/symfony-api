@@ -18,3 +18,16 @@
     padding : 1em 1em;
   }
 }
+@media screen and (min-width: 426px) and (max-width: 768px)  {
+  #help-view {
+    margin: 2em 5em;
+    border: solid 1px #F5A834;
+    padding : 1em 1em;
+  }
+}
+@media screen and (min-width: 769px) and (max-width: 1024px)  {
+  #help-view {
+    margin: 2em 5em;
+    padding : 1em 1em;
+  }
+}

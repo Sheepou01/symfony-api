@@ -8,7 +8,7 @@ import { withRouter } from 'react-router-dom';
  */
 import Quiz from 'src/components/Quiz';
 // Action Creators
-import { score, quizSubmitted, sendingScore, quiz, setStateAnswer } from 'src/store/reducers/quizReducer';
+import { score, quizSubmitted, sendingScore, quiz, setStateAnswer, newQuizDisplay } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 
@@ -53,6 +53,9 @@ const mapDispatchToProps = dispatch => ({
   },
   nextQuiz: () => {
     dispatch(quiz());
+  },
+  newQuizDisplay: () => {
+    dispatch(newQuizDisplay());
   },
   setStateAnswer: (id, value) => {
     dispatch(setStateAnswer(id, value));

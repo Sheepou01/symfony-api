@@ -70,11 +70,30 @@ div #navigation{
     }
   }
 }
+@media screen and (min-width: 427px) and (max-width: 1024px)  {
+  .card {
+    border: none;
+    margin: 3em;
+    
+    &-banner{
+      background: $orange;
+      text-align: center;
+      text-transform: uppercase;
+      border-top: none;
+      padding: 1em 1em;
+    }
+    &-title{
+      display: block;
+      font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+      color:white;
+    }
+  }
+}
 
 
 // Carousel
 // ----------------------------------------------
-@media screen and (min-width: 426px)  {
+@media screen and (min-width: 1024px)  {
   .icon-cards {
     position: relative;
     width: 13em;
@@ -126,6 +145,17 @@ div #navigation{
       &:nth-child(3) {    
         color: white;
         transform: rotateY(240deg) translateZ(35vw);
+      }
+    }
+  }
+}
+@media screen and (max-width: 1023px)  {
+  .icon-cards {
+    // Individual cards
+
+    &__item {
+      &:nth-child(1) {
+        display: none;
       }
     }
   }

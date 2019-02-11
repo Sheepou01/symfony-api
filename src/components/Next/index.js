@@ -22,7 +22,7 @@ const Next = ({ randomTopito, topitosList }) => {
   }
   return (
     <div id="next">
-      <Button onClick={handleClick}>
+      <Button onClick={handleClick} className="next-wiki">
         Suivant
         <Icon name="chevron right" size="large" />
       </Button>

@@ -49,6 +49,9 @@
   border: 1px solid $orange;
   padding: 2em;
   height: 100%;
+  h2{
+    height: 7em;
+  }
   }
   &-box{
     width : 30%;
@@ -60,7 +63,7 @@
     color: color;
     padding-left : 1em;
     font-size: 1.2em;
-      & input[type=checkbox]{
+      & input[type=radio]{
         width: 1em;
         height: 2.2em;
       }
@@ -135,12 +138,16 @@
     background-color: $orange;
     color : white;
     padding-left : 1em;
+    font-size: 1.5em;
+    line-height: 1.5em;
   }
   &-bad{
     display: flex;
     align-items: center;
     text-decoration: line-through;
     padding-left : 1em;
+    font-size: 1.5em;
+    line-height: 1.5em;
   }
 }  
 

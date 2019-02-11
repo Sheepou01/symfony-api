@@ -13,9 +13,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class AnswerController extends AbstractController
 {
-    
-
-
     /**
      * @Route("/admin/question/{id}/answer/new", name="admin_answer_new")
      */

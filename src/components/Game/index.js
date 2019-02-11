@@ -10,9 +10,7 @@ import PropTypes from 'prop-types';
  */
 
 import './style.scss';
-import Bomber from './Bomber';
 import Snake from './Snake';
-// import Main from './gameLife';
 
 /**
  * Code

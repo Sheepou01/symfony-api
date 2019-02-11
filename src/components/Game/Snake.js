@@ -297,8 +297,7 @@ render() {
     }
  
   
-  return ( onload
-  ); 
+  return (onload);
 };
 };
 

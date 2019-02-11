@@ -41,6 +41,8 @@
         {% endfor %}
         </tbody>
     </table>
-
+    <div class="navigation">
+        {{ knp_pagination_render(wikis) }}
+    </div>
     <a class="btn btn-success" href="{{ path('admin_wiki_new') }}">Nouvelle anecdote</a>
 {% endblock %}

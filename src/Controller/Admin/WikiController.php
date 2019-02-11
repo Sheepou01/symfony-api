@@ -21,9 +21,11 @@ class WikiController extends AbstractController
     /**
      * @Route("/admin/wiki", name="admin_wiki_index")
      */
-    public function index(WikiRepository $wikiRepository): Response
+    public function index(WikiRepository $wikiRepository, PaginatorInterface $paginator, Request $request): Response
     {
-        $wikis = $wikiRepository->findAll();
+        $wikis = $paginator->paginate($wikiRepository->findAll(),
+        $request->query->getInt('page', 1),
+        15);
         
         return $this->render('admin/wiki/index.html.twig', [
             'wikis' => $wikis

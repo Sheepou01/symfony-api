@@ -33,6 +33,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(tags) }}
+    </div>
 
 <a class="btn btn-success" href="{{ path('admin_tag_new') }}">Nouveau</a>
 {% endblock %}

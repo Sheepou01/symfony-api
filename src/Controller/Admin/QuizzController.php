@@ -16,9 +16,11 @@ class QuizzController extends AbstractController
     /**
      * @Route("/admin/quizz", name="admin_quizz_index")
      */
-    public function index(QuizzRepository $quizzRepo)
+    public function index(QuizzRepository $quizzRepo, PaginatorInterface $paginator, Request $request)
     {
-        $quizzes = $quizzRepo->findAll();
+        $quizzes = $paginator->paginate($quizzRepo->findAll(),
+        $request->query->getInt('page', 1),
+        15);
 
         return $this->render('admin/quizz/index.html.twig', [
             'quizzes'=> $quizzes

@@ -15,9 +15,11 @@ class TagController extends AbstractController
     /**
      * @Route("/admin/tag", name="admin_tag_index")
      */
-    public function index(TagRepository $tagRepo)
+    public function index(TagRepository $tagRepo, PaginatorInterface $paginator, Request $request)
     {
-        $tags = $tagRepo->findAll();
+        $tags = $paginator->paginate($tagRepo->findAll(),
+        $request->query->getInt('page', 1),
+        15);
 
         return $this->render('admin/tag/index.html.twig', [
             'tags' => $tags,

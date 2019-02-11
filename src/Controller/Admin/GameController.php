@@ -15,9 +15,11 @@ class GameController extends AbstractController
     /**
      * @Route("/admin/game", name="admin_game_index")
      */
-    public function index(GameRepository $gameRepo)
+    public function index(GameRepository $gameRepo, PaginatorInterface $paginator, Request $request)
     {
-        $games = $gameRepo->findAll();
+        $games = $paginator->paginate($gameRepo->findAll(),
+        $request->query->getInt('page', 1),
+        15);
 
         return $this->render('admin/game/index.html.twig', [
             'games' => $games,

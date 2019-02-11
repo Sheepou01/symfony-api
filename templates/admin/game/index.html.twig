@@ -40,5 +40,8 @@
         {% endfor %}
         </tbody>
     </table>
+    <div class="navigation">
+        {{ knp_pagination_render(games) }}
+    </div>
 <a class="btn btn-success" href="{{ path('admin_game_new') }}">Nouveau jeu</a>
 {% endblock %} 

@@ -46,6 +46,7 @@
   "dependencies": {
     "@babel/polyfill": "*",
     "axios": "^0.18.0",
+    "boostrap": "^2.0.0",
     "classnames": "^2.2.6",
     "history": "^4.7.2",
     "jquery": "^3.3.1",

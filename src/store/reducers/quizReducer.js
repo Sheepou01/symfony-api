@@ -17,8 +17,9 @@ const initialState = {
 export const QUIZ = 'QUIZ';
 export const RECEIVED_QUIZ = 'RECEIVED_QUIZ';
 const SCORE = 'SCORE';
+const NEW_QUIZ_DISPLAY = 'NEW_QUIZ';
 const QUIZ_SUBMITTED = 'QUIZ_SUBMITTED';
-const ADD_USER_ANSWER = 'INCREASE_QUESTION_NB';
+const ADD_USER_ANSWER = 'ADD_USER_ANSWER';
 export const SEND_SCORE = 'SEND_SCORE';
 
 /**
@@ -33,6 +34,12 @@ const reducer = (state = initialState, action = {}) => {
     case QUIZ:
       return {
         ...state,
+        formSubmitted: false,
+      };
+    case NEW_QUIZ_DISPLAY:
+      return {
+        ...state,
+        formSubmitted: false,
       };
     case RECEIVED_QUIZ:
       return {
@@ -76,6 +83,10 @@ const reducer = (state = initialState, action = {}) => {
 // j'envoi mes props à mon container
 export const quiz = () => ({
   type: QUIZ,
+});
+
+export const newQuizDisplay = () => ({
+  type: NEW_QUIZ_DISPLAY,
 });
 
 

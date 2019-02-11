@@ -11,6 +11,7 @@
     </head>
     <body>
         <header>
+            <img class="logo" src="{{asset('images/logo.png')}}" alt="logo-5MAP">
             <nav class="navbar justify-content-center navbar-fixed-top p-3 mb-3">
                 {% if is_granted('ROLE_ADMIN')%}
                 <a class="nav-link text-light" href="{{ path('admin_user_index') }}">Membres</a>
@@ -20,14 +21,14 @@
                 <a class="nav-link text-light" href="{{ path('admin_tag_index') }}">Thèmes</a>
                 {% endif %}
                 {% if app.user %}
-                <a class="nav-link text-light" href="{{ path('logout') }}">Déconnexion</a>
+                <a class="nav-link text-light logout" href="{{ path('logout') }}">Déconnexion</a>
                 {% endif %}
             </nav>
         </header>
         <main>
             <div class="container-fluid">
                 <div class="row justify-content-center">
-                    <div class="col-8 text-center">
+                    <div class="col-10 text-center">
                         {% block body %}{% endblock %}
                     </div>
                 </div>

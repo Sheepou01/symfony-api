@@ -1,8 +1,9 @@
 /**
  * Npm import
  */
-import React from 'react';
-import PropTypes from 'prop-types';
+
+import React, { Component } from 'react';
+import classnames from 'classnames';
 
 /**
  * Local import
@@ -22,15 +23,42 @@ class Game extends React.Component {
     startTimer();
   }
 
+  handleLaunch = (evt) => {
+    // evt.prevendefault();
+    // console.log(evt.target);
+    // this.setState({
+    //   launchGame: !this.state.launchGame,
+    // });
+    const { startTimer } = this.props;
+    console.log(startTimer);
+    const { launchGame } = this.props;
+    // console.log(launchGame);
+  }
+
   render() {
+    const { launchGame } = this.props;
     return (
       <div id="snake">
-      <h1 className="h1-game">Demarre le jeu en appuyant sur F5 !</h1>
+        <div
+          id="test"
+          onClick={this.handleLaunch} >
+          <a
+            href="javascript:location.reload(true)"
+            className={classnames({
+              gameLaunch: true,
+              gameClose: launchGame,
+            })}
+          >Lancer le Jeu ?
+          </a>
+        </div>
+
+
         <Snake />
       </div>
     );
   }
 }
+
 
 Game.propTypes = {
   startTimer: PropTypes.func.isRequired,

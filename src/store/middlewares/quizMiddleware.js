@@ -34,6 +34,7 @@ const quizMiddleware = store => next => (action) => {
 
   switch (action.type) {
     case QUIZ:
+
       // We tried to use another method to make a request
       $.ajax(settings).done((response) => {
         store.dispatch(receivedQuiz(response));

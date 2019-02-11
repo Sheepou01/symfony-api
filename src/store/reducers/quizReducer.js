@@ -8,6 +8,7 @@ const initialState = {
   formSubmitted: false,
   answerClicked: false,
   score: 0,
+  user_answers: {},
 };
 
 /**
@@ -56,7 +57,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         formSubmitted: true,
-        user_answers: [],
+        // user_answers: [],
       };
     case SEND_SCORE:
       return {
@@ -65,12 +66,13 @@ const reducer = (state = initialState, action = {}) => {
       };
     case ADD_USER_ANSWER:
       // eslint-disable-next-line no-case-declarations
-      const newAnswer = {
-        [action.id]: action.value,
+      const newAnswers = {
+        ...state.user_answers,
+        [action.value.questionId]: action.value.answer,
       };
       return {
         ...state,
-        user_answers: { ...state.user_answers, ...newAnswer },
+        user_answers: { ...newAnswers },
       };
     default:
       return state;
@@ -108,9 +110,8 @@ export const receivedQuiz = data => ({
   data,
 });
 
-export const setStateAnswer = (id, value) => ({
+export const setStateAnswer = (value) => ({
   type: ADD_USER_ANSWER,
-  id,
   value,
 });
   /**

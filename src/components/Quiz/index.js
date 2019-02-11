@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Loader } from 'semantic-ui-react';
+import classNames from 'classnames';
+
 
 
 /**
@@ -35,15 +37,24 @@ const Quiz = ({
 
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    const score = Object.keys(user_answers).length;
-    console.log(Object.keys(user_answers));
+    // I transform my object user_answers in an array with the question's id as keys
+    const keysArray = Object.keys(user_answers);
+    // I Can map on it and return an object with the question'id as a key and the response
+    const objectAnswer = keysArray.map(key => ({
+      questionId: key,
+      response: user_answers[key],
+    }));
+    // filter of our array to take the only good answers
+    const nbAnswer = objectAnswer.filter(answer => answer.response.correct === true).length;
 
-    scoreIncrement(score);
+    scoreIncrement(nbAnswer);
     quizSubmitted();
     if (isAuthenticated) {
       sendingScore();
     }
   };
+
+
   // Fonction pour le clic
   // const handleClick = (evt) => {
   //   const answer = Number(evt.currentTarget.id);
@@ -64,19 +75,17 @@ const Quiz = ({
   //   return null;
   // };
 
-  const setAnswer = (event) => {
-    const isSelected = [event.target.checked];
-    const { value, id, className } = event.target;
-    // I verify if the checkbox that I checked is true && that the value of the input is a string true
-    // and I give the id and the value of my target to my action creator.
-    if (isSelected[0] === true && value === 'true') {
-      setStateAnswer(id, value);
-    }
+  const setAnswer = response => () => {
+    setStateAnswer(response);
   };
 
   if (!loading) {
     const { title, questions } = quiz;
-    // My const score is the length of my user_answers object that I change to an array
+
+    console.log(Object.keys(user_answers).map(key => ({
+      questionId: key,
+      response: user_answers[key],
+    })));
     
     return (
       <div id="quiz-view">
@@ -90,14 +99,16 @@ const Quiz = ({
                   <div className="quiz-form">
                     <div>
                       {formSubmitted ? (
-
                         question.answers.map(answer => (
                           <div>
                             <div key={answer.id}>
                               <label
-                                htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}
+                                htmlFor={answer.id}
                                 // className={Object.keys(user_answers)[1 - 1] === `question-id-${question.id}-answer-input-${answer.id}` ? 'answer-good' : 'answer-bad'}
-                                className={answer.correct ? 'answer-good' : 'answer-bad'}
+                                className={classNames({
+                                  'answer.correct': 'answer-good',
+                                  'answer-bad': '',
+                                })}
                               >
                                 {`${answer.text}`}
                               </label>
@@ -109,14 +120,17 @@ const Quiz = ({
                           question.answers.map(answer => (
                             <div key={answer.id} className="quiz-answers">
                               <input
-                                id={`question-id-${question.id}-answer-input-${answer.id}`}
+                                id={answer.id}
                                 type="radio"
                                 name={question.text}
                                 value={answer.correct}
-                                onClick={setAnswer}
+                                onClick={setAnswer({
+                                  questionId: question.id,
+                                  answer,
+                                })}
                                 defaultChecked={false}
                               />
-                              <label className="quiz-answers" htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}>
+                              <label className="quiz-answers" htmlFor={answer.id}>
                                 {`${answer.text}`}
                               </label>
                             </div>
@@ -128,9 +142,9 @@ const Quiz = ({
               </div>
             ))}
           </div>
-          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score tu as fait {scoreState}/10</div> : ''}
-          {formSubmitted && scoreState >= 5 && scoreState < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/10</div> : ''}
-          {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/10</div> : ''}
+          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score tu as fait {scoreState}/{questions.length}</div> : ''}
+          {formSubmitted && scoreState >= 5 && scoreState < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/{questions.length}</div> : ''}
+          {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/{questions.length}</div> : ''}
           <div id="button-check">
             <Button className="button-submit"><Icon name="check" size="large" /> Valides tes réponses</Button>
             <NextQuiz nextQuiz={nextQuiz} newQuizDisplay={newQuizDisplay} />

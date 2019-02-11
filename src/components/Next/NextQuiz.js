@@ -5,6 +5,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Icon } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import { goToTop } from 'react-scrollable-anchor'
 
 /**
  * Local import
@@ -21,6 +22,9 @@ class NextQuiz extends React.Component {
     const { nextQuiz, newQuizDisplay } = this.props;
     nextQuiz();
     newQuizDisplay();
+    // ajout du retour en haut de page pour le quiz suivant
+    goToTop();
+
   };
 
   render() {

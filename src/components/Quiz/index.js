@@ -32,7 +32,6 @@ const Quiz = ({
   scoreIncrement,
   newQuizDisplay,
 }) => {
-
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const score = Object.keys(user_answers).length;

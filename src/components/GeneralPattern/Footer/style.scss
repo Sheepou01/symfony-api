@@ -112,6 +112,7 @@
   
     &-joke{
       grid-column: 3/6;
+      margin-left: 1em;
     }
   
     &-social-networks {
@@ -125,7 +126,7 @@
   }  
 
 }
-@media screen and (min-width: 768px) and (max-width: 1024px)  {
+@media screen and (min-width: 769px) and (max-width: 1024px)  {
   #footer {
     &-joke{
       width: max-content;

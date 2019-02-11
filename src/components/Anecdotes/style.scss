@@ -43,14 +43,15 @@ li {
   text-align: left;
 }
 
-button.ui.button{
-  margin: auto 0;
-  padding: 1.5em;
+
+button.ui.button.next-wiki {
+  background-color: $orange;
   color: white;
-  background-color: orange;
-  width: 10em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   font-size: 1.5em;
+}
+
+@media all and (max-width: 425px) {
+  button.ui.button.next-wiki {
+    font-size: 1em;
+  }
 }

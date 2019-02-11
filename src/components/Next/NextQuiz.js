@@ -19,10 +19,12 @@ import './style.scss';
 class NextQuiz extends React.Component {
   handleReceiveQuiz = () => {
     // evt.preventDefault();
-    const { nextQuiz } = this.props;
+    const { nextQuiz, newQuizDisplay } = this.props;
     nextQuiz();
+    newQuizDisplay();
     // ajout du retour en haut de page pour le quiz suivant
     goToTop();
+
   };
 
   render() {
@@ -41,6 +43,7 @@ class NextQuiz extends React.Component {
 
 NextQuiz.propTypes = {
   nextQuiz: PropTypes.func.isRequired,
+  newQuizDisplay: PropTypes.func.isRequired,
 };
 
 /**

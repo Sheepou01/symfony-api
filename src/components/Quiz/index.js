@@ -30,11 +30,13 @@ const Quiz = ({
   setStateAnswer,
   scoreState,
   scoreIncrement,
+  newQuizDisplay,
 }) => {
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const score = Object.keys(user_answers).length;
-    // console.log(score);
+    console.log(Object.keys(user_answers));
+
     scoreIncrement(score);
     quizSubmitted();
     if (isAuthenticated) {
@@ -63,8 +65,7 @@ const Quiz = ({
 
   const setAnswer = (event) => {
     const isSelected = [event.target.checked];
-    const { value, id } = event.target;
-    console.log(event.target);
+    const { value, id, className } = event.target;
     // I verify if the checkbox that I checked is true && that the value of the input is a string true
     // and I give the id and the value of my target to my action creator.
     if (isSelected[0] === true && value === 'true') {
@@ -75,6 +76,7 @@ const Quiz = ({
   if (!loading) {
     const { title, questions } = quiz;
     // My const score is the length of my user_answers object that I change to an array
+    
     return (
       <div id="quiz-view">
         <form onSubmit={handleFormSubmit}>
@@ -87,14 +89,18 @@ const Quiz = ({
                   <div className="quiz-form">
                     <div>
                       {formSubmitted ? (
+
                         question.answers.map(answer => (
-                          <div key={answer.id}>
-                            <label
-                              htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}
-                              className={answer.correct ? 'answer-good' : 'answer-bad'}
-                            >
-                              {`${answer.text}`}
-                            </label>
+                          <div>
+                            <div key={answer.id}>
+                              <label
+                                htmlFor={`question-id-${question.id}-answer-input-${answer.id}`}
+                                // className={Object.keys(user_answers)[1 - 1] === `question-id-${question.id}-answer-input-${answer.id}` ? 'answer-good' : 'answer-bad'}
+                                className={answer.correct ? 'answer-good' : 'answer-bad'}
+                              >
+                                {`${answer.text}`}
+                              </label>
+                            </div>
                           </div>
                         ))
                       )
@@ -103,7 +109,8 @@ const Quiz = ({
                             <div key={answer.id} className="quiz-answers">
                               <input
                                 id={`question-id-${question.id}-answer-input-${answer.id}`}
-                                type="checkbox"
+                                type="radio"
+                                name={question.text}
                                 value={answer.correct}
                                 onClick={setAnswer}
                                 defaultChecked={false}
@@ -120,12 +127,12 @@ const Quiz = ({
               </div>
             ))}
           </div>
-          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {scoreState}/10</div> : ''}
-          {formSubmitted && scoreState >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/10</div> : ''}
+          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score tu as fait {scoreState}/10</div> : ''}
+          {formSubmitted && scoreState >= 5 && scoreState < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/10</div> : ''}
           {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/10</div> : ''}
           <div id="button-check">
             <Button className="button-submit"><Icon name="check" size="large" /> Valides tes réponses</Button>
-            <NextQuiz nextQuiz={nextQuiz} />
+            <NextQuiz nextQuiz={nextQuiz} newQuizDisplay={newQuizDisplay} />
           </div>
         </form>
       </div>

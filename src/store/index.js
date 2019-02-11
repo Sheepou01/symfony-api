@@ -3,8 +3,6 @@
  * Npm import
  */
 import { createStore, applyMiddleware, compose } from 'redux';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web and AsyncStorage for react-native
 import userMiddleware from './middlewares/userMiddleware';
 import timerMiddleware from './middlewares/timerMiddleware';
 import anecdotesMiddleware from './middlewares/anecdotesMiddleware';
@@ -21,13 +19,6 @@ import reducer from './reducers/index';
  * Code
  */
 
-const persistConfig = {
-  key: 'root',
-  storage,
-  whitelist: ['timerReducer'],
-};
-
-const persistedReducer = persistReducer(persistConfig, reducer);
 
 // ajout du/des middlewares
 const appliedMiddlewares = applyMiddleware(
@@ -52,9 +43,9 @@ const enhancers = compose(appliedMiddlewares, ...devTools);
 
 
 // createStore
+const store = createStore(reducer, enhancers);
 /*
 * Export
 */
 
-export const store = createStore(persistedReducer, enhancers);
-export const persistor = persistStore(store);
+export default store;

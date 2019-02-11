@@ -8,7 +8,6 @@ const initialState = {
   formSubmitted: false,
   answerClicked: false,
   score: 0,
-  user_answers: [],
 };
 
 /**
@@ -57,6 +56,7 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         formSubmitted: true,
+        user_answers: [],
       };
     case SEND_SCORE:
       return {

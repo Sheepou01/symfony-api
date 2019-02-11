@@ -1,3 +1,10 @@
+html{
+    position:relative;
+    min-height: 100%;
+}
+main{
+    margin-bottom: 6.25rem;
+}
 .navbar
 {
     background-color: #4C8DF0;
@@ -5,10 +12,12 @@
 
 .footer
 {
+    position: absolute;
+    bottom:0;
     background-color: black;
 }
 
 .btn
 {
-    background-color: #F5A834
+    background-color: #F5A834;
 }

@@ -31,7 +31,6 @@ const Quiz = ({
   scoreState,
   scoreIncrement,
 }) => {
-
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const score = Object.keys(user_answers).length;

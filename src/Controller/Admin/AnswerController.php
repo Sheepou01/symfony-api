@@ -54,6 +54,7 @@ class AnswerController extends AbstractController
      */
     public function edit(Question $question, Answer $answer, EntityManagerInterface $em, Request $request)
     {
+        $quizz = $question->getQuizz();
 
         $answer->setUpdatedAt(new \DateTime());
 
@@ -65,7 +66,8 @@ class AnswerController extends AbstractController
             $em->flush();
 
             return $this->redirectToRoute('admin_question_edit', [
-                'id' => $question->getId()
+                'question_id' => $question->getId(),
+                'quizz_id' => $quizz->getId()
             ]);
         }
 

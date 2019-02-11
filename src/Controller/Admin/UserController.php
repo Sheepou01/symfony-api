@@ -16,15 +16,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use App\Repository\UserRepository;
+use Knp\Component\Pager\PaginatorInterface;
 
 class UserController extends AbstractController
 {
     /**
      * @Route("/admin/user", name="admin_user_index")
      */
-    public function index(UserRepository $userRepo)
+    public function index(UserRepository $userRepo, PaginatorInterface $paginator, Request $request)
     {
-        $users = $userRepo->findAll();
+
+        $users = $paginator->paginate($userRepo->findAll(),
+        $request->query->getInt('page', 1),
+        15);
 
         return $this->render('admin/user/index.html.twig', [
             'users' => $users,

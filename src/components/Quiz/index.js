@@ -35,6 +35,7 @@ const Quiz = ({
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
     const score = Object.keys(user_answers).length;
+    // console.log(score);
     scoreIncrement(score);
     quizSubmitted();
     if (isAuthenticated) {

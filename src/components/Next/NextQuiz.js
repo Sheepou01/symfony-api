@@ -27,7 +27,7 @@ class NextQuiz extends React.Component {
       <div id="next">
         <NavLink to="/quiz" onClick={this.handleReceiveQuiz}>
           <Button className="button-next">
-            Passes au prochain Quiz
+            Passe au prochain Quiz
             <Icon name="chevron right" size="large" />
           </Button>
         </NavLink>

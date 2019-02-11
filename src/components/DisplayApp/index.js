@@ -38,7 +38,8 @@ const DisplayApp = ({ isAuthenticated }) => (
       <Route exact path="/aide" component={Help} />
       <Route exact path="/connexion" component={Login} />
       {/* <Route exact path="/mon-profil" component={UserProfile} /> */}
-      {/* If the user is nnot authenticated and wants to connect to the url /mon-profil, we redirect him to /connexion */}
+      {/* If the user is nnot authenticated and wants to
+      connect to the url /mon-profil, we redirect him to /connexion */}
       <Route exact path="/mon-profil" render={() => (isAuthenticated ? <UserProfile /> : <Redirect to="/connexion" />)} />
       <Route component={NotFound} />
     </Switch>

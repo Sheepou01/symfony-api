@@ -142,7 +142,7 @@ const Quiz = ({
           {formSubmitted && scoreState >= 5 && scoreState < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/{questions.length}</div> : ''}
           {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/{questions.length}</div> : ''}
           <div id="button-check">
-            <Button className="button-submit"><Icon name="check" size="large" /> Valides tes réponses</Button>
+            <Button className="button-submit"><Icon name="check" size="large" /> Valide tes réponses</Button>
             <NextQuiz nextQuiz={nextQuiz} newQuizDisplay={newQuizDisplay} />
           </div>
         </form>

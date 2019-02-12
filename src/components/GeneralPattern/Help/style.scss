@@ -55,10 +55,7 @@
 .help-pierric {
   margin-top : 3em;
 }
-@media screen and (min-width: 426px) and (max-width: 768px)  {
-  #help-view {
-  }
-}
+
 @media screen and (min-width: 769px) and (max-width: 1024px)  {
   #help-body {
     display: flex;
@@ -68,14 +65,11 @@
     align-content: center;
     width : 100%;
     margin: 0 auto;
-    
   }
 
   #help-header {
     padding-bottom : 20px; 
   }
-
-
   .help-bar{
     display: none;
   }
@@ -85,7 +79,6 @@
     padding-top : 30px;
     padding-bottom: 20px;
   }
-
   .img-article {
     display: none;
   }
@@ -102,12 +95,9 @@
     margin: 0 auto;
     
   }
-
   #help-header {
     padding-bottom : 20px; 
   }
-
-
   .help-bar{
     display: none;
   }
@@ -116,6 +106,45 @@
     border-top: solid black 1px;
     padding-top : 30px;
     padding-bottom: 20px;
+  }
+
+  .img-article {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 0px) and (max-width: 423px)  {
+  #help-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width : 100%;
+    margin: 0 auto;
+    
+  }
+  #help-header {
+    padding-bottom : 20px; 
+  }
+  .help-bar{
+    display: none;
+  }
+  .help-article {
+    width : 100%;
+    border-top: solid black 1px;
+    padding-top : 30px;
+    padding-bottom: 20px;
+    font-size : 10px;
+  }
+
+  .help-article h2 {
+    font-size : 20px;
+  }
+
+  .help-article p {
+    font-size : 15px;
   }
 
   .img-article {

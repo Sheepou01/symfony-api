@@ -17,13 +17,13 @@ const Help = () => (
   <div id="help-view">
     <div id="help-header">
       <h1>Help ?</h1>
-      <p>Si tu es là c'est que tu avais 5 min à perdre et que tuas quand même besoin d'aide ! et c'est
+      <p>Si tu es là c'est que tu avais 5 min à perdre et que tu as quand même besoin d'aide ! Et c'est
       une bonne nouvelle, car tu es au bon endroit !</p>
     </div>
 
   <div id="help-body">
     <div className="help-article">
-      <img src={Timer}></img>
+      <img className="img-article" src={Timer}></img>
       <h2> Timer </h2>
       <p>Tu vois le gros timer en haut de la page ? </p>
       <p>il se déclenche lorsque tu cliques l'un des 3 items (jeux, quiz, anecdotes)
@@ -35,14 +35,14 @@ const Help = () => (
     </div>
     <span className="help-bar"></span>
     <div className="help-article">
-      <img src={Game}></img>
+      <img className="img-article" src={Game}></img>
         <h2> Games </h2>
         <p> Tu as cliqué sur game ? </p>
         <p> Tu es tombé sur Snake,Le serpent bleu doit attrapé la pomme rouge tout en évitant de se cogner contre la bordure verte foncé ou son propre corps ! déplace toi de avec les touches directionnelles du clavier, touche espace pour relancer une partie</p>
     </div>
     <span className="help-bar"></span>
-    <div className="help-article">
-      <img src={Quiz}></img>
+    <div  className="help-article">
+      <img className="img-article" src={Quiz}></img>
       <h2> Quizz </h2>
       <p>tu as 10 questions avec 1 seule réponse possible, pas de temps limites, et en étant inscrit tu pourras choisir les thèmes. </p>
     </div>

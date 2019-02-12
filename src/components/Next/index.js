@@ -4,6 +4,7 @@
 import React from 'react';
 import { Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
+import { goToTop } from 'react-scrollable-anchor';
 
 
 /**
@@ -16,6 +17,7 @@ import './style.scss';
 const Next = ({ randomTopito, topitosList }) => {
   function handleClick() {
     const index = topitosList.map(item => item.id);
+    goToTop();
     return (
       randomTopito(index)
     );

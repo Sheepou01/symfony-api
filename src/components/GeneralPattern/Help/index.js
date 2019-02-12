@@ -28,10 +28,10 @@ const Help = () => (
       <p>Tu vois le gros timer en haut de la page ? </p>
       <p>il se déclenche lorsque tu cliques l'un des 3 items (jeux, quiz, anecdotes)
       Pendant 5 minutes tu pourras faire ce que tu veux. Mais pas plus ....</p>
-      <h2>Si tu veux changer ce délai, aucun probleme ! Inscrit toi via facebook et
+      <p>Si tu veux changer ce délai, aucun probleme ! Inscrit toi via facebook et
       link le site via une chaine de 10 personnes, si ces 10 personnes partagent 
       l'information alors tu pourras chnger la durée du chrono ! sinon inscrit 
-      toi avec ton mail que nous puissions le  partager avec le monde entier !</h2>
+      toi avec ton mail que nous puissions le  partager avec le monde entier !</p>
     </div>
     <span className="help-bar"></span>
     <div className="help-article">

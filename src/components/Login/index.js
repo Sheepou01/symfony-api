@@ -108,7 +108,7 @@ class Login extends React.Component {
                   handleInputChange={this.handleInputChange}
                   value={inputEmail}
                   name="inputEmail"
-                  type="text"
+                  type="email"
                   placeholder="Votre Email"
                 />
                 <Field
@@ -145,7 +145,7 @@ class Login extends React.Component {
               handleInputChange={this.handleInputChange}
               value={inputUserEmail}
               name="inputUserEmail"
-              type="text"
+              type="email"
               placeholder="Votre Email"
             />
             <Field

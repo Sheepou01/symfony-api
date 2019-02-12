@@ -46,7 +46,7 @@ const UserProfile = ({
   // Function which will handle the submit of the user's form (edit of the user details)
   const handleEditSubmit = (evt) => {
     evt.preventDefault();
-    console.log(editInputPseudo);
+    // console.log(editInputPseudo);
     editUser(editInputPseudo, editInputEmail, editInputPassword);
   };
 
@@ -124,7 +124,7 @@ const UserProfile = ({
         <div className="scores">
           <h3>Tes 3 derniers quiz</h3>
           <ul>
-            {quizzScore.map(quiz => <li>{quiz.title}: <p>{quiz.score} / 10</p></li>)}
+            {quizzScore.map(quiz => <li key={quiz.id}>{quiz.title}: <p>{quiz.score} / 10</p></li>)}
           </ul>
         </div>
       </div>

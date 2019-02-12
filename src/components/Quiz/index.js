@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Loader } from 'semantic-ui-react';
-import classNames from 'classnames';
+// import classNames from 'classnames';
 
 
 
@@ -82,11 +82,12 @@ const Quiz = ({
   if (!loading) {
     const { title, questions } = quiz;
 
-    console.log(Object.keys(user_answers).map(key => ({
+    const objectAnwser = Object.keys(user_answers).map(key => ({
       questionId: key,
       response: user_answers[key],
-    })));
-    
+    }));
+    const answerFinal = objectAnwser.map(ans => ans.questionId);
+    // console.log(answerFinal)
     return (
       <div id="quiz-view">
         <form onSubmit={handleFormSubmit}>
@@ -104,11 +105,7 @@ const Quiz = ({
                             <div key={answer.id}>
                               <label
                                 htmlFor={answer.id}
-                                // className={Object.keys(user_answers)[1 - 1] === `question-id-${question.id}-answer-input-${answer.id}` ? 'answer-good' : 'answer-bad'}
-                                className={classNames({
-                                  'answer.correct': 'answer-good',
-                                  'answer-bad': '',
-                                })}
+                                className={answer.correct ? 'answer-good' : 'answer-bad'}
                               >
                                 {`${answer.text}`}
                               </label>

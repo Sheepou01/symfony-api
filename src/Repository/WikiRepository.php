@@ -24,8 +24,8 @@ class WikiRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         
         $query = $entityManager->createQuery(
-            'SELECT wiki.id, wiki.name, wiki.body, wiki.createdAt as created, wiki.source, wiki.image, t.name as tag, a.username as author
-             FROM App\Entity\Wiki wiki JOIN wiki.tags t JOIN wiki.author a WHERE wiki.online = true 
+            'SELECT wiki.id, wiki.name, wiki.body, wiki.createdAt as created, wiki.source, wiki.image, t.name as tag
+             FROM App\Entity\Wiki wiki JOIN wiki.tags t WHERE wiki.online = true 
             '
         );
 

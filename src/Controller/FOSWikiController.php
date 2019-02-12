@@ -21,7 +21,7 @@ class FOSWikiController extends FOSRestController{
     public function showAll(WikiRepository $wikiRepository){
         
         $wikis = $wikiRepository->findAllCustom();
-        
+        dump($wikis);exit;
         return $wikis;
         
     }

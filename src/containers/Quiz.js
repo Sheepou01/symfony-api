@@ -57,8 +57,8 @@ const mapDispatchToProps = dispatch => ({
   newQuizDisplay: () => {
     dispatch(newQuizDisplay());
   },
-  setStateAnswer: (id, value) => {
-    dispatch(setStateAnswer(id, value));
+  setStateAnswer: (response) => {
+    dispatch(setStateAnswer(response));
   },
 
 });

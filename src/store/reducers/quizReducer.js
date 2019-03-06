@@ -75,10 +75,6 @@ export const score = () => ({
 export const quizSubmitted = () => ({
   type: QUIZ_SUBMITTED,
 });
-export const clickAnswer = () => ({
-  type: CLICK_ANSWER,
-});
-
 
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,

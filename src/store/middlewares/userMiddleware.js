@@ -3,7 +3,7 @@
  */
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
-import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME } from 'src/store/reducers/userReducer';
+import { SIGNUP_USER, SIGNIN_USER, EDIT_USER, setCurrentUser, LOGOUT, USER_FAV_THEME, actionWrongSignin } from 'src/store/reducers/userReducer';
 import setAuthorizationToken from '../setAuthorizationToken';
 
 /**
@@ -35,9 +35,9 @@ const userMiddleware = store => next => (action) => {
           password: action.password,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;
@@ -53,9 +53,9 @@ const userMiddleware = store => next => (action) => {
           password: action.password,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;
@@ -90,12 +90,13 @@ const userMiddleware = store => next => (action) => {
             Authorization: `Bearer${token}`,
           },
         }).then((res) => {
-          console.log(res);
+          // console.log(res);
         }).catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
+        store.dispatch(actionWrongSignin());
       });
       next(action);
       break;
@@ -116,9 +117,9 @@ const userMiddleware = store => next => (action) => {
           id: action.themeId,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;

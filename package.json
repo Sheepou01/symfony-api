@@ -46,8 +46,10 @@
   "dependencies": {
     "@babel/polyfill": "*",
     "axios": "^0.18.0",
+    "boostrap": "^2.0.0",
     "classnames": "^2.2.6",
     "history": "^4.7.2",
+    "jquery": "^3.3.1",
     "jsonwebtoken": "^8.4.0",
     "jwt-decode": "^2.2.0",
     "lodash.isempty": "^4.4.0",
@@ -59,6 +61,7 @@
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "react-scrollable-anchor": "^0.6.1",
     "redux": "^4.0.1",
     "redux-persist": "^5.10.0",
     "semantic-ui-css": "^2.4.1",

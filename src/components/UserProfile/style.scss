@@ -20,7 +20,7 @@
       margin: 2em;
     }
     & h3{
-      margin: 1em;
+      margin: 0em;
     }
   }
 }
@@ -38,6 +38,15 @@
     color: white;
   }
 }
+#Button-admin {
+  height: 2.5em;
+  margin: 1em;
+  background-color: $orange;
+  color: white;
+  & a{
+    color: white;
+  }
+}
 
 
 // CSS des inputs pour l'edit de profil
@@ -49,7 +58,7 @@
 @media screen and (max-width: 425px)  {
   .field {
     width: 20em;
-    margin: 0 2em;
+    margin: 0 auto;
   }
 }
 
@@ -65,7 +74,7 @@
 @media screen and (max-width: 425px)  {
   .ui.input {
     width: 100%;
-    margin: 1em;
+    margin: 1em auto;
   }
 }
 
@@ -104,11 +113,13 @@
   }
 }
 
-
 .scores {
-  width: 50%;
+  width: 100%;
   & h3 {
-    font-size: 1.8em;
+    font-size: 1.5em;
+  }
+  & p {
+    color: $orange;
   }
   & ul{
     display: flex;
@@ -119,10 +130,10 @@
   & li{
     border: 1px solid $orange;
     border-radius: 5px;
-    width: 45%;
-    text-align: left;
+    width: 35%;
     padding: 0.2em;
     margin: 0.5em;
+    text-align: center;
   }
 }
 
@@ -131,7 +142,7 @@
     width: 100%;
     margin: 1em;  
     & li{
-      width: 65%;
+      width: 75%;
     }
   }
 }
@@ -139,6 +150,11 @@
 // Barre de recherche de pseudo
 .ui.left.icon.input.inputSearch {
   width: 20em;
+}
+
+// Welcome message
+#welcomeMessage {
+  text-align: center;
 }
 
 

@@ -1,19 +1,18 @@
+/* eslint-disable jsx-a11y/label-has-for */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon, Button, Loader } from 'semantic-ui-react';
+// import classNames from 'classnames';
+
 
 
 /**
  * Local import
  */
-// import Next from 'src/components/Next';
 import './style.scss';
 
-
 import NextQuiz from 'src/components/Next/NextQuiz';
-
-
-// import { green } from 'ansi-colors';
+// import NextQuiz from 'src/containers/NextQuiz';
 
 
 /**
@@ -21,137 +20,149 @@ import NextQuiz from 'src/components/Next/NextQuiz';
  */
 
 
-class Quiz extends React.Component {
-  componentDidMount() {
-    const { startTimer } = this.props;
-    startTimer();
-  }
-
-  handleFormSubmit = (evt) => {
+const Quiz = ({
+  quizSubmitted,
+  sendingScore,
+  isAuthenticated,
+  formSubmitted,
+  loading,
+  nextQuiz,
+  quiz,
+  user_answers,
+  setStateAnswer,
+  scoreState,
+  scoreIncrement,
+  newQuizDisplay,
+}) => {
+  const handleFormSubmit = (evt) => {
     evt.preventDefault();
-    const { quizSubmitted } = this.props;
+    // I transform my object user_answers in an array with the question's id as keys
+    const keysArray = Object.keys(user_answers);
+    // I Can map on it and return an object with the question'id as a key and the response
+    const objectAnswer = keysArray.map(key => ({
+      questionId: key,
+      response: user_answers[key],
+    }));
+    // filter of our array to take the only good answers
+    const nbAnswer = objectAnswer.filter(answer => answer.response.correct === true).length;
+
+    scoreIncrement(nbAnswer);
     quizSubmitted();
-
-    const answer = Number(evt.currentTarget.id);
-    // console.log(answer);
-
-    let { className } = evt.target;
-    const answerClick = document.getElementsByClassName('answer-clicked');
-
-    // console.log(answerClick);
-
-    if (className === 'answer-clicked' && answer === 1) {
-      className = 'answer-good';
+    if (isAuthenticated) {
+      sendingScore();
     }
-  }
-  // Fonction pour le clic
-
-  handleClick = (evt) => {
-    const answer = Number(evt.currentTarget.id);
-    console.log (evt.target);
-    const { className } = evt.target;
-    // console.log(evt);
-    const { formSubmitted, scoreIncrement } = this.props;
-    if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
-      scoreIncrement();
-    }
-    if (className === 'quiz-answers') {
-      return evt.target.className = 'answer-clicked';
-    }
-    if (className ===  'answer-clicked') {
-      return evt.target.className = 'quiz-answers';
-    }
-    return null;
   };
 
-  render() {
-    const {
-      quiz,
-      loading,
-      score,
-      formSubmitted,
-    } = this.props;
 
-    if (!loading) {
-      const { title, questions } = quiz;
-      console.log(questions);
-      return (
-        <div id="quiz-view">
-          <form onSubmit={this.handleFormSubmit}>
-            {formSubmitted && score < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score moisi tu as fait {score}/10</div> : ''}
-            {formSubmitted && score >= 5 && score < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {score}/10</div> : ''}
-            {formSubmitted && score >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {score}/10</div> : ''}
-            <h1>{title}</h1>
-            <div id="quiz-boxes">
-              {questions.map(question => (
-                <div key={question.id} className="quiz-box">
-                  <div className="quiz-question">
-                    <h2>{question.text}</h2>
-                    <div className="quiz-form">
-                      <ul>
-                        {formSubmitted ? (
-                          question.answers.map(answer => (
-                            <li
-                              key={answer.id}
-                              className={answer.correct ? 'answer-good' : 'answer-bad'}
-                              onClick={this.handleClick}
-                              id={Number(answer.correct)} // We use the Number function to convert our string true or false on Number
-                            >
-                              {answer.text}
-                            </li>
-                          ))
-                        )
-                          : (
-                            question.answers.map(answer => (
-                              <li
-                                key={answer.id}
-                                className="quiz-answers"
-                                onClick={this.handleClick}
-                                id={Number(answer.correct)} // We use the Number function to convert our string true or false on Number
+  // Fonction pour le clic
+  // const handleClick = (evt) => {
+  //   const answer = Number(evt.currentTarget.id);
+  //   // console.log (evt.target);
+  //   const { className } = evt.target;
+  //   // console.log(evt);
+  //   if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
+  //     scoreIncrement();
+  //   }
+  //   if (className === 'quiz-answers') {
+  //     // eslint-disable-next-line no-return-assign
+  //     return evt.target.className = 'answer-clicked';
+  //   }
+  //   if (className === 'answer-clicked') {
+  //     // eslint-disable-next-line no-return-assign
+  //     return evt.target.className = 'quiz-answers';
+  //   }
+  //   return null;
+  // };
+
+  const setAnswer = response => () => {
+    setStateAnswer(response);
+  };
+
+  if (!loading) {
+    const { title, questions } = quiz;
+
+    const objectAnwser = Object.keys(user_answers).map(key => ({
+      questionId: key,
+      response: user_answers[key],
+    }));
+    const answerFinal = objectAnwser.map(ans => ans.questionId);
+    // console.log(answerFinal)
+    return (
+      <div id="quiz-view">
+        <form onSubmit={handleFormSubmit}>
+          <h1>{title}</h1>
+          <div id="quiz-boxes">
+            {questions.map(question => (
+              <div key={question.id} className="quiz-box">
+                <div className="quiz-question">
+                  <h2>{question.text}</h2>
+                  <div className="quiz-form">
+                    <div>
+                      {formSubmitted ? (
+                        question.answers.map(answer => (
+                          <div>
+                            <div key={answer.id}>
+                              <label
+                                htmlFor={answer.id}
+                                className={answer.correct ? 'answer-good' : 'answer-bad'}
                               >
-                                {answer.text}
-                              </li>
-                            ))
-                          )}
-                      </ul>
-                      {/* {formSubmitted ? <Answer {...question} /> : ''} */}
+                                {`${answer.text}`}
+                              </label>
+                            </div>
+                          </div>
+                        ))
+                      )
+                        : (
+                          question.answers.map(answer => (
+                            <div key={answer.id} className="quiz-answers">
+                              <input
+                                id={answer.id}
+                                type="radio"
+                                name={question.text}
+                                value={answer.correct}
+                                onClick={setAnswer({
+                                  questionId: question.id,
+                                  answer,
+                                })}
+                                defaultChecked={false}
+                              />
+                              <label className="quiz-answers" htmlFor={answer.id}>
+                                {`${answer.text}`}
+                              </label>
+                            </div>
+                          ))
+                        )}
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-            <div id="check-icon">
-              <Button><Icon name="check" size="huge" /></Button>
-            </div>
-          </form>
-          <NextQuiz />
-        </div>
-      );
-    }
-    return <div><h2><Loader active inline="centered" /></h2></div>;
+              </div>
+            ))}
+          </div>
+          {formSubmitted && scoreState < 5 ? <div className="quiz-score">Heuu tu es sérieux avec ton score tu as fait {scoreState}/{questions.length}</div> : ''}
+          {formSubmitted && scoreState >= 5 && scoreState < 7 ? <div className="quiz-score">Peut mieux faire mais good job quand même! Tu as fait {scoreState}/{questions.length}</div> : ''}
+          {formSubmitted && scoreState >= 8 ? <div className="quiz-score">C'est bon on tient notre champion!! Tu as fait {scoreState}/{questions.length}</div> : ''}
+          <div id="button-check">
+            <Button className="button-submit"><Icon name="check" size="large" /> Valide tes réponses</Button>
+            <NextQuiz nextQuiz={nextQuiz} newQuizDisplay={newQuizDisplay} />
+          </div>
+        </form>
+      </div>
+    );
   }
-}
+  return <div><h2><Loader active inline="centered" /></h2></div>;
+};
+
 
 Quiz.propTypes = {
   loading: PropTypes.bool.isRequired,
   formSubmitted: PropTypes.bool.isRequired,
-  startTimer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
   quizSubmitted: PropTypes.func.isRequired,
-  scoreIncrement: PropTypes.func.isRequired,
   quiz: PropTypes.object.isRequired,
-  score: PropTypes.number.isRequired,
+  sendingScore: PropTypes.func.isRequired,
+  nextQuiz: PropTypes.func.isRequired,
+  scoreState: PropTypes.number.isRequired,
 };
-
-// const Answer = ({id, answers}) => {
-//   // console.log(answers);
-//   const answersMap = answers.map(item => item.correct);
-//   // console.log(answersMap);
-//   return (
-//     <div>
-//       lol
-//     </div>
-//   );
-// };
 
 
 /**

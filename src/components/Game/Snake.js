@@ -1,11 +1,14 @@
 import React from 'react';
 
+class Snake extends React.Component {
+  componentDidMount() {
+    onload();
+  }
 
-const Snake = () => {
- 
 
-  onload = () => {
-    // propriet  e
+render() {
+   onload = () => {
+    // propriete
     var canvasWidth = 900; // je donne une largeur à  mon canvas
     var canvasHeight = 600;
     var blockSize = 30; // je créer la taille de mes blocs qui vont cadrillé mon canvas il mesure 30 px sur 30 px
@@ -292,9 +295,8 @@ const Snake = () => {
     }
  
   
-  return ( onload
-  ); 
+  return (onload);
 };
-
+};
 
 export default Snake;

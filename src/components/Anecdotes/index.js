@@ -37,7 +37,7 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
             { ReactHtmlParser(body) }
           </section>
         </div>
-        <Next className="next-button" randomTopito={randomTopito} topitosList={topitosList} />
+        <Next randomTopito={randomTopito} topitosList={topitosList} />
       </div>
     );
   }

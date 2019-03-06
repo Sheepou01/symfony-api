@@ -9,7 +9,7 @@ import { withRouter } from 'react-router-dom';
 import NextQuiz from 'src/components/Next/NextQuiz';
 
 // Action Creators
-import { quiz } from 'src/store/reducers/quizReducer';
+import { quiz, sendingScore } from 'src/store/reducers/quizReducer';
 import { startTimer } from 'src/store/reducers/timerReducer';
 
 
@@ -20,9 +20,7 @@ import { startTimer } from 'src/store/reducers/timerReducer';
  *  - ownProps : les props passées au container
  * Pas de data à transmettre ? const mapStateToProps = null;
  */
-const mapStateToProps = state => ({
-  Newquiz: state.quizReducer.quiz,
-});
+const mapStateToProps = null;
 
 /* === Actions ===
  * - mapDispatchToProps retroune un objet de props pour le composant de présentation
@@ -34,10 +32,6 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   quiz: () => {
     dispatch(quiz());
-  },
-  startTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(startTimer());
   },
 });
 // Container

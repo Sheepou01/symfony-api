@@ -2,20 +2,21 @@
  * Npm import
  */
 import React from 'react';
-import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 /**
  * Local import
  */
 import Field from 'src/components/Login/Field';
-import { Input, Button } from 'semantic-ui-react';
+import { Button } from 'semantic-ui-react';
 import WelcomeMessage from './WelcomeMessage';
 import ThemeList from './ThemeList';
 import './style.scss';
 /**
  * Code
  */
-const UserProfile = ({ 
+const UserProfile = ({
   themes,
   userFavTheme,
   idFavoriteTheme,
@@ -158,6 +159,23 @@ const UserProfile = ({
   );
 };
 
+UserProfile.propTypes = {
+  themes: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  userFavTheme: PropTypes.func.isRequired,
+  idFavoriteTheme: PropTypes.number.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
+  username: PropTypes.string.isRequired,
+  editInputPseudo: PropTypes.string.isRequired,
+  editInputEmail: PropTypes.string.isRequired,
+  editInputPassword: PropTypes.string.isRequired,
+  editUser: PropTypes.func.isRequired,
+  handleInput: PropTypes.func.isRequired,
+  editTimer: PropTypes.func.isRequired,
+  editInputTimer: PropTypes.number.isRequired,
+  handleInputTimer: PropTypes.func.isRequired,
+  quizzScore: PropTypes.array.isRequired,
+  userRole: PropTypes.arrayOf(PropTypes.string.isRequired).isRequired,
+};
 
 /**
  * Export

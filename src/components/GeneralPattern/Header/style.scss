@@ -39,7 +39,7 @@
   }
 }
 
-// CSS du logo
+// CSS of logo
 #logo img {
   height: 5em;
   font-size: 2em;
@@ -54,8 +54,7 @@
 }
 
 
-// CSS du Menu
-// MENU quand il n'est pas ouvert
+// CSS of the menu when it's closed
 .open{
   display: flex;
   justify-content: space-around;
@@ -153,7 +152,7 @@
 
 
 
-// CSS quand on clique sur le menu 
+// CSS when we click on the menu
 .oppenned{
   .sub-menu{
     opacity: 0.9;

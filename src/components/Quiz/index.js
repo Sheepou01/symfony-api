@@ -53,27 +53,6 @@ const Quiz = ({
     }
   };
 
-
-  // Fonction pour le clic
-  // const handleClick = (evt) => {
-  //   const answer = Number(evt.currentTarget.id);
-  //   // console.log (evt.target);
-  //   const { className } = evt.target;
-  //   // console.log(evt);
-  //   if (answer === 1 && !formSubmitted && className === 'quiz-answers') {
-  //     scoreIncrement();
-  //   }
-  //   if (className === 'quiz-answers') {
-  //     // eslint-disable-next-line no-return-assign
-  //     return evt.target.className = 'answer-clicked';
-  //   }
-  //   if (className === 'answer-clicked') {
-  //     // eslint-disable-next-line no-return-assign
-  //     return evt.target.className = 'quiz-answers';
-  //   }
-  //   return null;
-  // };
-
   const setAnswer = response => () => {
     setStateAnswer(response);
   };
@@ -81,11 +60,11 @@ const Quiz = ({
   if (!loading) {
     const { title, questions } = quiz;
 
-    const objectAnwser = Object.keys(user_answers).map(key => ({
-      questionId: key,
-      response: user_answers[key],
-    }));
-    const answerFinal = objectAnwser.map(ans => ans.questionId);
+    // const objectAnwser = Object.keys(user_answers).map(key => ({
+    //   questionId: key,
+    //   response: user_answers[key],
+    // }));
+    // const answerFinal = objectAnwser.map(ans => ans.questionId);
     // console.log(answerFinal)
     return (
       <div id="quiz-view">
@@ -162,6 +141,10 @@ Quiz.propTypes = {
   sendingScore: PropTypes.func.isRequired,
   nextQuiz: PropTypes.func.isRequired,
   scoreState: PropTypes.number.isRequired,
+  user_answers: PropTypes.array.isRequired,
+  setStateAnswer: PropTypes.func.isRequired,
+  scoreIncrement: PropTypes.func.isRequired,
+  newQuizDisplay: PropTypes.func.isRequired,
 };
 
 

@@ -100,13 +100,10 @@ export const score = newScore => ({
 export const quizSubmitted = () => ({
   type: QUIZ_SUBMITTED,
 });
-<<<<<<< HEAD
-=======
 
 export const sendingScore = () => ({
   type: SEND_SCORE,
 });
->>>>>>> cf8fb690790e2c027e7ae4ab881c62a33f08314e
 
 export const receivedQuiz = data => ({
   type: RECEIVED_QUIZ,

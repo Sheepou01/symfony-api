@@ -9,14 +9,12 @@ import { Button } from 'semantic-ui-react';
 /**
  * Local import
  */
-
 import './style.scss';
-import Timer from 'src/components/Timer';
+
 /**
  * Code
  */
 const Ending = ({ clickEndView }) => {
-
   const handleClickEndView = () => {
     clickEndView();
   };
@@ -32,7 +30,7 @@ const Ending = ({ clickEndView }) => {
 
 Ending.propTypes = {
   clickEndView: PropTypes.func.isRequired,
-}
+};
 
 /**
  * Export

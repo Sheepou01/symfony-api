@@ -33,6 +33,7 @@ class ThemeList extends React.Component {
 
 ThemeList.propTypes = {
   userFavTheme: PropTypes.func.isRequired,
+  themes: PropTypes.array.isRequired,
 };
 
 export default ThemeList;

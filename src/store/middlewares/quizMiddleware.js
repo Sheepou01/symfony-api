@@ -37,6 +37,7 @@ const quizMiddleware = store => next => (action) => {
 
       // We tried to use another method to make a request
       $.ajax(settings).done((response) => {
+        // console.log(response);
         store.dispatch(receivedQuiz(response));
       });
       // axios({

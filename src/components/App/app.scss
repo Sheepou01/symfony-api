@@ -1,0 +1,10 @@
+// I put a margin bottom to be sure to have enough space between my div app and my footer
+#app {
+  margin-bottom: 25em;
+}
+
+@media screen and (max-width: 425px)  {
+  #app {
+    margin-bottom: 10em;
+  }
+}

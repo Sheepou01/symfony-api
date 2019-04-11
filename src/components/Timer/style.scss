@@ -1,0 +1,28 @@
+@import 'src/styles/vars';
+
+#timer {
+  padding: 4em;
+
+  &-digits {
+    font-size: 3em;
+    color: white;
+    background-color: $orange;
+    text-align: center;
+    width: 4em;
+    margin: auto;
+    border-radius: 5px;
+    height: 1.5em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 425px)  {
+  #timer {  
+    padding: 4em 0 0 0;
+    &-digits {
+      font-size: 2em;
+    }
+  }
+}

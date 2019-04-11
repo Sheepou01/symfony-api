@@ -1,0 +1,140 @@
+@import 'src/styles/vars';
+
+
+#footer {
+  background-color: black;
+  border-top: 3px solid $blue;
+  padding: 1em;
+  font-size: 1.2em;
+  height: 10em;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-rows: 30% 30% 30%;
+  clear: both;
+  // I put my footer in position absolute to be sure that it will be always at the bottom of my app
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+  &-legal-mentions {
+    color: white;
+    grid-column: 2;
+    grid-row-start: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  } 
+
+  &-follow {
+    color: white;
+    grid-column: 3;
+    grid-row-start: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-joke{
+    color: white;
+    grid-column: 3;
+    grid-row-start: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-social-networks {
+    grid-column: 3;
+    grid-row-start: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-facebook, &-twitter, &-instagram {
+    color: white;
+    padding: 0 0.5em;
+  }
+  
+  &-help{
+    color: white;
+    grid-column: 4;
+    grid-row-start: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+}
+
+#help {
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  color: black;
+}
+
+@media screen and (max-width: 425px)  {
+  #footer {
+    font-size: 0.8em;
+     
+
+    &-legal-mentions {
+      grid-column: 1;
+      width: 10em
+    } 
+
+    &-joke{
+      grid-column: 2/5;
+    }
+
+    &-help{
+      grid-column: 5;
+      width: 0em;
+    }
+  
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 768px)  {
+  #footer {
+    grid-template-columns: 15% 15% 15% 15% 15% 15%;
+     
+    &-legal-mentions {
+      width: 8em;
+    } 
+  
+    &-follow {
+      grid-column: 4;
+    }
+  
+    &-joke{
+      grid-column: 3/6;
+      margin-left: 1em;
+    }
+  
+    &-social-networks {
+      grid-column: 4;
+    }
+  
+    &-help{
+      grid-column: 6;
+    }
+  
+  }  
+
+}
+@media screen and (min-width: 769px) and (max-width: 1024px)  {
+  #footer {
+    &-joke{
+      width: max-content;
+      margin-left: -3em;
+    } 
+  }  
+}
+
+
+
+

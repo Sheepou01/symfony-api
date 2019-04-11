@@ -1,0 +1,248 @@
+@import 'src/styles/vars';
+
+#quiz-view h1 {
+  text-align: center;
+}
+
+@media screen and (max-width: 426px)  {
+  #quiz-view h1 {
+    margin: 1em;
+  }
+}
+
+#quiz-boxes{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  width : 80%;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 1023px)  {
+  #quiz-boxes{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width : 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 426px) and (max-width: 1023px)  {
+  #quiz-boxes{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    width : 80%;
+    margin: 0 auto;
+  }
+}
+  
+.quiz{
+  &-question{
+  margin: 1em;
+  border: 1px solid $orange;
+  padding: 2em;
+  height: 100%;
+  h2{
+    height: 7em;
+  }
+  }
+  &-box{
+    width : 30%;
+    margin-top: 10px;
+  }
+  &-answers{
+    display: flex;
+    align-items: center;
+    color: color;
+    padding-left : 1em;
+    font-size: 1.2em;
+      & input[type=radio]{
+        width: 1em;
+        height: 2.2em;
+      }
+  }
+  &-score{
+    text-align: center;
+    font-size: 2em;
+    margin: 2em;
+  }
+}
+
+@media screen and (max-width: 426px)  {
+  .quiz{
+    &-question{
+    margin: 1em 0;
+    height: 100%;
+    }
+    &-box{
+      width: 100%;
+      padding: 1em;
+    }
+    &-answers{
+      display: flex;
+      align-items: center;
+      color: color;
+      padding-left : 1em;
+      height: 1.5em;
+    }
+    &-score{
+      font-size: 1.5em;
+      margin: 2em;
+      line-height: 1.8em;
+    }
+  }
+}
+
+@media screen and (min-width: 427px) and (max-width: 1024px)  {
+  .quiz{
+    &-question{
+    margin: 1em 0;
+    height: 100%;
+    }
+    &-box{
+      width: 100%;
+      padding: 1em;
+    }
+    &-answers{
+      display: flex;
+      align-items: center;
+      color: color;
+      padding-left : 1em;
+      height: 1.5em;
+    }
+    &-score{
+      font-size: 1.5em;
+      margin: 2em;
+      line-height: 1.8em;
+    }
+  }
+}
+
+.answer{
+  &-clicked{
+    display: flex;
+    align-items: center;
+    color : $orange;
+    padding-left : 1em;
+  }
+  &-good{
+    display: flex;
+    align-items: center;
+    background-color: $orange;
+    color : white;
+    padding-left : 1em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+  &-bad{
+    display: flex;
+    align-items: center;
+    text-decoration: line-through;
+    padding-left : 1em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+}  
+
+@media screen and (max-width: 1023px)  {
+  .answer{
+    &-clicked{
+      display: flex;
+      align-items: center;
+      color : $orange;
+      padding-left : 1em;
+    }
+    &-good{
+      display: flex;
+      align-items: center;
+      background-color: $orange;
+      color : white;
+      padding-left : 1em;
+      line-height: 1.8em;
+    }
+    &-bad{
+      display: flex;
+      align-items: center;
+      text-decoration: line-through;
+      padding-left : 1em;
+      line-height: 1.8em;
+    }
+  } 
+}
+
+@media screen and (min-width: 427px) and (max-width: 1023px)  {
+  .answer{
+    &-clicked{
+      display: flex;
+      align-items: center;
+      color : $orange;
+      padding-left : 1em;
+    }
+    &-good{
+      display: flex;
+      align-items: center;
+      background-color: $orange;
+      color : white;
+      padding-left : 1em;
+    }
+    &-bad{
+      display: flex;
+      align-items: center;
+      text-decoration: line-through;
+      padding-left : 1em;
+    }
+  } 
+}
+
+
+
+#button-check {
+  display: flex;
+  justify-content: center;
+  width: 40%;
+  margin: 3em auto;
+}
+
+button.ui.button.button{
+  &-submit, &-next{
+    margin: 1em;
+    padding: 1.5em;
+    color: white;
+    background-color: orange;
+    width: 16em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 426px)  {
+  #button-check {
+    flex-direction: column;    
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 427px) and (max-width: 1024px)  {
+  #button-check {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+  }
+  
+  button.ui.button.button{
+    &-submit, &-next{
+      width: 18em;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,24 @@
+@import 'src/styles/vars';
+
+#ending{
+  &-view{
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.5em;
+  }
+
+  &-message{
+    margin: 2em;
+  }
+
+  &-button{
+    background-color: $orange;
+    color: white;
+    font-size: 0.8em;
+  }
+}
+
+
+

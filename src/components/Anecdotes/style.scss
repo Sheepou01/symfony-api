@@ -1,0 +1,57 @@
+@import 'src/styles/vars';
+
+#wiki-view {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 10em;
+  text-align: left;
+  background-color: white;
+  border : solid 5px #fdc841;
+  border-radius : 15px;
+  padding : 1em 2em;
+}
+
+@media screen and (max-width: 768px)  {
+  #wiki-view  {
+    margin: 2em 0.2em;
+    border : solid 1px $orange;
+  }
+}
+
+li {
+  font-size: 20px;
+  line-height: 25px;
+  font-weight: bold;
+}
+
+.description {
+  font-size: 17px;
+}
+
+.wiki-info{
+  display: flex;
+  font-size: 20px;
+}
+
+.wiki-info li{
+  
+  font-size: 12px;
+  margin-bottom : 1em;
+}
+
+.body {
+  text-align: left;
+}
+
+
+button.ui.button.next-wiki {
+  background-color: $orange;
+  color: white;
+  font-size: 1.5em;
+}
+
+@media all and (max-width: 425px) {
+  button.ui.button.next-wiki {
+    font-size: 1em;
+  }
+}

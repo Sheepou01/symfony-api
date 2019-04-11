@@ -1,0 +1,11 @@
+.not-found {
+  display: flex;
+  flex-direction: column;
+  margin: 2em 20%;
+  text-align: center;
+  background-color: white;
+  border : solid 5px #fdc841;
+  border-radius : 15px;
+  overflow: auto;
+  padding : 100px
+}

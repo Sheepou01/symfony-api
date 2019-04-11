@@ -11,7 +11,6 @@ import DisplayApp from 'src/components/DisplayApp';
 
 
 // Action Creators
-import { randomTopito } from '../store/reducers/anecdotesReducer';
 
 /* === State (données) ===
  * - mapStateToProps retroune un objet de props pour le composant de présentation

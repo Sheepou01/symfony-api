@@ -12,22 +12,21 @@ import { Button } from 'semantic-ui-react';
  */
 import Field from './Field';
 import './style.scss';
-import Facebook from './Facebook';
+// import Facebook from './Facebook';
 
 /**
  * Code
  */
 class Login extends React.Component {
-  // Fonction qui va me permettre d'écouter l'évenement sur le onChange de chaque input et transmettre
-  // à mon conteneur le nom de l'input qui est modifié et sa valeur
+  // Function which will lsten the event on the onChange of each input and send
+  // To my container the name of the input which is modified
   handleInputChange = (event) => {
     const { handleInput } = this.props;
     const { name, value } = event.target;
     handleInput(name, value);
   };
 
-  // Fonction qui me permet de récupérer le pseudo, l'email et le MDP
-  // lors de la soumission du formulaire inscription
+  // Function which allow the get the pseudo, email and password when the signup form is submitted
   handleSubmitInscription = (event) => {
     event.preventDefault();
     const {
@@ -50,8 +49,7 @@ class Login extends React.Component {
     }
   };
 
-  // Fonction qui me permet de récupérer l'email et le MDP
-  // lors de la soumission du formulaire de connexion
+  // Function which allow the get the email and password when the signin form is submitted
   handleSubmitConnexion = (event) => {
     event.preventDefault();
     const { inputUserEmail, inputUserPassword, signInUser } = this.props;
@@ -80,8 +78,6 @@ class Login extends React.Component {
       <div id="login">
         <div id="login-signup">
           <h2>Inscription</h2>
-          {/* Premier Formulaire: Inscription */}
-          {/* Je transmets les props nécessaires à mon composant Field (input) */}
           {alertMessagePasswordIncorrect ? (
             <div className="alert-message">Votre mot de passe n'est pas identique</div>
           )
@@ -92,6 +88,8 @@ class Login extends React.Component {
           )
             : ''
           }
+          {/* First Form: Signup */}
+          {/* I send the props that I need to my component Field (input) */}
           {isSignedUp ? (
             <div className="alert-message">Tu es bien enregistré! Tu peux te connecter maintenant...</div>
           )
@@ -108,7 +106,7 @@ class Login extends React.Component {
                   handleInputChange={this.handleInputChange}
                   value={inputEmail}
                   name="inputEmail"
-                  type="text"
+                  type="email"
                   placeholder="Votre Email"
                 />
                 <Field
@@ -138,14 +136,14 @@ class Login extends React.Component {
             : ''
           }
           {/* <Facebook facebook={facebook} /> */}
-          {/* Premier Formulaire: Connexion */}
-          {/* Je transmets les props nécessaires à mon composant Field (input) */}
+          {/* second Form: Signin */}
+          {/* I send the props that I need to my component Field (input)  */}
           <form method="POST" action="" onSubmit={this.handleSubmitConnexion}>
             <Field
               handleInputChange={this.handleInputChange}
               value={inputUserEmail}
               name="inputUserEmail"
-              type="text"
+              type="email"
               placeholder="Votre Email"
             />
             <Field
@@ -177,6 +175,7 @@ Login.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   isSignedUp: PropTypes.bool.isRequired,
   alertMessagePasswordIncorrect: PropTypes.bool.isRequired,
+  alertMessagewrongSignin: PropTypes.bool.isRequired,
   alertMessageShortPassword: PropTypes.bool.isRequired,
   actionIncorrectPassword: PropTypes.func.isRequired,
   actionShortPassword: PropTypes.func.isRequired,

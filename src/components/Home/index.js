@@ -9,7 +9,6 @@ import 'semantic-ui-css/semantic.min.css';
  * Local import
  */
 import Navigation from 'src/containers/Navigation';
-import './style.scss';
 
 
 /**

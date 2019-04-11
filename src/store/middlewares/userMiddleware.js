@@ -35,9 +35,9 @@ const userMiddleware = store => next => (action) => {
           password: action.password,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;
@@ -53,9 +53,9 @@ const userMiddleware = store => next => (action) => {
           password: action.password,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;
@@ -73,14 +73,14 @@ const userMiddleware = store => next => (action) => {
       }).then((response) => {
         // Je stocke mon token reçu par le back dans une variable
         // eslint-disable-next-line prefer-destructuring
-        const token = response.data.token;
+        const { token } = response.data;
         // J'enregistre le token dans mon local storage
         // Local storage est une API native aux navigateurs modernes. ils storent des datas
         // pour que les datas soient accessibles lors des prochaines sessions
         localStorage.setItem('jwtToken', token);
         // J'appelle ma fonction setAutorization qui met dans le header de ma requete HTTP
         // notre token dans la propriété Authorization
-        setAuthorizationToken(token);
+        // setAuthorizationToken(token);
         // J'appelle mon action creator qui va mettre les infos du token dans mon initial state
         store.dispatch(setCurrentUser(jwtDecode(token)));
         axios({
@@ -90,12 +90,12 @@ const userMiddleware = store => next => (action) => {
             Authorization: `Bearer${token}`,
           },
         }).then((res) => {
-          console.log(res);
+          // console.log(res);
         }).catch((error) => {
-          console.log(error);
+          // console.log(error);
         });
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
         store.dispatch(actionWrongSignin());
       });
       next(action);
@@ -104,7 +104,7 @@ const userMiddleware = store => next => (action) => {
       // Je retire le token du localStorage pour ne pas que ce soit visible lors des futures sessions
       localStorage.removeItem('jwtToken');
       // J'enlève mon authorization dans le header de la requete
-      setAuthorizationToken(false);
+      // setAuthorizationToken(false);
       // Je fournis un objet vide à mon initial state
       store.dispatch(setCurrentUser({}));
       next(action);
@@ -117,9 +117,9 @@ const userMiddleware = store => next => (action) => {
           id: action.themeId,
         },
       }).then((response) => {
-        console.log(response);
+        // console.log(response);
       }).catch((error) => {
-        console.log(error);
+        // console.log(error);
       });
       next(action);
       break;

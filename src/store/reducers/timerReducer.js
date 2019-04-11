@@ -31,7 +31,6 @@ const reducer = (state = initialState, action = {}) => {
     case START_TIMER:
       return {
         ...state,
-        // seconds: state.seconds - 1,
         timerOff: false,
       };
     case TICK:
@@ -45,7 +44,6 @@ const reducer = (state = initialState, action = {}) => {
       return {
         ...state,
         seconds: state.seconds - 1,
-        // timerOff: false,
       };
     case END_TIMER:
       if (state.seconds === 0) {

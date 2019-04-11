@@ -3,7 +3,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classnames from 'classnames';
 
 /**
@@ -13,8 +13,13 @@ import classnames from 'classnames';
 /**
  * Code
  */
-const Settings = ({ menuDisplay, menuOppenned, isAuthenticated, logout }) => {
-// Action qui se déclenche lors du clic sur le menu et qui met en place le state du men: open or not
+const Settings = ({
+  menuDisplay,
+  menuOppenned,
+  isAuthenticated,
+  logout,
+}) => {
+  // Action which start when the first click on the menu -> state menu openned? true or false
   const handleMenuDisplay = () => {
     menuDisplay();
   };

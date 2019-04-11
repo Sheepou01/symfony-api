@@ -18,12 +18,16 @@ import './style.scss';
 
 
 const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
-  // FONCTION RANDOM
+  // FUNCTION RANDOM
   // TOPITO
   if (topitosList.length > 0) {
-  // Je récupère name, body et created_at dans l'objet à l'index 0 (activeTopito)
-  // dans le tableau (topitosList)
-    const { name, body, created_at, source } = topitosList[activeTopito];
+    // I get the name, body and created_at in the object to the index of 0 in the array topitosList
+    const {
+      name,
+      body,
+      created_at,
+      source,
+    } = topitosList[activeTopito];
     return (
       <div>
         <div id="wiki-view">
@@ -45,7 +49,7 @@ const Anecdotes = ({ activeTopito, topitosList, randomTopito }) => {
 };
 
 Anecdotes.propTypes = {
-  // activeTopito: PropTypes.number.isRequired,
+  activeTopito: PropTypes.number.isRequired,
   randomTopito: PropTypes.func.isRequired,
   topitosList: PropTypes.array.isRequired,
 };

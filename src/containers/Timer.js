@@ -30,12 +30,7 @@ const mapStateToProps = state => ({
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = dispatch => ({
-  startTimer: () => {
-    // dispatch de mon action creator qui gère les modifs des inputs
-    dispatch(startTimer());
-  },
-});
+const mapDispatchToProps = {};
 
 // Container
 // connect(Ce dont j'ai besoin = state et actions)(Qui en a besoin = Login)

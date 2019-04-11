@@ -9,11 +9,9 @@ import { NavLink } from 'react-router-dom';
  * Local import
  */
 
-// import facts from 'src/styles/assets/facts.png';
 import Topito from 'src/styles/assets/anecdoteFinal.png';
 import Game from 'src/styles/assets/gameFinal.png';
 import Quiz from 'src/styles/assets/quizFinal.png';
-// import { Card, Icon, Image } from 'semantic-ui-react';
 import './style.scss';
 
 /**
@@ -29,8 +27,6 @@ const Navigation = ({ startTimer, quiz }) => {
   const handleReceiveQuiz = () => {
     quiz();
   };
-
-  // Fonction randomisation au clic
 
   return (
     <div id="navigation">
@@ -70,8 +66,7 @@ const Navigation = ({ startTimer, quiz }) => {
 
 Navigation.propTypes = {
   startTimer: PropTypes.func.isRequired,
-  timerOff: PropTypes.bool.isRequired,
-  // gameOver: PropTypes.bool.isRequired,
+  quiz: PropTypes.func.isRequired,
 };
 
 

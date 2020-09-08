@@ -7,7 +7,7 @@ import { TOPITO, receivedTopito } from 'src/store/reducers/anecdotesReducer';
 /**
 * Code
 */
-const urlWiki = 'https://guillaume-marques.fr/api/wiki';
+const urlWiki = 'http://localhost/Apothéose/5-minutes-perdre/public/api/wiki';
 
 const anecdotesMiddleware = store => next => (action) => {
   switch (action.type) {

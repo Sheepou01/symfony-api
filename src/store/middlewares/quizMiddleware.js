@@ -14,8 +14,8 @@ const quizMiddleware = store => next => (action) => {
 
   const { quiz, score } = store.getState().quizReducer;
   const { user } = store.getState().userReducer;
-  const urlQuiz = 'https://guillaume-marques.fr/api/quizz';
-  const urlScoreQuiz = `https://guillaume-marques.fr/api/set/quizz_score/${quiz.id}/user/${user.id}`;
+  const urlQuiz = 'http://localhost/Apothéose/5-minutes-perdre/public/api/quizz';
+  const urlScoreQuiz = `http://localhost/Apothéose/5-minutes-perdre/public/api/set/quizz_score/${quiz.id}/user/${user.id}`;
 
   const settings = {
     async: true,

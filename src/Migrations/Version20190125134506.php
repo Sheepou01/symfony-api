@@ -22,10 +22,10 @@ final class Version20190125134506 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE wiki ADD online TINYINT(1) NOT NULL, CHANGE source source VARCHAR(255) DEFAULT NULL');
-        $this->addSql('ALTER TABLE game CHANGE online online TINYINT(1) DEFAULT \'1\' NOT NULL');
-        $this->addSql('ALTER TABLE quizz CHANGE online online TINYINT(1) DEFAULT \'1\' NOT NULL');
-        $this->addSql('ALTER TABLE user DROP is_active');
+        //$this->addSql('ALTER TABLE wiki ADD online TINYINT(1) NOT NULL');
+        //$this->addSql('ALTER TABLE game ADD online TINYINT(1) DEFAULT \'1\' NOT NULL');
+        //$this->addSql('ALTER TABLE quizz ADD online TINYINT(1) DEFAULT \'1\' NOT NULL');
+        //$this->addSql('ALTER TABLE user DROP is_active');
     }
 
     public function down(Schema $schema) : void

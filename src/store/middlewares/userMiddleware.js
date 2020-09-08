@@ -13,14 +13,14 @@ import setAuthorizationToken from '../setAuthorizationToken';
 
 const userMiddleware = store => next => (action) => {
 
-  const urlSignUp = 'https://guillaume-marques.fr/api/signup';
-  const urlSignIn = 'https://guillaume-marques.fr/api/login_check';
-  const test = 'https://guillaume-marques.fr/api/test';
+  const urlSignUp = 'http://localhost/Apothéose/5-minutes-perdre/public/api/signup';
+  const urlSignIn = 'http://localhost/Apothéose/5-minutes-perdre/public/api/login_check';
+  const test = 'http://localhost/Apothéose/5-minutes-perdre/public/api/test';
   // const tag = 'http://217.70.191.8/api/tag'; pour recup la liste des themes pour l'instant j'ai fait en dur
   const { user } = store.getState().userReducer;
   // console.log(user.id);
-  const urlEditUser = `https://guillaume-marques.fr/user/${user.id}/edit`;
-  const urlFavTheme = `https://guillaume-marques.fr/user/${user.id}/tag/edit`;
+  const urlEditUser = `http://localhost/Apothéose/5-minutes-perdre/public/user/${user.id}/edit`;
+  const urlFavTheme = `http://localhost/Apothéose/5-minutes-perdre/public/user/${user.id}/tag/edit`;
 
   switch (action.type) {
     case SIGNUP_USER:

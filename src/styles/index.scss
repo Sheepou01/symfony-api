@@ -1,0 +1,12 @@
+@import 'reset';
+
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+}
+
+#root {
+  padding-bottom: 60px;
+  min-height: 100%;
+  position: relative;
+}

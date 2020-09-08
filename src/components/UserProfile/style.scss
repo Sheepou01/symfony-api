@@ -1,0 +1,160 @@
+@import 'src/styles/vars';
+
+#profile {
+  width: 80%;
+  margin: auto;
+  text-align: center;
+
+  & h2 {
+    margin: 2em 0;
+  }
+  &-edit, &-theme{
+    margin-bottom: 2em;
+  }
+}
+
+@media screen and (max-width: 425px)  {
+  #profile {  
+    width: 100%;
+    &-edit, &-themes{
+      margin: 2em;
+    }
+    & h3{
+      margin: 0em;
+    }
+  }
+}
+
+// CSS de la partie de edit profil
+.form-edit {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  & button.ui.button {
+    height: 2.5em;
+    margin: 1em;
+    background-color: $orange;
+    color: white;
+  }
+}
+#Button-admin {
+  height: 2.5em;
+  margin: 1em;
+  background-color: $orange;
+  color: white;
+  & a{
+    color: white;
+  }
+}
+
+
+// CSS des inputs pour l'edit de profil
+.field {
+  width: 33em;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 425px)  {
+  .field {
+    width: 20em;
+    margin: 0 auto;
+  }
+}
+
+.field-input{
+  width: 20em;
+}
+.ui.input, .ui.grid {
+  font-size: 1.2em;
+  width: 100%;
+  margin: 0.5em auto;
+}
+
+@media screen and (max-width: 425px)  {
+  .ui.input {
+    width: 100%;
+    margin: 1em auto;
+  }
+}
+
+// CSS de l'input du choix du thème favori
+.ui.grid.theme-list {
+  display: flex;
+  justify-content: center;
+  width: 33em
+}
+
+.ui.selection.dropdown {
+  width: 100%;
+}
+
+@media screen and (max-width: 425px)  {
+  .ui.grid.theme-list {
+    width: 20em
+  }
+  .ui.selection.dropdown {
+    width: 75%;
+  }
+}
+
+// CSS de la partie où l'on montre les scores
+.profile-scores{
+  display: flex;
+  margin-bottom: 5em;
+}
+
+@media screen and (max-width: 425px)  {
+  .profile-scores {
+    display: flex;
+    margin-bottom: 5em;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.scores {
+  width: 100%;
+  & h3 {
+    font-size: 1.5em;
+  }
+  & p {
+    color: $orange;
+  }
+  & ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  & li{
+    border: 1px solid $orange;
+    border-radius: 5px;
+    width: 35%;
+    padding: 0.2em;
+    margin: 0.5em;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 425px)  {
+  .scores {
+    width: 100%;
+    margin: 1em;  
+    & li{
+      width: 75%;
+    }
+  }
+}
+
+// Barre de recherche de pseudo
+.ui.left.icon.input.inputSearch {
+  width: 20em;
+}
+
+// Welcome message
+#welcomeMessage {
+  text-align: center;
+}
+
+
